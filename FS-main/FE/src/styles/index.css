@@ -1,0 +1,32 @@
+:root {
+    /* Basic Colors */
+    --white-color : #ffffff;
+    --black-color : #000000;
+
+    /* Black Variants */
+    --black-400: #131313;
+    --black-300: #212121;
+    --black-200: #282828;
+    --black-100: #2E2E2E;
+
+    /* Gray Variants */
+    --gray-400: #333333;
+    --gray-300: #4B4B4B;
+    --gray-200: #747474;
+    --gray-100: #D8D8D8;
+
+    /* Brand Colors */
+    --brand-orange: #EB5230;
+
+    /* Primary Colors */
+    --primary-blue: #EB5230;
+
+    /* Error Colors */
+    --error-red: #C41013;
+
+    /* 각자 필요한 색상은 이곳에 추가 */
+}
+                 
+body {
+    background-color: var(--black-400);
+}
