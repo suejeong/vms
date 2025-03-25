@@ -6,7 +6,5 @@ export const HomePage = () => {
       HomePage
     </section>
   )
+
 };
-
-
-export default HomePage;
