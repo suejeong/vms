@@ -1,11 +1,11 @@
-import { Header } from "./common/Header";
+import Header from "./common/Header";
+import { Outlet } from "react-router-dom";
 
 function App() {
   return (
     <>
-      <Header>
-        {/* <Outlet /> */}
-      </Header>
+      <Header />
+      <Outlet />
     </>
   );
 }

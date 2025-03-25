@@ -1,22 +1,32 @@
-import { StrictMode } from "react";
+import React from "react";
+import './styles/global.css'
+import './styles/index.css'
 import { createRoot } from "react-dom/client";
-import { BrowserRouter, Route, Routes } from "react-router";
-import HomePage from "./pages/HomePage"
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import App from "./App";
+import { HomePage } from "./pages/HomePage";
+import { NotFoundPage } from "./pages/NotFoundPage";
+import Compare from "./pages/ComparePage";
+import Status from "./pages/StatusPage";
+import Investment from "./pages/InvestmentPage";
 
-import App from "./App.jsx";
-import { HomePage } from "./pages/HomePage/index.jsx";
-import { NotFoundPage } from "./pages/NotFoundPage/index.jsx";
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    errorElement: <NotFoundPage />, // 에러 페이지 설정
+    children: [
+      { index: true, element: <HomePage /> }, // 기본 페이지
+      { path : '/compare', element : <Compare />},
+      { path : '/status', element : <Status />},
+      { path : '/investment', element : <Investment />},
+    ],
+  },
+]);
 
-createRoot(document.getElementById("root")).render(
-  <BrowserRouter>
-    <StrictMode>
-      <Routes>
-        <Route path="/" element={<App />}>
-          <Route index element={<HomePage />} />
-        </Route>
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
-      <App />
-    </StrictMode>
-  </BrowserRouter>
+const root = createRoot(document.getElementById("root"));
+root.render(
+  <React.StrictMode>
+    <RouterProvider router={router} />
+  </React.StrictMode>
 );
