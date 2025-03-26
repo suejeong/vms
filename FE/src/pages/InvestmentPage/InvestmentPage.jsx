@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Investment() {
+export default function InvestmentPage() {
     return(
         <section>
             Investment

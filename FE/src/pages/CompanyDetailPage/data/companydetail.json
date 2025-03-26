@@ -1,0 +1,14 @@
+{
+  "id": "company_1",
+  "name": "네이버",
+  "description": "한국의 초록창 네이버 입니다. 저희는 구글에 대항하여 대한민국의 최고 검색엔진이 되기 위하여 많은 노력을 하고 있습니다. 언제나 최고의 서비스를 제공하기 위해 노력하겠습니다.",
+  "category": "검색포탈",
+  "total_investment": "23200000000",
+  "total_profit": "3292000000000",
+  "employee_count": "7432",
+  "view_invest_amount": "30000000000",
+
+  "count_my_picked": "164",
+  "count_your_picked": "551",
+  "changed_ad": "2000-01-01-01.01.01"
+}

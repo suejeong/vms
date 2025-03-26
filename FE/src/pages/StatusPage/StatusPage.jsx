@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Status() {
+export default function StatusPage() {
     return(
         <section>
             Status

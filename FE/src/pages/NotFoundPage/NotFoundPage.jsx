@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./NotFoundPage.module.css";
+import styles from './NotFoundPage.module.css';
 import { useNavigate } from "react-router-dom";
 
 export const NotFoundPage = () => {
@@ -28,8 +28,8 @@ export const NotFoundPage = () => {
       <ul className={styles.navigationList}>
         {navigationItems.map((item) => (
           <li key={item.idx} className={styles.navigationItem}>
-            <button
-              onClick={() => handleClick(item.idx)}
+            <button 
+              onClick={() => handleClick(item.idx)} 
               className={styles.navigationLink}
             >
               {item.label}
