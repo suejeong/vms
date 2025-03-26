@@ -1,5 +1,5 @@
 import React from "react";
-import './index.css';
+import styles from "./NotFoundPage.module.css";
 import { useNavigate } from "react-router-dom";
 
 export const NotFoundPage = () => {
@@ -17,20 +17,20 @@ export const NotFoundPage = () => {
   };
 
   return (
-    <section className="errorPage">
-      <div className="errorContent">
-        <h1 className="errorTitle">Oops!</h1>
-        <p className="errorMessage">
+    <section className={styles.errorPage}>
+      <div className={styles.errorContent}>
+        <h1 className={styles.errorTitle}>Oops!</h1>
+        <p className={styles.errorMessage}>
           We can't seem to find the page you're looking for.
         </p>
-        <span className="errorCode">Error code: 404</span>
+        <span className={styles.errorCode}>Error code: 404</span>
       </div>
-      <ul className="navigationList">
+      <ul className={styles.navigationList}>
         {navigationItems.map((item) => (
-          <li key={item.idx} className="navigationItem">
-            <button 
-              onClick={() => handleClick(item.idx)} 
-              className="navigationLink"
+          <li key={item.idx} className={styles.navigationItem}>
+            <button
+              onClick={() => handleClick(item.idx)}
+              className={styles.navigationLink}
             >
               {item.label}
             </button>
