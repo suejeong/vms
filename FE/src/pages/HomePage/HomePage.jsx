@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getList } from "../../api";
-import styles from "./homepage.module.css";
+import styles from "./HomePage.module.css";
 
 export const HomePage = () => {
   const [ list, setList ] = useState([]);

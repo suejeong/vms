@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import styles from './header.module.css'
+import styles from './Header.module.css'
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const pagesURL = ['compare', 'status', 'investment']
