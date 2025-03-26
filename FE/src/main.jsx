@@ -18,7 +18,8 @@ const router = createBrowserRouter([
     errorElement: <NotFoundPage />, // 에러 페이지 설정
     children: [
       { index: true, element: <HomePage /> }, // 기본 페이지
-      { path: "/compare", element: <ComparisonResultPage /> },
+      { path: "/compare", element: <ComparePage /> },
+      { path: "/comparisonResult", element: <ComparisonResultPage /> },
       { path: "/status", element: <StatusPage /> },
       { path: "/investment", element: <InvestmentPage /> },
     ],
