@@ -61,8 +61,8 @@ h2 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  top: calc(1.25rem);
-  left: calc(0.75rem);
+  top: 1.25rem;
+  left: 0.75rem;
 }
 
 .companyInfo {
@@ -115,4 +115,42 @@ h2 {
 
 .recentCompanies {
   margin: 0.5rem 0;
+}
+
+.companyInfo img {
+  width: 3rem;
+  height: 3rem;
+}
+
+.filteredCompanies {
+  margin: 0.5rem 0;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 2rem 0 0 0;
+}
+
+.arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.paginationButton {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.5rem;
+  background-color: var(--black-100);
+  color: var(--gray-200);
+}
+
+.paginationButton:disabled {
+  background-color: var(--brand-orange);
+  color: var(--white-color);
+}
+
+.navigationBar {
 }

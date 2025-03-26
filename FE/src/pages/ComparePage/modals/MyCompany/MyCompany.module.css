@@ -62,7 +62,7 @@ h2 {
   align-items: center;
   justify-content: space-between;
   top: calc(50% - 0.75rem);
-  right: calc(1rem);
+  right: 1rem;
 }
 
 .companyInfo {
@@ -99,4 +99,9 @@ h2 {
 
 .recentCompanies {
   margin: 0.5rem 0;
+}
+
+.companyInfo img {
+  width: 3rem;
+  height: 3rem;
 }

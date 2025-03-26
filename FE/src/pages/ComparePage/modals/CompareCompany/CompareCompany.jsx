@@ -76,6 +76,7 @@ export default function CompareCompanyModal({
             {selectedCompanies.map((company) => (
               <div key={company.id} className={style.companyItem}>
                 <div className={style.companyInfo}>
+                  <img src="/images/ic_company.png" alt="company" />
                   <p className={style.companyName}>{company.name}</p>
                   <p className={style.companyCategory}>{company.category}</p>
                 </div>
@@ -93,8 +94,11 @@ export default function CompareCompanyModal({
             {filteredCompanies.length > 0 ? (
               filteredCompanies.map((company) => (
                 <div key={company.id} className={style.companyItem}>
-                  <p className={style.companyName}>{company.name}</p>
-                  <p className={style.companyCategory}>{company.category}</p>
+                  <div className={style.companyInfo}>
+                    <img src="/images/ic_company.png" alt="company" />
+                    <p className={style.companyName}>{company.name}</p>
+                    <p className={style.companyCategory}>{company.category}</p>
+                  </div>
                   {selectedCompanies.find((c) => c.id === company.id) ? (
                     <button
                       className={`${style.selectButton} ${style.selected}`}
@@ -118,9 +122,19 @@ export default function CompareCompanyModal({
             )}
           </div>
           <div className={style.pagination}>
-            <button>1</button>
-            <button>2</button>
-            <button>3</button>
+            <button className={`${style.paginationButton} ${style.arrow}`}>
+              <img src="/images/ic_arrow_left.png" alt="left arrow" />
+            </button>
+            <div className={style.navigationBar}>
+              <button className={style.paginationButton}>1</button>
+              <button className={style.paginationButton}>2</button>
+              <button className={style.paginationButton}>3</button>
+              <button className={style.paginationButton}>4</button>
+              <button className={style.paginationButton}>5</button>
+            </div>
+            <button className={`${style.paginationButton} ${style.arrow}`}>
+              <img src="/images/ic_arrow_right.png" alt="right arrow" />
+            </button>
           </div>
         </div>
       </div>

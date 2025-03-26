@@ -58,7 +58,9 @@ export default function Compare() {
             <>
               <a onClick={() => setMyCompany(null)}>선택 취소</a>
               <div className={style.selectedCompany}>
-                <p>{myCompany.name}</p>
+                <img src="/images/ic_company.png" alt="company" />
+                <p className={style.companyName}>{myCompany.name}</p>
+                <p className={style.companyCategory}>{myCompany.category}</p>
               </div>
             </>
           ) : (
@@ -85,14 +87,13 @@ export default function Compare() {
               <h1>어떤 기업이 궁금하세요?</h1>
               {compareCompanies.length > 0 && <p>(최대 5개)</p>}
             </div>
-            {compareCompanies.length < 5 && (
-              <button
-                className={style.addCompareCompanyButton}
-                onClick={openCompareModal}
-              >
-                기업 추가하기
-              </button>
-            )}
+            <button
+              className={style.addCompareCompanyButton}
+              onClick={openCompareModal}
+              disabled={compareCompanies.length === 5}
+            >
+              기업 추가하기
+            </button>
             <CompareCompanyModal
               isOpen={isCompareModalOpen}
               onClose={closeCompareModal}
@@ -105,10 +106,19 @@ export default function Compare() {
             {compareCompanies.length > 0 ? (
               compareCompanies.map((company) => (
                 <div key={company.id} className={style.companyCard}>
-                  <p>{company.name}</p>
-                  <button onClick={() => removeCompareCompany(company.id)}>
+                  <button
+                    onClick={() => removeCompareCompany(company.id)}
+                    className={style.minusButton}
+                  >
                     <img src="/images/ic_minus.png" alt="minus" />
                   </button>
+                  <img
+                    src="/images/ic_company.png"
+                    alt="company"
+                    className={style.companyImg}
+                  />
+                  <p className={style.companyName}>{company.name}</p>
+                  <p className={style.companyCategory}>{company.category}</p>
                 </div>
               ))
             ) : (

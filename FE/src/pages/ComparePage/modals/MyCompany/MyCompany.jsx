@@ -77,6 +77,7 @@ export default function MyCompanyModal({
               filteredCompanies.map((company) => (
                 <div key={company.id} className={style.companyItem}>
                   <div className={style.companyInfo}>
+                    <img src="/images/ic_company.png" alt="company" />
                     <p className={style.companyName}>{company.name}</p>
                     <p className={style.companyCategory}>{company.category}</p>
                   </div>
@@ -98,6 +99,7 @@ export default function MyCompanyModal({
             {recentCompanies.map((company) => (
               <div key={company.id} className={style.companyItem}>
                 <div className={style.companyInfo}>
+                  <img src="/images/ic_company.png" alt="company" />
                   <p className={style.companyName}>{company.name}</p>
                   <p className={style.companyCategory}>{company.category}</p>
                 </div>
