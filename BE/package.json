@@ -3,7 +3,9 @@
     "dev": "nodemon src/app.js"
   },
   "dependencies": {
+    "@prisma/client": "^6.5.0",
     "@types/express": "^5.0.1",
+    "cors": "^2.8.5",
     "express": "^4.21.2",
     "nodemon": "^3.1.9"
   },
@@ -14,6 +16,7 @@
     "typescript": "^5.8.2"
   },
   "prisma": {
-    "schema": "./src/db/prisma/schema.prisma"
+    "schema": "./src/db/prisma/schema.prisma",
+    "seed": "node src/db/prisma/seed.js"
   }
 }

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import './index.css'
+import styles from './index.module.css'
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const pagesURL = ['compare', 'status', 'investment']
@@ -30,30 +30,30 @@ export default function Header() {
     };
 
     return (
-        <header className="header">
-            <div className="content">
-                <h1 className="logo">
+        <header className={styles.header}>
+            <div className={styles.content}>
+                <h1 className={styles.logo}>
                     <Link to='/' onClick={handleLogoClick}>
-                        <img src="../../../images/img_logo.png" alt="main-logo" className="logoImg"/>
+                        <img src="../../../images/img_logo.png" alt="main-logo" className={styles.logoImg} />
                     </Link>
                 </h1>
                 <Link 
                     to='/compare' 
-                    className={`menuItem ${selected === 1 ? 'selected' : ''}`} 
+                    className={`${styles.menuItem} ${selected === 1 ? 'selected' : ''}`} 
                     onClick={() => handleClick(1)}
                 >
                     나의 기업 비교
                 </Link>
                 <Link 
                     to='/status' 
-                    className={`menuItem ${selected === 2 ? 'selected' : ''}`} 
+                    className={`${styles.menuItem} ${selected === 2 ? 'selected' : ''}`} 
                     onClick={() => handleClick(2)}
                 >
                     비교 현황
                 </Link>
                 <Link 
                     to='/investment' 
-                    className={`menuItem ${selected === 3 ? 'selected' : ''}`} 
+                    className={`${styles.menuItem} ${selected === 3 ? 'selected' : ''}`} 
                     onClick={() => handleClick(3)}
                 >
                     투자 현황
