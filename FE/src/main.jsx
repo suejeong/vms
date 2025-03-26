@@ -1,14 +1,14 @@
 import React from "react";
-import globalStyles from './styles/global.module.css'
-import styles from './styles/index.module.css'
+import './styles/global.css'
+import './styles/index.css'
 import { createRoot } from "react-dom/client";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import App from "./App";
-import { HomePage } from "./pages/HomePage";
-import { NotFoundPage } from "./pages/NotFoundPage";
-import Compare from "./pages/ComparePage";
-import Status from "./pages/StatusPage";
-import Investment from "./pages/InvestmentPage";
+import { HomePage } from "./pages/HomePage/HomePage";
+import { NotFoundPage } from "./pages/NotFoundPage/NotFoundPage";
+import ComparePage from "./pages/ComparePage/ComparePage";
+import StatusPage from "./pages/StatusPage/StatusPage";
+import InvestmentPage from "./pages/InvestmentPage/InvestmentPage";
 
 const router = createBrowserRouter([
   {
@@ -17,9 +17,9 @@ const router = createBrowserRouter([
     errorElement: <NotFoundPage />, // 에러 페이지 설정
     children: [
       { index: true, element: <HomePage /> }, // 기본 페이지
-      { path : '/compare', element : <Compare />},
-      { path : '/status', element : <Status />},
-      { path : '/investment', element : <Investment />},
+      { path : '/compare', element : <ComparePage />},
+      { path : '/status', element : <StatusPage />},
+      { path : '/investment', element : <InvestmentPage />},
     ],
   },
 ]);

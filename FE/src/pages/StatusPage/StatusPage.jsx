@@ -1,9 +1,9 @@
 import React from "react";
 
-export default function Compare() {
+export default function StatusPage() {
     return(
         <section>
-            Compare
+            Status
         </section>
     )
 }
