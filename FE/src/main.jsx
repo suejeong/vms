@@ -1,6 +1,6 @@
 import React from "react";
-import './styles/global.css'
-import './styles/index.css'
+import globalStyles from './styles/global.module.css'
+import styles from './styles/index.module.css'
 import { createRoot } from "react-dom/client";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import App from "./App";

@@ -1,0 +1,81 @@
+.companyBoard {
+    max-width: 75rem;   
+    min-height: 3.75rem;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2.5rem;
+}
+
+.pagTtitleComponent {
+    display:flex;
+    justify-content: space-between;
+    max-width: 75rem; 
+    min-width: 23.4375rem;
+}
+
+.companyList {
+    min-width: 46.5rem;
+}
+
+
+.boardHeader {
+    display:flex;
+    span {
+        text-align: center;
+        padding: 0.65rem 1rem;
+        font-size: 0.9rem;
+    }
+    background-color: #2e2e2e;
+    border-radius: 0.25rem;
+} 
+
+.boardRow {
+    display:flex;
+    span {
+        text-align: center;
+        padding: 1rem;
+    }
+    .txtLeft {
+        text-align: left;
+    }
+    background-color: #212121;
+    border-bottom: 0.065rem solid #4b4b4b;
+}
+.sizeSm {
+    flex: 1;
+    
+}
+.sizeMd {
+    flex: 2;
+}
+.sizeLg {
+    flex: 3;
+}
+.sizeXlg {
+    flex: 4;
+}
+
+
+
+/* Tablet (744px ~ 1199px) */
+@media only screen and (min-width: 46.5rem) and (max-width: 74.9375rem) {
+    .companyBoard {
+        max-width: auto;
+        margin: auto;
+        padding: 0 1.5rem;
+        gap: 1.5rem;
+    }
+}
+
+/* Mobile (375px ~ 743px) */
+@media only screen and (min-width: 23.4375rem) and (max-width: 46.4375rem) {
+    .boardTitle {
+        max-width: auto;
+        margin: auto;
+        padding: 0 1rem;
+        gap: 1rem;
+    }
+} 
