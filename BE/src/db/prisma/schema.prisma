@@ -1,0 +1,57 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model companys {
+  id                 Int      @id @default(autoincrement()) //기업아이디
+  name               String   @default("") //기업명 
+  description        String   @default("") //기업소개
+  category           category //카테고리 
+  total_investment   Int      @default(0) //투자 받은 금액
+  total_profit       Int      @default(0) //매출액 
+  employee_count     Int      @default(0) //고용인원
+  view_invest_amount Int      @default(0) ///뷰마이스타트업 으로 받은 투자금액
+
+  count_my_picked   Int       @default(0) //내기업으로 선택된 횟수
+  count_your_picked Int       @default(0) //비교 기업으로 선택된 횟수  
+  changed_ad        DateTime //투자금액 수정 시간  
+  invests           invests[]
+}
+
+model invests {
+  id            Int    @id @default(autoincrement()) //투자번호
+  username      String
+  password      String //비밀번호
+  invest_amount Int    @default(0) //투자금액
+  state         Int //투자 처음 수정 삭제 정보를 담음
+
+  conpanyId     companys        @relation(fields: [companysId], references: [id])
+  companysId    Int
+  invest_detail invest_detail[]
+}
+
+model invest_detail {
+  id         Int      @id @default(autoincrement())
+  comment    String
+  created_at DateTime @default(now()) //투자 받은 시간
+  changed_ad DateTime @updatedAt //투자 수정 시간
+  investId   invests  @relation(fields: [investsId], references: [id])
+  investsId  Int
+}
+
+enum category {
+  edu // 학습 
+  shopping // 쇼핑
+  etc // 기타 카테고리 등등.. 나중에 추가 
+}
