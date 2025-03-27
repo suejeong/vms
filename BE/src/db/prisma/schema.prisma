@@ -14,7 +14,7 @@ datasource db {
 }
 
 model companys {
-  id                 Int      @id @default(autoincrement()) //기업아이디
+  id                 String   @id @default("") //기업아이디
   name               String   @default("") //기업명 
   description        String   @default("") //기업소개
   category           category //카테고리 
@@ -37,7 +37,7 @@ model invests {
   state         Int //투자 처음 수정 삭제 정보를 담음
 
   conpanyId     companys        @relation(fields: [companysId], references: [id])
-  companysId    Int
+  companysId    String
   invest_detail invest_detail[]
 }
 

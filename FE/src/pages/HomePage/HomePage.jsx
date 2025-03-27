@@ -29,6 +29,7 @@ export const HomePage = () => {
     fetchList();
   },[])
 
+
   return (
     <section>
       <div className={styles.companyBoard}>

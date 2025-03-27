@@ -7,7 +7,7 @@ const HomePageBoardList = ( {companyList} ) => {
     <div>
      {companyList.map((company, index) =>(
       <Link 
-        to={`/company/${company.id}`} 
+        to={`/companyDetail/${company.id}`} 
         key={company.id}
         className={styles.borderRowLink}
       >

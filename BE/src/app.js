@@ -1,9 +1,10 @@
+const dotenv = require("dotenv");
 const express = require("express");
 const cors = require('cors')
 const router = require("./modules/index.module");
 const listsRouter = require("./modules/lists.module");
 
-
+dotenv.config();
 const app = express();
 
 const PORT = 5050;

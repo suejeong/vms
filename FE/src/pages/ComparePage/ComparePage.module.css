@@ -174,3 +174,7 @@ h1 {
   top: 0.5rem;
   right: 0.5rem;
 }
+
+a {
+  color: var(--white-color);
+}

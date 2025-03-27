@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import style from "./CompareCompany.module.css";
 import deleteIc from "../../assets/ic_delete.png";
 import searchIc from "../../assets/ic_search.png";
 import companyIc from "../../assets/ic_company.png";
 import checkIc from "../../assets/ic_check.png";
-import leftArrow from "../../assets/ic_arrow_left.png";
-import rightArrow from "../../assets/ic_arrow_right.png";
+import { Pagination } from "./Pasination";
 
 export default function CompareCompanyModal({
   isOpen,
@@ -16,13 +15,12 @@ export default function CompareCompanyModal({
 }) {
   const [inputValue, setInputValue] = useState("");
   const [filteredCompanies, setFilteredCompanies] = useState(companyData);
+  const [currentPage, setCurrentPage] = useState(1);
+  const companiesPerPage = 5;
 
   if (!isOpen) return null;
 
-  const handleInputChange = (e) => {
-    const value = e.target.value;
-    setInputValue(value);
-
+  const filterCompanies = (value) => {
     if (value.trim() === "") {
       setFilteredCompanies(companyData);
     } else {
@@ -31,7 +29,26 @@ export default function CompareCompanyModal({
       );
       setFilteredCompanies(filtered);
     }
+    setCurrentPage(1);
   };
+
+  const handleInputChange = (e) => {
+    const value = e.target.value;
+    setInputValue(value);
+    filterCompanies(value);
+  };
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
+  const indexOfLastCompany = currentPage * companiesPerPage;
+  const indexOfFirstCompany = indexOfLastCompany - companiesPerPage;
+  const currentCompanies = filteredCompanies.slice(
+    indexOfFirstCompany,
+    indexOfLastCompany
+  );
+  const totalPages = Math.ceil(filteredCompanies.length / companiesPerPage);
 
   const handleSubmit = () => {
     const filtered = companyData.filter((company) =>
@@ -98,8 +115,8 @@ export default function CompareCompanyModal({
           <div className={style.searchCompany}>
             <div className={style.filteredCompanies}>
               <h2>검색 결과 ({filteredCompanies.length})</h2>
-              {filteredCompanies.length > 0 ? (
-                filteredCompanies.map((company) => (
+              {currentCompanies.length > 0 ? (
+                currentCompanies.map((company) => (
                   <div key={company.id} className={style.companyItem}>
                     <div className={style.companyInfo}>
                       <img src={companyIc} alt="company" />
@@ -130,21 +147,11 @@ export default function CompareCompanyModal({
                 <p>검색 결과가 없습니다.</p>
               )}
             </div>
-            <div className={style.pagination}>
-              <button className={`${style.paginationButton} ${style.arrow}`}>
-                <img src={leftArrow} alt="left arrow" />
-              </button>
-              <div className={style.navigationBar}>
-                <button className={style.paginationButton}>1</button>
-                <button className={style.paginationButton}>2</button>
-                <button className={style.paginationButton}>3</button>
-                <button className={style.paginationButton}>4</button>
-                <button className={style.paginationButton}>5</button>
-              </div>
-              <button className={`${style.paginationButton} ${style.arrow}`}>
-                <img src={rightArrow} alt="right arrow" />
-              </button>
-            </div>
+            <Pagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              onPageChange={handlePageChange}
+            />
           </div>
         </div>
       </div>
