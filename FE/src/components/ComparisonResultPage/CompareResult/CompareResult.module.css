@@ -1,0 +1,62 @@
+.titleArea {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem 0;
+}
+
+.titleText {
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+
+.CompareResultTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  font-size: 1.2rem;
+}
+
+.CompareResultTable thead {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 0;
+}
+
+.CompareResultTable tbody {
+  display: flex;
+  flex-direction: column;
+}
+
+.CompareResultTable tr {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.CompareResultTable th,
+td {
+  padding: 1rem;
+  text-align: center;
+}
+
+.CompareResultTable th:nth-child(1),
+.CompareResultTable td:nth-child(1) {
+  width: 20%;
+}
+
+.CompareResultTable th:nth-child(2),
+.CompareResultTable td:nth-child(2) {
+  width: 24%;
+}
+
+.CompareResultTable th:nth-child(3),
+.CompareResultTable td:nth-child(3),
+.CompareResultTable th:nth-child(4),
+.CompareResultTable td:nth-child(4),
+.CompareResultTable th:nth-child(5),
+.CompareResultTable td:nth-child(5),
+.CompareResultTable th:nth-child(6),
+.CompareResultTable td:nth-child(6) {
+  width: 14%;
+}

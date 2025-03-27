@@ -7,6 +7,7 @@ import restartIc from "./assets/ic_restart.png";
 import companyIc from "./assets/ic_company.png";
 import plusIc from "./assets/btn_plus.png";
 import minusIc from "./assets/ic_minus.png";
+import { Link } from "react-router-dom";
 
 export default function Compare() {
   const [isMyModalOpen, setIsMyModalOpen] = useState(false);
@@ -135,12 +136,14 @@ export default function Compare() {
           </div>
         </>
       )}
-      <button
-        className={style.compareButton}
-        disabled={compareCompanies.length === 0}
-      >
-        기업 비교하기
-      </button>
+      <Link to="/comparisonResult">
+        <button
+          className={style.compareButton}
+          disabled={compareCompanies.length === 0}
+        >
+          기업 비교하기
+        </button>
+      </Link>
     </section>
   );
 }
