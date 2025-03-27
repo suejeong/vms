@@ -13,6 +13,7 @@ import InvestmentPage from "./pages/InvestmentPage/InvestmentPage";
 import { ComparisonResultPage } from "./pages/ComparisonResultPage/ComparisonResultPage";
 import CompanyDetail from "./pages/CompanyDetailPage/CompanyDetail";
 
+
 const router = createBrowserRouter([
   {
     path: "/",

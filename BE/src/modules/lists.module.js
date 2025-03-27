@@ -7,6 +7,7 @@ listsRouter.get("/lists", async (req, res, next) => {
     try {
         const lists = await prisma.companys.findMany({
             select: {
+                id: true,
                 name: true,
                 description: true,
                 category: true,
