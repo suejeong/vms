@@ -11,7 +11,7 @@ import ComparePage from "./pages/ComparePage/ComparePage";
 import StatusPage from "./pages/StatusPage/StatusPage";
 import InvestmentPage from "./pages/InvestmentPage/InvestmentPage";
 import { ComparisonResultPage } from "./pages/ComparisonResultPage/ComparisonResultPage";
-
+import CompanyDetail from "./pages/CompanyDetailPage/CompanyDetail";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +24,7 @@ const router = createBrowserRouter([
       { path: "/comparisonResult", element: <ComparisonResultPage /> },
       { path: "/status", element: <StatusPage /> },
       { path: "/investment", element: <InvestmentPage /> },
+      { path: "/company", element: <CompanyDetail /> },
     ],
   },
 ]);
