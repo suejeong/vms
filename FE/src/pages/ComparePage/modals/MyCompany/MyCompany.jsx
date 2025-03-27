@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 import style from "./MyCompany.module.css";
+import deleteIc from "../../assets/ic_delete.png";
+import smallDeleteIc from "../../assets/ic_delete_circle_small.png";
+import searchIc from "../../assets/ic_search.png";
+import companyIc from "../../assets/ic_company.png";
 
 export default function MyCompanyModal({
   isOpen,
@@ -51,7 +55,7 @@ export default function MyCompanyModal({
         <div className={style.header}>
           <h1>나의 기업 선택하기</h1>
           <button className={style.closeButton} onClick={onClose}>
-            <img src="/images/ic_delete.png" alt="delete" />
+            <img src={deleteIc} alt="delete" />
           </button>
         </div>
         <div className={style.search}>
@@ -64,10 +68,10 @@ export default function MyCompanyModal({
           />
           <div className={style.inputButton}>
             <button className={style.deleteButton} onClick={handleDelete}>
-              <img src="/images/ic_delete_circle_small.png" alt="delete" />
+              <img src={smallDeleteIc} alt="delete" />
             </button>
             <button className={style.submitButton} onClick={handleSubmit}>
-              <img src="/images/ic_search.png" alt="search" />
+              <img src={searchIc} alt="search" />
             </button>
           </div>
         </div>
@@ -77,7 +81,7 @@ export default function MyCompanyModal({
               filteredCompanies.map((company) => (
                 <div key={company.id} className={style.companyItem}>
                   <div className={style.companyInfo}>
-                    <img src="/images/ic_company.png" alt="company" />
+                    <img src={companyIc} alt="company" />
                     <p className={style.companyName}>{company.name}</p>
                     <p className={style.companyCategory}>{company.category}</p>
                   </div>
@@ -99,7 +103,7 @@ export default function MyCompanyModal({
             {recentCompanies.map((company) => (
               <div key={company.id} className={style.companyItem}>
                 <div className={style.companyInfo}>
-                  <img src="/images/ic_company.png" alt="company" />
+                  <img src={companyIc} alt="company" />
                   <p className={style.companyName}>{company.name}</p>
                   <p className={style.companyCategory}>{company.category}</p>
                 </div>

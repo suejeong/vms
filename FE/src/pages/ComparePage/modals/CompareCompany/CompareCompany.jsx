@@ -1,5 +1,11 @@
 import React, { useState } from "react";
 import style from "./CompareCompany.module.css";
+import deleteIc from "../../assets/ic_delete.png";
+import searchIc from "../../assets/ic_search.png";
+import companyIc from "../../assets/ic_company.png";
+import checkIc from "../../assets/ic_check.png";
+import leftArrow from "../../assets/ic_arrow_left.png";
+import rightArrow from "../../assets/ic_arrow_right.png";
 
 export default function CompareCompanyModal({
   isOpen,
@@ -55,7 +61,7 @@ export default function CompareCompanyModal({
         <div className={style.header}>
           <h1>비교할 기업 선택하기</h1>
           <button className={style.closeButton} onClick={onClose}>
-            <img src="/images/ic_delete.png" alt="delete" />
+            <img src={deleteIc} alt="delete" />
           </button>
         </div>
         <div className={style.search}>
@@ -68,7 +74,7 @@ export default function CompareCompanyModal({
           />
           <div className={style.inputButton}>
             <button className={style.submitButton} onClick={handleSubmit}>
-              <img src="/images/ic_search.png" alt="search" />
+              <img src={searchIc} alt="search" />
             </button>
           </div>
           <div className={style.selectedCompanies}>
@@ -76,7 +82,7 @@ export default function CompareCompanyModal({
             {selectedCompanies.map((company) => (
               <div key={company.id} className={style.companyItem}>
                 <div className={style.companyInfo}>
-                  <img src="/images/ic_company.png" alt="company" />
+                  <img src={companyIc} alt="company" />
                   <p className={style.companyName}>{company.name}</p>
                   <p className={style.companyCategory}>{company.category}</p>
                 </div>
@@ -96,7 +102,7 @@ export default function CompareCompanyModal({
                 filteredCompanies.map((company) => (
                   <div key={company.id} className={style.companyItem}>
                     <div className={style.companyInfo}>
-                      <img src="/images/ic_company.png" alt="company" />
+                      <img src={companyIc} alt="company" />
                       <p className={style.companyName}>{company.name}</p>
                       <p className={style.companyCategory}>
                         {company.category}
@@ -107,7 +113,7 @@ export default function CompareCompanyModal({
                         className={`${style.selectButton} ${style.selected}`}
                         disabled
                       >
-                        <img src="/images/ic_check.png" alt="check" />
+                        <img src={checkIc} alt="check" />
                         선택 완료
                       </button>
                     ) : (
@@ -126,7 +132,7 @@ export default function CompareCompanyModal({
             </div>
             <div className={style.pagination}>
               <button className={`${style.paginationButton} ${style.arrow}`}>
-                <img src="/images/ic_arrow_left.png" alt="left arrow" />
+                <img src={leftArrow} alt="left arrow" />
               </button>
               <div className={style.navigationBar}>
                 <button className={style.paginationButton}>1</button>
@@ -136,7 +142,7 @@ export default function CompareCompanyModal({
                 <button className={style.paginationButton}>5</button>
               </div>
               <button className={`${style.paginationButton} ${style.arrow}`}>
-                <img src="/images/ic_arrow_right.png" alt="right arrow" />
+                <img src={rightArrow} alt="right arrow" />
               </button>
             </div>
           </div>

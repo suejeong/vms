@@ -3,6 +3,10 @@ import style from "./ComparePage.module.css";
 import MyCompanyModal from "./modals/MyCompany/MyCompany.jsx";
 import CompareCompanyModal from "./modals/CompareCompany/CompareCompany.jsx";
 import companyData from "./company.json";
+import restartIc from "./assets/ic_restart.png";
+import companyIc from "./assets/ic_company.png";
+import plusIc from "./assets/btn_plus.png";
+import minusIc from "./assets/ic_minus.png";
 
 export default function Compare() {
   const [isMyModalOpen, setIsMyModalOpen] = useState(false);
@@ -43,7 +47,7 @@ export default function Compare() {
               setCompareCompanies([]);
             }}
           >
-            <img src="/images/ic_restart.png" alt="Restart" />
+            <img src={restartIc} alt="Restart" />
             전체 초기화
           </button>
         )}
@@ -58,7 +62,7 @@ export default function Compare() {
             <>
               <a onClick={() => setMyCompany(null)}>선택 취소</a>
               <div className={style.selectedCompany}>
-                <img src="/images/ic_company.png" alt="company" />
+                <img src={companyIc} alt="company" />
                 <p className={style.companyName}>{myCompany.name}</p>
                 <p className={style.companyCategory}>{myCompany.category}</p>
               </div>
@@ -66,7 +70,7 @@ export default function Compare() {
           ) : (
             <div className={style.addMyCompany}>
               <button className={style.addButton} onClick={openMyModal}>
-                <img src="/images/btn_plus.png" alt="Add" />
+                <img src={plusIc} alt="Add" />
               </button>
               <MyCompanyModal
                 isOpen={isMyModalOpen}
@@ -110,10 +114,10 @@ export default function Compare() {
                     onClick={() => removeCompareCompany(company.id)}
                     className={style.minusButton}
                   >
-                    <img src="/images/ic_minus.png" alt="minus" />
+                    <img src={minusIc} alt="minus" />
                   </button>
                   <img
-                    src="/images/ic_company.png"
+                    src={companyIc}
                     alt="company"
                     className={style.companyImg}
                   />
