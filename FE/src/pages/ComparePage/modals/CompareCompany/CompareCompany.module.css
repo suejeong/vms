@@ -54,6 +54,12 @@ h2 {
   position: relative;
 }
 
+.searchCompany {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .inputButton {
   width: 3.25rem;
   height: 1.5rem;
@@ -123,14 +129,16 @@ h2 {
 }
 
 .filteredCompanies {
+  width: 28rem;
   margin: 0.5rem 0;
 }
 
 .pagination {
+  width: 16rem;
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  margin: 2rem 0 0 0;
+  justify-content: space-between;
+  margin: 0.5rem 0 0 0;
 }
 
 .arrow {
@@ -153,4 +161,6 @@ h2 {
 }
 
 .navigationBar {
+  display: flex;
+  gap: 0.25rem;
 }
