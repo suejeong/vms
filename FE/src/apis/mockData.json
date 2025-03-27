@@ -1,87 +1,87 @@
 [
   {
     "id": "company_1",
-    "name varchar": "Naver",
-    "description varchar": "한국의 초록창 네이버 입니다 ",
-    "category": "검색포탈",
-    "total_investmen": "10000000000",
+    "name": "Naver",
+    "description": "한국의 초록창 네이버 입니다 ",
+    "category": "etc",
+    "total_investment": "10000000000",
     "total_profit": "10000000000",
     "employee_count": "3000",
     "view_invest_amount": "3000000000",
 
     "count_my_picked": "164",
     "count_your_picked": "551",
-    "changed_ad": "2000-01-01-01.01.01"
+    "changed_at": "2000-01-01-01.01.01"
   },
   {
     "id": "company_2",
-    "name varchar": "google",
-    "description varchar": "전세계 공용 포털사이트 ",
-    "category": "검색포탈",
-    "total_investmen": "200000000000",
+    "name": "google",
+    "description": "전세계 공용 포털사이트 ",
+    "category": "shopping",
+    "total_investment": "200000000000",
     "total_profit": "200000000000",
     "employee_count": "67000",
     "view_invest_amount": "77000000000",
 
     "count_my_picked": "314",
     "count_your_picked": "1851",
-    "changed_ad": "2000-02-02-02.02.02"
+    "changed_at": "2000-02-02-02.02.02"
   },
 
   {
     "id": "company_3",
-    "name varchar": "코드잇",
-    "description varchar": "풀스택 ㅎㅇㅌ",
-    "category": "교육",
-    "total_investmen": "5000000000",
+    "name": "코드잇",
+    "description": "풀스택 ㅎㅇㅌ",
+    "category": "edu",
+    "total_investment": "5000000000",
     "total_profit": "6000000000",
     "employee_count": "113",
     "view_invest_amount": "76500000",
 
     "count_my_picked": "32",
     "count_your_picked": "41",
-    "changed_ad": "2000-03-03-03.03.03"
+    "changed_at": "2000-03-03-03.03.03"
   },
   {
     "id": "company_4",
-    "name varchar": "Discord",
-    "description varchar": "실시간 커뮤니케이션",
-    "category": "커뮤니케이션",
-    "total_investmen": "67800000000",
+    "name": "Discord",
+    "description": "실시간 커뮤니케이션",
+    "category": "etc",
+    "total_investment": "67800000000",
     "total_profit": "34500000000",
     "employee_count": "263",
     "view_invest_amount": "876500000",
 
     "count_my_picked": "333",
     "count_your_picked": "235",
-    "changed_ad": "2000-04-04-04.04.04"
+    "changed_at": "2000-04-04-04.04.04"
   },
   {
     "id": "company_5",
-    "name varchar": "Stram",
-    "description varchar": "게임모음",
-    "category": "게임",
-    "total_investmen": "77700000000",
+    "name": "Stram",
+    "description": "게임모음",
+    "category": "game",
+    "total_investment": "77700000000",
     "total_profit": "55500000000",
     "employee_count": "183",
     "view_invest_amount": "777700000",
 
     "count_my_picked": "288",
     "count_your_picked": "399",
-    "changed_ad": "2000-05-05-05.05.05"
+    "changed_at": "2000-05-05-05.05.05"
   },
   {
     "id": "company_6",
-    "name varchar": "Notion",
-    "description varchar": "간편한 메모장",
-    "category": "메모",
-    "total_investmen": "123456789",
+    "name": "Notion",
+    "description": "간편한 메모장",
+    "category": "etc",
+    "total_investment": "123456789",
     "total_profit": "234567890",
     "employee_count": "43",
     "view_invest_amount": "67891230",
 
     "count_my_picked": "10",
     "count_your_picked": "21",
-    "changed_ad": "2000-06-06-06.06.06"
+    "changed_at": "2000-06-06-06.06.06"
   }
 ]
