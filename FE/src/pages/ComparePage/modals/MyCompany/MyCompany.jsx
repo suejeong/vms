@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import style from "./MyCompany.module.css";
+import style from "./MyCompany.module.scss";
 import deleteIc from "../../assets/ic_delete.png";
 import smallDeleteIc from "../../assets/ic_delete_circle_small.png";
 import searchIc from "../../assets/ic_search.png";

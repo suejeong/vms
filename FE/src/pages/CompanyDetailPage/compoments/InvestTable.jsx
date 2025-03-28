@@ -1,4 +1,4 @@
-import styles from "../CompanyDetailPage.module.css";
+import styles from "../CompanyDetailPage.module.scss";
 import ChangeToNumber from "./ChangeToNumber";
 import DeleteAndChangeModal from "./DeleteAndChangeModal";
 import { useState, useRef } from "react";
