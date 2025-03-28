@@ -39,7 +39,7 @@ export default function Header() {
         <h1 className={styles.logo}>
           <Link to="/" onClick={handleLogoClick}>
             <img
-              src="../../../images/img_logo.png"
+              src="/images/logos/mainPcLogo.png"
               alt="main-logo"
               className={styles.logoImg}
             />
