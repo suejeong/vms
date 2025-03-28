@@ -1,0 +1,79 @@
+.cardContainer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background-color: var(--black-300);
+    border-bottom: 0.0625rem solid var(--gray-300);
+}
+
+.cardItem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: var(--gray-100);
+    padding: 0.9375rem 0;
+}
+
+.rankItem {
+    flex: 1;
+}
+
+.imageItem {
+    flex: 3;
+    gap: 0.75rem;
+}
+
+.imageItem .cardName {
+    color: var(--white-color);
+    font-weight: 500;
+}
+
+.descriptionItem {
+    flex: 4;
+    max-width: inherit;
+}
+
+.descriptionText {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+}
+
+.categoryItem {
+    flex: 2;
+}
+
+.myPickedItem {
+    flex: 2;
+}
+
+.yourPickedItem {
+    flex: 2;
+}
+
+@media only screen and (min-width: 46.5rem) and (max-width: 74.9375rem) {
+    .statusContainer {
+        padding: 0 1.5rem;
+        margin: auto;
+    }
+}
+
+@media only screen and (min-width: 23.4375rem) and (max-width: 46.4375rem) {
+    .title {
+        font-size: 1rem;
+    }
+
+    .statusContainer {
+        padding: 0 1rem;
+        margin: auto;
+    }
+
+    .cardItem {
+        font-size: 0.8125rem;
+    }
+}

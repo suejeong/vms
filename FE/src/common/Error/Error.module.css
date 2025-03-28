@@ -1,13 +1,27 @@
 .errorPage {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    width : 100%;
+    height: 100vh;
+    padding : 0px 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    z-index : 100;
+    background-color: var(--black-400);
 }
 
 .errorPage * {
     color: var(--white-color);
     font-weight: bold;
+}
+
+.errorContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .errorTitle {
@@ -23,20 +37,29 @@
     font-weight: 400;
 }
 
-.errorCode {
+.errorDescription {
     display: block;
     margin: 1.5625rem 0 0.9375rem 0;
     font-size: 0.875rem;
 }
 
-.navigationList {
+.errorActions {
     display: flex;
-    gap: 0.625rem;
+    align-items: center;
+    gap : 1rem;
 }
 
-.navigationLink {
-    font-size: 0.75rem;
-    color: var(--error-green);
+.errorButton {
+    margin-top : 1rem;
+    padding : 10px 1rem;
+}
+
+.errorButton:first-child {
+    background-color : var( --error-green);
+}
+
+.errorButton:last-child {
+    border : 1px solid var( --error-green);
 }
 
 /* Mobile (375px ~ 743px) */
@@ -52,7 +75,7 @@
         line-height: 1.75rem;
     }
 
-    .errorCode {
+    .errorDescription {
         margin: 0.9375rem 0 0.3125rem 0;
         font-size: 0.875rem;
     }
