@@ -8,7 +8,8 @@ h1 {
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  margin: 2rem 0 0.5rem 0;
+  margin: 2rem auto 0.5rem auto;
+  width: 100%;
 }
 
 .resetMyCompany,
@@ -16,8 +17,9 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 75rem;
-  margin: 2rem 0 0.5rem 0;
+  max-width: 75rem;
+  margin: 2rem auto 0.5rem auto;
+  width: 100%;
 }
 
 .myCompanyContainer,
@@ -45,9 +47,9 @@ h1 {
 }
 
 .NotMyCompanyContainer {
-  max-width: 1168px;
-  height: 268px;
-  width: 100%;
+  max-width: 73rem;
+  height: 16.75rem;
+  width: calc(100% - 2rem);
   border-radius: 0.25rem;
   background-color: var(--black-300);
   display: flex;
@@ -64,7 +66,7 @@ h1 {
   border-radius: 0.25rem;
   border-style: dashed;
   border-color: var(--black-300);
-  border-width: 1px;
+  border-width: 0.0625rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -148,7 +150,12 @@ h1 {
 }
 
 .compareCompaanyContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 1rem;
+  max-width: 75rem;
+  width: 100%;
 }
 
 .companyImg {
@@ -177,4 +184,48 @@ h1 {
 
 a {
   color: var(--white-color);
+}
+
+@media only screen and (min-width: 46.5rem) and (max-width: 74.9375rem) {
+  .section {
+    width: 95%;
+  }
+
+  .resetMyCompany,
+  .addCompareCompany,
+  .myCompanyContainer,
+  .compareCompaanyContainer,
+  .dash {
+    width: 100%;
+    height: 15rem;
+  }
+
+  .NotMyCompanyContainer {
+    width: calc(100% - 2rem);
+    height: calc(100% -2rem);
+  }
+}
+
+/* Mobile (375px ~ 743px) */
+@media only screen and (min-width: 23.4375rem) and (max-width: 46.4375rem) {
+  .resetMyCompany,
+  .addCompareCompany,
+  .myCompanyContainer,
+  .dash {
+    height: 11.25rem;
+  }
+
+  .compareCompaanyContainer {
+    height: 21.875rem;
+  }
+
+  .NotMyCompanyContainer {
+    width: calc(100% - 2rem);
+    height: calc(100% -2rem);
+  }
+
+  .companyCard {
+    width: 6.5rem;
+    height: 10.1875rem;
+  }
 }
