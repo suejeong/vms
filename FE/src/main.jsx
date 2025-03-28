@@ -11,7 +11,7 @@ import ComparePage from "./pages/ComparePage/ComparePage";
 import StatusPage from "./pages/StatusPage/StatusPage";
 import InvestmentPage from "./pages/InvestmentPage/InvestmentPage";
 import { ComparisonResultPage } from "./pages/ComparisonResultPage/ComparisonResultPage";
-import CompanyDetail from "./pages/CompanyDetailPage/CompanyDetail";
+import CompanyDetail from "./pages/CompanyDetailPage/CompanyDetailPage";
 
 const router = createBrowserRouter([
   {
