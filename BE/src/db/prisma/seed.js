@@ -46,3 +46,4 @@ main()
         console.error("❌ 시드 에러:", e);
         return prisma.$disconnect();
     });
+

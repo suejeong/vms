@@ -1,4 +1,3 @@
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -8,45 +7,43 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
 model Company {
-  id              String   @id @unique @db.VarChar
-  name            String   @db.VarChar
-  description     String   @db.VarChar
-  category        Category
-  totalInvestment Int
-  totalProfit     Int
-  employeeCount   Int
-  viewInvestAmount Int
-  countMyPicked   Int      @default(0)  // 내 기업 선택 횟수
-  countYourPicked Int      @default(0)  // 비교 기업 선택 횟수
-  changedAd       DateTime @default(now())
-  invests         Invest[]
+  id               String   @id @default(uuid())
+  name             String   @db.VarChar
+  description      String   @db.VarChar
+  category         Category
+  totalInvestment  Int
+  totalProfit      Int
+  employeeCount    Int
+  viewInvestAmount Int      @default(0)
+  countMyPicked    Int      @default(0)
+  countYourPicked  Int      @default(0)
+  changedAd        DateTime @default(now())
+  invests          Invest[]
 }
 
 model Invest {
-  id           String   @id @unique @db.VarChar
-  username     String   @db.VarChar
-  password     String   @db.VarChar
-  companyId    String
-  investAmount Int
-  state        String   @db.VarChar
-  company      Company  @relation(fields: [companyId], references: [id])
+  id            String         @id @default(uuid())
+  username      String         @db.VarChar
+  password      String         @db.VarChar
+  companyId     String
+  investAmount  Int
+  state         String         @db.VarChar
+  company       Company        @relation(fields: [companyId], references: [id])
   investDetails InvestDetail[]
 }
 
 model InvestDetail {
-  id         Int      @id @default(autoincrement())
-  investId   String   @db.VarChar
-  comment    String   @db.VarChar
-  createdAt  DateTime @default(now())
-  changedAd  DateTime @default(now())
-  invest     Invest   @relation(fields: [investId], references: [id])
+  id        Int      @id @default(autoincrement())
+  investId  String   @db.VarChar
+  comment   String   @db.VarChar
+  createdAt DateTime @default(now())
+  changedAd DateTime @default(now())
+  invest    Invest   @relation(fields: [investId], references: [id])
 }
 
 enum Category {
   EDU
   SHOPPING
   ETC
-
 }

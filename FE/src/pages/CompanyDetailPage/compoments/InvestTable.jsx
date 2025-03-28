@@ -1,7 +1,7 @@
 import styles from "../CompanyDetailPage.module.css";
 import ChangeToNumber from "./ChangeToNumber";
 import DeleteAndChangeModal from "./DeleteAndChangeModal";
-import { useState, useRef, react } from "react";
+import { useState, useRef } from "react";
 import InvestDeleteModal from "./InvestDeleteModal";
 import InvestChangeModal from "./InvestChangeModal";
 
