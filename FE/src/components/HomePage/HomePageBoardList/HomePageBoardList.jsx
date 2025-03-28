@@ -20,9 +20,9 @@ const HomePageBoardList = ({ companyList }) => {
               {company.description}
             </span>
             <span className={styles.sizeMd}>{company.category}</span>
-            <span className={styles.sizeMd}>{company.total_investment}</span>
-            <span className={styles.sizeMd}>{company.total_profit}</span>
-            <span className={styles.sizeMd}>{company.employee_count}</span>
+            <span className={styles.sizeMd}>{company.totalInvestment}</span>
+            <span className={styles.sizeMd}>{company.totalProfit}</span>
+            <span className={styles.sizeMd}>{company.employeeCount}</span>
           </div>
         </Link>
       ))}
