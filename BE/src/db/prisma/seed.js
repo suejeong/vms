@@ -40,10 +40,10 @@ function makeId(prefix, index) {
 
 async function main() {
     // 기존 데이터를 삭제하고 재 생성할 수 있는 코드입니다.
-    // console.log("🔥 기존 데이터 삭제 중...");
-    // await prisma.investDetail.deleteMany();
-    // await prisma.invest.deleteMany();
-    // await prisma.company.deleteMany();
+    console.log("🔥 기존 데이터 삭제 중...");
+    await prisma.investDetail.deleteMany();
+    await prisma.invest.deleteMany();
+    await prisma.company.deleteMany();
 
     console.log("🌱 시드 시작");
 
@@ -55,10 +55,10 @@ async function main() {
                 name: startupNames[i % startupNames.length],
                 description: `${startupNames[i % startupNames.length]}는 혁신적인 기술 스타트업입니다. 혁신적으로 스타트하는 기업입니다. 기술을 주도하고 `,
                 category: getRandomCategory(),
-                totalInvestment: getRandomInt(50000, 5000000),
-                totalProfit: getRandomInt(10000, 1000000),
-                employeeCount: getRandomInt(5, 500),
-                viewInvestAmount: getRandomInt(0, 100000),
+                totalInvestment: getRandomInt(5, 50) * 100,
+                totalProfit: getRandomInt(1, 80) * 100,
+                employeeCount: getRandomInt(10, 500),
+                viewInvestAmount: getRandomInt(1, 10) * 100,
                 countMyPicked: getRandomInt(0, 100),
                 countYourPicked: getRandomInt(0, 100),
                 changedAd: getRandomDateWithin30Days(),
@@ -75,7 +75,7 @@ async function main() {
                     username: `user${getRandomInt(1, 1000)}`,
                     password: `pass${getRandomInt(1000, 9999)}`,
                     companyId: company.id,
-                    investAmount: getRandomInt(1000, 100000),
+                    investAmount: getRandomInt(1, 10) * 100,
                     state: getRandomState(),
                 },
             });
