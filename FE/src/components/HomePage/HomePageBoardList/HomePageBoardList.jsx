@@ -1,4 +1,4 @@
-import styles from "./HomePage.module.scss";
+import styles from "./HomePageBoardList.module.scss";
 import { Link } from "react-router-dom";
 
 const HomePageBoardList = ({ companyList }) => {

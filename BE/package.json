@@ -4,22 +4,22 @@
   "main": "src/app.js",
   "scripts": {
     "start": "node src/app.js",
-    "dev": "nodemon src/app.js",
-    "generate": "npx prisma generate --schema=src/db/prisma/schema.prisma",
+    "dev": "npm run generate && nodemon src/app.js",
+    "generate": "npx prisma generate --schema=./src/db/prisma/schema.prisma",
     "migrate": "npx prisma migrate dev --name init --schema=src/db/prisma/schema.prisma",
     "reset": "npx prisma migrate reset --schema=src/db/prisma/schema.prisma",
-    "seed": "node src/db/seed.js"
+    "seed": "node src/db/seed.js",
+    "build": "echo 'No build step required for this backend project'"
   },
   "dependencies": {
     "@prisma/client": "^6.5.0",
     "@types/express": "^5.0.1",
-    "express": "^4.21.2",
-    "nodemon": "^3.1.9",
-    "cors": "^2.8.5"
+    "cors": "^2.8.5",
+    "express": "^4.21.2"
   },
   "devDependencies": {
     "nodemon": "^2.0.20",
-    "prisma": "^4.8.0"
+    "prisma": "^6.5.0"
   },
   "prisma": {
     "schema": "./src/db/prisma/schema.prisma"
