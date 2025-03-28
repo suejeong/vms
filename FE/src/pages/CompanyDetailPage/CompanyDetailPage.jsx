@@ -8,8 +8,11 @@ import InvestMain from "./compoments/InvestMain";
 import PaseNationButton from "./compoments/PaseNationButton";
 import companydetail from "./data/companydetail.json";
 import invest from "./data/invest.json";
+import react from "react";
+import useState from "react";
+import useRef from "react";
 
-export function CompanyDetail() {
+export function CompanyDetailPage() {
   const companydetaildata = companydetail;
   const investdatas = invest;
 
@@ -25,12 +28,12 @@ export function CompanyDetail() {
         <div className={styles.companyDetailThreePart}>
           <Patition
             colum={"누적 투자 금액"}
-            value={companydetaildata.total_investment + " 원"}
+            value={companydetaildata.total_investment}
             className={styles.detailPart}
           />
           <Patition
             colum={"매출액"}
-            value={companydetaildata.total_profit + " 원"}
+            value={companydetaildata.total_profit}
             className={styles.detailPart}
           />
           <Patition
@@ -50,7 +53,7 @@ export function CompanyDetail() {
         <InvestHeader className={styles.ViewMyStartUpHeader} />
         <InvestMain
           className={styles.ViewMyStartUpMain}
-          investAmount={companydetaildata.view_invest_amount + " 원"}
+          investAmount={companydetaildata.view_invest_amount}
           investData={investdatas}
         />
 
@@ -68,4 +71,4 @@ export function CompanyDetail() {
   );
 }
 
-export default CompanyDetail;
+export default CompanyDetailPage;
