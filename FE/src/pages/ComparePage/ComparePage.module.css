@@ -3,6 +3,11 @@ h1 {
   font-size: 1.25rem;
 }
 
+p {
+  font-weight: 500;
+  font-size: 1.125rem;
+}
+
 .section {
   display: flex;
   align-items: center;
@@ -48,7 +53,8 @@ h1 {
 
 .NotMyCompanyContainer {
   max-width: 73rem;
-  height: 16.75rem;
+  max-height: 16.75rem;
+  height: calc(100% - 2rem);
   width: calc(100% - 2rem);
   border-radius: 0.25rem;
   background-color: var(--black-300);
@@ -186,13 +192,12 @@ a {
   color: var(--white-color);
 }
 
+/* Tablet (744px ~ 1199px) */
 @media only screen and (min-width: 46.5rem) and (max-width: 74.9375rem) {
   .section {
     width: 95%;
   }
 
-  .resetMyCompany,
-  .addCompareCompany,
   .myCompanyContainer,
   .compareCompaanyContainer,
   .dash {
@@ -208,8 +213,23 @@ a {
 
 /* Mobile (375px ~ 743px) */
 @media only screen and (min-width: 23.4375rem) and (max-width: 46.4375rem) {
+  h1 {
+    font-size: 1rem;
+  }
+
+  p {
+    font-size: 0.875rem;
+  }
+
+  .section {
+    padding: 0 1rem;
+  }
+
   .resetMyCompany,
-  .addCompareCompany,
+  .addCompareCompany {
+    height: 2rem;
+  }
+
   .myCompanyContainer,
   .dash {
     height: 11.25rem;
@@ -227,5 +247,10 @@ a {
   .companyCard {
     width: 6.5rem;
     height: 10.1875rem;
+  }
+
+  .compareButton {
+    width: 8.4375rem;
+    height: 2.5rem;
   }
 }
