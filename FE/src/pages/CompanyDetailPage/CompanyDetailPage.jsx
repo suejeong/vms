@@ -8,9 +8,6 @@ import InvestMain from "./compoments/InvestMain";
 import PaseNationButton from "./compoments/PaseNationButton";
 import companydetail from "./data/companydetail.json";
 import invest from "./data/invest.json";
-import react from "react";
-import useState from "react";
-import useRef from "react";
 
 export function CompanyDetailPage() {
   const companydetaildata = companydetail;
