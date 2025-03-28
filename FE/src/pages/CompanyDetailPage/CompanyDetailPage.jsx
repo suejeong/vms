@@ -1,4 +1,4 @@
-import styles from "./CompanyDetailPage.module.css";
+import styles from "./CompanyDetailPage.module.scss";
 import Patition from "./compoments/Partition";
 import Description from "./compoments/Description";
 import LogoAndName from "./compoments/LogoAndName";

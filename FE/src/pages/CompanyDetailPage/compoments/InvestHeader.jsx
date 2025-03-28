@@ -1,4 +1,4 @@
-import styles from "../CompanyDetailPage.module.css";
+import styles from "../CompanyDetailPage.module.scss";
 import { useState, useRef } from "react";
 import InvestModal from "./InvestModal";
 

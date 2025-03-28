@@ -3,7 +3,7 @@ import React from "react";
 import { CompareResult } from "../../components/ComparisonResultPage/CompareResult/CompareResult";
 import { CompanyRanking } from "../../components/ComparisonResultPage/CompanyRanking/CompanyRanking";
 import { MyCompany } from "../../components/ComparisonResultPage/MyCompany/MyCompany";
-import styles from "./ComparisonResultPage.module.css";
+import styles from "./ComparisonResultPage.module.scss";
 
 export const ComparisonResultPage = () => {
   return (

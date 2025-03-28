@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { OrderBy } from "../OrderBy/OrderBy";
-import styles from "./CompareResult.module.css";
+import styles from "./CompareResult.module.scss";
 import mockData from "../../../api/mockData.json";
 
 export const CompareResult = () => {

@@ -1,4 +1,4 @@
-import styles from "../CompanyDetailPage.module.css";
+import styles from "../CompanyDetailPage.module.scss";
 
 export function LogoAndName({ imgSrc, companyName, companyCategory }) {
   return (
