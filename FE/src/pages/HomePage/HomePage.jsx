@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getList } from "../../api";
-import styles from "./HomePage.module.css";
+import styles from "./HomePage.module.scss";
 import HomePageBoardSearch from "./HomePageBoardSearch";
 import HomePageBoardFilter from "./HomePageBoardFilter";
 import HomePageBoardTitle from "./HomePageBoardTitle";

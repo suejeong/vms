@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import style from "./MyCompany.module.css";
+import style from "./MyCompany.module.scss";
 import deleteIc from "../../assets/ic_delete.png";
 import smallDeleteIc from "../../assets/ic_delete_circle_small.png";
 import searchIc from "../../assets/ic_search.png";
@@ -99,7 +99,7 @@ export default function MyCompanyModal({
           </div>
         ) : (
           <div className={style.recentCompanies}>
-            <h2>최근 선택된 기업 ({recentCompanies.length})</h2>
+            <p>최근 선택된 기업 ({recentCompanies.length})</p>
             {recentCompanies.map((company) => (
               <div key={company.id} className={style.companyItem}>
                 <div className={style.companyInfo}>

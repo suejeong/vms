@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import style from "./CompareCompany.module.css";
+import style from "./CompareCompany.module.scss";
 import deleteIc from "../../assets/ic_delete.png";
 import searchIc from "../../assets/ic_search.png";
 import companyIc from "../../assets/ic_company.png";
@@ -95,7 +95,7 @@ export default function CompareCompanyModal({
             </button>
           </div>
           <div className={style.selectedCompanies}>
-            <h2>선택한 기업 ({selectedCompanies.length})</h2>
+            <p>선택한 기업 ({selectedCompanies.length})</p>
             {selectedCompanies.map((company) => (
               <div key={company.id} className={style.companyItem}>
                 <div className={style.companyInfo}>
@@ -114,7 +114,7 @@ export default function CompareCompanyModal({
           </div>
           <div className={style.searchCompany}>
             <div className={style.filteredCompanies}>
-              <h2>검색 결과 ({filteredCompanies.length})</h2>
+              <p>검색 결과 ({filteredCompanies.length})</p>
               {currentCompanies.length > 0 ? (
                 currentCompanies.map((company) => (
                   <div key={company.id} className={style.companyItem}>
@@ -126,10 +126,7 @@ export default function CompareCompanyModal({
                       </p>
                     </div>
                     {selectedCompanies.find((c) => c.id === company.id) ? (
-                      <button
-                        className={`${style.selectButton} ${style.selected}`}
-                        disabled
-                      >
+                      <button className={style.selectButton} disabled>
                         <img src={checkIc} alt="check" />
                         선택 완료
                       </button>

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import styles from "./OrderBy.module.css";
+import styles from "./OrderBy.module.scss";
 import ic_arrow_top from "../../../assets/arrow_top.png";
 import ic_arrow_arrow_bottom from "../../../assets/arrow_bottom.png";
 
