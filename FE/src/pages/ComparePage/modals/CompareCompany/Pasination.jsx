@@ -4,10 +4,30 @@ import rightArrow from "../../assets/ic_arrow_right.png";
 import style from "./Pasination.module.css";
 
 export const Pagination = ({ currentPage, totalPages, onPageChange }) => {
-  const pageNumbers = [];
-  for (let i = 1; i <= totalPages; i++) {
-    pageNumbers.push(i);
-  }
+  const getPageNumbers = () => {
+    const pageNumbers = [];
+    let startPage, endPage;
+
+    if (totalPages <= 5) {
+      startPage = 1;
+      endPage = totalPages;
+    } else if (currentPage <= 3) {
+      startPage = 1;
+      endPage = 5;
+    } else if (currentPage + 2 >= totalPages) {
+      startPage = totalPages - 4;
+      endPage = totalPages;
+    } else {
+      startPage = currentPage - 2;
+      endPage = currentPage + 2;
+    }
+
+    for (let i = startPage; i <= endPage; i++) {
+      pageNumbers.push(i);
+    }
+
+    return pageNumbers;
+  };
 
   return (
     <div className={style.pagination}>
@@ -19,7 +39,7 @@ export const Pagination = ({ currentPage, totalPages, onPageChange }) => {
         <img src={leftArrow} alt="previous" />
       </button>
       <div className={style.navigationBar}>
-        {pageNumbers.map((number) => (
+        {getPageNumbers().map((number) => (
           <button
             key={number}
             className={style.paginationButton}
