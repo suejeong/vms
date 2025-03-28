@@ -5,10 +5,11 @@ async function main() {
     const result = await prisma.companys.createMany({
         data: [
             {
+                id: "samsung-001",
                 name: "삼성전자",
                 description: "글로벌 전자 기업",
                 category: "edu",
-                total_investmen: 1000000,
+                total_investment: 1000000,
                 total_profit: 3000000,
                 employee_count: 50000,
                 view_invest_amount: 500000,
@@ -17,10 +18,11 @@ async function main() {
                 changed_ad: new Date()
             },
             {
+                id: "naver-001",
                 name: "네이버",
                 description: "대한민국 대표 포털",
                 category: "shopping",
-                total_investmen: 800000,
+                total_investment: 800000,
                 total_profit: 2500000,
                 employee_count: 40000,
                 view_invest_amount: 300000,
@@ -44,3 +46,4 @@ main()
         console.error("❌ 시드 에러:", e);
         return prisma.$disconnect();
     });
+

@@ -1,0 +1,70 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.title {
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.selectBox {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 16.5rem;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 0.0625rem solid var(--gray-200);
+    border-radius: 0.625rem;
+    cursor: pointer;
+}
+
+.selectBox * {
+    font-size: 0.875rem;
+    color: var(--white-color);
+}
+
+.dropdownBox {
+    position: absolute;
+    z-index: 100;
+    top: 120%;
+    left: 0;
+    background-color: var(--black-400);
+    border: 0.0625rem solid var(--gray-200);
+    border-radius: 0.625rem;
+}
+
+.dropdownMenu {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-bottom: inherit;
+}
+
+.dropdownMenu:last-child {
+    border-bottom: none;
+}
+
+@media only screen and (min-width: 46.5rem) and (max-width: 74.9375rem) {
+}
+
+@media only screen and (min-width: 23.4375rem) and (max-width: 46.4375rem) {
+    .title {
+        font-size: 1rem;
+    }
+
+    .selectBox {
+        max-width: 15.0625rem;
+        padding: 0.5rem 0.75rem;
+    }
+    
+    .selectBox * {
+        font-size: 0.8125rem;
+    }
+
+    .dropdownMenu {
+        padding: 0.5rem 0.75rem;
+    }
+}

@@ -64,6 +64,14 @@ input, textarea, select, button, optgroup, option {
     font-family: inherit;
 }
 
+/* select 기본 속성 제거 */
+select {
+    border : none;
+    outline :none;
+    appearance: none; /* 기본 화살표 제거 */ 
+    background-color: transparent; /* 기본 배경 제거 */ 
+}
+
 /* 테이블 요소 기본 스타일 */
 table {
     border-collapse: collapse; /* 테이블 셀 간 간격 제거 */
