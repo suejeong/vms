@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { OrderBy } from "../OrderBy/OrderBy";
 import styles from "./CompareResult.module.css";
-import mockData from "../../../apis/mockData.json";
+import mockData from "../../../api/mockData.json";
 
 export const CompareResult = () => {
   const [compareResultListState, setCompareResultListState] =

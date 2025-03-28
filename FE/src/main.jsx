@@ -1,17 +1,16 @@
 import React from "react";
 import "./styles/global.css";
 import "./styles/index.css";
-import { NotFoundPage } from "./pages/NotFoundPage/NotFound";
-import { HomePage } from "./pages/HomePage/HomePage";
-import { ComparisonResultPage } from "./pages/ComparisonResultPage/ComparisonResultPage";
-import CompanyDetail from "./pages/CompanyDetailPage/CompanyDetail";
 import { createRoot } from "react-dom/client";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import App from "./App";
-
-import Compare from "./pages/ComparePage/ComparePage.jsx";
-import Status from "./pages/StatusPage/Status.jsx";
-import Investment from "./pages/InvestmentPage/Investment.jsx";
+import { NotFoundPage } from "./pages/NotFoundPage/NotFoundPage";
+import HomePage from "./pages/HomePage/HomePage";
+import ComparePage from "./pages/ComparePage/ComparePage";
+import StatusPage from "./pages/StatusPage/StatusPage";
+import InvestmentPage from "./pages/InvestmentPage/InvestmentPage";
+import { ComparisonResultPage } from "./pages/ComparisonResultPage/ComparisonResultPage";
+import CompanyDetailPage from "./pages/CompanyDetailPage/CompanyDetailPage";
 
 const router = createBrowserRouter([
   {
@@ -19,12 +18,12 @@ const router = createBrowserRouter([
     element: <App />,
     errorElement: <NotFoundPage />,
     children: [
-      { index: true, element: <HomePage /> }, // 기본 페이지
-      { path: "/compare", element: <Compare /> },
-      { path: "/status", element: <Status /> },
-      { path: "/investment", element: <Investment /> },
+      { index: true, element: <HomePage /> },
+      { path: "/compare", element: <ComparePage /> },
+      { path: "/status", element: <StatusPage /> },
+      { path: "/investment", element: <InvestmentPage /> },
       { path: "/comparisonResult", element: <ComparisonResultPage /> },
-      { path: "/companyDetail", element: <CompanyDetail /> },
+      { path: "/companyDetail", element: <CompanyDetailPage /> },
     ],
   },
 ]);

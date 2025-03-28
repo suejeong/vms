@@ -1,35 +1,34 @@
 :root {
-    /* Basic Colors */
-    --white-color : #ffffff;
-    --black-color : #000000;
+  /* Basic Colors */
+  --white-color: #ffffff;
+  --black-color: #000000;
 
-    /* Black Variants */
-    --black-400: #131313;
-    --black-300: #212121;
-    --black-200: #282828;
-    --black-100: #2E2E2E;
+  /* Black Variants */
+  --black-400: #131313;
+  --black-300: #212121;
+  --black-200: #282828;
+  --black-100: #2e2e2e;
 
-    /* Gray Variants */
-    --gray-400: #333333;
-    --gray-300: #4B4B4B;
-    --gray-200: #747474;
-    --gray-100: #D8D8D8;
-    
-    /* Brand Colors */
-    --brand-orange: #EB5230;
+  /* Gray Variants */
+  --gray-400: #333333;
+  --gray-300: #4b4b4b;
+  --gray-200: #747474;
+  --gray-100: #d8d8d8;
 
-    /* Primary Colors */
-    --primary-blue: #558fff;
+  /* Brand Colors */
+  --brand-orange: #eb5230;
 
-    /* Error Colors */
-    --error-red: #C41013;
-    --error-green : #008489;
+  /* Primary Colors */
+  --primary-blue: #558fff;
 
-    /* Loading Colors */
-    --loading-orange : #ff5722
+  /* Error Colors */
+  --error-red: #c41013;
+  --error-green: #008489;
+
+  /* Loading Colors */
+  --loading-orange: #ff5722;
 }
-                 
+
 body {
-    background-color: var(--black-400);
+  background-color: var(--black-400);
 }
-
