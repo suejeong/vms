@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { getList } from "../../api";
 import styles from "./HomePage.module.scss";
-import HomePageBoardSearch from "./HomePageBoardSearch";
-import HomePageBoardFilter from "./HomePageBoardFilter";
-import HomePageBoardTitle from "./HomePageBoardTitle";
-import HomePageBoardList from "./HomePageBoardList";
+import HomePageBoardSearch from "../../components/HomePage/HomePageBoardSearch/HomePageBoardSearch";
+import HomePageBoardTitle from "../../components/HomePage/HomePageBoardTitle/HomePageBoardTitle";
+import HomePageBoardList from "../../components/HomePage/HomePageBoardList/HomePageBoardList";
+import HomePageBoardFilter from "../../components/HomePage/HomePageBoardFilter/HomePageBoardFilter";
 
 export const HomePage = () => {
   const [list, setList] = useState([]);
