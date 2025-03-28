@@ -1,7 +1,7 @@
 import React from "react";
 import leftArrow from "../../assets/ic_arrow_left.png";
 import rightArrow from "../../assets/ic_arrow_right.png";
-import style from "./Pasination.module.css";
+import style from "./Pasination.module.scss";
 
 export const Pagination = ({ currentPage, totalPages, onPageChange }) => {
   const getPageNumbers = () => {

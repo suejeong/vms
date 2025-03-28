@@ -1,5 +1,5 @@
 import { useState } from "react";
-import style from "./ComparePage.module.css";
+import style from "./ComparePage.module.scss";
 import MyCompanyModal from "./modals/MyCompany/MyCompany.jsx";
 import CompareCompanyModal from "./modals/CompareCompany/CompareCompany.jsx";
 import companyData from "./company.json";

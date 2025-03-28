@@ -1,4 +1,4 @@
-import styles from "../CompanyDetailPage.module.css";
+import styles from "../CompanyDetailPage.module.scss";
 import ChangeToNumber from "./ChangeToNumber";
 export function Patition({ colum, value, className }) {
   return (

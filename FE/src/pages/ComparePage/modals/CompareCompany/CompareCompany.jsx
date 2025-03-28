@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import style from "./CompareCompany.module.css";
+import style from "./CompareCompany.module.scss";
 import deleteIc from "../../assets/ic_delete.png";
 import searchIc from "../../assets/ic_search.png";
 import companyIc from "../../assets/ic_company.png";
