@@ -1,6 +1,5 @@
 const express = require('express');
-const { PrismaClient } = require('@prisma/client');
-const prisma = new PrismaClient();
+const prisma = require('../db/client.prisma');
 const listsRouter = express.Router();
 
 listsRouter.get("/lists", async (req, res, next) => {
