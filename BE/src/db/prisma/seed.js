@@ -40,10 +40,10 @@ function makeId(prefix, index) {
 
 async function main() {
     // 기존 데이터를 삭제하고 재 생성할 수 있는 코드입니다.
-    console.log("🔥 기존 데이터 삭제 중...");
-    await prisma.investDetail.deleteMany();
-    await prisma.invest.deleteMany();
-    await prisma.company.deleteMany();
+    // console.log("🔥 기존 데이터 삭제 중...");
+    // await prisma.investDetail.deleteMany();
+    // await prisma.invest.deleteMany();
+    // await prisma.company.deleteMany();
 
     console.log("🌱 시드 시작");
 
