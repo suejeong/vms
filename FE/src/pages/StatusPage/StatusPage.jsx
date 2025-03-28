@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import React, { useEffect, useState } from "react";
-import styles from "./StatusPage.module.css";
+import styles from "./StatusPage.module.scss";
 import CompanyTableHeader from "../../components/CompanyTableHeader/CompanyTableHeader";
 import CompanyCard from "../../components/CompanyCard/CompanyCard";
 import IsLoading from "../../common/IsLoading/IsLoading";
