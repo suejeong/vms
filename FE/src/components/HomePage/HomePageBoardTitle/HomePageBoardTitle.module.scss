@@ -1,0 +1,22 @@
+.boardHeader {
+    display: flex;
+    background-color: #2e2e2e;
+    border-radius: 0.25rem;
+    span {
+      text-align: center;
+      padding: 0.65rem 1rem;
+      font-size: 0.9rem;
+    }
+    .sizeSm {
+        flex: 1;
+    }
+    .sizeMd {
+        flex: 2;
+    }
+    .sizeLg {
+        flex: 3;
+    }
+    .sizeXlg {
+        flex: 4;
+    }
+  }

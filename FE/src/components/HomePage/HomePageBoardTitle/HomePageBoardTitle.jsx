@@ -1,4 +1,4 @@
-import styles from "./HomePage.module.scss";
+import styles from "./HomePageBoardTitle.module.scss";
 
 const HomePageBoardTitle = () => {
   return (
