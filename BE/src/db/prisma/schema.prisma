@@ -48,5 +48,5 @@ enum Category {
   EDU
   SHOPPING
   ETC
->>>>>>> 9ce47f7 ('test')
+
 }
