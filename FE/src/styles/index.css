@@ -14,20 +14,22 @@
     --gray-300: #4B4B4B;
     --gray-200: #747474;
     --gray-100: #D8D8D8;
-
+    
     /* Brand Colors */
     --brand-orange: #EB5230;
 
     /* Primary Colors */
-    --primary-blue: #EB5230;
+    --primary-blue: #558fff;
 
     /* Error Colors */
     --error-red: #C41013;
     --error-green : #008489;
 
-    /* 각자 필요한 색상은 이곳에 추가 */
+    /* Loading Colors */
+    --loading-orange : #ff5722
 }
                  
 body {
     background-color: var(--black-400);
 }
+

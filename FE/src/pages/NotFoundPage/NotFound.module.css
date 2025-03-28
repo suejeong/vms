@@ -1,0 +1,62 @@
+.errorPage {
+    max-width : 31.25rem;
+    width : 100%;
+    padding : 0px 1rem;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.errorPage * {
+    color: var(--white-color);
+    font-weight: bold;
+}
+
+.errorTitle {
+    text-align: center;
+    margin-bottom: 0.9375rem;
+    font-size: 9.0625rem;
+}
+
+.errorMessage {
+    margin: 1.5625rem 0 0.9375rem 0;
+    font-size: 2rem;
+    line-height: 2.2rem;
+    font-weight: 400;
+}
+
+.errorCode {
+    display: block;
+    margin: 1.5625rem 0 0.9375rem 0;
+    font-size: 0.875rem;
+}
+
+.navigationList {
+    display: flex;
+    gap: 0.625rem;
+}
+
+.navigationLink {
+    font-size: 0.75rem;
+    color: var(--error-green);
+}
+
+/* Mobile (375px ~ 743px) */
+@media only screen and (min-width: 23.4375rem) and (max-width: 46.4375rem) {
+    .errorTitle {
+        margin-bottom: 0.625rem;
+        font-size: 6.25rem;
+    }
+
+    .errorMessage {
+        margin: 0.9375rem 0 0.3125rem 0;
+        font-size: 1.5rem;
+        line-height: 1.75rem;
+    }
+
+    .errorCode {
+        margin: 0.9375rem 0 0.3125rem 0;
+        font-size: 0.875rem;
+    }
+}

@@ -8,7 +8,6 @@
     "total_profit": "10000000000",
     "employee_count": "3000",
     "view_invest_amount": "3000000000",
-
     "count_my_picked": "164",
     "count_your_picked": "551",
     "changed_at": "2000-01-01-01.01.01"
@@ -22,12 +21,10 @@
     "total_profit": "200000000000",
     "employee_count": "67000",
     "view_invest_amount": "77000000000",
-
     "count_my_picked": "314",
     "count_your_picked": "1851",
     "changed_at": "2000-02-02-02.02.02"
   },
-
   {
     "id": "company_3",
     "name": "코드잇",
@@ -37,7 +34,6 @@
     "total_profit": "6000000000",
     "employee_count": "113",
     "view_invest_amount": "76500000",
-
     "count_my_picked": "32",
     "count_your_picked": "41",
     "changed_at": "2000-03-03-03.03.03"
@@ -51,7 +47,6 @@
     "total_profit": "34500000000",
     "employee_count": "263",
     "view_invest_amount": "876500000",
-
     "count_my_picked": "333",
     "count_your_picked": "235",
     "changed_at": "2000-04-04-04.04.04"
@@ -65,7 +60,6 @@
     "total_profit": "55500000000",
     "employee_count": "183",
     "view_invest_amount": "777700000",
-
     "count_my_picked": "288",
     "count_your_picked": "399",
     "changed_at": "2000-05-05-05.05.05"
