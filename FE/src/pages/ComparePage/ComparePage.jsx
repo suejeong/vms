@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import style from "./ComparePage.module.css";
 import MyCompanyModal from "./modals/MyCompany/MyCompany.jsx";
 import CompareCompanyModal from "./modals/CompareCompany/CompareCompany.jsx";
@@ -9,7 +9,7 @@ import plusIc from "./assets/btn_plus.png";
 import minusIc from "./assets/ic_minus.png";
 import { Link } from "react-router-dom";
 
-export default function Compare() {
+export default function ComparePage() {
   const [isMyModalOpen, setIsMyModalOpen] = useState(false);
   const [isCompareModalOpen, setIsCompareModalOpen] = useState(false);
   const [myCompany, setMyCompany] = useState(null);

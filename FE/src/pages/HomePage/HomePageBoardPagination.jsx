@@ -1,10 +1,7 @@
-import React from 'react'
-import styles from "./HomePage.module.css";
+import React from "react";
 
 const HomePageBoardPagination = () => {
-  return (
-    <div>HomePageBoardPagination</div>
-  )
-}
+  return <div>HomePageBoardPagination</div>;
+};
 
-export default HomePageBoardPagination
+export default HomePageBoardPagination;
