@@ -20,3 +20,13 @@
         flex: 4.5;
     }
   }
+
+  /* Mobile (375px ~ 743px) */
+@media only screen and (min-width: 23.4375rem) and (max-width: 46.4375rem) {
+    .boardTitle {
+      max-width: auto;
+      margin: auto;
+      padding: 0 1rem;
+      gap: 1rem;
+    }
+}

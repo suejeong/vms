@@ -33,7 +33,7 @@ export const HomePage = () => {
     <section>
       <div className={styles.companyBoard}>
         <div className={styles.pageTopComponent}>
-          <h2>전체 기업 리스트</h2>
+          <h2 className={styles.totalListHead}>전체 스타트업 목록</h2>
           <div className={styles.searchAndFilter}>
             <HomePageBoardSearch 
               searchInput={searchInput}
