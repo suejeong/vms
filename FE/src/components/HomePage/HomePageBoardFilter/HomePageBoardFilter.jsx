@@ -1,15 +1,15 @@
-import React from "react";
-import styles from "./HomePageBoardFilter.module.scss"
+import React from 'react'
+import styles from "./HomePageBoardFilter.module.scss";
 
-const HomePageBoardFilter = () => {
+const HomePageBoardFilter= () => {
   return (
-    <div>
-      <select className={styles.filter}>
-        <option value="revenue-high">매출액 높은순</option>
-        <option value="revenue-low">매출액 낮은순</option>
-      </select>
+    <div className={styles.filter}>
+        <select>
+            <option value="revenue-high">매출액 높은순</option>
+            <option value="revenue-low">매출액 낮은순</option>
+        </select>
     </div>
-  );
-};
+  )
+}
 
-export default HomePageBoardFilter;
+export default HomePageBoardFilter
