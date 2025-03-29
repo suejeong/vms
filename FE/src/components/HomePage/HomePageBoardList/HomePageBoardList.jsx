@@ -2,7 +2,7 @@ import styles from "./HomePageBoardList.module.scss";
 import { Link } from "react-router-dom";
 
 const HomePageBoardList = ({ companyList }) => {
-  if (!companyList.length) return <p>검색 결과가 없습니다.</p>;
+  if (!companyList.length) return <p className={styles.noSearchResult}>검색 결과가 없습니다</p>;
   return (
     <div>
       {companyList.map((company, index) => (
@@ -20,9 +20,9 @@ const HomePageBoardList = ({ companyList }) => {
               {company.description}
             </span>
             <span className={styles.sizeMd}>{company.category}</span>
-            <span className={styles.sizeMd}>{company.totalInvestment}</span>
-            <span className={styles.sizeMd}>{company.totalProfit}</span>
-            <span className={styles.sizeMd}>{company.employeeCount}</span>
+            <span className={styles.sizeMd}>{company.totalInvestment}억 원</span>
+            <span className={styles.sizeMd}>{company.totalProfit}억 원</span>
+            <span className={styles.sizeMd}>{company.employeeCount}명</span>
           </div>
         </Link>
       ))}

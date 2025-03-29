@@ -1,3 +1,11 @@
+.noSearchResult {
+    font-weight: 300;
+    font-size: 0.9rem;
+    width: 100%;
+    text-align : center;
+    line-height: 6rem;
+}
+
 
 .borderRowLink {
     color: inherit;
@@ -6,9 +14,13 @@
   
   .boardRow {
     display: flex;
+    align-items: center;
     span {
       text-align: center;
       padding: 1rem;
+      font-weight: 400;
+      color: #d8d8d8;
+      font-size: 0.88rem;
     }
     .txtLeft {
       text-align: left;
@@ -16,7 +28,7 @@
     background-color: #212121;
     border-bottom: 0.065rem solid #4b4b4b;
   }
-  
+
   .sizeSm {
     flex: 1;
   }
