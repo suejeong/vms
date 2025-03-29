@@ -1,9 +1,26 @@
 .filter {
+    width: 10.5rem;
+    height: 3rem;
     border: 0.0625rem solid #747474;
     border-radius: 0.625rem;
     background-color: #131313;
     color: #d8d8d8;
     font-size: 0.875rem;
-    width: 14.5rem;
-    height: 3rem;
+    padding: 0 1rem;
+    margin-left: 1rem;
+    display:flex;
+    align-items: center;
+
+    select {
+        background-color: #131313;
+        border: none;
+        color: #d8d8d8;
+        width: 9.25rem;
+        height: 1.5rem;
+        font-weight: 400;
+
+        option {
+            color: #d8d8d8;
+        }
+    }
 }

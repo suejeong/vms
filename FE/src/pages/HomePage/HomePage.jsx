@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import { getList } from "../../api";
 import styles from "./HomePage.module.scss";
 import HomePageBoardSearch from "../../components/HomePage/HomePageBoardSearch/HomePageBoardSearch";
-import HomePageBoardTitle from "../../components/HomePage/HomePageBoardTitle/HomePageBoardTitle";
-import HomePageBoardList from "../../components/HomePage/HomePageBoardList/HomePageBoardList";
 import HomePageBoardFilter from "../../components/HomePage/HomePageBoardFilter/HomePageBoardFilter";
+import HomePageBoardTitle from "../../components/HomePage/HomPageBoardTitle/HomePageBoardTitle";
+import HomePageBoardList from "../../components/HomePage/HomePageBoardList/HomePageBoardList";
 
 export const HomePage = () => {
   const [list, setList] = useState([]);
@@ -34,12 +34,14 @@ export const HomePage = () => {
       <div className={styles.companyBoard}>
         <div className={styles.pageTopComponent}>
           <h2>전체 기업 리스트</h2>
-          <HomePageBoardSearch
-            searchInput={searchInput}
-            setSearchInput={setSearchInput}
-            setSearchKeyword={setSearchKeyword}
-          />
-          <HomePageBoardFilter />
+          <div className={styles.searchAndFilter}>
+            <HomePageBoardSearch 
+              searchInput={searchInput}
+              setSearchInput={setSearchInput}
+              setSearchKeyword={setSearchKeyword}
+            />
+            <HomePageBoardFilter />
+          </div>
         </div>
         <div className={styles.companyList}>
           <HomePageBoardTitle />

@@ -3,17 +3,17 @@ const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 const listsRouter = express.Router();
 
-listsRouter.get("/lists", async (req, res, next) => {
+listsRouter.get("/", async (req, res, next) => {
     try {
-        const lists = await prisma.companys.findMany({
+        const lists = await prisma.company.findMany({
             select: {
                 id: true,
                 name: true,
                 description: true,
                 category: true,
-                total_investment: true,
-                total_profit: true,
-                employee_count: true
+                totalInvestment: true,
+                totalProfit: true,
+                employeeCount: true
             }
         })
         res.json(lists);

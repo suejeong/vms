@@ -23,7 +23,7 @@ const router = createBrowserRouter([
       { path: "/status", element: <StatusPage /> },
       { path: "/investment", element: <InvestmentPage /> },
       { path: "/comparisonResult", element: <ComparisonResultPage /> },
-      { path: "/companyDetail", element: <CompanyDetailPage /> },
+      { path: "/companyDetail/:id", element: <CompanyDetailPage /> },
     ],
   },
 ]);
