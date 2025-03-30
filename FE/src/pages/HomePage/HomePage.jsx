@@ -55,7 +55,11 @@ export const HomePage = () => {
         </div>
         <div className={styles.companyList}>
           <HomePageBoardTitle />
-          <HomePageBoardList companyList={paginatedList} />
+          <HomePageBoardList
+              companyList={paginatedList}
+              currentPage={currentPage}
+              itemsPerPage={itemsPerPage}
+            />
           <HomePageBoardPagination
             currentPage={currentPage}
             totalPages={totalPages}
