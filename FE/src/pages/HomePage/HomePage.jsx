@@ -45,10 +45,11 @@ export const HomePage = () => {
         <div className={styles.pageTopComponent}>
           <h2 className={styles.totalListHead}>전체 스타트업 목록</h2>
           <div className={styles.searchAndFilter}>
-            <HomePageBoardSearch 
+            <HomePageBoardSearch
               searchInput={searchInput}
               setSearchInput={setSearchInput}
               setSearchKeyword={setSearchKeyword}
+              setCurrentPage={setCurrentPage}
             />
             <HomePageBoardFilter />
           </div>
