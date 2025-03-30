@@ -5,7 +5,7 @@ import HomePageBoardSearch from "../../components/HomePage/HomePageBoardSearch/H
 import HomePageBoardFilter from "../../components/HomePage/HomePageBoardFilter/HomePageBoardFilter";
 import HomePageBoardTitle from "../../components/HomePage/HomePageBoardTitle/HomePageBoardTitle";
 import HomePageBoardList from "../../components/HomePage/HomePageBoardList/HomePageBoardList";
-import HomePageBoardPagination from "../../components/HomePage/HomePageBoardPagination/HomePageBoardPagination"
+import HomePageBoardPagination from "../../components/HomePage/HomePageBoardPagination/HomePageBoardPagination";
 
 export const HomePage = () => {
   const [list, setList] = useState([]);
@@ -19,7 +19,7 @@ export const HomePage = () => {
   const handleOrderChange = (orderBy) => {
     setCurrentState(orderBy);
   };
-  
+
   const filteredCompany = (list || []).filter((company) =>
     company.name.toLowerCase().includes(searchKeyword.toLowerCase())
   );
