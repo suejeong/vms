@@ -3,7 +3,7 @@ import { getList } from "../../api";
 import styles from "./HomePage.module.scss";
 import HomePageBoardSearch from "../../components/HomePage/HomePageBoardSearch/HomePageBoardSearch";
 import HomePageBoardFilter from "../../components/HomePage/HomePageBoardFilter/HomePageBoardFilter";
-import HomePageBoardTitle from "../../components/HomePage/HomPageBoardTitle/HomePageBoardTitle";
+import HomePageBoardTitle from "../../components/HomePage/HomePageBoardTitle/HomePageBoardTitle";
 import HomePageBoardList from "../../components/HomePage/HomePageBoardList/HomePageBoardList";
 
 export const HomePage = () => {
