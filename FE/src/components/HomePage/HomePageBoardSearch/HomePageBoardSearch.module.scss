@@ -12,6 +12,15 @@
     background-position: 1rem;
   }
 
+  .searchKeyword::placeholder {
+    color: #d8d8d8;
+    opacity: 1;
+  }
+
+  .searchKeyword:focus::placeholder {
+    color: transparent;
+  }
+
   /* Tablet (744px ~ ) */
 @media only screen and (min-width: 46.5rem) and (max-width:  74.9375rem) {
   .searchKeyword {
