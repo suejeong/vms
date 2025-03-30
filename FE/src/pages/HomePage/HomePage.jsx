@@ -5,14 +5,24 @@ import HomePageBoardSearch from "../../components/HomePage/HomePageBoardSearch/H
 import HomePageBoardFilter from "../../components/HomePage/HomePageBoardFilter/HomePageBoardFilter";
 import HomePageBoardTitle from "../../components/HomePage/HomePageBoardTitle/HomePageBoardTitle";
 import HomePageBoardList from "../../components/HomePage/HomePageBoardList/HomePageBoardList";
+import HomePageBoardPagination from "../../components/HomePage/HomePageBoardPagination/HomePageBoardPagination"
 
 export const HomePage = () => {
   const [list, setList] = useState([]);
   const [searchInput, setSearchInput] = useState("");
   const [searchKeyword, setSearchKeyword] = useState("");
-
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 10;
+  
   const filteredCompany = (list || []).filter((company) =>
     company.name.toLowerCase().includes(searchKeyword.toLowerCase())
+  );
+
+  const totalPages = Math.ceil(filteredCompany.length / itemsPerPage);
+
+  const paginatedList = filteredCompany.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
   );
 
   useEffect(() => {
@@ -45,7 +55,12 @@ export const HomePage = () => {
         </div>
         <div className={styles.companyList}>
           <HomePageBoardTitle />
-          <HomePageBoardList companyList={filteredCompany} />
+          <HomePageBoardList companyList={paginatedList} />
+          <HomePageBoardPagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={setCurrentPage}
+          />
         </div>
       </div>
     </section>

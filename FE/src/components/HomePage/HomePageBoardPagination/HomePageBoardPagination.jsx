@@ -1,8 +1,43 @@
 import React from "react";
-import styles from "./HomePageBoardPagination.module.scss"
+import { GrFormPrevious, GrFormNext } from "react-icons/gr";
+import styles from "./HomePageBoardPagination.module.scss";
 
-const HomePageBoardPagination = () => {
-  return <div>HomePageBoardPagination</div>;
-};
+export default function HomePageBoardPagination({ currentPage, totalPages, onPageChange }) {
+  const pageNumbers = [];
+  for (let page = 1; page <= totalPages; page++) {
+    pageNumbers.push(page);
+  }
 
-export default HomePageBoardPagination;
+  return (
+    <div className={styles.pagination}>
+      <button
+        className={styles.pageButton}
+        onClick={() => onPageChange(currentPage - 1)}
+        disabled={currentPage <= 1}
+      >
+        <GrFormPrevious />
+      </button>
+
+      {pageNumbers.map((page) => {
+        const isCurrent = page === currentPage;
+        return (
+          <button
+            key={page}
+            onClick={() => onPageChange(page)}
+            className={`${styles.pageButton} ${isCurrent ? styles.active : ""}`}
+          >
+            {page}
+          </button>
+        );
+      })}
+
+      <button
+        className={styles.pageButton}
+        onClick={() => onPageChange(currentPage + 1)}
+        disabled={currentPage >= totalPages}
+      >
+        <GrFormNext />
+      </button>
+    </div>
+  );
+}
