@@ -12,7 +12,13 @@ export const HomePage = () => {
   const [searchInput, setSearchInput] = useState("");
   const [searchKeyword, setSearchKeyword] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
+  const [currentState, setCurrentState] = useState("누적 투자금액 높은순");
+  const [filteredList, setFilteredList] = useState([]);
   const itemsPerPage = 10;
+
+  const handleOrderChange = (orderBy) => {
+    setCurrentState(orderBy);
+  };
   
   const filteredCompany = (list || []).filter((company) =>
     company.name.toLowerCase().includes(searchKeyword.toLowerCase())
@@ -51,16 +57,21 @@ export const HomePage = () => {
               setSearchKeyword={setSearchKeyword}
               setCurrentPage={setCurrentPage}
             />
-            <HomePageBoardFilter />
+            <HomePageBoardFilter
+              listState={filteredList}
+              setListState={setFilteredList}
+              currentState={currentState}
+              handleOrderChange={handleOrderChange}
+            />
           </div>
         </div>
         <div className={styles.companyList}>
           <HomePageBoardTitle />
           <HomePageBoardList
-              companyList={paginatedList}
-              currentPage={currentPage}
-              itemsPerPage={itemsPerPage}
-            />
+            companyList={paginatedList}
+            currentPage={currentPage}
+            itemsPerPage={itemsPerPage}
+          />
           <HomePageBoardPagination
             currentPage={currentPage}
             totalPages={totalPages}
