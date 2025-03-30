@@ -1,0 +1,65 @@
+.ViewMyStartUpMain {
+  width: 100%;
+  height: auto;
+  padding-top: 1rem; /* 16px */
+  border-top: solid 0.1875rem #d8d8d8; /* 3px */
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; /* 16px */
+}
+
+.detialPageWeight700 {
+  font-family: Pretendard, sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem; /* 24px */
+  line-height: 100%;
+  letter-spacing: 0;
+}
+
+/* 반응형 스타일 */
+
+/* PC (1920px 고정) */
+@media screen and (min-width: 120rem) {
+  .ViewMyStartUpMain {
+    padding-top: 1rem; /* 16px */
+    gap: 1rem; /* 16px */
+  }
+
+  .detialPageWeight700 {
+    font-size: 1.5rem; /* 24px */
+  }
+}
+
+/* Tablet (744px ~ 1199px) */
+@media screen and (min-width: 46.5rem) and (max-width: 74.9375rem) {
+  .ViewMyStartUpMain {
+    padding-top: 1rem; /* 16px */
+    gap: 1rem; /* 16px */
+  }
+
+  .detialPageWeight700 {
+    font-size: 1.25rem; /* 20px */
+  }
+}
+
+/* Mobile (375px ~ 743px) */
+@media screen and (min-width: 23.4375rem) and (max-width: 46.4375rem) {
+  .ViewMyStartUpMain {
+    padding-top: 0.75rem; /* 12px */
+  }
+
+  .detialPageWeight700 {
+    font-size: 1.125rem; /* 18px */
+  }
+}
+
+/* Very Small Mobile (최대 374px) */
+@media screen and (max-width: 23.375rem) {
+  .ViewMyStartUpMain {
+    padding-top: 0.5rem; /* 8px */
+  }
+
+  .detialPageWeight700 {
+    font-size: 1rem; /* 16px */
+  }
+}

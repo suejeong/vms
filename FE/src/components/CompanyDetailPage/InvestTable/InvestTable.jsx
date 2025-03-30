@@ -1,10 +1,9 @@
-import styles from "../CompanyDetailPage.module.scss";
-import ChangeToNumber from "./ChangeToNumber";
-import DeleteAndChangeModal from "./DeleteAndChangeModal";
+import styles from "./InvestTable.module.scss";
+import ChangeToNumber from "../ChangeToNumber/ChangeToNumber";
+import DeleteAndChangeModal from "../DeleteAndChangeModal/DeleteAndChangeModal";
+import InvestDeleteModal from "../InvestDeleteModal/InvestDeleteModal";
+import InvestChangeModal from "../InvestChangeModal/InvestChangeModal";
 import { useState, useRef } from "react";
-import InvestDeleteModal from "./InvestDeleteModal";
-import InvestChangeModal from "./InvestChangeModal";
-
 export function InvestTable({ investData }) {
   const [modalState, setModalState] = useState(false);
   const [investDeleteModalState, setInvestDeleteModalState] = useState(false);

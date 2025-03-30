@@ -1,4 +1,4 @@
-import styles from "../CompanyDetailPage.module.scss";
+import styles from "./PaseNationButton.module.scss";
 
 export function PaseNationButton({ value }) {
   return (

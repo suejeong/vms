@@ -1,0 +1,89 @@
+.detailPart {
+  width: 24rem; /* 384px */
+  height: 5.75rem; /* 92px */
+  border-radius: 0.625rem; /* 10px */
+  display: flex;
+  justify-content: space-between;
+  padding: 2.25rem 1.5rem; /* 36px 24px */
+  background-color: #282828;
+}
+
+.detialPageWeight400 {
+  font-weight: 400;
+  font-size: 1rem; /* 16px */
+  line-height: 1.25rem; /* 20px */
+  letter-spacing: 0;
+  color: #d8d8d8;
+}
+
+.detialPageWeight600 {
+  font-weight: 600;
+  font-size: 1rem; /* 16px */
+  line-height: 100%;
+  letter-spacing: 0;
+}
+
+/* 반응형 스타일 */
+
+/* PC 1920px 고정 */
+@media (min-width: 120rem) {
+  .detailPart {
+    width: 24rem;
+    height: 5.75rem;
+    padding: 2.25rem 1.5rem;
+  }
+
+  .detialPageWeight400,
+  .detialPageWeight600 {
+    font-size: 1rem; /* 16px */
+  }
+}
+
+/* 태블릿 화면 (744px ~ 1199px) */
+@media (min-width: 46.5rem) and (max-width: 74.9375rem) {
+  .detailPart {
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+    padding: 1.5rem; /* 24px */
+  }
+
+  .detialPageWeight400,
+  .detialPageWeight600 {
+    font-size: 0.875rem; /* 14px */
+  }
+}
+
+/* 모바일 화면 (375px ~ 743px) */
+@media (min-width: 23.4375rem) and (max-width: 46.5rem) {
+  body {
+    overflow-x: auto; /* 가로 스크롤을 강제로 발생 */
+  }
+
+  .detailPart {
+    width: 100%;
+    padding: 1rem; /* 16px */
+  }
+
+  .detialPageWeight400,
+  .detialPageWeight600 {
+    font-size: 0.75rem; /* 12px */
+  }
+}
+
+/* 가장 작은 화면 (375px 이하) */
+@media (max-width: 23.4375rem) {
+  body {
+    overflow-x: auto; /* 가로 스크롤을 강제로 발생 */
+  }
+
+  .detailPart {
+    width: 100%;
+    padding: 1rem; /* 16px */
+  }
+
+  .detialPageWeight400,
+  .detialPageWeight600 {
+    font-size: 0.75rem; /* 12px */
+  }
+}

@@ -1,0 +1,191 @@
+.deleteInestModalDiv {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 31rem; /* 496px */
+  height: 16.8125rem; /* 269px */
+  border-radius: 1rem; /* 16px */
+  padding: 1.5rem; /* 24px */
+  gap: 1.5rem; /* 24px */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #212121;
+}
+
+.deleteInestModalCloseDiv {
+  width: 28rem; /* 448px */
+  height: 2rem; /* 32px */
+  gap: 1.5rem; /* 24px */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #212121;
+}
+
+.detialPageWeight700 {
+  font-family: Pretendard, sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem; /* 24px */
+  line-height: 100%;
+  letter-spacing: 0;
+}
+
+.deleteInestModalDeleteButton {
+  width: 2rem; /* 32px */
+  height: 2rem; /* 32px */
+  background-image: url("../../../pages/CompanyDetailPage/photo/ic_delete.png");
+}
+
+.deleteInestModalPasswordDiv {
+  width: 28rem; /* 448px */
+  height: 10.3125rem; /* 165px */
+  gap: 2rem; /* 32px */
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: #212121;
+}
+
+.deleteInestModalPasswordInput {
+  width: 28rem; /* 448px */
+  height: 3rem; /* 48px */
+  border-radius: 0.625rem; /* 10px */
+  gap: 0.625rem; /* 10px */
+  border-width: 1px;
+  padding-top: 1rem; /* 16px */
+  padding-right: 1.25rem; /* 20px */
+  padding-bottom: 1rem; /* 16px */
+  padding-left: 1.25rem; /* 20px */
+  background-color: #212121;
+  color: #ffffff;
+  border: 1px solid #747474;
+  font-family: Pretendard, sans-serif;
+  font-weight: 400;
+}
+
+.investDeleteCompleteButton {
+  width: 12.125rem; /* 194px */
+  height: 3rem; /* 48px */
+  border-radius: 50px;
+  gap: 0.625rem; /* 10px */
+  padding-top: 0.8125rem; /* 13px */
+  padding-right: 3rem; /* 48px */
+  padding-bottom: 0.8125rem; /* 13px */
+  padding-left: 3rem; /* 48px */
+  font-family: Pretendard, sans-serif;
+  font-weight: 600;
+  font-size: 1rem; /* 16px */
+  line-height: 100%;
+  letter-spacing: 0;
+  text-align: center;
+  color: #ffffff;
+  background-color: #eb5230;
+}
+
+/* 반응형 스타일 */
+
+/* PC (1920px 고정) */
+@media screen and (min-width: 120rem) {
+  .deleteInestModalDiv {
+    width: 31rem; /* 496px */
+    height: 16.8125rem; /* 269px */
+    padding: 1.5rem; /* 24px */
+    gap: 1.5rem; /* 24px */
+  }
+
+  .deleteInestModalCloseDiv {
+    width: 28rem; /* 448px */
+  }
+
+  .deleteInestModalPasswordDiv {
+    width: 28rem; /* 448px */
+  }
+
+  .deleteInestModalPasswordInput {
+    width: 28rem; /* 448px */
+  }
+
+  .investDeleteCompleteButton {
+    width: 12.125rem; /* 194px */
+  }
+}
+
+/* Tablet (744px ~ 1199px) */
+@media screen and (min-width: 46.5rem) and (max-width: 74.9375rem) {
+  .deleteInestModalDiv {
+    width: 80%;
+    height: auto;
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .deleteInestModalCloseDiv {
+    width: 100%;
+  }
+
+  .deleteInestModalPasswordDiv {
+    width: 100%;
+  }
+
+  .deleteInestModalPasswordInput {
+    width: 100%;
+  }
+
+  .investDeleteCompleteButton {
+    width: 80%;
+  }
+}
+
+/* Mobile (375px ~ 743px) */
+@media screen and (min-width: 23.4375rem) and (max-width: 46.4375rem) {
+  .deleteInestModalDiv {
+    width: 90%;
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .deleteInestModalCloseDiv {
+    width: 100%;
+  }
+
+  .deleteInestModalPasswordDiv {
+    width: 100%;
+  }
+
+  .deleteInestModalPasswordInput {
+    width: 100%;
+  }
+
+  .investDeleteCompleteButton {
+    width: 100%;
+  }
+}
+
+/* Very Small Mobile (최대 374px) */
+@media screen and (max-width: 23.375rem) {
+  .deleteInestModalDiv {
+    width: 95%;
+    padding: 1rem;
+    gap: 0.75rem;
+  }
+
+  .deleteInestModalCloseDiv {
+    width: 100%;
+    height: auto;
+  }
+
+  .deleteInestModalPasswordDiv {
+    width: 100%;
+  }
+
+  .deleteInestModalPasswordInput {
+    width: 100%;
+  }
+
+  .investDeleteCompleteButton {
+    width: 100%;
+  }
+}

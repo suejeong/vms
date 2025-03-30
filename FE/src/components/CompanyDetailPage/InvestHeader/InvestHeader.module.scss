@@ -1,0 +1,90 @@
+.ViewMyStartUpHeader {
+  width: 100%;
+  height: auto;
+  margin-top: 0.5rem; /* 8px */
+  font-family: Pretendard, sans-serif;
+  font-weight: 700;
+  font-size: 1.25rem; /* 20px */
+  line-height: 100%;
+  letter-spacing: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* 글자 크기와 스타일 */
+.detialPageWeight700 {
+  font-family: Pretendard, sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem; /* 24px */
+  line-height: 100%;
+  letter-spacing: 0;
+}
+
+.investButton {
+  width: 8.1875rem; /* 131px */
+  height: 2.5rem; /* 40px */
+  border-radius: 50px;
+  gap: 0.625rem; /* 10px */
+  padding-top: 0.5rem; /* 8px */
+  padding-right: 1.5rem; /* 24px */
+  padding-bottom: 0.5rem; /* 8px */
+  padding-left: 1.5rem; /* 24px */
+  background-color: #eb5230;
+}
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 반응형 스타일 */
+/* PC (1920px 고정) */
+@media screen and (min-width: 120rem) {
+  .ViewMyStartUpHeader {
+    font-size: 1.25rem; /* 20px */
+    margin-top: 0.5rem; /* 8px */
+  }
+  .investButton {
+    width: 8.1875rem; /* 131px */
+    height: 2.5rem; /* 40px */
+  }
+  .detialPageWeight700 {
+    font-size: 1.5rem; /* 24px */
+  }
+}
+
+/* Tablet (744px ~ 1199px) */
+@media screen and (min-width: 46.5rem) and (max-width: 74.9375rem) {
+  .ViewMyStartUpHeader {
+    font-size: 1.125rem; /* 18px */
+  }
+  .investButton {
+    width: 7rem; /* 112px */
+    height: 2.25rem; /* 36px */
+  }
+  .detialPageWeight700 {
+    font-size: 1.375rem; /* 22px */
+  }
+}
+
+/* Mobile (375px ~ 743px) */
+@media screen and (min-width: 23.4375rem) and (max-width: 46.4375rem) {
+  .ViewMyStartUpHeader {
+    font-size: 1.125rem; /* 18px */
+    margin-top: 0.25rem; /* 4px */
+  }
+  .investButton {
+    width: 6.5rem; /* 104px */
+    height: 2rem; /* 32px */
+  }
+  .detialPageWeight700 {
+    font-size: 1.25rem; /* 20px */
+  }
+}
