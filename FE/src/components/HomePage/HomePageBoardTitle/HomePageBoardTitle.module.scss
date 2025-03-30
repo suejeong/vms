@@ -1,11 +1,12 @@
 .boardHeader {
     display: flex;
+    margin: 1rem 0;
     background-color: #2e2e2e;
     border-radius: 0.25rem;
-    span {
+    div {
       text-align: center;
-      padding: 0.65rem 1rem;
-      font-size: 0.9rem;
+      padding: 0.65rem 0;
+      font-size: 0.88rem;
     }
     .sizeSm {
         flex: 1;
@@ -14,9 +15,32 @@
         flex: 2;
     }
     .sizeLg {
-        flex: 2.5;
+        flex: 2.8;
     }
     .sizeXlg {
-        flex: 4.5;
+        flex: 4.2;
     }
+    .txtLeft {
+      text-align: left;
   }
+  }
+
+  /* Mobile, Tablet (0 ~ 743px) */
+@media only screen and (min-width: 0) and (max-width: 46.4375rem) {
+    .boardHeader {
+      max-width: auto;
+      margin: 1rem 0;
+      .sizeSm {
+          display: none;
+      }
+      .sizeMd {
+          flex: 3;
+      }
+      .sizeLg {
+          flex: 5;
+      }
+      .sizeXlg {
+          flex: 6;
+      }
+    }
+}

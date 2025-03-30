@@ -7,32 +7,30 @@
 }
 
 .borderRowLink {
-    color: inherit;
-    text-decoration: none;
-  }
+  color: inherit;
+  text-decoration: none;
   
   .boardRow {
     display: flex;
     align-items: center;
     background-color: #212121;
-   
+    border-bottom: 1px solid #4b4b4b;
+
     .boardCell {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: 400;
-        color: #d8d8d8;
-        font-size: 0.88rem;
-        height: 4rem;
-        border-bottom: 1px solid #4b4b4b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 400;
+      color: #d8d8d8;
+      font-size: 0.88rem;
+      height: 4rem;
 
-        .img {
-            margin: 0 0.5rem 0 1.5rem;
-            width: 2rem;
-            height: 2rem;
-        }
+      .img {
+        margin: 0 0.5rem 0 1.5rem;
+        width: 2rem;
+        height: 2rem;
+      }
     }
-
     .sizeSm {
         flex: 1;
       }
@@ -49,7 +47,7 @@
         -webkit-box-orient: vertical;
         overflow: hidden;
         text-overflow: ellipsis;
-        padding: 0.8rem ;
+        padding: 0.8rem 0;
         line-height: 1.45rem;
       }
 
@@ -57,7 +55,19 @@
         justify-content: left;
         text-align: left;
     }
+
+    &.first {
+      border-top-left-radius: 0.25rem;
+      border-top-right-radius: 0.25rem;
+    }
+    
+    &.last {
+      border-bottom-left-radius: 0.25rem;
+      border-bottom-right-radius: 0.25rem;
+      border-bottom: none;
+    }
   }
+}
 
 /* Tablet (~ 744px) */
 @media only screen and (min-width: 0) and (max-width: 46.4375rem)  {
