@@ -1,14 +1,14 @@
-import styles from "../CompanyDetailPage.module.scss";
+import styles from "./InvestModal.module.scss";
 
-export function InvestDeleteModal({ modalDeleteState }) {
+export function InvestModal({ investState }) {
   return (
     <div className={styles.deleteInestModalDiv}>
       <div className={styles.deleteInestModalCloseDiv}>
-        <p className={styles.detialPageWeight700}>삭제 권한 인증</p>
+        <p className={styles.detialPageWeight700}>투자하기 모달은 </p>
 
         <button
           className={styles.deleteInestModalDeleteButton}
-          onClick={modalDeleteState}
+          onClick={investState}
         ></button>
       </div>
       <div className={styles.deleteInestModalPasswordDiv}>
@@ -16,7 +16,7 @@ export function InvestDeleteModal({ modalDeleteState }) {
           className={styles.detialPageWeight700}
           style={{ marginRight: "auto" }}
         >
-          비밀번호
+          투자모달 그대로 가져오면 됌
         </p>
         <input
           type={"password"}
@@ -26,12 +26,12 @@ export function InvestDeleteModal({ modalDeleteState }) {
 
         <button
           className={styles.investDeleteCompleteButton}
-          onClick={modalDeleteState} //데이터 삭제하는거 추가
+          onClick={investState} //데이터 삭제하는거 추가
         >
-          삭제하기
+          투자하기
         </button>
       </div>
     </div>
   );
 }
-export default InvestDeleteModal;
+export default InvestModal;

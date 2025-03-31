@@ -1,9 +1,9 @@
-import styles from "../CompanyDetailPage.module.scss";
-import ChangeToNumber from "./ChangeToNumber";
-export function Patition({ colum, value, className }) {
+import styles from "./Partition.module.scss";
+import ChangeToNumber from "../ChangeToNumber/ChangeToNumber";
+export function Patition({ colum, value }) {
   return (
     <>
-      <div className={className}>
+      <div className={styles.detailPart}>
         <p className={styles.detialPageWeight400}>{colum}</p>
         <p className={styles.detialPageWeight600}> {ChangeToNumber(value)}</p>
       </div>

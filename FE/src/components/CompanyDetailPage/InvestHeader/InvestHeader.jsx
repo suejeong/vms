@@ -1,15 +1,15 @@
-import styles from "../CompanyDetailPage.module.scss";
+import styles from "./InvestHeader.module.scss";
 import { useState, useRef } from "react";
-import InvestModal from "./InvestModal";
+import InvestModal from "../InvestModal/InvestModal";
 
-export function InvestHeader({ className }) {
+export function InvestHeader() {
   const modalBackground = useRef();
   const investState = () => {
     setInvestModalState(false);
   };
   const [investModalState, setInvestModalState] = useState(false);
   return (
-    <div className={className}>
+    <div className={styles.ViewMyStartUpHeader}>
       <p className={styles.detialPageWeight700}>
         View My Startup에서 받은 투자{" "}
       </p>

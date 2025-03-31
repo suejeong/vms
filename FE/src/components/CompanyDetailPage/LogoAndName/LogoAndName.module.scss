@@ -1,0 +1,149 @@
+.companyDetailHeader {
+  width: 100%;
+  height: 7rem; /* 112px */
+  gap: 2rem; /* 32px */
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border-bottom: solid 0.1875rem #d8d8d8; /* 3px */
+}
+
+.companyLogo {
+  width: 5.0625rem; /* 81.23px */
+  height: 5.0625rem;
+  border-radius: 50%;
+}
+
+.companyNameAndCategory {
+  width: 18.75rem; /* 300px */
+  height: 3.8125rem; /* 61px */
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 0.5rem; /* 8px */
+}
+
+.detialPageWeight700 {
+  font-family: Pretendard, sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem; /* 24px */
+  line-height: 100%;
+  letter-spacing: 0;
+}
+
+.detialPageWeight500 {
+  font-family: Pretendard, sans-serif;
+  font-weight: 500;
+  font-size: 1.25rem; /* 20px */
+  line-height: 100%;
+  letter-spacing: 0;
+}
+
+/* 반응형 스타일 */
+
+/* PC 1920px 고정 */
+@media (min-width: 120rem) {
+  .companyDetailHeader {
+    height: 7rem;
+    gap: 2rem;
+  }
+
+  .companyLogo {
+    width: 5.0625rem;
+    height: 5.0625rem;
+  }
+
+  .companyNameAndCategory {
+    width: 18.75rem;
+    height: 3.8125rem;
+  }
+
+  .detialPageWeight700 {
+    font-size: 1.5rem;
+  }
+
+  .detialPageWeight500 {
+    font-size: 1.25rem;
+  }
+}
+
+/* 태블릿 화면 (744px ~ 1199px) */
+@media (min-width: 46.5rem) and (max-width: 74.9375rem) {
+  .companyDetailHeader {
+    height: auto;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.5rem;
+    padding: 1rem 0;
+  }
+
+  .companyLogo {
+    width: 4rem; /* 64px */
+    height: 4rem; /* 64px */
+  }
+
+  .companyNameAndCategory {
+    width: auto;
+    height: auto;
+    align-items: center;
+  }
+
+  .detialPageWeight700 {
+    font-size: 1.25rem; /* 20px */
+  }
+
+  .detialPageWeight500 {
+    font-size: 1rem; /* 16px */
+  }
+}
+
+/* 모바일 화면 (375px ~ 743px) */
+@media (min-width: 23.4375rem) and (max-width: 46.5rem) {
+  body {
+    overflow-x: auto; /* 가로 스크롤을 강제로 발생 */
+  }
+
+  .companyDetailHeader {
+    gap: 1rem;
+    padding: 0.5rem 0;
+  }
+
+  .companyLogo {
+    width: 3.5rem; /* 56px */
+    height: 3.5rem; /* 56px */
+  }
+
+  .detialPageWeight700 {
+    font-size: 1.125rem; /* 18px */
+  }
+
+  .detialPageWeight500 {
+    font-size: 0.875rem; /* 14px */
+  }
+}
+
+/* 가장 작은 화면 (375px 이하) */
+@media (max-width: 23.4375rem) {
+  body {
+    overflow-x: auto; /* 가로 스크롤을 강제로 발생 */
+  }
+
+  .companyDetailHeader {
+    gap: 0.5rem;
+    padding: 0.25rem 0;
+  }
+
+  .companyLogo {
+    width: 3rem; /* 48px */
+    height: 3rem; /* 48px */
+  }
+
+  .detialPageWeight700 {
+    font-size: 1rem; /* 16px */
+  }
+
+  .detialPageWeight500 {
+    font-size: 0.75rem; /* 12px */
+  }
+}

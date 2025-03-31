@@ -1,4 +1,4 @@
-import styles from "../CompanyDetailPage.module.scss";
+import styles from "./DeleteAndChangeModal.module.scss";
 
 export function DeleteAndChangeModal({
   modalPosition,
@@ -21,7 +21,7 @@ export function DeleteAndChangeModal({
       >
         수정하기
       </button>
-      <br />
+
       <button
         className={styles.DeleteAndChangeModalButton2}
         onClick={modalDeleteStates}
