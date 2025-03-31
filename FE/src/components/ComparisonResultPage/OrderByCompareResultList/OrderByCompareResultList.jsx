@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
-import styles from "./InvestmentPageBoardFilter.module.scss";
+import { useEffect, useState } from "react";
+import styles from "./OrderBy.module.scss";
 import ic_arrow_top from "../../../assets/arrow_top.png";
 import ic_arrow_arrow_bottom from "../../../assets/arrow_bottom.png";
 
-const InvestmentPageBoardFilter = ({
+export const OrderByCompareResultList = ({
   listState,
   setListState,
   currentState,
@@ -20,7 +20,7 @@ const InvestmentPageBoardFilter = ({
     setIsOpen(false);
   };
 
-  const sortCompanies = (orderBy) => {
+  const sortcompany = (orderBy) => {
     let sortedList = [...listState];
 
     switch (orderBy) {
@@ -37,10 +37,10 @@ const InvestmentPageBoardFilter = ({
         sortedList.sort((a, b) => a.totalProfit - b.totalProfit);
         break;
       case "고용 인원 많은순":
-        sortedList.sort((a, b) => b.employeeCount - a.employeeCount);
+        sortedList.sort((a, b) => b.employee_count - a.employee_count);
         break;
       case "고용 인원 적은순":
-        sortedList.sort((a, b) => a.employeeCount - b.employeeCount);
+        sortedList.sort((a, b) => a.employee_count - b.employee_count);
         break;
       default:
         break;
@@ -51,7 +51,7 @@ const InvestmentPageBoardFilter = ({
 
   useEffect(() => {
     if (currentState) {
-      sortCompanies(currentState);
+      sortcompany(currentState);
     }
   }, [currentState]);
 
@@ -86,5 +86,3 @@ const InvestmentPageBoardFilter = ({
     </div>
   );
 };
-
-export default InvestmentPageBoardFilter;

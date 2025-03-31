@@ -18,7 +18,7 @@ model Company {
   viewInvestAmount Int      @default(0)
   countMyPicked    Int      @default(0)
   countYourPicked  Int      @default(0)
-  changedAd        DateTime @default(now())
+  changedAt        DateTime @default(now())
   invests          Invest[]
 }
 
@@ -29,7 +29,7 @@ model Invest {
   companyId     String
   investAmount  Int
   state         String         @db.VarChar
-  company       Company        @relation(fields: [companyId], references: [id])
+  company       Company        @relation(fields: [companyId], references: [id], onDelete: Cascade)
   investDetails InvestDetail[]
 }
 
@@ -38,7 +38,7 @@ model InvestDetail {
   investId  String   @db.VarChar
   comment   String   @db.VarChar
   createdAt DateTime @default(now())
-  changedAd DateTime @default(now())
+  changedAt DateTime @default(now())
   invest    Invest   @relation(fields: [investId], references: [id])
 }
 

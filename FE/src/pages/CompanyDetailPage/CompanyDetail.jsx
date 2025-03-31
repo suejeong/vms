@@ -25,17 +25,17 @@ export function CompanyDetail() {
         <div className={styles.companyDetailThreePart}>
           <Patition
             colum={"누적 투자 금액"}
-            value={companydetaildata.total_investment + " 원"}
+            value={companydetaildata.totalInvestment + " 원"}
             className={styles.detailPart}
           />
           <Patition
             colum={"매출액"}
-            value={companydetaildata.total_profit + " 원"}
+            value={companydetaildata.totalProfit + " 원"}
             className={styles.detailPart}
           />
           <Patition
             colum={"고용 인원"}
-            value={companydetaildata.employee_count + " 명"}
+            value={companydetaildata.employeeCount + " 명"}
             className={styles.detailPart}
           />
         </div>
@@ -50,7 +50,7 @@ export function CompanyDetail() {
         <InvestHeader className={styles.ViewMyStartUpHeader} />
         <InvestMain
           className={styles.ViewMyStartUpMain}
-          investAmount={companydetaildata.view_invest_amount + " 원"}
+          investAmount={companydetaildata.viewInvestAmount + " 원"}
           investData={investdatas}
         />
 
