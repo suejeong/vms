@@ -1,6 +1,7 @@
 import styles from "./InvestmentPageBoardList.module.scss";
 import { Link } from "react-router-dom";
-import compnayIcon01 from "../../../../public/images/companies/codeit.png"
+
+const compnayIcon01 = "/images/companies/네이버.png";
 
 const InvestmentPageBoardList = ({ companyList, currentPage, itemsPerPage }) => {
 

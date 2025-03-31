@@ -1,6 +1,6 @@
 import styles from "./HomePageBoardList.module.scss";
 import { Link } from "react-router-dom";
-import compnayIcon01 from "../../../../public/images/companies/codeit.png"
+const compnayIcon01 = "../../../../public/images/companies/네이버.png";
 
 const HomePageBoardList = ({ companyList, currentPage, itemsPerPage }) => {
 

@@ -29,6 +29,8 @@
         margin: 0 0.5rem 0 1.5rem;
         width: 2rem;
         height: 2rem;
+        border-radius: 50%;
+        object-fit: cover;
       }
     }
     .sizeSm {
@@ -48,7 +50,7 @@
         overflow: hidden;
         text-overflow: ellipsis;
         padding: 0.8rem 0;
-        line-height: 1.45rem;
+        line-height: 1.5rem;
       }
 
     .txtLeft {
