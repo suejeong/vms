@@ -62,7 +62,7 @@ async function main() {
     }
 
 
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 30; i++) {
         const companyId = makeId("company", i + 1);
         const company = await prisma.company.create({
             data: {
