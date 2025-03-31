@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { OrderBy } from "../OrderBy/OrderBy";
+import { OrderByCompareResultList } from "../OrderByCompareResultList/OrderByCompareResultList";
 import styles from "./CompareResult.module.scss";
-import mockData from "../../../api/mockData.json";
 
-export const CompareResult = () => {
-  const [compareResultListState, setCompareResultListState] =
-    useState(mockData);
+export const CompareResult = ({
+  compareResultListState,
+  setCompareResultListState,
+}) => {
   const [orderByState, setOrderByState] = useState("누적 투자금액 높은순");
 
   const handleOrderChange = (order) => {
@@ -16,7 +16,7 @@ export const CompareResult = () => {
     <>
       <section className={styles.titleArea}>
         <p className={styles.titleText}>기업 순위 확인하기</p>
-        <OrderBy
+        <OrderByCompareResultList
           listState={compareResultListState}
           setListState={setCompareResultListState}
           currentState={orderByState}
@@ -42,9 +42,9 @@ export const CompareResult = () => {
                 <td>{company.name}</td>
                 <td>{company.description}</td>
                 <td>{company.category}</td>
-                <td>{company.total_investment}</td>
-                <td>{company.total_profit}</td>
-                <td>{company.employee_count}</td>
+                <td>{company.totalInvestment}</td>
+                <td>{company.totalProfit}</td>
+                <td>{company.employeeCount}</td>
               </tr>
             ))}
           </tbody>

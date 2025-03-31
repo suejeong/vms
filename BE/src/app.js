@@ -27,10 +27,10 @@ app.get('/api/customers', async (req, res) => {
 });
 
 // 모든 기업 정보 가져오기
-app.get('/api/companies', async (req, res) => {
+app.get('/api/company', async (req, res) => {
   try {
-    const companies = await prisma.company.findMany();
-    res.json(companies);
+    const company = await prisma.company.findMany();
+    res.json(company);
   } catch (err) {
     console.error('기업 목록 조회 중 오류 발생:', err.message);
     res.status(500).json({ error: '기업 정보를 가져오지 못했습니다.' });
@@ -64,7 +64,7 @@ app.get('/api/customers/:id', async (req, res) => {
 });
 
 // 특정 기업 정보 가져오기
-app.get('/api/companies/:id', async (req, res) => {
+app.get('/api/company/:id', async (req, res) => {
   const { id } = req.params;
   try {
     const company = await prisma.company.findUnique({ where: { id } });

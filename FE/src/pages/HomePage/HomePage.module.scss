@@ -1,27 +1,27 @@
 .companyBoard {
-    max-width: 75rem;   
-    min-height: 3.75rem;
-    height: 100%;
+  max-width: 75rem;
+  min-height: 3.75rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .pageTopComponent {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 100%;
+    min-width: 23.4375rem;
 
-    .pageTopComponent {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        max-width: 100%; 
-        min-width: 23.4375rem;
-
-        .totalListHead {
-          font-size: 1.25rem;
-          font-weight: 700;
-        }
-
-        .searchAndFilter {
-          display: flex;
-          justify-content: end;
-      }
+    .totalListHead {
+      font-size: 1.25rem;
+      font-weight: 700;
     }
+
+    .searchAndFilter {
+      display: flex;
+      justify-content: end;
+    }
+  }
 }
 
 .companyList {
@@ -45,14 +45,14 @@
       flex-direction: column;
       justify-content: flex-start;
       align-self: flex-start;
-  
+
       .totalListHead {
         font-size: 1rem;
         align-self: flex-start;
         margin-bottom: 1rem;
         margin-top: 0;
       }
-  
+
       .searchAndFilter {
         align-self: flex-start;
       }

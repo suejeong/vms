@@ -76,7 +76,7 @@ async function main() {
                 viewInvestAmount: getRandomInt(1, 10) * 100,
                 countMyPicked: getRandomInt(0, 100),
                 countYourPicked: getRandomInt(0, 100),
-                changedAd: getRandomDateWithin30Days(),
+                changedAt: getRandomDateWithin30Days(),
             },
         });
 
@@ -103,7 +103,7 @@ async function main() {
                         investId: invest.id,
                         comment: `투자 코멘트 ${k + 1} - ${startupNames[i % startupNames.length]}`,
                         createdAt: getRandomDateWithin30Days(),
-                        changedAd: getRandomDateWithin30Days(),
+                        changedAt: getRandomDateWithin30Days(),
                     },
                 });
             }

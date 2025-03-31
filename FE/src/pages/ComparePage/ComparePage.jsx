@@ -136,7 +136,9 @@ export default function ComparePage() {
           </div>
         </>
       )}
-      <Link to="/comparisonResult">
+      <Link
+        to={`/comparisonResult/:${myCompany}?compareCompanies=${compareCompanies}`}
+      >
         <button
           className={style.compareButton}
           disabled={compareCompanies.length === 0}
