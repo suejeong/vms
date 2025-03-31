@@ -5,7 +5,7 @@ const HomePageBoardSearch = ({
   searchInput,
   setSearchInput,
   setSearchKeyword,
-  setCurrentPage
+  setCurrentPage,
 }) => {
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {

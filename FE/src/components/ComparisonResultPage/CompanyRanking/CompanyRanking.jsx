@@ -1,24 +1,27 @@
-import { useState } from "react";
-import { OrderBy } from "../OrderBy/OrderBy";
+import { useEffect, useState } from "react";
+import { OrderByRanking } from "../OrderByRanking/OrderByRanking";
 import styles from "./CompanyRanking.module.scss";
-import mockData from "../../../api/mockData.json";
+import { getCompanyRankingList } from "../../../api/company";
 
-export const CompanyRanking = () => {
-  const [companyRankingListState, setCompanyRankingListState] =
-    useState(mockData);
+export const CompanyRanking = ({ myCompanyState }) => {
+  const [companyRankingListState, setCompanyRankingListState] = useState([]);
   const [orderByState, setOrderByState] = useState("누적 투자금액 높은순");
 
   const handleOrderChange = (order) => {
     setOrderByState(order);
   };
 
+  useEffect(() => {
+    const rankingListData = getCompanyRankingList(myCompanyState, orderByState);
+
+    setCompanyRankingListState(rankingListData);
+  }, [orderByState]);
+
   return (
     <>
       <section className={styles.titleArea}>
         <p className={styles.titleText}>기업 순위 확인하기</p>
-        <OrderBy
-          listState={companyRankingListState}
-          setListState={setCompanyRankingListState}
+        <OrderByRanking
           currentState={orderByState}
           handleOrderChange={handleOrderChange}
         />
@@ -40,13 +43,13 @@ export const CompanyRanking = () => {
           <tbody>
             {companyRankingListState.map((company) => (
               <tr key={company.id}>
-                <td>{company.id}</td>
+                <td>{company.ranking}</td>
                 <td>{company.name}</td>
                 <td>{company.description}</td>
                 <td>{company.category}</td>
-                <td>{company.total_investment}</td>
-                <td>{company.total_profit}</td>
-                <td>{company.employee_count}</td>
+                <td>{company.totalInvestment}</td>
+                <td>{company.totalProfit}</td>
+                <td>{company.employeeCount}</td>
               </tr>
             ))}
           </tbody>

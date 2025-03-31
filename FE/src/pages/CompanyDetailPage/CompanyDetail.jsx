@@ -1,14 +1,15 @@
-import styles from "./CompanyDetailPage.module.scss";
-import Patition from "../../components/CompanyDetailPage/Partition/Partition";
-import Description from "../../components/CompanyDetailPage/Description/Description";
-import LogoAndName from "../../components/CompanyDetailPage/LogoAndName/LogoAndName";
-import InvestHeader from "../../components/CompanyDetailPage/InvestHeader/InvestHeader";
-import InvestMain from "../../components/CompanyDetailPage/InvestMain/InvestMain";
-import PaseNationButton from "../../components/CompanyDetailPage/PaseNationButton/PaseNationButton";
+import styles from "./CompanyDetailPage.module.css";
+import Patition from "./compoments/Partition";
+import Description from "./compoments/Description";
+import LogoAndName from "./compoments/LogoAndName";
+import InvestHeader from "./compoments/InvestHeader";
+import logo from "./photo/logo.png";
+import InvestMain from "./compoments/InvestMain";
+import PaseNationButton from "./compoments/PaseNationButton";
 import companydetail from "./data/companydetail.json";
 import invest from "./data/invest.json";
-import logo from "./photo/logo.png";
-export function CompanyDetailPage() {
+
+export function CompanyDetail() {
   const companydetaildata = companydetail;
   const investdatas = invest;
 
@@ -24,22 +25,32 @@ export function CompanyDetailPage() {
         <div className={styles.companyDetailThreePart}>
           <Patition
             colum={"누적 투자 금액"}
-            value={companydetaildata.total_investment}
+            value={companydetaildata.totalInvestment + " 원"}
+            className={styles.detailPart}
           />
-          <Patition colum={"매출액"} value={companydetaildata.total_profit} />
+          <Patition
+            colum={"매출액"}
+            value={companydetaildata.totalProfit + " 원"}
+            className={styles.detailPart}
+          />
           <Patition
             colum={"고용 인원"}
-            value={companydetaildata.employee_count + " 명"}
+            value={companydetaildata.employeeCount + " 명"}
+            className={styles.detailPart}
           />
         </div>
 
-        <Description text={companydetaildata.description} />
+        <Description
+          className={styles.companyDetailDescription}
+          text={companydetaildata.description}
+        />
       </div>
 
       <div className={styles.ViewMyStartUpDiv}>
-        <InvestHeader />
+        <InvestHeader className={styles.ViewMyStartUpHeader} />
         <InvestMain
-          investAmount={companydetaildata.view_invest_amount}
+          className={styles.ViewMyStartUpMain}
+          investAmount={companydetaildata.viewInvestAmount + " 원"}
           investData={investdatas}
         />
 
@@ -57,4 +68,4 @@ export function CompanyDetailPage() {
   );
 }
 
-export default CompanyDetailPage;
+export default CompanyDetail;
