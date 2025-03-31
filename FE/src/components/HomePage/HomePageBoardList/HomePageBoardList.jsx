@@ -24,7 +24,7 @@ const HomePageBoardList = ({ companyList, currentPage, itemsPerPage }) => {
             >
               <div className={`${styles.boardCell} ${styles.sizeSm}`}>{rank}위</div>
               <div className={`${styles.boardCell} ${styles.sizeLg} ${styles.txtLeft} ${styles.companyIcon}`}>
-              <img src={compnayIcon01} className={styles.img} />{company.name}
+              <img src={`../../../../public/images/companies/${company.name}.png`} className={styles.img} />{company.name}
             </div>
             <div className={`${styles.boardCell} ${styles.sizeXlg} ${styles.txtLeft}`}>
               {company.description + " 이건 아주아주 긴 설명 텍스트입니다. 이건 아주아주 긴 설명"}
