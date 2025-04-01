@@ -11,7 +11,7 @@ export const ComparisonResultPage = () => {
   const myCompany = useParams();
   // 내 기업 스테이트
   // eslint-disable-next-line no-unused-vars
-  const [myCompanyState, setMyCompanyState] = useState(myCompany);
+  const [myCompanyState, setMyCompanyState] = useState(myCompany.companyName);
 
   // 파일 합치기 전 임시 방안.
   // 비교할 기업 스테이트
@@ -26,7 +26,8 @@ export const ComparisonResultPage = () => {
   const [compareResultListState, setCompareResultListState] = useState([]);
 
   useEffect(() => {
-    const compareData = [myCompanyState, ...compareCompanies];
+    const compareData = compareCompanies.split(",");
+    compareData.push(myCompanyState);
     const compareResultListData = getComparedcompany(compareData);
     setCompareResultListState(compareResultListData);
   }, []);
