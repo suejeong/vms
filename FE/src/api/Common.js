@@ -8,7 +8,7 @@ export const instance = axios.create({
   //baseURL: REACT_APP_API_URL,
 
   //로컬 환경
-  baseURL : REACT_APP_BASE_URL
+  baseURL: REACT_APP_BASE_URL || 'http://localhost:5050'
 });
 
 // 에러 처리
