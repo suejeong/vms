@@ -4,7 +4,7 @@ import { CompanyRanking } from "../../components/ComparisonResultPage/CompanyRan
 import { MyCompany } from "../../components/ComparisonResultPage/MyCompany/MyCompany";
 import styles from "./ComparisonResultPage.module.scss";
 import { useParams, useSearchParams } from "react-router-dom";
-import { getComparedcompany } from "../../api/Company";
+import { getComparedcompany } from "../../api/company";
 
 export const ComparisonResultPage = () => {
   // 파일 합치기 전 임시 방안.
@@ -29,7 +29,7 @@ export const ComparisonResultPage = () => {
     const compareData = [myCompanyState, ...compareCompanies];
     const compareResultListData = getComparedcompany(compareData);
     setCompareResultListState(compareResultListData);
-  });
+  }, []);
   return (
     <>
       <MyCompany myCompanyState={myCompanyState} />
