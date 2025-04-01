@@ -4,7 +4,7 @@ import { CompanyRanking } from "../../components/ComparisonResultPage/CompanyRan
 import { MyCompany } from "../../components/ComparisonResultPage/MyCompany/MyCompany";
 import styles from "./ComparisonResultPage.module.scss";
 import { useParams, useSearchParams } from "react-router-dom";
-import { getComparedcompany } from "../../api/company";
+import { getComparedcompany } from "../../api/Company.js";
 
 export const ComparisonResultPage = () => {
   // 파일 합치기 전 임시 방안.

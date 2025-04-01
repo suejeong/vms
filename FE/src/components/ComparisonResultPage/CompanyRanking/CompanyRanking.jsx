@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { OrderByRanking } from "../OrderByRanking/OrderByRanking";
 import styles from "./CompanyRanking.module.scss";
-import { getCompanyRankingList } from "../../../api/company";
+import { getCompanyRankingList } from "../../../api/Company.js";
 
 export const CompanyRanking = ({ myCompanyState }) => {
   const [companyRankingListState, setCompanyRankingListState] = useState([]);

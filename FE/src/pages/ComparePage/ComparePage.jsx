@@ -1,14 +1,10 @@
 import { useState } from "react";
 import style from "./ComparePage.module.scss";
-import MyCompanyModal from "./modals/MyCompany/MyCompany.jsx";
-import CompareCompanyModal from "./modals/CompareCompany/CompareCompany.jsx";
-import companyData from "./company.json";
-import restartIc from "./assets/ic_restart.png";
-import companyIc from "./assets/ic_company.png";
-import plusIc from "./assets/btn_plus.png";
-import minusIc from "./assets/ic_minus.png";
+import CompareCompanyModal from "./modals/CompareCompanyModal/CompareCompanyModal.jsx";
 import { Link } from "react-router-dom";
-import { getCompanyList } from "../../api/company.js";
+import { getCompanyList } from "../../api/Company.js";
+import CompanyContainer from "./components/CompanyContainer/CompanyContainer.jsx";
+import DashContainer from "./components/DashContainer/DashContainer.jsx";
 
 export default function ComparePage() {
   const [isMyModalOpen, setIsMyModalOpen] = useState(false);
@@ -16,7 +12,6 @@ export default function ComparePage() {
   const [myCompany, setMyCompany] = useState(null);
   const [compareCompanies, setCompareCompanies] = useState([]);
   const [recentCompanies, setRecentCompanies] = useState([]);
-
   const [companies, setCompanies] = useState([]);
 
   const getAllCompanies = async () => {
@@ -26,7 +21,6 @@ export default function ComparePage() {
     } catch (e) {
       console.log(e);
     }
-    console.log(companies);
   };
 
   const openMyModal = () => {
@@ -64,43 +58,23 @@ export default function ComparePage() {
               setCompareCompanies([]);
             }}
           >
-            <img src={restartIc} alt="Restart" />
+            <img src="/images/icons/ic_restart.png" alt="Restart" />
             전체 초기화
           </button>
         )}
       </div>
-      <div className={style.dash}>
-        <div
-          className={
-            myCompany ? style.myCompanyContainer : style.NotMyCompanyContainer
-          }
-        >
-          {myCompany ? (
-            <>
-              <a onClick={() => setMyCompany(null)}>선택 취소</a>
-              <div className={style.selectedCompany}>
-                <img src={companyIc} alt="company" />
-                <p className={style.companyName}>{myCompany.name}</p>
-                <p className={style.companyCategory}>{myCompany.category}</p>
-              </div>
-            </>
-          ) : (
-            <div className={style.addMyCompany}>
-              <button className={style.addButton} onClick={openMyModal}>
-                <img src={plusIc} alt="Add" />
-              </button>
-              <MyCompanyModal
-                isOpen={isMyModalOpen}
-                onClose={closeMyModal}
-                onSelect={handleSelectCompany}
-                companyData={companyData}
-                recentCompanies={recentCompanies}
-              />
-              <p>기업 추가</p>
-            </div>
-          )}
-        </div>
-      </div>
+      {myCompany ? (
+        <CompanyContainer setMyCompany={setMyCompany} myCompany={myCompany} />
+      ) : (
+        <DashContainer
+          isMyModalOpen={isMyModalOpen}
+          closeMyModal={closeMyModal}
+          handleSelectCompany={handleSelectCompany}
+          companies={companies}
+          recentCompanies={recentCompanies}
+          openMyModal={openMyModal}
+        />
+      )}
       {myCompany && (
         <>
           <div className={style.addCompareCompany}>
@@ -118,38 +92,15 @@ export default function ComparePage() {
             <CompareCompanyModal
               isOpen={isCompareModalOpen}
               onClose={closeCompareModal}
-              companyData={companyData}
+              companies={companies}
               selectedCompanies={compareCompanies}
               setSelectedCompanies={setCompareCompanies}
             />
           </div>
-          <div className={style.compareCompaanyContainer}>
-            {compareCompanies.length > 0 ? (
-              compareCompanies.map((company) => (
-                <div key={company.id} className={style.companyCard}>
-                  <button
-                    onClick={() => removeCompareCompany(company.id)}
-                    className={style.minusButton}
-                  >
-                    <img src={minusIc} alt="minus" />
-                  </button>
-                  <img
-                    src={companyIc}
-                    alt="company"
-                    className={style.companyImg}
-                  />
-                  <p className={style.companyName}>{company.name}</p>
-                  <p className={style.companyCategory}>{company.category}</p>
-                </div>
-              ))
-            ) : (
-              <p className={style.noAddCompany}>
-                아직 추가한 기업이 없어요,
-                <br />
-                버튼을 눌러 기업을 추가해보세요!
-              </p>
-            )}
-          </div>
+          <CompanyContainer
+            compareCompanies={compareCompanies}
+            removeCompareCompny={removeCompareCompany}
+          />
         </>
       )}
       <Link

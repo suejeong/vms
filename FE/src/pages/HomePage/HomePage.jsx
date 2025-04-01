@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { getList } from "../../api";
 import styles from "./HomePage.module.scss";
 import Title from "../../components/Title/Title";
-import Search from "../../components/Search/Search";
-import Filter from "../../components/Filter/Filter";
+import Search from "../../components/HomePage/HomePageBoardSearch/HomePageBoardSearch";
+import Filter from "../../components/HomePage/HomePageBoardFilter/HomePageBoardFilter";
 
 export const HomePage = () => {
   const [list, setList] = useState([]);
@@ -46,7 +46,7 @@ export const HomePage = () => {
   return (
     <section>
       <div className={styles.headerRow}>
-        <Title text={"전체 스타트업 목록"}/>
+        <Title text={"전체 스타트업 목록"} />
         <Search
           searchInput={searchInput}
           setSearchInput={setSearchInput}
