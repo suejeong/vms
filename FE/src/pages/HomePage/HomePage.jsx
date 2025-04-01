@@ -2,8 +2,10 @@ import React, { useState, useEffect } from "react";
 import { getList } from "../../api";
 import styles from "./HomePage.module.scss";
 import Title from "../../components/Title/Title";
+
 // import Search from "../../components/Search/Search";
 // import Filter from "../../components/Filter/Filter";
+
 
 export const HomePage = () => {
   const [list, setList] = useState([]);

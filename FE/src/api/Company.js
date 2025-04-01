@@ -1,4 +1,4 @@
-import { instance, safeExecute } from "./Common";
+import { instance, safeExecute } from "./Common.js";
 
 //전체 회사 리스트 가져오기
 export const getCompanyList = async () => {
