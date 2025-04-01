@@ -1,5 +1,4 @@
 import styles from "./HomePageBoardList.module.scss";
-import { Link } from "react-router-dom";
 
 const compnayIcon01 = "../../../../public/images/companies/네이버.png";
 
@@ -44,4 +43,8 @@ const HomePageBoardList = ({ companyList, currentPage, itemsPerPage }) => {
   );
 };
 
+const HomePageBoardList = () => {
+ 
+  return (<div>Hi</div>)
+}
 export default HomePageBoardList;
