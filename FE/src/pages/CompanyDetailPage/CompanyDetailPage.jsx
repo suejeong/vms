@@ -1,14 +1,13 @@
 import styles from "./CompanyDetailPage.module.scss";
-import Patition from "./compoments/Partition";
-import Description from "./compoments/Description";
-import LogoAndName from "./compoments/LogoAndName";
-import InvestHeader from "./compoments/InvestHeader";
-import logo from "./photo/logo.png";
-import InvestMain from "./compoments/InvestMain";
-import PaseNationButton from "./compoments/PaseNationButton";
+import Patition from "../../components/CompanyDetailPage/Partition/Partition";
+import Description from "../../components/CompanyDetailPage/Description/Description";
+import LogoAndName from "../../components/CompanyDetailPage/LogoAndName/LogoAndName";
+import InvestHeader from "../../components/CompanyDetailPage/InvestHeader/InvestHeader";
+import InvestMain from "../../components/CompanyDetailPage/InvestMain/InvestMain";
+import PaseNationButton from "../../components/CompanyDetailPage/PaseNationButton/PaseNationButton";
 import companydetail from "./data/companydetail.json";
 import invest from "./data/invest.json";
-
+import logo from "./photo/logo.png";
 export function CompanyDetailPage() {
   const companydetaildata = companydetail;
   const investdatas = invest;
@@ -26,30 +25,20 @@ export function CompanyDetailPage() {
           <Patition
             colum={"누적 투자 금액"}
             value={companydetaildata.total_investment}
-            className={styles.detailPart}
           />
-          <Patition
-            colum={"매출액"}
-            value={companydetaildata.total_profit}
-            className={styles.detailPart}
-          />
+          <Patition colum={"매출액"} value={companydetaildata.total_profit} />
           <Patition
             colum={"고용 인원"}
             value={companydetaildata.employee_count + " 명"}
-            className={styles.detailPart}
           />
         </div>
 
-        <Description
-          className={styles.companyDetailDescription}
-          text={companydetaildata.description}
-        />
+        <Description text={companydetaildata.description} />
       </div>
 
       <div className={styles.ViewMyStartUpDiv}>
-        <InvestHeader className={styles.ViewMyStartUpHeader} />
+        <InvestHeader />
         <InvestMain
-          className={styles.ViewMyStartUpMain}
           investAmount={companydetaildata.view_invest_amount}
           investData={investdatas}
         />

@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./MyCompany.module.scss";
 
-export const MyCompany = () => {
+export const MyCompany = ({ myCompanyState }) => {
   return (
     <>
       <section className={styles.titleArea}>
@@ -10,8 +10,8 @@ export const MyCompany = () => {
       </section>
       <section className={styles.myCompanySection}>
         <img className={styles.myCompanyImage} />
-        <p className={styles.myCompanyName}>기업명</p>
-        <p className={styles.myCompanyCategory}>카테고리</p>
+        <p className={styles.myCompanyName}>{myCompanyState.name}</p>
+        <p className={styles.myCompanyCategory}>{myCompanyState.category}</p>
       </section>
     </>
   );

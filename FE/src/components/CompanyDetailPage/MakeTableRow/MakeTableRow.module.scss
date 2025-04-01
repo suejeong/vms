@@ -1,0 +1,54 @@
+.boardRow {
+  width: 100%;
+  height: 2.5rem;
+  gap: 0.625rem;
+  border-bottom-width: 1px;
+  padding: 0 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #2e2e2e;
+  border-bottom: 1px solid #4b4b4b;
+
+  flex-direction: row;
+  margin: 0 auto;
+  div {
+    text-align: center;
+    padding: 0.65rem 0;
+    font-size: 0.88rem;
+  }
+  .sizeSm {
+    flex: 64;
+  }
+  .sizeMd {
+    flex: 84;
+  }
+  .sizeLg {
+    flex: 884;
+  }
+}
+.investTableBody {
+  width: 100%;
+  gap: 0.625rem; /* 10px */
+  background-color: #2e2e2e;
+  padding: 0 1rem; /* 16px */
+  border-spacing: 0;
+  border-radius: 0.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+}
+
+.investTableRow {
+  width: 100%;
+  height: 4rem; /* 64px */
+  gap: 0.625rem;
+  border-bottom-width: 1px;
+  padding: 0 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #2e2e2e;
+  border-bottom: 1px solid #4b4b4b;
+}

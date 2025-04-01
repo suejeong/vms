@@ -1,0 +1,37 @@
+.searchKeyword {
+    width: 28rem;
+    height: 3rem;
+    border: 0.0625rem solid #747474;
+    border-radius: 0.625rem;
+    background-color: #131313;
+    color: #d8d8d8;
+    font-size: 0.875rem;
+    padding: 1rem 1rem 1rem 2.75rem;
+    background: url('../../../public/images/icons/ic_search.png');
+    background-repeat: no-repeat;
+    background-position: 1rem;
+  }
+
+  .searchKeyword::placeholder {
+    color: #d8d8d8;
+    opacity: 1;
+  }
+
+  .searchKeyword:focus::placeholder {
+    color: transparent;
+  }
+
+  /* Tablet (744px ~ ) */
+@media only screen and (min-width: 46.5rem) and (max-width:  74.9375rem) {
+  .searchKeyword {
+    width: 16.8rem;
+  }
+}
+
+/* Mobile (375px ~ 743px) */
+@media only screen and (min-width: 0) and (max-width: 46.4375rem) {
+  .searchKeyword {
+    width: 11.875rem;
+    height: 2.5rem;
+  }
+}

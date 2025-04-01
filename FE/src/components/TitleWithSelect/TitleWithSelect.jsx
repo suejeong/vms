@@ -19,7 +19,7 @@ export default function TitleWithSelect({
       <div className={styles.selectBox} onClick={toggleOptions}>
         <p className={styles.firstOption}>{selectedFilter}</p>
         <img
-          src="../../images/vector_stroke.png"
+          src="/images/icons/ic_toggle.png"
           alt="stroke"
           className={styles.selectImg}
         />

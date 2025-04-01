@@ -2,93 +2,60 @@
   max-width: 75rem;
   min-height: 3.75rem;
   height: 100%;
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  gap: 2.5rem;
-}
 
-.pagTtitleComponent {
-  display: flex;
-  justify-content: space-between;
-  max-width: 75rem;
-  min-width: 23.4375rem;
+  .pageTopComponent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 100%;
+    min-width: 23.4375rem;
+
+    .totalListHead {
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+
+    .searchAndFilter {
+      display: flex;
+      justify-content: end;
+    }
+  }
 }
 
 .companyList {
   min-width: 46.5rem;
 }
 
-.boardHeader {
-  display: flex;
-  span {
-    text-align: center;
-    padding: 0.65rem 1rem;
-    font-size: 0.9rem;
-  }
-  background-color: #2e2e2e;
-  border-radius: 0.25rem;
-}
-
-.borderRowLink {
-  color: inherit;
-  text-decoration: none;
-}
-
-.boardRow {
-  display: flex;
-  span {
-    text-align: center;
-    padding: 1rem;
-  }
-  .txtLeft {
-    text-align: left;
-  }
-  background-color: #212121;
-  border-bottom: 0.065rem solid #4b4b4b;
-}
-
-.sizeSm {
-  flex: 1;
-}
-.sizeMd {
-  flex: 2;
-}
-.sizeLg {
-  flex: 3;
-}
-.sizeXlg {
-  flex: 4;
-}
-
-.searchKeyword {
-  width: 28rem;
-  height: 3rem;
-  border: 0.0625rem solid #747474;
-  border-radius: 0.625rem;
-  background-color: #131313;
-  color: #d8d8d8;
-  font-size: 0.875rem;
-  padding: 1rem 1rem 1rem 2.75rem;
-}
-
 /* Tablet (744px ~ 1199px) */
 @media only screen and (min-width: 46.5rem) and (max-width: 74.9375rem) {
   .companyBoard {
-    max-width: auto;
-    margin: auto;
     padding: 0 1.5rem;
-    gap: 1.5rem;
   }
 }
 
 /* Mobile (375px ~ 743px) */
-@media only screen and (min-width: 23.4375rem) and (max-width: 46.4375rem) {
-  .boardTitle {
-    max-width: auto;
-    margin: auto;
+@media only screen and (min-width: 0) and (max-width: 46.4375rem) {
+  .companyBoard {
     padding: 0 1rem;
-    gap: 1rem;
+
+    .pageTopComponent {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-self: flex-start;
+
+      .totalListHead {
+        font-size: 1rem;
+        align-self: flex-start;
+        margin-bottom: 1rem;
+        margin-top: 0;
+      }
+
+      .searchAndFilter {
+        align-self: flex-start;
+      }
+    }
   }
 }

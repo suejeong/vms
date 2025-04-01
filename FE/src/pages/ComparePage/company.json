@@ -5,12 +5,12 @@
     "description": "한국의 초록창 네이버 입니다 ",
     "category": "검색포탈",
     "total_investmen": "10000000000",
-    "total_profit": "10000000000",
-    "employee_count": "3000",
-    "view_invest_amount": "3000000000",
-    "count_my_picked": "164",
-    "count_your_picked": "551",
-    "changed_at": "2000-01-01-01.01.01"
+    "totalProfit": "10000000000",
+    "employeeCount": "3000",
+    "viewInvestAmount": "3000000000",
+    "countMyPicked": "164",
+    "countYourPicked": "551",
+    "changedAt": "2000-01-01-01.01.01"
   },
   {
     "id": "company_2",
@@ -18,12 +18,12 @@
     "description": "전세계 공용 포털사이트 ",
     "category": "검색포탈",
     "total_investmen": "200000000000",
-    "total_profit": "200000000000",
-    "employee_count": "67000",
-    "view_invest_amount": "77000000000",
-    "count_my_picked": "314",
-    "count_your_picked": "1851",
-    "changed_at": "2000-02-02-02.02.02"
+    "totalProfit": "200000000000",
+    "employeeCount": "67000",
+    "viewInvestAmount": "77000000000",
+    "countMyPicked": "314",
+    "countYourPicked": "1851",
+    "changedAt": "2000-02-02-02.02.02"
   },
   {
     "id": "company_3",
@@ -31,12 +31,12 @@
     "description": "풀스택 ㅎㅇㅌ",
     "category": "교육",
     "total_investmen": "5000000000",
-    "total_profit": "6000000000",
-    "employee_count": "113",
-    "view_invest_amount": "76500000",
-    "count_my_picked": "32",
-    "count_your_picked": "41",
-    "changed_at": "2000-03-03-03.03.03"
+    "totalProfit": "6000000000",
+    "employeeCount": "113",
+    "viewInvestAmount": "76500000",
+    "countMyPicked": "32",
+    "countYourPicked": "41",
+    "changedAt": "2000-03-03-03.03.03"
   },
   {
     "id": "company_4",
@@ -44,12 +44,12 @@
     "description": "실시간 커뮤니케이션",
     "category": "커뮤니케이션",
     "total_investmen": "67800000000",
-    "total_profit": "34500000000",
-    "employee_count": "263",
-    "view_invest_amount": "876500000",
-    "count_my_picked": "333",
-    "count_your_picked": "235",
-    "changed_at": "2000-04-04-04.04.04"
+    "totalProfit": "34500000000",
+    "employeeCount": "263",
+    "viewInvestAmount": "876500000",
+    "countMyPicked": "333",
+    "countYourPicked": "235",
+    "changedAt": "2000-04-04-04.04.04"
   },
   {
     "id": "company_5",
@@ -57,12 +57,12 @@
     "description": "게임모음",
     "category": "게임",
     "total_investmen": "77700000000",
-    "total_profit": "55500000000",
-    "employee_count": "183",
-    "view_invest_amount": "777700000",
-    "count_my_picked": "288",
-    "count_your_picked": "399",
-    "changed_at": "2000-05-05-05.05.05"
+    "totalProfit": "55500000000",
+    "employeeCount": "183",
+    "viewInvestAmount": "777700000",
+    "countMyPicked": "288",
+    "countYourPicked": "399",
+    "changedAt": "2000-05-05-05.05.05"
   },
   {
     "id": "company_6",
@@ -70,13 +70,13 @@
     "description": "간편한 메모장",
     "category": "메모",
     "total_investmen": "123456789",
-    "total_profit": "234567890",
-    "employee_count": "43",
-    "view_invest_amount": "67891230",
+    "totalProfit": "234567890",
+    "employeeCount": "43",
+    "viewInvestAmount": "67891230",
 
-    "count_my_picked": "10",
-    "count_your_picked": "21",
-    "changed_at": "2000-06-06-06.06.06"
+    "countMyPicked": "10",
+    "countYourPicked": "21",
+    "changedAt": "2000-06-06-06.06.06"
   },
   {
     "id": "company_7",
@@ -84,13 +84,13 @@
     "description": "한국의 초록창 네이버 입니다 ",
     "category": "검색포탈",
     "total_investmen": "10000000000",
-    "total_profit": "10000000000",
-    "employee_count": "3000",
-    "view_invest_amount": "3000000000",
+    "totalProfit": "10000000000",
+    "employeeCount": "3000",
+    "viewInvestAmount": "3000000000",
 
-    "count_my_picked": "164",
-    "count_your_picked": "551",
-    "changed_at": "2000-01-01-01.01.01"
+    "countMyPicked": "164",
+    "countYourPicked": "551",
+    "changedAt": "2000-01-01-01.01.01"
   },
   {
     "id": "company_8",
@@ -98,13 +98,13 @@
     "description": "전세계 공용 포털사이트 ",
     "category": "검색포탈",
     "total_investmen": "200000000000",
-    "total_profit": "200000000000",
-    "employee_count": "67000",
-    "view_invest_amount": "77000000000",
+    "totalProfit": "200000000000",
+    "employeeCount": "67000",
+    "viewInvestAmount": "77000000000",
 
-    "count_my_picked": "314",
-    "count_your_picked": "1851",
-    "changed_at": "2000-02-02-02.02.02"
+    "countMyPicked": "314",
+    "countYourPicked": "1851",
+    "changedAt": "2000-02-02-02.02.02"
   },
 
   {
@@ -113,13 +113,13 @@
     "description": "풀스택 ㅎㅇㅌ",
     "category": "교육",
     "total_investmen": "5000000000",
-    "total_profit": "6000000000",
-    "employee_count": "113",
-    "view_invest_amount": "76500000",
+    "totalProfit": "6000000000",
+    "employeeCount": "113",
+    "viewInvestAmount": "76500000",
 
-    "count_my_picked": "32",
-    "count_your_picked": "41",
-    "changed_at": "2000-03-03-03.03.03"
+    "countMyPicked": "32",
+    "countYourPicked": "41",
+    "changedAt": "2000-03-03-03.03.03"
   },
   {
     "id": "company_10",
@@ -127,13 +127,13 @@
     "description": "실시간 커뮤니케이션",
     "category": "커뮤니케이션",
     "total_investmen": "67800000000",
-    "total_profit": "34500000000",
-    "employee_count": "263",
-    "view_invest_amount": "876500000",
+    "totalProfit": "34500000000",
+    "employeeCount": "263",
+    "viewInvestAmount": "876500000",
 
-    "count_my_picked": "333",
-    "count_your_picked": "235",
-    "changed_at": "2000-04-04-04.04.04"
+    "countMyPicked": "333",
+    "countYourPicked": "235",
+    "changedAt": "2000-04-04-04.04.04"
   },
   {
     "id": "company_11",
@@ -141,13 +141,13 @@
     "description": "게임모음",
     "category": "게임",
     "total_investmen": "77700000000",
-    "total_profit": "55500000000",
-    "employee_count": "183",
-    "view_invest_amount": "777700000",
+    "totalProfit": "55500000000",
+    "employeeCount": "183",
+    "viewInvestAmount": "777700000",
 
-    "count_my_picked": "288",
-    "count_your_picked": "399",
-    "changed_at": "2000-05-05-05.05.05"
+    "countMyPicked": "288",
+    "countYourPicked": "399",
+    "changedAt": "2000-05-05-05.05.05"
   },
   {
     "id": "company_12",
@@ -155,13 +155,13 @@
     "description": "간편한 메모장",
     "category": "메모",
     "total_investmen": "123456789",
-    "total_profit": "234567890",
-    "employee_count": "43",
-    "view_invest_amount": "67891230",
+    "totalProfit": "234567890",
+    "employeeCount": "43",
+    "viewInvestAmount": "67891230",
 
-    "count_my_picked": "10",
-    "count_your_picked": "21",
-    "changed_at": "2000-06-06-06.06.06"
+    "countMyPicked": "10",
+    "countYourPicked": "21",
+    "changedAt": "2000-06-06-06.06.06"
   },
   {
     "id": "company_13",
@@ -169,13 +169,13 @@
     "description": "한국의 초록창 네이버 입니다 ",
     "category": "검색포탈",
     "total_investmen": "10000000000",
-    "total_profit": "10000000000",
-    "employee_count": "3000",
-    "view_invest_amount": "3000000000",
+    "totalProfit": "10000000000",
+    "employeeCount": "3000",
+    "viewInvestAmount": "3000000000",
 
-    "count_my_picked": "164",
-    "count_your_picked": "551",
-    "changed_at": "2000-01-01-01.01.01"
+    "countMyPicked": "164",
+    "countYourPicked": "551",
+    "changedAt": "2000-01-01-01.01.01"
   },
   {
     "id": "company_14",
@@ -183,13 +183,13 @@
     "description": "전세계 공용 포털사이트 ",
     "category": "검색포탈",
     "total_investmen": "200000000000",
-    "total_profit": "200000000000",
-    "employee_count": "67000",
-    "view_invest_amount": "77000000000",
+    "totalProfit": "200000000000",
+    "employeeCount": "67000",
+    "viewInvestAmount": "77000000000",
 
-    "count_my_picked": "314",
-    "count_your_picked": "1851",
-    "changed_at": "2000-02-02-02.02.02"
+    "countMyPicked": "314",
+    "countYourPicked": "1851",
+    "changedAt": "2000-02-02-02.02.02"
   },
 
   {
@@ -198,13 +198,13 @@
     "description": "풀스택 ㅎㅇㅌ",
     "category": "교육",
     "total_investmen": "5000000000",
-    "total_profit": "6000000000",
-    "employee_count": "113",
-    "view_invest_amount": "76500000",
+    "totalProfit": "6000000000",
+    "employeeCount": "113",
+    "viewInvestAmount": "76500000",
 
-    "count_my_picked": "32",
-    "count_your_picked": "41",
-    "changed_at": "2000-03-03-03.03.03"
+    "countMyPicked": "32",
+    "countYourPicked": "41",
+    "changedAt": "2000-03-03-03.03.03"
   },
   {
     "id": "company_16",
@@ -212,13 +212,13 @@
     "description": "실시간 커뮤니케이션",
     "category": "커뮤니케이션",
     "total_investmen": "67800000000",
-    "total_profit": "34500000000",
-    "employee_count": "263",
-    "view_invest_amount": "876500000",
+    "totalProfit": "34500000000",
+    "employeeCount": "263",
+    "viewInvestAmount": "876500000",
 
-    "count_my_picked": "333",
-    "count_your_picked": "235",
-    "changed_at": "2000-04-04-04.04.04"
+    "countMyPicked": "333",
+    "countYourPicked": "235",
+    "changedAt": "2000-04-04-04.04.04"
   },
   {
     "id": "company_17",
@@ -226,13 +226,13 @@
     "description": "게임모음",
     "category": "게임",
     "total_investmen": "77700000000",
-    "total_profit": "55500000000",
-    "employee_count": "183",
-    "view_invest_amount": "777700000",
+    "totalProfit": "55500000000",
+    "employeeCount": "183",
+    "viewInvestAmount": "777700000",
 
-    "count_my_picked": "288",
-    "count_your_picked": "399",
-    "changed_at": "2000-05-05-05.05.05"
+    "countMyPicked": "288",
+    "countYourPicked": "399",
+    "changedAt": "2000-05-05-05.05.05"
   },
   {
     "id": "company_18",
@@ -240,13 +240,13 @@
     "description": "간편한 메모장",
     "category": "메모",
     "total_investmen": "123456789",
-    "total_profit": "234567890",
-    "employee_count": "43",
-    "view_invest_amount": "67891230",
+    "totalProfit": "234567890",
+    "employeeCount": "43",
+    "viewInvestAmount": "67891230",
 
-    "count_my_picked": "10",
-    "count_your_picked": "21",
-    "changed_at": "2000-06-06-06.06.06"
+    "countMyPicked": "10",
+    "countYourPicked": "21",
+    "changedAt": "2000-06-06-06.06.06"
   },
   {
     "id": "company_19",
@@ -254,13 +254,13 @@
     "description": "한국의 초록창 네이버 입니다 ",
     "category": "검색포탈",
     "total_investmen": "10000000000",
-    "total_profit": "10000000000",
-    "employee_count": "3000",
-    "view_invest_amount": "3000000000",
+    "totalProfit": "10000000000",
+    "employeeCount": "3000",
+    "viewInvestAmount": "3000000000",
 
-    "count_my_picked": "164",
-    "count_your_picked": "551",
-    "changed_at": "2000-01-01-01.01.01"
+    "countMyPicked": "164",
+    "countYourPicked": "551",
+    "changedAt": "2000-01-01-01.01.01"
   },
   {
     "id": "company_20",
@@ -268,13 +268,13 @@
     "description": "전세계 공용 포털사이트 ",
     "category": "검색포탈",
     "total_investmen": "200000000000",
-    "total_profit": "200000000000",
-    "employee_count": "67000",
-    "view_invest_amount": "77000000000",
+    "totalProfit": "200000000000",
+    "employeeCount": "67000",
+    "viewInvestAmount": "77000000000",
 
-    "count_my_picked": "314",
-    "count_your_picked": "1851",
-    "changed_at": "2000-02-02-02.02.02"
+    "countMyPicked": "314",
+    "countYourPicked": "1851",
+    "changedAt": "2000-02-02-02.02.02"
   },
 
   {
@@ -283,13 +283,13 @@
     "description": "풀스택 ㅎㅇㅌ",
     "category": "교육",
     "total_investmen": "5000000000",
-    "total_profit": "6000000000",
-    "employee_count": "113",
-    "view_invest_amount": "76500000",
+    "totalProfit": "6000000000",
+    "employeeCount": "113",
+    "viewInvestAmount": "76500000",
 
-    "count_my_picked": "32",
-    "count_your_picked": "41",
-    "changed_at": "2000-03-03-03.03.03"
+    "countMyPicked": "32",
+    "countYourPicked": "41",
+    "changedAt": "2000-03-03-03.03.03"
   },
   {
     "id": "company_22",
@@ -297,13 +297,13 @@
     "description": "실시간 커뮤니케이션",
     "category": "커뮤니케이션",
     "total_investmen": "67800000000",
-    "total_profit": "34500000000",
-    "employee_count": "263",
-    "view_invest_amount": "876500000",
+    "totalProfit": "34500000000",
+    "employeeCount": "263",
+    "viewInvestAmount": "876500000",
 
-    "count_my_picked": "333",
-    "count_your_picked": "235",
-    "changed_at": "2000-04-04-04.04.04"
+    "countMyPicked": "333",
+    "countYourPicked": "235",
+    "changedAt": "2000-04-04-04.04.04"
   },
   {
     "id": "company_23",
@@ -311,13 +311,13 @@
     "description": "게임모음",
     "category": "게임",
     "total_investmen": "77700000000",
-    "total_profit": "55500000000",
-    "employee_count": "183",
-    "view_invest_amount": "777700000",
+    "totalProfit": "55500000000",
+    "employeeCount": "183",
+    "viewInvestAmount": "777700000",
 
-    "count_my_picked": "288",
-    "count_your_picked": "399",
-    "changed_at": "2000-05-05-05.05.05"
+    "countMyPicked": "288",
+    "countYourPicked": "399",
+    "changedAt": "2000-05-05-05.05.05"
   },
   {
     "id": "company_24",
@@ -325,13 +325,13 @@
     "description": "간편한 메모장",
     "category": "메모",
     "total_investmen": "123456789",
-    "total_profit": "234567890",
-    "employee_count": "43",
-    "view_invest_amount": "67891230",
+    "totalProfit": "234567890",
+    "employeeCount": "43",
+    "viewInvestAmount": "67891230",
 
-    "count_my_picked": "10",
-    "count_your_picked": "21",
-    "changed_at": "2000-06-06-06.06.06"
+    "countMyPicked": "10",
+    "countYourPicked": "21",
+    "changedAt": "2000-06-06-06.06.06"
   },
   {
     "id": "company_25",
@@ -339,13 +339,13 @@
     "description": "게임모음",
     "category": "게임",
     "total_investmen": "77700000000",
-    "total_profit": "55500000000",
-    "employee_count": "183",
-    "view_invest_amount": "777700000",
+    "totalProfit": "55500000000",
+    "employeeCount": "183",
+    "viewInvestAmount": "777700000",
 
-    "count_my_picked": "288",
-    "count_your_picked": "399",
-    "changed_at": "2000-05-05-05.05.05"
+    "countMyPicked": "288",
+    "countYourPicked": "399",
+    "changedAt": "2000-05-05-05.05.05"
   },
   {
     "id": "company_26",
@@ -353,13 +353,13 @@
     "description": "간편한 메모장",
     "category": "메모",
     "total_investmen": "123456789",
-    "total_profit": "234567890",
-    "employee_count": "43",
-    "view_invest_amount": "67891230",
+    "totalProfit": "234567890",
+    "employeeCount": "43",
+    "viewInvestAmount": "67891230",
 
-    "count_my_picked": "10",
-    "count_your_picked": "21",
-    "changed_at": "2000-06-06-06.06.06"
+    "countMyPicked": "10",
+    "countYourPicked": "21",
+    "changedAt": "2000-06-06-06.06.06"
   },
   {
     "id": "company_27",
@@ -367,13 +367,13 @@
     "description": "한국의 초록창 네이버 입니다 ",
     "category": "검색포탈",
     "total_investmen": "10000000000",
-    "total_profit": "10000000000",
-    "employee_count": "3000",
-    "view_invest_amount": "3000000000",
+    "totalProfit": "10000000000",
+    "employeeCount": "3000",
+    "viewInvestAmount": "3000000000",
 
-    "count_my_picked": "164",
-    "count_your_picked": "551",
-    "changed_at": "2000-01-01-01.01.01"
+    "countMyPicked": "164",
+    "countYourPicked": "551",
+    "changedAt": "2000-01-01-01.01.01"
   },
   {
     "id": "company_28",
@@ -381,13 +381,13 @@
     "description": "전세계 공용 포털사이트 ",
     "category": "검색포탈",
     "total_investmen": "200000000000",
-    "total_profit": "200000000000",
-    "employee_count": "67000",
-    "view_invest_amount": "77000000000",
+    "totalProfit": "200000000000",
+    "employeeCount": "67000",
+    "viewInvestAmount": "77000000000",
 
-    "count_my_picked": "314",
-    "count_your_picked": "1851",
-    "changed_at": "2000-02-02-02.02.02"
+    "countMyPicked": "314",
+    "countYourPicked": "1851",
+    "changedAt": "2000-02-02-02.02.02"
   },
 
   {
@@ -396,13 +396,13 @@
     "description": "풀스택 ㅎㅇㅌ",
     "category": "교육",
     "total_investmen": "5000000000",
-    "total_profit": "6000000000",
-    "employee_count": "113",
-    "view_invest_amount": "76500000",
+    "totalProfit": "6000000000",
+    "employeeCount": "113",
+    "viewInvestAmount": "76500000",
 
-    "count_my_picked": "32",
-    "count_your_picked": "41",
-    "changed_at": "2000-03-03-03.03.03"
+    "countMyPicked": "32",
+    "countYourPicked": "41",
+    "changedAt": "2000-03-03-03.03.03"
   },
   {
     "id": "company_30",
@@ -410,12 +410,12 @@
     "description": "실시간 커뮤니케이션",
     "category": "커뮤니케이션",
     "total_investmen": "67800000000",
-    "total_profit": "34500000000",
-    "employee_count": "263",
-    "view_invest_amount": "876500000",
+    "totalProfit": "34500000000",
+    "employeeCount": "263",
+    "viewInvestAmount": "876500000",
 
-    "count_my_picked": "333",
-    "count_your_picked": "235",
-    "changed_at": "2000-04-04-04.04.04"
+    "countMyPicked": "333",
+    "countYourPicked": "235",
+    "changedAt": "2000-04-04-04.04.04"
   }
 ]
