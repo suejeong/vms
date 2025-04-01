@@ -40,7 +40,7 @@ export const getCompanyRankingList = async (companyName, orderBy) => {
     return res.data;
   });
 };
-// 회사 순위로 리스트 가져오기
+// 회사 뷰마이스타트업 정보 가져오기(투자현황 페이지 get)
 export const updateViewInvestAmount = async () => {
   return safeExecute(async () => {
     const res = await instance.get(`/company/view`);
