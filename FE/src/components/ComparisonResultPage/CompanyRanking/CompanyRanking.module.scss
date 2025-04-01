@@ -38,6 +38,15 @@
 td {
   padding: 1rem;
   text-align: center;
+  display: flex;
+
+  img {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 100%;
+    align-items: center;
+    padding: 0 1rem;
+  }
 }
 
 .CompanyRankingTable th:nth-child(1),
