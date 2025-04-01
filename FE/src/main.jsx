@@ -22,10 +22,6 @@ const router = createBrowserRouter([
       { path: "/compare", element: <ComparePage /> },
       { path: "/status", element: <StatusPage /> },
       { path: "/investment", element: <InvestmentPage /> },
-      {
-        path: "/comparisonResult/:companyName",
-        element: <ComparisonResultPage />,
-      },
       { path: "/companyDetail/:id", element: <CompanyDetailPage /> },
     ],
   },
