@@ -1,15 +1,27 @@
 import React from "react";
 import styles from "./MyCompany.module.scss";
 
-export const MyCompany = ({ myCompanyState }) => {
+export const MyCompany = ({
+  myCompanyState,
+  handleChangeCompareResultState,
+}) => {
   return (
     <>
       <section className={styles.titleArea}>
         <p className={styles.titleText}>내가 선택한 기업</p>
-        <button className={styles.compareButton}>다른 기업 비교하기</button>
+        <button
+          className={styles.compareButton}
+          onClick={() => handleChangeCompareResultState()}
+        >
+          다른 기업 비교하기
+        </button>
       </section>
       <section className={styles.myCompanySection}>
-        <img className={styles.myCompanyImage} />
+        <img
+          className={styles.myCompanyImage}
+          src={`/images/companies/${myCompanyState.name}.png`}
+          alt={myCompanyState.name}
+        />
         <p className={styles.myCompanyName}>{myCompanyState.name}</p>
         <p className={styles.myCompanyCategory}>{myCompanyState.category}</p>
       </section>
