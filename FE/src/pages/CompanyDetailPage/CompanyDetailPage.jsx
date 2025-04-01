@@ -7,7 +7,8 @@ import InvestMain from "../../components/CompanyDetailPage/InvestMain/InvestMain
 import PaseNationButton from "../../components/CompanyDetailPage/PaseNationButton/PaseNationButton";
 import companydetail from "./data/companydetail.json";
 import invest from "./data/invest.json";
-import logo from "./photo/logo.png";
+import logo from "../../../public/images/companies/네이버.png";
+
 export function CompanyDetailPage() {
   const companydetaildata = companydetail;
   const investdatas = invest;
@@ -24,12 +25,12 @@ export function CompanyDetailPage() {
         <div className={styles.companyDetailThreePart}>
           <Patition
             colum={"누적 투자 금액"}
-            value={companydetaildata.total_investment}
+            value={companydetaildata.totalInvestment}
           />
-          <Patition colum={"매출액"} value={companydetaildata.total_profit} />
+          <Patition colum={"매출액"} value={companydetaildata.totalProfit} />
           <Patition
             colum={"고용 인원"}
-            value={companydetaildata.employee_count + " 명"}
+            value={companydetaildata.employeeCount + " 명"}
           />
         </div>
 
