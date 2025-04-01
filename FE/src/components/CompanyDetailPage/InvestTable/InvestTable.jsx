@@ -3,7 +3,10 @@ import ChangeToNumber from "../ChangeToNumber/ChangeToNumber";
 import DeleteAndChangeModal from "../DeleteAndChangeModal/DeleteAndChangeModal";
 import InvestDeleteModal from "../InvestDeleteModal/InvestDeleteModal";
 import InvestChangeModal from "../InvestChangeModal/InvestChangeModal";
+import MakeTableRow from "../MakeTableRow/MakeTableRow";
+import MakeTableHeader from "../MakeTableRow/MakeTableHeader";
 import { useState, useRef } from "react";
+
 export function InvestTable({ investData }) {
   const [modalState, setModalState] = useState(false);
   const [investDeleteModalState, setInvestDeleteModalState] = useState(false);
@@ -28,14 +31,11 @@ export function InvestTable({ investData }) {
   };
   const handleButtonClick = (e) => {
     const rect = e.target.getBoundingClientRect();
-    console.log(rect);
     setModalPosition({
-      top: rect.bottom + 10, // 버튼 아래에 배치
+      top: rect.bottom + 10,
       left: rect.left - 115,
     });
     setModalState(true);
-    console.log(modalPosition.top);
-    console.log(modalPosition.left);
   };
   const headers = [
     {
@@ -125,7 +125,7 @@ export function InvestTable({ investData }) {
   const headerKey = headers.map((header) => header.value);
   return (
     <div>
-      <div className={styles.investTableHeader}>
+      {/* <div className={styles.investTableHeader}>
         {headers.map((header) => (
           <div
             key={header.text}
@@ -135,9 +135,57 @@ export function InvestTable({ investData }) {
             {header.text}
           </div>
         ))}
+      </div> */}
+
+      <div className={styles.investTableBody} style={{ marginBottom: "16px" }}>
+        <MakeTableHeader
+          Name={"투자자 이름"}
+          Rank={"순위"}
+          InvestAmount={"투자 금액"}
+          Coment={"투자 코멘트"}
+          button={""}
+        ></MakeTableHeader>
       </div>
 
-      <div className={styles.investTableBody} style={{ marginTop: "16px" }}>
+      <div className={styles.investTableBody}>
+        <MakeTableRow
+          Name={items[0].name}
+          Rank={items[0].investRank}
+          InvestAmount={items[0].investAmount}
+          Coment={items[0].investComnet}
+          button={items[0].button}
+        ></MakeTableRow>
+        <MakeTableRow
+          Name={items[1].name}
+          Rank={items[1].investRank}
+          InvestAmount={items[1].investAmount}
+          Coment={items[1].investComnet}
+          button={items[1].button}
+        ></MakeTableRow>
+        <MakeTableRow
+          Name={items[2].name}
+          Rank={items[2].investRank}
+          InvestAmount={items[2].investAmount}
+          Coment={items[2].investComnet}
+          button={items[2].button}
+        ></MakeTableRow>
+        <MakeTableRow
+          Name={items[3].name}
+          Rank={items[3].investRank}
+          InvestAmount={items[3].investAmount}
+          Coment={items[3].investComnet}
+          button={items[3].button}
+        ></MakeTableRow>
+        <MakeTableRow
+          Name={items[4].name}
+          Rank={items[4].investRank}
+          InvestAmount={items[4].investAmount}
+          Coment={items[4].investComnet}
+          button={items[4].button}
+        ></MakeTableRow>
+      </div>
+
+      {/* <div className={styles.investTableBody} style={{ marginTop: "16px" }}>
         {items.map((item, index) => (
           <div
             key={index}
@@ -151,7 +199,7 @@ export function InvestTable({ investData }) {
             ))}
           </div>
         ))}
-      </div>
+      </div> */}
 
       {modalState && (
         <div

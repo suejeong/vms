@@ -8,6 +8,7 @@ import companyIc from "./assets/ic_company.png";
 import plusIc from "./assets/btn_plus.png";
 import minusIc from "./assets/ic_minus.png";
 import { Link } from "react-router-dom";
+import { getCompanyList } from "../../api/company.js";
 
 export default function ComparePage() {
   const [isMyModalOpen, setIsMyModalOpen] = useState(false);
@@ -16,7 +17,22 @@ export default function ComparePage() {
   const [compareCompanies, setCompareCompanies] = useState([]);
   const [recentCompanies, setRecentCompanies] = useState([]);
 
-  const openMyModal = () => setIsMyModalOpen(true);
+  const [companies, setCompanies] = useState([]);
+
+  const getAllCompanies = async () => {
+    try {
+      const data = await getCompanyList();
+      setCompanies(data);
+    } catch (e) {
+      console.log(e);
+    }
+    console.log(companies);
+  };
+
+  const openMyModal = () => {
+    getAllCompanies();
+    setIsMyModalOpen(true);
+  };
   const closeMyModal = () => setIsMyModalOpen(false);
   const openCompareModal = () => setIsCompareModalOpen(true);
   const closeCompareModal = () => setIsCompareModalOpen(false);
