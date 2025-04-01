@@ -1,8 +1,8 @@
 [
   {
     "id": "company_1",
-    "name varchar": "Naver",
-    "description varchar": "한국의 초록창 네이버 입니다 ",
+    "name": "Naver",
+    "description": "한국의 초록창 네이버 입니다 ",
     "category": "검색포탈",
     "total_investmen": "10000000000",
     "totalProfit": "10000000000",
@@ -15,8 +15,8 @@
   },
   {
     "id": "company_2",
-    "name varchar": "google",
-    "description varchar": "전세계 공용 포털사이트 ",
+    "name": "google",
+    "description": "전세계 공용 포털사이트 ",
     "category": "검색포탈",
     "total_investmen": "200000000000",
     "totalProfit": "200000000000",
@@ -30,8 +30,8 @@
 
   {
     "id": "company_3",
-    "name varchar": "코드잇",
-    "description varchar": "풀스택 ㅎㅇㅌ",
+    "name": "코드잇",
+    "description": "풀스택 ㅎㅇㅌ",
     "category": "교육",
     "total_investmen": "5000000000",
     "totalProfit": "6000000000",
@@ -44,8 +44,8 @@
   },
   {
     "id": "company_4",
-    "name varchar": "Discord",
-    "description varchar": "실시간 커뮤니케이션",
+    "name": "Discord",
+    "description": "실시간 커뮤니케이션",
     "category": "커뮤니케이션",
     "total_investmen": "67800000000",
     "totalProfit": "34500000000",
@@ -58,8 +58,8 @@
   },
   {
     "id": "company_5",
-    "name varchar": "Stram",
-    "description varchar": "게임모음",
+    "name": "Stram",
+    "description": "게임모음",
     "category": "게임",
     "total_investmen": "77700000000",
     "totalProfit": "55500000000",
@@ -72,8 +72,8 @@
   },
   {
     "id": "company_6",
-    "name varchar": "Notion",
-    "description varchar": "간편한 메모장",
+    "name": "Notion",
+    "description": "간편한 메모장",
     "category": "메모",
     "total_investmen": "123456789",
     "totalProfit": "234567890",
