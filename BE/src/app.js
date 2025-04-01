@@ -1,3 +1,4 @@
+
 const express = require('express');
 const cors = require('cors');
 const mainRouter = require('./modules/index.module')
@@ -6,8 +7,7 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
-
-app.use('/', mainRouter);
+app.use("/", mainRouter);
 
 // 메인 페이지 - 서버 상태 확인용
 app.get('/', (req, res) => {
