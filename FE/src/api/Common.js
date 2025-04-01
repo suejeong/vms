@@ -1,6 +1,5 @@
 import axios from "axios";
-
-const { REACT_APP_API_URL, REACT_APP_BASE_URL } = import.meta.env;
+import { REACT_APP_API_URL, REACT_APP_BASE_URL } from "../../env";
 
 // 인스턴스
 export const instance = axios.create({
@@ -8,7 +7,9 @@ export const instance = axios.create({
   //baseURL: REACT_APP_API_URL,
 
   //로컬 환경
-  baseURL: REACT_APP_BASE_URL || 'http://localhost:5050'
+
+  baseURL: REACT_APP_BASE_URL
+
 });
 
 // 에러 처리
