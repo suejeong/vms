@@ -1,5 +1,6 @@
 import axios from "axios";
-import { REACT_APP_API_URL,REACT_APP_BASE_URL } from "../../env";
+
+const { REACT_APP_API_URL, REACT_APP_BASE_URL } = import.meta.env;
 
 // 인스턴스
 export const instance = axios.create({
