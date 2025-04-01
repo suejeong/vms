@@ -1,6 +1,5 @@
 import React from "react";
 import style from "./CompareCompany.module.scss";
-import minusIc from "../../assets/ic_minus.png";
 
 function CompareCompany({ compareCompanies, removeCompareCompany }) {
   return (
@@ -12,7 +11,7 @@ function CompareCompany({ compareCompanies, removeCompareCompany }) {
               onClick={() => removeCompareCompany(company.id)}
               className={style.minusButton}
             >
-              <img src={minusIc} alt="minus" />
+              <img src="/images/icons/ic_minus.png" alt="minus" />
             </button>
             <img
               src={`/images/companies/${company.name}.png`}

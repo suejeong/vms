@@ -1,7 +1,6 @@
 import { useState } from "react";
 import style from "./ComparePage.module.scss";
 import CompareCompanyModal from "./modals/CompareCompanyModal/CompareCompanyModal.jsx";
-import restartIc from "./assets/ic_restart.png";
 import { Link } from "react-router-dom";
 import { getCompanyList } from "../../api/Company.js";
 import CompanyContainer from "./components/CompanyContainer/CompanyContainer.jsx";
@@ -59,7 +58,7 @@ export default function ComparePage() {
               setCompareCompanies([]);
             }}
           >
-            <img src={restartIc} alt="Restart" />
+            <img src="/images/icons/ic_restart.png" alt="Restart" />
             전체 초기화
           </button>
         )}

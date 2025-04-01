@@ -1,7 +1,6 @@
 import React from "react";
 import style from "./DashContainer.module.scss";
 import MyCompanyModal from "../../modals/MyCompanyModal/MyCompanyModal";
-import plusIc from "../../assets/btn_plus.png";
 
 function DashContainer({
   isMyModalOpen,
@@ -16,7 +15,7 @@ function DashContainer({
       <div className={style.NotMyCompanyContainer}>
         <div className={style.addMyCompany}>
           <button onClick={openMyModal}>
-            <img src={plusIc} alt="Add" />
+            <img src="/images/icons/btn_plus.png" alt="Add" />
           </button>
           <MyCompanyModal
             isOpen={isMyModalOpen}

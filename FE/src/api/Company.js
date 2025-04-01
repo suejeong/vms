@@ -9,6 +9,15 @@ export const getCompanyList = async () => {
   });
 };
 
+//회사 1개의 정보만 가져오기
+export const getCompany = async (companyId) => {
+  return safeExecute(async () => {
+    const res = await instance.get(`/company/${companyId}`);
+
+    return res.data;
+  });
+};
+
 // 회사 비교하기
 export const getComparedcompany = async (companyNames) => {
   return safeExecute(async () => {

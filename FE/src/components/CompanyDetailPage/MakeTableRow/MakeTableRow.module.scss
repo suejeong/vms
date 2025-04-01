@@ -1,46 +1,54 @@
-.boardHeader {
-    display: flex;
-    margin: 1rem 0;
-    background-color: #2e2e2e;
-    border-radius: 0.25rem;
-    div {
-      text-align: center;
-      padding: 0.65rem 0;
-      font-size: 0.88rem;
-    }
-    .sizeSm {
-        flex: 1;
-    }
-    .sizeMd {
-        flex: 2;
-    }
-    .sizeLg {
-        flex: 2.8;
-    }
-    .sizeXlg {
-        flex: 4.2;
-    }
-    .txtLeft {
-      text-align: left;
-  }
-  }
+.boardRow {
+  width: 100%;
+  height: 2.5rem;
+  gap: 0.625rem;
+  border-bottom-width: 1px;
+  padding: 0 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #2e2e2e;
+  border-bottom: 1px solid #4b4b4b;
 
-  /* Mobile, Tablet (0 ~ 743px) */
-@media only screen and (min-width: 0) and (max-width: 46.4375rem) {
-    .boardHeader {
-      max-width: auto;
-      margin: 1rem 0;
-      .sizeSm {
-          display: none;
-      }
-      .sizeMd {
-          flex: 3;
-      }
-      .sizeLg {
-          flex: 5;
-      }
-      .sizeXlg {
-          flex: 6;
-      }
-    }
+  flex-direction: row;
+  margin: 0 auto;
+  div {
+    text-align: center;
+    padding: 0.65rem 0;
+    font-size: 0.88rem;
+  }
+  .sizeSm {
+    flex: 64;
+  }
+  .sizeMd {
+    flex: 84;
+  }
+  .sizeLg {
+    flex: 884;
+  }
+}
+.investTableBody {
+  width: 100%;
+  gap: 0.625rem; /* 10px */
+  background-color: #2e2e2e;
+  padding: 0 1rem; /* 16px */
+  border-spacing: 0;
+  border-radius: 0.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+}
+
+.investTableRow {
+  width: 100%;
+  height: 4rem; /* 64px */
+  gap: 0.625rem;
+  border-bottom-width: 1px;
+  padding: 0 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #2e2e2e;
+  border-bottom: 1px solid #4b4b4b;
 }

@@ -1,13 +1,15 @@
 import axios from "axios";
-const { REACT_APP_API_URL, REACT_APP_BASE_URL } = import.meta.env;
+
+const VITE_API_URL = import.meta.env.VITE_API_URL;
+const VITE_BASE_URL = import.meta.env.VITE_BASE_URL;
 
 // 인스턴스
 export const instance = axios.create({
   //배포 환경
-  baseURL: REACT_APP_API_URL,
+  baseURL: VITE_API_URL,
 
   //로컬 환경
-  // baseURL: REACT_APP_BASE_URL || "http://localhost:5050",
+  // baseURL: VITE_BASE_URL
 });
 
 // 에러 처리

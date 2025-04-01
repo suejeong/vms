@@ -1,10 +1,10 @@
 [
   {
     "id": "invest_1",
-    "username": "김수빈",
+    "username": "홍성훈",
     "password ": "1q2w3e4r",
     "companyId ": "company_1",
-    "invest_amount": "500000000",
+    "invest_amount": "30000000000",
     "state ": "완료"
   },
 
@@ -13,7 +13,7 @@
     "username": "김재욱",
     "password ": "1234",
     "companyId": "company_1",
-    "invest_amount": "3000000000",
+    "invest_amount": "20000000000",
     "state ": "완료"
   },
   {
@@ -21,7 +21,7 @@
     "username": "심유빈",
     "password ": "0000",
     "companyId": "company_1",
-    "invest_amount": "1000000000",
+    "invest_amount": "10000000000",
     "state ": "완료"
   },
   {
@@ -29,15 +29,15 @@
     "username": "황수정",
     "password ": "11223344",
     "companyId ": "company_1",
-    "invest_amount": "30000000000",
+    "invest_amount": "5000000000",
     "state ": "완료"
   },
   {
     "id": "invest_5",
-    "username": "홍성훈",
+    "username": "김수빈빈",
     "password ": "abc123",
     "companyId ": "company_1",
-    "invest_amount": "500000000",
+    "invest_amount": "12000",
     "state ": "완료"
   },
 

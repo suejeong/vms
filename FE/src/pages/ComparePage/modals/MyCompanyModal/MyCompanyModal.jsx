@@ -1,8 +1,5 @@
 import React, { useState } from "react";
 import style from "./MyCompanyModal.module.scss";
-import deleteIc from "../../assets/ic_delete.png";
-import smallDeleteIc from "../../assets/ic_delete_circle_small.png";
-import searchIc from "../../assets/ic_search.png";
 
 export default function MyCompanyModal({
   isOpen,
@@ -54,7 +51,7 @@ export default function MyCompanyModal({
         <div className={style.header}>
           <h1>나의 기업 선택하기</h1>
           <button className={style.closeButton} onClick={onClose}>
-            <img src={deleteIc} alt="delete" />
+            <img src="/images/icons/ic_delete.png" alt="delete" />
           </button>
         </div>
         <div className={style.search}>
@@ -67,10 +64,13 @@ export default function MyCompanyModal({
           />
           <div className={style.inputButton}>
             <button className={style.deleteButton} onClick={handleDelete}>
-              <img src={smallDeleteIc} alt="delete" />
+              <img
+                src="/images/icons/ic_delete_circle_small.png"
+                alt="delete"
+              />
             </button>
             <button className={style.submitButton} onClick={handleSubmit}>
-              <img src={searchIc} alt="search" />
+              <img src="/images/icons/ic_search.png" alt="search" />
             </button>
           </div>
         </div>

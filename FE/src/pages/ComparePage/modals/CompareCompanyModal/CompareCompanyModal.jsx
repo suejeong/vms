@@ -1,8 +1,5 @@
 import React, { useState } from "react";
 import style from "./CompareCompanyModal.module.scss";
-import deleteIc from "../../assets/ic_delete.png";
-import searchIc from "../../assets/ic_search.png";
-import checkIc from "../../assets/ic_check.png";
 import { Pagination } from "./Pasination";
 
 export default function CompareCompanyModal({
@@ -77,7 +74,7 @@ export default function CompareCompanyModal({
         <div className={style.header}>
           <h1>비교할 기업 선택하기</h1>
           <button className={style.closeButton} onClick={onClose}>
-            <img src={deleteIc} alt="delete" />
+            <img src="/images/icons/ic_delete.png" alt="delete" />
           </button>
         </div>
         <div className={style.search}>
@@ -90,7 +87,7 @@ export default function CompareCompanyModal({
           />
           <div className={style.inputButton}>
             <button className={style.submitButton} onClick={handleSubmit}>
-              <img src={searchIc} alt="search" />
+              <img src="/images/icons/ic_search.png" alt="search" />
             </button>
           </div>
           <div className={style.selectedCompanies}>
@@ -132,7 +129,7 @@ export default function CompareCompanyModal({
                     </div>
                     {selectedCompanies.find((c) => c.id === company.id) ? (
                       <button className={style.selectButton} disabled>
-                        <img src={checkIc} alt="check" />
+                        <img src="/images/icons/ic_check.png" alt="check" />
                         선택 완료
                       </button>
                     ) : (
