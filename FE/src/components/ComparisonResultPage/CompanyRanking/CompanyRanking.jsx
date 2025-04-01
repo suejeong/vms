@@ -11,10 +11,16 @@ export const CompanyRanking = ({ myCompanyState }) => {
     setOrderByState(order);
   };
 
-  useEffect(() => {
-    const rankingListData = getCompanyRankingList(myCompanyState, orderByState);
-
+  const fetchData = async () => {
+    const rankingListData = await getCompanyRankingList(
+      myCompanyState,
+      orderByState
+    );
     setCompanyRankingListState(rankingListData);
+  };
+
+  useEffect(() => {
+    fetchData();
   }, [orderByState]);
 
   return (
@@ -44,7 +50,14 @@ export const CompanyRanking = ({ myCompanyState }) => {
             {companyRankingListState.map((company) => (
               <tr key={company.id}>
                 <td>{company.ranking}</td>
-                <td>{company.name}</td>
+                <td>
+                  <img
+                    src={`/images/companies/${company.name}.png`}
+                    alt={company.name}
+                    width="50"
+                  />
+                  {company.name}
+                </td>
                 <td>{company.description}</td>
                 <td>{company.category}</td>
                 <td>{company.totalInvestment}</td>
