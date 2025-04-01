@@ -76,6 +76,7 @@ export default function MyCompanyModal({
         </div>
         {inputValue ? (
           <div className={style.filteredCompanies}>
+            <p>검색 결과 ({filteredCompanies.length})</p>
             {filteredCompanies.length > 0 ? (
               filteredCompanies.map((company) => (
                 <div key={company.id} className={style.companyItem}>
