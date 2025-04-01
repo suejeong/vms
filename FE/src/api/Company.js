@@ -40,3 +40,10 @@ export const getCompanyRankingList = async (companyName, orderBy) => {
     return res.data;
   });
 };
+// 회사 순위로 리스트 가져오기
+export const updateViewInvestAmount = async () => {
+  return safeExecute(async () => {
+    const res = await instance.get(`/company/view`);
+    return res.data;
+  });
+};

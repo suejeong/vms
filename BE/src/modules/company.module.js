@@ -112,4 +112,49 @@ companyRouter.get("/ranking/:companyName", async (req, res, next) => {
   }
 });
 
+//전체기업에 대한 viewInvestAmount업데이트
+//강사님께서 투자 투자수정 투자삭제마다 뷰마이스타트업에서 받은 투자금을 건들지말고
+//뷰마이스타트업에서 받은 투자금 불러오는 페이지에서 처리하라고 하셔서
+//투자현황 페이지 만드시는 분이 이거 호출하시거나 변형하셔서 쓰시면 될거같습니다.
+companyRouter.get("/view", async (req, res, next) => {
+  //경로는 나중에 수정하세요
+  try {
+    //전체 회사 목록 가져오기
+    const companies = await prisma.company.findMany();
+
+    //각 회사의 투자 총액을 계산하여 업데이트
+    for (const company of companies) {
+      // 투자 총액 조회
+      const companyViewInvests = await prisma.invest.findMany({
+        where: {
+          companyId: company.id,
+        },
+        select: {
+          investAmount: true,
+        },
+      });
+
+      // 투자 금액 합산
+      const companyViewInvestTotal = companyViewInvests.reduce(
+        (total, invest) => total + invest.investAmount,
+        0
+      );
+
+      // 회사 테이블의 viewInvestAmount 업데이트
+      await prisma.company.update({
+        where: { id: company.id },
+        data: {
+          viewInvestAmount: companyViewInvestTotal,
+        },
+      });
+    }
+
+    const updatedCompany = await prisma.company.findMany();
+
+    res.json(updatedCompany);
+  } catch (error) {
+    next(error);
+  }
+});
+
 module.exports = companyRouter;
