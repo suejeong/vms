@@ -45,9 +45,14 @@ export const HomePage = () => {
 
   return (
     <section>
-      <div>
+      <div className={styles.headerRow}>
         <Title text={"전체 스타트업 목록"}/>
-        <Search />
+        <Search
+          searchInput={searchInput}
+          setSearchInput={setSearchInput}
+          setSearchKeyword={setSearchKeyword}
+          setCurrentPage={setCurrentPage}
+        />
         <Filter />
       </div>
     </section>
