@@ -2,7 +2,7 @@ import styles from "./MakeTableHeader.module.scss";
 
 export function MakeTableHeader({ Name, Rank, InvestAmount, Coment, button }) {
   return (
-    <div className={styles.boardHeader}>
+    <div className={styles.tableHeader}>
       <div className={styles.sizeMd}>{Name}</div>
       <div className={styles.sizeMd}>{Rank}</div>
       <div className={styles.sizeMd}>{InvestAmount}</div>

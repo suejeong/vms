@@ -40,9 +40,8 @@ export const CompareResult = ({
             {compareResultListState.map((company) => (
               <tr key={company.id}>
                 <img
-                  src={`../../../public/images/companies/${company.name}.png`}
+                  src={`/images/companies/${company.name}.png`}
                   alt={company.name}
-                  width="50"
                 />
                 <td>{company.description}</td>
                 <td>{company.category}</td>

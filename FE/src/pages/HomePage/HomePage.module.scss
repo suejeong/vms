@@ -59,3 +59,12 @@
     }
   }
 }
+
+
+.headerRow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap; // 줄바꿈 허용
+  gap: 1rem;
+  width: 100%;
+}

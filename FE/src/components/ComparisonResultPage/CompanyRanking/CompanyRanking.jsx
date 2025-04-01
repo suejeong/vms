@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { OrderByRanking } from "../OrderByRanking/OrderByRanking";
 import styles from "./CompanyRanking.module.scss";
-import { getCompanyRankingList } from "../../../api/company";
+import { getCompanyRankingList } from "../../../api/Company.js";
 
 export const CompanyRanking = ({ myCompanyState }) => {
   const [companyRankingListState, setCompanyRankingListState] = useState([]);
@@ -11,10 +11,16 @@ export const CompanyRanking = ({ myCompanyState }) => {
     setOrderByState(order);
   };
 
-  useEffect(() => {
-    const rankingListData = getCompanyRankingList(myCompanyState, orderByState);
-
+  const fetchData = async () => {
+    const rankingListData = await getCompanyRankingList(
+      myCompanyState,
+      orderByState
+    );
     setCompanyRankingListState(rankingListData);
+  };
+
+  useEffect(() => {
+    fetchData();
   }, [orderByState]);
 
   return (
@@ -46,7 +52,7 @@ export const CompanyRanking = ({ myCompanyState }) => {
                 <td>{company.ranking}</td>
                 <td>
                   <img
-                    src={`../../../public/images/companies/${company.name}.png`}
+                    src={`/images/companies/${company.name}.png`}
                     alt={company.name}
                     width="50"
                   />

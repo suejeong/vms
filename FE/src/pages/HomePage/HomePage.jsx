@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { getList } from "../../api";
 import styles from "./HomePage.module.scss";
-import HomePageBoardSearch from "../../components/HomePage/HomePageBoardSearch/HomePageBoardSearch";
-import HomePageBoardFilter from "../../components/HomePage/HomePageBoardFilter/HomePageBoardFilter";
-import HomePageBoardTitle from "../../components/HomePage/HomePageBoardTitle/HomePageBoardTitle";
-import HomePageBoardList from "../../components/HomePage/HomePageBoardList/HomePageBoardList";
-import HomePageBoardPagination from "../../components/HomePage/HomePageBoardPagination/HomePageBoardPagination";
+import Title from "../../components/Title/Title";
+import Search from "../../components/HomePage/HomePageBoardSearch/HomePageBoardSearch";
+import Filter from "../../components/HomePage/HomePageBoardFilter/HomePageBoardFilter";
 
 export const HomePage = () => {
   const [list, setList] = useState([]);
@@ -47,37 +45,15 @@ export const HomePage = () => {
 
   return (
     <section>
-      <div className={styles.companyBoard}>
-        <div className={styles.pageTopComponent}>
-          <h2 className={styles.totalListHead}>전체 스타트업 목록</h2>
-          <div className={styles.searchAndFilter}>
-            <HomePageBoardSearch
-              searchInput={searchInput}
-              setSearchInput={setSearchInput}
-              setSearchKeyword={setSearchKeyword}
-              setCurrentPage={setCurrentPage}
-            />
-            <HomePageBoardFilter
-              listState={filteredList}
-              setListState={setFilteredList}
-              currentState={currentState}
-              handleOrderChange={handleOrderChange}
-            />
-          </div>
-        </div>
-        <div className={styles.companyList}>
-          <HomePageBoardTitle />
-          <HomePageBoardList
-            companyList={paginatedList}
-            currentPage={currentPage}
-            itemsPerPage={itemsPerPage}
-          />
-          <HomePageBoardPagination
-            currentPage={currentPage}
-            totalPages={totalPages}
-            onPageChange={setCurrentPage}
-          />
-        </div>
+      <div className={styles.headerRow}>
+        <Title text={"전체 스타트업 목록"} />
+        <Search
+          searchInput={searchInput}
+          setSearchInput={setSearchInput}
+          setSearchKeyword={setSearchKeyword}
+          setCurrentPage={setCurrentPage}
+        />
+        <Filter />
       </div>
     </section>
   );

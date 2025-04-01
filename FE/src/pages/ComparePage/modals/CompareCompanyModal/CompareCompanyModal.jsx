@@ -1,20 +1,16 @@
 import React, { useState } from "react";
-import style from "./CompareCompany.module.scss";
-import deleteIc from "../../assets/ic_delete.png";
-import searchIc from "../../assets/ic_search.png";
-import companyIc from "../../assets/ic_company.png";
-import checkIc from "../../assets/ic_check.png";
+import style from "./CompareCompanyModal.module.scss";
 import { Pagination } from "./Pasination";
 
 export default function CompareCompanyModal({
   isOpen,
   onClose,
-  companyData,
+  companies,
   selectedCompanies,
   setSelectedCompanies,
 }) {
   const [inputValue, setInputValue] = useState("");
-  const [filteredCompanies, setFilteredCompanies] = useState(companyData);
+  const [filteredCompanies, setFilteredCompanies] = useState(companies);
   const [currentPage, setCurrentPage] = useState(1);
   const companiesPerPage = 5;
 
@@ -22,9 +18,9 @@ export default function CompareCompanyModal({
 
   const filterCompanies = (value) => {
     if (value.trim() === "") {
-      setFilteredCompanies(companyData);
+      setFilteredCompanies(companies);
     } else {
-      const filtered = companyData.filter((company) =>
+      const filtered = companies.filter((company) =>
         company.name.toLowerCase().includes(value.toLowerCase())
       );
       setFilteredCompanies(filtered);
@@ -51,7 +47,7 @@ export default function CompareCompanyModal({
   const totalPages = Math.ceil(filteredCompanies.length / companiesPerPage);
 
   const handleSubmit = () => {
-    const filtered = companyData.filter((company) =>
+    const filtered = companies.filter((company) =>
       company.name.toLowerCase().includes(inputValue.toLowerCase())
     );
     setFilteredCompanies(filtered);
@@ -78,7 +74,7 @@ export default function CompareCompanyModal({
         <div className={style.header}>
           <h1>비교할 기업 선택하기</h1>
           <button className={style.closeButton} onClick={onClose}>
-            <img src={deleteIc} alt="delete" />
+            <img src="/images/icons/ic_delete.png" alt="delete" />
           </button>
         </div>
         <div className={style.search}>
@@ -91,7 +87,7 @@ export default function CompareCompanyModal({
           />
           <div className={style.inputButton}>
             <button className={style.submitButton} onClick={handleSubmit}>
-              <img src={searchIc} alt="search" />
+              <img src="/images/icons/ic_search.png" alt="search" />
             </button>
           </div>
           <div className={style.selectedCompanies}>
@@ -99,7 +95,10 @@ export default function CompareCompanyModal({
             {selectedCompanies.map((company) => (
               <div key={company.id} className={style.companyItem}>
                 <div className={style.companyInfo}>
-                  <img src={companyIc} alt="company" />
+                  <img
+                    src={`/images/companies/${company.name}.png`}
+                    alt="company"
+                  />
                   <p className={style.companyName}>{company.name}</p>
                   <p className={style.companyCategory}>{company.category}</p>
                 </div>
@@ -119,7 +118,10 @@ export default function CompareCompanyModal({
                 currentCompanies.map((company) => (
                   <div key={company.id} className={style.companyItem}>
                     <div className={style.companyInfo}>
-                      <img src={companyIc} alt="company" />
+                      <img
+                        src={`/images/companies/${company.name}.png`}
+                        alt="company"
+                      />
                       <p className={style.companyName}>{company.name}</p>
                       <p className={style.companyCategory}>
                         {company.category}
@@ -127,7 +129,7 @@ export default function CompareCompanyModal({
                     </div>
                     {selectedCompanies.find((c) => c.id === company.id) ? (
                       <button className={style.selectButton} disabled>
-                        <img src={checkIc} alt="check" />
+                        <img src="/images/icons/ic_check.png" alt="check" />
                         선택 완료
                       </button>
                     ) : (
