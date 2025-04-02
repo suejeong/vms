@@ -1,0 +1,46 @@
+.searchKeyword {
+    display: flex;
+    align-items: center;
+    height: 3rem;
+    border: 1px solid #747474;
+    border-radius: 0.625rem;
+    background-color: #131313;
+    color: #d8d8d8;
+    font-size: 0.875rem;
+    padding: 1rem 1rem 1rem 2.75rem;
+    background: url('../../../public/images/icons/ic_search.png');
+    background-repeat: no-repeat;
+    background-position: 1rem;
+    min-width: 10rem;
+    max-width: 28rem;
+    width: 28rem;
+    flex: 1 1 100%;
+
+    @media only screen and (min-width: 24.01rem) and  (max-width: 46.4375rem) { 
+        height: 2.5rem;
+        font-size: 0.75rem;
+        width: 16.81rem;
+        
+    }
+
+    @media only screen and (max-width: 24rem) {
+        height: 2.5rem;
+        font-size: 0.75rem;
+        width: 11.81rem;
+        padding: 1rem 1rem 1rem 2.75rem;
+        box-sizing: border-box;
+    }
+
+  }
+
+  .searchKeyword::placeholder {
+    color: #d8d8d8;
+    opacity: 1;
+  }
+
+  .searchKeyword:focus::placeholder {
+    color: transparent;
+  }
+
+
+  

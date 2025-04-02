@@ -1,6 +1,4 @@
 import React from "react";
-import leftArrow from "../../assets/ic_arrow_left.png";
-import rightArrow from "../../assets/ic_arrow_right.png";
 import style from "./Pasination.module.scss";
 
 export const Pagination = ({ currentPage, totalPages, onPageChange }) => {
@@ -36,7 +34,7 @@ export const Pagination = ({ currentPage, totalPages, onPageChange }) => {
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
       >
-        <img src={leftArrow} alt="previous" />
+        <img src="/images/icons/ic_arrow_left.png" alt="previous" />
       </button>
       <div className={style.navigationBar}>
         {getPageNumbers().map((number) => (
@@ -55,7 +53,7 @@ export const Pagination = ({ currentPage, totalPages, onPageChange }) => {
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
       >
-        <img src={rightArrow} alt="next" />
+        <img src="/images/icons/ic_arrow_right.png" alt="next" />
       </button>
     </div>
   );

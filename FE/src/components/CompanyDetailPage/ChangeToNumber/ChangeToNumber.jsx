@@ -3,7 +3,7 @@ export function ChangeToNumber(stringData) {
 
   if (isNaN(num)) return stringData;
   else {
-    const tmp = { first: " 조 ", second: " 억 ", third: " 만 ", forth: " 원 " };
+    const tmp = { first: "조 ", second: "억 ", third: "만 ", forth: "원 " };
     const first = Math.floor(num / 1000000000000);
     const second = Math.floor((num % 1000000000000) / 100000000);
     const third = Math.floor((num % 100000000) / 10000);
