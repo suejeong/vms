@@ -20,12 +20,12 @@ investRouter.get("/", async (req, res, next) => {
 });
 
 //투정정보 하나 가져오기
-investRouter.get("/investId", async (req, res, next) => {
+investRouter.get("/:investId", async (req, res, next) => {
   try {
     const { investId } = req.params;
 
     const invest = await prisma.invest.findUnique({
-      where: { investId },
+      where: { id: investId },
     });
 
     if (invest.length === 0) {
@@ -46,7 +46,7 @@ investRouter.get("/company/:companyId", async (req, res, next) => {
     const { companyId } = req.params;
 
     const invests = await prisma.invest.findMany({
-      where: { companyId },
+      where: { companyId: companyId },
     });
 
     if (invests.length === 0) {
@@ -64,10 +64,8 @@ investRouter.get("/company/:companyId", async (req, res, next) => {
 // 투자 정보 추가하기
 investRouter.post("/", async (req, res, next) => {
   try {
-    //새로운 투자 정보를 변수에 담음
     const Investdata = req.body;
 
-    //투자 테이블에 새로운 투자 정보를 넣음
     const newInvest = await prisma.invest.create({
       data: {
         username: Investdata.username,
@@ -77,14 +75,6 @@ investRouter.post("/", async (req, res, next) => {
         comment: Investdata.comment,
       },
     });
-
-    //기존 뷰마이스타트업에서 받음 투자금 기업테이블 더하여 최신화
-    // const updatedCompany = await prisma.company.update({
-    //   where: { id: Investdata.companyId },
-    //   data: {
-    //     viewInvestAmount: { increment: Investdata.investAmount }, //기존값 - deleteInvest.investAmount"
-    //   },
-    // });
 
     res.status(201).json(newInvest);
   } catch (error) {
@@ -99,7 +89,6 @@ investRouter.put("/:investId", async (req, res, next) => {
 
     const Investdata = req.body;
 
-    //  수정할 투자 정보 조회
     const findInvest = await prisma.invest.findUnique({
       where: { id: investId },
     });
@@ -143,15 +132,6 @@ investRouter.delete("/:investId", async (req, res, next) => {
     await prisma.invest.delete({
       where: { id: investId },
     });
-
-    //기존 뷰마이스타트업에서 받음 투자금 기업테이블에 최신화
-    // const updatedCompany = await prisma.company.update({
-    //   where: { id: deleteInvest.companyId },
-    //   data: {
-    //     viewInvestAmount: { decrement: deleteInvest.investAmount }, //기존값 - deleteInvest.investAmount"
-    //   },
-    // });
-
     res.json({ message: "투자 정보가 삭제되었습니다." });
   } catch (error) {
     next(error);
