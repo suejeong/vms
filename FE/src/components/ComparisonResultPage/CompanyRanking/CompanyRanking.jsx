@@ -54,7 +54,6 @@ export const CompanyRanking = ({ myCompanyState }) => {
                   <img
                     src={`/images/companies/${company.name}.png`}
                     alt={company.name}
-                    width="50"
                   />
                   {company.name}
                 </td>
