@@ -1,0 +1,18 @@
+.topGroupLayout {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 100%;
+    min-width: 23.4375rem;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+
+    @media only screen and (min-width: 23.375rem) and (max-width: 46.4375rem) {
+
+  }
+
+    @media only screen and  (min-width: 0 ) and (max-width: 23.374rem) {
+        flex-wrap: wrap;
+        padding: 0 0.75rem;
+    }
+}

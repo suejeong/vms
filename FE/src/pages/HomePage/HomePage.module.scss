@@ -5,23 +5,6 @@
   display: flex;
   flex-direction: column;
 
-  .pageTopComponent {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 100%;
-    min-width: 23.4375rem;
-
-    .totalListHead {
-      font-size: 1.25rem;
-      font-weight: 700;
-    }
-
-    .searchAndFilter {
-      display: flex;
-      justify-content: end;
-    }
-  }
 }
 
 .companyList {
@@ -36,35 +19,27 @@
 }
 
 /* Mobile (375px ~ 743px) */
-@media only screen and (min-width: 0) and (max-width: 46.4375rem) {
+@media only screen and (min-width: 23.375) and (max-width: 46.4375rem) {
   .companyBoard {
     padding: 0 1rem;
 
-    .pageTopComponent {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      align-self: flex-start;
-
-      .totalListHead {
-        font-size: 1rem;
-        align-self: flex-start;
-        margin-bottom: 1rem;
-        margin-top: 0;
-      }
-
-      .searchAndFilter {
-        align-self: flex-start;
-      }
-    }
   }
 }
 
+@media only screen and  (min-width: 0 ) and (max-width: 23.374) {
+  .companyBoard {
+    padding: 0 1rem;
 
-.headerRow {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap; // 줄바꿈 허용
-  gap: 1rem;
-  width: 100%;
+    .headerRow {
+      display: flex;
+      flex-wrap: wrap; // 줄바꿈 허용
+      gap: 1rem;
+      width: 100%;
+
+      .itemAlign {
+        justify-content: flex-start;
+        
+      }
+    }
+  }
 }

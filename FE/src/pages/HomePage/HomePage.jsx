@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { getList } from "../../api";
 import styles from "./HomePage.module.scss";
+import TopGroupLayout from "../../components/TopGroupLayout/TopGroupLayout";
 import Title from "../../components/Title/Title";
-import Search from "../../components/HomePage/HomePageBoardSearch/HomePageBoardSearch";
-import Filter from "../../components/HomePage/HomePageBoardFilter/HomePageBoardFilter";
+
+import Search from "../../components/Search/Search";
+import Filter from "../../components/Filter/Filter";
 
 export const HomePage = () => {
   const [list, setList] = useState([]);
@@ -45,15 +47,19 @@ export const HomePage = () => {
 
   return (
     <section>
-      <div className={styles.headerRow}>
-        <Title text={"전체 스타트업 목록"} />
-        <Search
-          searchInput={searchInput}
-          setSearchInput={setSearchInput}
-          setSearchKeyword={setSearchKeyword}
-          setCurrentPage={setCurrentPage}
-        />
-        <Filter />
+      <div className={styles.companyBoard}>
+        <TopGroupLayout>
+          <Title text={"전체 스타트업 목록"} />
+          <Search
+            searchInput={searchInput}
+            setSearchInput={setSearchInput}
+            setSearchKeyword={setSearchKeyword}
+            setCurrentPage={setCurrentPage}
+          />
+          <Filter />
+        </TopGroupLayout>
+        <div>board-header</div>
+        <div>board-list</div>
       </div>
     </section>
   );

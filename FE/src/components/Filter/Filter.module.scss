@@ -1,0 +1,89 @@
+.filter {
+    display: flex;
+    align-items: center;
+}
+
+.dropdownContainer {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdownButton {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--gray-100);
+    border: 1px solid var(--gray-200);
+    border-radius: 0.625rem;
+    width: 11rem;
+    height: 3rem;
+    padding: 0.2rem;
+    margin-left: 0.6rem;
+    font-size: 0.865rem;
+     
+    p {
+        color: var(--gray-100);
+        font-weight: 500;
+        font-size: 0.865rem;
+        text-align: left;
+        padding-left: 0.65rem;
+     }
+  }
+  
+  .dropdownArrowImg {
+    cursor: pointer;
+  }
+  
+  .dropdownMenu {
+    position: absolute;
+    top: calc(100% + 0.25rem);
+    left: 0.6rem;
+    border: 1px solid var(--gray-200);
+    border-radius: 0.625rem;
+    width: max-content;
+    width: 11rem;
+    list-style: none;
+    margin-top: 0.2rem;
+    background-color: var(--black-400);
+    z-index: 999;
+  }
+  
+  .dropdownMenu li {
+    color: var(--gray-100);
+    cursor: pointer;
+    text-align: center;
+    padding: 0.7rem 0.1rem;
+    border-bottom: 1px solid var(--gray-200);
+    font-size: 0.865rem;
+  }
+  
+  .dropdownMenu li:last-child {
+    border-bottom: none;
+  }
+  
+
+
+
+@media only screen and (min-width: 24.01rem) and (max-width: 46.4375rem) { 
+.dropdownButton {
+    height: 2.5rem;
+    }
+
+    .dropdownMenu li {
+        font-size: 0.75rem;
+    }
+}
+
+@media only screen and  (min-width: 0 ) and (max-width: 24rem) {
+    .dropdownButton {
+        height: 2.5rem;
+        box-sizing: border-box;
+        width: 9.125rem;
+        margin-left: 0.3rem;
+        }
+    
+        .dropdownMenu li {
+            font-size: 0.75rem;
+        }
+
+}
