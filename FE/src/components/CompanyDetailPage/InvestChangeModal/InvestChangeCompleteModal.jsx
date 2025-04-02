@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import styles from "./InvestModal.module.scss";
+import styles from "./InvestChangeCompleteModal.module.scss";
 
-export default function InvestmentPanel({ investState }) {
+export default function InvestmentPanel({ modalChangeState }) {
   const [form, setForm] = useState({});
   const [success, setSuccess] = useState(false);
   const [showPassword, setShowPassword] = useState({
@@ -36,8 +36,8 @@ export default function InvestmentPanel({ investState }) {
         <>
           <div className={styles.panelHeader}>
             <div className={styles.headerContent}>
-              <h2 className={styles.title}>기업에 투자하기</h2>
-              <button onClick={investState} className={styles.closeButton}>
+              <h2 className={styles.title}>기업에 투자 수정하기</h2>
+              <button onClick={modalChangeState} className={styles.closeButton}>
                 <img
                   src="/images/icons/ic_delete.png"
                   alt="close"
@@ -160,7 +160,7 @@ export default function InvestmentPanel({ investState }) {
             </div>
             <div className={styles.buttonGroup}>
               <button
-                onClick={investState}
+                onClick={modalChangeState}
                 className={`${styles.button} ${styles.cancelButton}`}
               >
                 취소
@@ -169,7 +169,7 @@ export default function InvestmentPanel({ investState }) {
                 type="submit"
                 className={`${styles.button} ${styles.submitButton}`}
               >
-                투자하기
+                수정하기
               </button>
             </div>
           </form>
@@ -178,7 +178,7 @@ export default function InvestmentPanel({ investState }) {
         <div className={styles.successPanelContainer}>
           <div className={styles.successPanelHeader}>
             <button
-              onClick={investState}
+              onClick={modalChangeState}
               className={`${styles.successCloseButton} ${styles.closeButton}`}
             >
               <img
@@ -188,9 +188,9 @@ export default function InvestmentPanel({ investState }) {
               />
             </button>
           </div>
-          <h2 className={styles.successTitle}>투자가 완료되었어요!</h2>
+          <h2 className={styles.successTitle}>수정이 완료되었어요!</h2>
           <button
-            onClick={investState}
+            onClick={modalChangeState}
             className={`${styles.successCancleButton} ${styles.button} ${styles.cancelButton}`}
           >
             확인
