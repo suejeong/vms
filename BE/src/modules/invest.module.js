@@ -44,7 +44,6 @@ investRouter.get("/:investId", async (req, res, next) => {
 investRouter.get("/company/:companyId", async (req, res, next) => {
   try {
     const { companyId } = req.params;
-
     const invests = await prisma.invest.findMany({
       where: { companyId: companyId },
     });

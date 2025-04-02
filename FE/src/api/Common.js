@@ -5,11 +5,11 @@ const VITE_BASE_URL = import.meta.env.VITE_BASE_URL;
 
 // 인스턴스
 export const instance = axios.create({
-  //배포 환경
-  baseURL: VITE_API_URL,
+  // //배포 환경
+  // baseURL: VITE_API_URL,
 
   //로컬 환경
-  // baseURL: VITE_BASE_URL 
+  baseURL: VITE_BASE_URL,
 });
 
 // 에러 처리
