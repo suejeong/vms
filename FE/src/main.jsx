@@ -21,7 +21,7 @@ const router = createBrowserRouter([
       { path: "/compare", element: <ComparePage /> },
       { path: "/status", element: <StatusPage /> },
       { path: "/investment", element: <InvestmentPage /> },
-      { path: "/companyDetail/:companyId", element: <CompanyDetailPage /> },
+      { path: "/detail/:companyId", element: <CompanyDetailPage /> },
     ],
   },
 ]);
