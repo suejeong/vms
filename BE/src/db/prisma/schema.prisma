@@ -23,14 +23,13 @@ model Company {
 }
 
 model Invest {
-  id            String         @id @default(uuid())
-  username      String         @db.VarChar
-  password      String         @db.VarChar
-  companyId     String
-  investAmount  Int
-  comment       String         @db.VarChar
-  company       Company        @relation(fields: [companyId], references: [id], onDelete: Cascade)
-  
+  id           String  @id @default(uuid())
+  username     String  @db.VarChar
+  password     String  @db.VarChar
+  companyId    String
+  investAmount Int
+  comment      String  @default("") @db.VarChar
+  company      Company @relation(fields: [companyId], references: [id], onDelete: Cascade)
 }
 
 enum Category {
