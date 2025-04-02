@@ -37,10 +37,10 @@ export const OrderByCompareResultList = ({
         sortedList.sort((a, b) => a.totalProfit - b.totalProfit);
         break;
       case "고용 인원 많은순":
-        sortedList.sort((a, b) => b.employee_count - a.employee_count);
+        sortedList.sort((a, b) => b.employeeCount - a.employeeCount);
         break;
       case "고용 인원 적은순":
-        sortedList.sort((a, b) => a.employee_count - b.employee_count);
+        sortedList.sort((a, b) => a.employeeCount - b.employeeCount);
         break;
       default:
         break;
