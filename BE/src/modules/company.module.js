@@ -14,11 +14,11 @@ companyRouter.get("/", async (req, res, next) => {
 });
 
 // 회사 하나 정보로 가져오기
-companyRouter.get("/detail/:companyID", async (req, res, next) => {
-  const { companyID } = req.params;
+companyRouter.get("/detail/:companyId", async (req, res, next) => {
+  const { companyId } = req.params;
   try {
     const company = await prisma.company.findUnique({
-      where: { companyID },
+      where: { id: companyId },
     });
     res.json(company);
   } catch (error) {
@@ -120,7 +120,9 @@ companyRouter.get("/view", async (req, res, next) => {
   //경로는 나중에 수정하세요
   try {
     //전체 회사 목록 가져오기
-    const companies = await prisma.company.findMany();
+
+    const companies = await prisma.$queryRaw;
+    //여기 뒤에 sql 넣기 챗지피티 도움받기기
 
     //각 회사의 투자 총액을 계산하여 업데이트
     for (const company of companies) {

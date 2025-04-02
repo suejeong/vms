@@ -1,13 +1,15 @@
 import styles from "./InvestHeader.module.scss";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import InvestModal from "../InvestModal/InvestModal";
 
 export function InvestHeader() {
   const modalBackground = useRef();
+
   const investState = () => {
     setInvestModalState(false);
   };
   const [investModalState, setInvestModalState] = useState(false);
+
   return (
     <div className={styles.ViewMyStartUpHeader}>
       <p className={styles.detialPageWeight700}>
@@ -24,8 +26,10 @@ export function InvestHeader() {
       {investModalState && (
         <div
           ref={modalBackground}
-          className={styles.modalOverlay} // 추가된 스타일
+          className={styles.modalOverlay}
           onClick={(e) => {
+            console.log("Clicked element:", e.target);
+            console.log("Modal background element:", modalBackground.current);
             if (
               modalBackground.current &&
               e.target === modalBackground.current
