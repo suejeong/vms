@@ -14,12 +14,24 @@
   width: 100%;
   height: 20rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   flex-direction: column;
 
   border-radius: 0.25rem; /* 4px */
   background-color: #2e2e2e;
+}
+
+.investNoData {
+  max-width: 75rem; /* 1200px */
+  width: 100%;
+  height: 20rem;
+  font-size: 0.875rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #747474;
 }
 
 .modalOverlay {

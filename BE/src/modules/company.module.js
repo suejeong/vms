@@ -12,6 +12,7 @@ companyRouter.get("/", async (req, res, next) => {
     next(error);
   }
 });
+//sss
 
 // 회사 하나 정보로 가져오기
 companyRouter.get("/detail/:companyId", async (req, res, next) => {
