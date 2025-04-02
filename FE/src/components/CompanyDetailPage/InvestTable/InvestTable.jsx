@@ -3,6 +3,7 @@ import ChangeToNumber from "../ChangeToNumber/ChangeToNumber";
 import DeleteAndChangeModal from "../DeleteAndChangeModal/DeleteAndChangeModal";
 import InvestDeleteModal from "../InvestDeleteModal/InvestDeleteModal";
 import InvestChangeModal from "../InvestChangeModal/InvestChangeModal";
+import InvestChangeCompleteModal from "../InvestChangeModal/InvestChangeCompleteModal";
 import MakeTableRow from "../MakeTableRow/MakeTableRow";
 import MakeTableHeader from "../MakeTableRow/MakeTableHeader";
 import { useState, useRef } from "react";
@@ -11,6 +12,8 @@ export function InvestTable({ investData }) {
   const [modalState, setModalState] = useState(false);
   const [investDeleteModalState, setInvestDeleteModalState] = useState(false);
   const [investChangeModalState, setInvestChangeModalState] = useState(false);
+  const [investChangeCompleteModalState, setInvestChangeCompleteModalState] =
+    useState(false);
   const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
   const modalBackground = useRef();
 
@@ -21,13 +24,21 @@ export function InvestTable({ investData }) {
   const modalChangeState = () => {
     setInvestChangeModalState(false);
   };
-  const modalChangeStates = () => {
-    setModalState(false);
-    setInvestChangeModalState(true);
+
+  const modalChangeCompleteState = () => {
+    setInvestChangeCompleteModalState(false);
   };
   const modalDeleteStates = () => {
     setModalState(false);
     setInvestDeleteModalState(true);
+  };
+  const modalChangeStates = () => {
+    setModalState(false);
+    setInvestChangeModalState(true);
+  };
+  const modalChangeCompleteStates = () => {
+    setInvestChangeModalState(false);
+    setInvestChangeCompleteModalState(true);
   };
   const handleButtonClick = (e) => {
     const rect = e.target.getBoundingClientRect();
@@ -179,7 +190,7 @@ export function InvestTable({ investData }) {
       {modalState && (
         <div
           ref={modalBackground}
-          className={styles.modalOverlay} // 추가된 스타일
+          className={styles.modalOverlay}
           onClick={(e) => {
             if (
               modalBackground.current &&
@@ -226,7 +237,7 @@ export function InvestTable({ investData }) {
         {investChangeModalState && (
           <div
             ref={modalBackground}
-            className={styles.modalOverlay} // 추가된 스타일
+            className={styles.modalOverlay} //
             onClick={(e) => {
               if (
                 modalBackground.current &&
@@ -239,6 +250,30 @@ export function InvestTable({ investData }) {
             <InvestChangeModal
               modalChangeState={() => {
                 modalChangeState();
+              }}
+              modalChangeCompleteStates={() => {
+                modalChangeCompleteStates();
+              }}
+            />
+          </div>
+        )}
+
+        {investChangeCompleteModalState && (
+          <div
+            ref={modalBackground}
+            className={styles.modalOverlay} //
+            onClick={(e) => {
+              if (
+                modalBackground.current &&
+                e.target === modalBackground.current
+              ) {
+                modalChangeCompleteState(false);
+              }
+            }}
+          >
+            <InvestChangeCompleteModal
+              modalChangeState={() => {
+                modalChangeCompleteState();
               }}
             />
           </div>

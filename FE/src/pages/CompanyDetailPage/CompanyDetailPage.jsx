@@ -8,8 +8,51 @@ import PaseNationButton from "../../components/CompanyDetailPage/PaseNationButto
 import companydetail from "./data/companydetail.json";
 import invest from "./data/invest.json";
 import logo from "../../../public/images/companies/네이버.png";
+import { getCompany } from "../../api/Company";
+import { getCompanyInvest } from "../../api/Invest";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 export function CompanyDetailPage() {
+  // 기업 상세 페이지에 필요한 하나의 기업 정보 state
+  const [companyD, setCompanyD] = useState(null);
+  // 기업 상세 페이지에 필요한 기업 하나의 투자 정보 state
+  const [investD, setInvestD] = useState([]);
+  // 가져올 회사 ID (예제, 실제로는 props나 params에서 가져올 수도 있음)
+  const companyId = useParams();
+
+  // 컴포넌트가 처음 마운트될 때 API 호출
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        //기업아이디 확인
+
+        console.log("Company ID:", companyId); //
+        // 기업 데이터 가져오기
+        const companyData11 = await getCompany(companyId);
+        setCompanyD(companyData11);
+        //✅ 데이터 확인
+        console.log("Company Data:", companyD); //
+
+        // 투자 데이터 가져오기
+        const investData11 = await getCompanyInvest(companyId);
+        setInvestD(investData11);
+
+        // ✅ 데이터 확인
+        console.log("Investment Data:", investDatas);
+      } catch (error) {
+        console.error("데이터를 불러오는 중 오류 발생:", error);
+      }
+    };
+
+    fetchData(); // 비동기 함수 실행
+  }, [companyId]); // ✅ 빈 배열([]) → 컴포넌트 마운트 시 한 번만 실행
+
+  // ✅ 데이터가 아직 없으면 로딩 표시
+  if (!companyD) {
+    return <div>로딩 중...</div>;
+  }
+
   const companydetaildata = companydetail;
   const investdatas = invest;
 

@@ -6,7 +6,6 @@ import Title from "../../components/Title/Title";
 // import Search from "../../components/Search/Search";
 // import Filter from "../../components/Filter/Filter";
 
-
 export const HomePage = () => {
   const [list, setList] = useState([]);
   const [searchInput, setSearchInput] = useState("");
