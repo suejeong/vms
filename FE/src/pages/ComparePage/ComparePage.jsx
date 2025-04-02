@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import style from "./ComparePage.module.scss";
 import { getCompanyList, getComparedcompany } from "../../api/Company.js";
 import CompanyContainer from "./components/CompanyContainer/CompanyContainer.jsx";
@@ -7,6 +7,7 @@ import { MyCompany } from "../../components/ComparisonResultPage/MyCompany/MyCom
 import { CompareResult } from "../../components/ComparisonResultPage/CompareResult/CompareResult.jsx";
 import { CompanyRanking } from "../../components/ComparisonResultPage/CompanyRanking/CompanyRanking.jsx";
 import Modal from "./modals/Modal/Modal.jsx";
+import Title from "../../components/Title/Title.jsx";
 
 export default function ComparePage() {
   // 모달 오픈 유무 스테이트
@@ -68,17 +69,13 @@ export default function ComparePage() {
     handleChangeCompareResultState();
   };
 
-  useEffect(() => {
-    console.log("setCompareResultListState", compareResultListState);
-  }, [compareResultListState]);
-
   return (
     <>
       {!compareResultState ? (
         <section className={style.section}>
           <div className={style.resetMyCompany}>
-            <h1>나의 기업을 선택해 주세요!</h1>
-            {myCompany && (
+            <Title text="나의 기업을 선택해 주세요!" />
+            {myCompany && compareCompanies.length > 0 && (
               <button
                 className={style.resetMyCompanyButton}
                 onClick={() => {
@@ -103,7 +100,7 @@ export default function ComparePage() {
             <>
               <div className={style.addCompareCompany}>
                 <div className={style.compareCompanyLetter}>
-                  <h1>어떤 기업이 궁금하세요?</h1>
+                  <Title text="어떤 기업이 궁금하세요?" />
                   {compareCompanies.length > 0 && <p>(최대 5개)</p>}
                 </div>
                 <button

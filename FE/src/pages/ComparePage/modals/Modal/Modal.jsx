@@ -5,6 +5,7 @@ import CompareCompanyModal from "../CompareCompanyModal/CompareCompanyModal";
 import { Pagination } from "../../components/Pasination/Pasination";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import { getChoseong } from "es-hangul";
+import Title from "../../../../components/Title/Title";
 
 function Modal({
   isOpen,
@@ -27,12 +28,31 @@ function Modal({
   const filterCompanies = (value) => {
     if (value.trim() === "") {
       setFilteredCompanies([]);
-    } else {
-      const filtered = companies.filter((company) =>
-        getChoseong(company.name).includes(getChoseong(value))
-      );
-      setFilteredCompanies(filtered);
+      return;
     }
+
+    const inputChoseong = getChoseong(value);
+    const isValidChoseong = /^[ㄱ-ㅎ]+$/.test(inputChoseong);
+
+    if (!isValidChoseong) {
+      setFilteredCompanies([]);
+      return;
+    }
+
+    const filteredCompanies = companies.filter(
+      (company) => !myCompany || company.id !== myCompany.id
+    );
+
+    const filtered = filteredCompanies.filter((company) => {
+      const companyName = company.name;
+      const companyChoseong = getChoseong(companyName);
+
+      return (
+        companyName.includes(value) || companyChoseong.includes(inputChoseong)
+      );
+    });
+
+    setFilteredCompanies(filtered);
     setCurrentPage(1);
   };
 
@@ -49,7 +69,11 @@ function Modal({
   };
 
   const handleSubmit = () => {
-    const filtered = companies.filter((company) =>
+    const filteredCompanies = companies.filter(
+      (company) => !myCompany || company.id !== myCompany.id
+    );
+
+    const filtered = filteredCompanies.filter((company) =>
       company.name.toLowerCase().includes(inputValue.toLowerCase())
     );
     setFilteredCompanies(filtered);
@@ -62,6 +86,12 @@ function Modal({
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
+  };
+
+  const handleDeselect = (companyId) => {
+    setSelectedCompanies((prev) =>
+      prev.filter((company) => company.id !== companyId)
+    );
   };
 
   const indexOfLastCompany = currentPage * companiesPerPage;
@@ -85,9 +115,9 @@ function Modal({
       <div className={style.content}>
         <div className={style.header}>
           {!myCompany ? (
-            <h1>나의 기업 선택하기</h1>
+            <Title text="나의 기업 선택하기" />
           ) : (
-            <h1>비교할 기업 선택하기</h1>
+            <Title text="비교할 기업 선택하기" />
           )}
           <button className={style.closeButton} onClick={onClose}>
             <img src="/images/icons/ic_delete.png" alt="delete" />
@@ -107,14 +137,18 @@ function Modal({
             currentCompanies={currentCompanies}
             inputValue={inputValue}
             selectedCompanies={selectedCompanies}
+            myCompany={myCompany}
+            handleDeselect={handleDeselect}
           />
         ) : (
           <CompareCompanyModal
-            filteredCompanies={filterCompanies}
+            filteredCompanies={filteredCompanies}
             selectedCompanies={selectedCompanies}
             setSelectedCompanies={setSelectedCompanies}
             currentCompanies={currentCompanies}
             inputValue={inputValue}
+            handleDeselect={handleDeselect}
+            myCompany={myCompany}
           />
         )}
         <div className={style.searchCompany}>

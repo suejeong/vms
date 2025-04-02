@@ -9,6 +9,8 @@ export default function CompareCompanyModal({
   setSelectedCompanies,
   currentCompanies,
   inputValue,
+  handleDeselect,
+  myCompany,
 }) {
   const handleCompareCompanySelect = (company) => {
     if (
@@ -17,12 +19,6 @@ export default function CompareCompanyModal({
     ) {
       setSelectedCompanies((prev) => [...prev, company]);
     }
-  };
-
-  const handleDeselect = (companyId) => {
-    setSelectedCompanies((prev) =>
-      prev.filter((company) => company.id !== companyId)
-    );
   };
 
   return (
@@ -49,6 +45,8 @@ export default function CompareCompanyModal({
         currentCompanies={currentCompanies}
         selectedCompanies={selectedCompanies}
         handleSelect={handleCompareCompanySelect}
+        handleDeselect={handleDeselect}
+        myCompany={myCompany}
       />
     </>
   );

@@ -6,6 +6,14 @@
   color: var(--brand-orange);
 }
 
+.deselectButton {
+  width: 6.5rem;
+  height: 3rem;
+  border-radius: 0.625rem;
+  border: 1px solid var(--gray-200);
+  color: var(--gray-200);
+}
+
 .selectButton:disabled {
   display: flex;
   align-items: center;
@@ -86,5 +94,11 @@ span {
   .companyInfo img {
     width: 2.5rem;
     height: 2.5rem;
+  }
+
+  .deselectButton {
+    width: 4.5625rem;
+    height: 2rem;
+    border-radius: 0.5rem;
   }
 }
