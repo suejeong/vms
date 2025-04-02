@@ -125,19 +125,7 @@ export function InvestTable({ investData }) {
   const headerKey = headers.map((header) => header.value);
   return (
     <div>
-      {/* <div className={styles.investTableHeader}>
-        {headers.map((header) => (
-          <div
-            key={header.text}
-            className={styles.detialPageWeight500}
-            style={{ fontSize: "14px" }}
-          >
-            {header.text}
-          </div>
-        ))}
-      </div> */}
-
-      <div className={styles.investTableBody} style={{ marginBottom: "16px" }}>
+      <div className={styles.investTableHeader}>
         <MakeTableHeader
           Name={"투자자 이름"}
           Rank={"순위"}
@@ -182,24 +170,11 @@ export function InvestTable({ investData }) {
           InvestAmount={items[4].investAmount}
           Coment={items[4].investComnet}
           button={items[4].button}
+          style={{
+            border: "0",
+          }}
         ></MakeTableRow>
       </div>
-
-      {/* <div className={styles.investTableBody} style={{ marginTop: "16px" }}>
-        {items.map((item, index) => (
-          <div
-            key={index}
-            id={`rowdiv${index}`}
-            className={styles.investTableRow}
-          >
-            {headerKey.map((key) => (
-              <div key={key + index} className={styles.detialPageWeight400}>
-                {item[key]}
-              </div>
-            ))}
-          </div>
-        ))}
-      </div> */}
 
       {modalState && (
         <div

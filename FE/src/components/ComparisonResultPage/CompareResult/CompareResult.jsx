@@ -15,7 +15,7 @@ export const CompareResult = ({
   return (
     <>
       <section className={styles.titleArea}>
-        <p className={styles.titleText}>기업 순위 확인하기</p>
+        <p className={styles.titleText}>비교 결과 확인하기</p>
         <OrderByCompareResultList
           listState={compareResultListState}
           setListState={setCompareResultListState}
@@ -39,7 +39,13 @@ export const CompareResult = ({
           <tbody>
             {compareResultListState.map((company) => (
               <tr key={company.id}>
-                <td>{company.name}</td>
+                <td>
+                  <img
+                    src={`/images/companies/${company.name}.png`}
+                    alt={company.name}
+                  />
+                  {company.name}
+                </td>
                 <td>{company.description}</td>
                 <td>{company.category}</td>
                 <td>{company.totalInvestment}</td>

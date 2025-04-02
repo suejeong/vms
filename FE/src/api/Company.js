@@ -1,4 +1,4 @@
-import { instance, safeExecute } from "./Common";
+import { instance, safeExecute } from "./Common.js";
 
 //전체 회사 리스트 가져오기
 export const getCompanyList = async () => {
@@ -37,6 +37,13 @@ export const getCompanyRankingList = async (companyName, orderBy) => {
       `/company/ranking/${companyName}?orderBy=${orderBy}`
     );
 
+    return res.data;
+  });
+};
+// 회사 뷰마이스타트업 정보 가져오기(투자현황 페이지 get)
+export const updateViewInvestAmount = async () => {
+  return safeExecute(async () => {
+    const res = await instance.get(`/company/view`);
     return res.data;
   });
 };
