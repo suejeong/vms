@@ -1,5 +1,6 @@
 import React from "react";
 import style from "./CompareCompany.module.scss";
+import CompanyInfo from "../CompanyInfo/CompanyInfo";
 
 function CompareCompany({ compareCompanies, removeCompareCompany }) {
   return (
@@ -13,13 +14,7 @@ function CompareCompany({ compareCompanies, removeCompareCompany }) {
             >
               <img src="/images/icons/ic_minus.png" alt="minus" />
             </button>
-            <img
-              src={`/images/companies/${company.name}.png`}
-              alt="company"
-              className={style.companyImg}
-            />
-            <p className={style.companyName}>{company.name}</p>
-            <p className={style.companyCategory}>{company.category}</p>
+            <CompanyInfo company={company} />
           </div>
         ))
       ) : (
