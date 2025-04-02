@@ -4,10 +4,8 @@ import InvestmentPanel from "../../components/InvestmentPanel/InvestmentPanel";
 import Title from "../../components/Title/Title";
 
 export default function InvestmentPage() {
-
-
   return (
-      <section>
+    <section>
       <div>
         <Title text={"투자 현황"} />
         <Filter />
