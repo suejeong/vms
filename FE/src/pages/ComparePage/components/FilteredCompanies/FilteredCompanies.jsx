@@ -8,6 +8,8 @@ function FilteredCompanies({
   currentCompanies,
   selectedCompanies,
   handleSelect,
+  myCompany,
+  handleDeselect,
 }) {
   return (
     <>
@@ -23,10 +25,21 @@ function FilteredCompanies({
                   <CompanyInfo company={company} />
                 </div>
                 {selectedCompanies.find((c) => c.id === company.id) ? (
-                  <button className={style.selectButton} disabled>
-                    <img src="/images/icons/ic_check.png" alt="check" />
-                    선택 완료
-                  </button>
+                  <>
+                    {myCompany ? (
+                      <button className={style.selectButton} disabled>
+                        <img src="/images/icons/ic_check.png" alt="check" />
+                        선택 완료
+                      </button>
+                    ) : (
+                      <button
+                        className={style.deselectButton}
+                        onClick={() => handleDeselect(company.id)}
+                      >
+                        선택 해제
+                      </button>
+                    )}
+                  </>
                 ) : (
                   <button
                     className={style.selectButton}
