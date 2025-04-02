@@ -77,7 +77,7 @@ export default function ComparePage() {
       {!compareResultState ? (
         <section className={style.section}>
           <div className={style.resetMyCompany}>
-            <h1>나의 기업을 선택해 주세요!!!!!</h1>
+            <h1>나의 기업을 선택해 주세요!</h1>
             {myCompany && (
               <button
                 className={style.resetMyCompanyButton}
