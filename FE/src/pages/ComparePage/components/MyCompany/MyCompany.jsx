@@ -1,5 +1,6 @@
 import React from "react";
 import style from "./MyCompany.module.scss";
+import CompanyInfo from "../CompanyInfo/CompanyInfo";
 
 function MyCompany({ setMyCompany, myCompany }) {
   return (
@@ -8,9 +9,7 @@ function MyCompany({ setMyCompany, myCompany }) {
         선택 취소
       </a>
       <div className={style.selectedCompany}>
-        <img src={`/images/companies/${myCompany.name}.png`} alt="company" />
-        <p className={style.companyName}>{myCompany.name}</p>
-        <p className={style.companyCategory}>{myCompany.category}</p>
+        <CompanyInfo company={myCompany} />
       </div>
     </>
   );
