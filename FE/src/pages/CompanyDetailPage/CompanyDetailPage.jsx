@@ -8,10 +8,10 @@ import PaseNationButton from "../../components/CompanyDetailPage/PaseNationButto
 import companydetail from "./data/companydetail.json";
 import invest from "./data/invest.json";
 import logo from "../../../public/images/companies/네이버.png";
-// import { getCompany } from "../../api/Company";
-// import { getCompanyInvest } from "../../api/Invest";
-// import { useState, useEffect } from "react";
-// import { useParams } from "react-router-dom";
+import { getCompany } from "../../api/Company";
+import { getCompanyInvest } from "../../api/Invest";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 export function CompanyDetailPage() {
   // 기업 상세 페이지에 필요한 하나의 기업 정보 state
