@@ -21,6 +21,12 @@ export function CompanyDetailPage() {
   const { companyId } = useParams();
   // 컴포넌트가 처음 마운트될 때 API 호출
 
+  //리페치 컴페니인베스트 함수 만들어서 이걸 프롭스로 테이블에...
+  const refetchCompanyInvest = async () => {
+    const investD = await getCompanyInvest(companyId);
+    setInvestData(investD);
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -44,6 +50,7 @@ export function CompanyDetailPage() {
   }
   const companyName = companyData.name;
   const imgsrc = `/images/companies/${companyName}.png`;
+
   return (
     <div className={styles.CompanyDetailPage}>
       <div className={styles.CompanyDetailDiv}>
@@ -69,8 +76,16 @@ export function CompanyDetailPage() {
       </div>
 
       <div className={styles.ViewMyStartUpDiv}>
-        <InvestHeader investData={investData} companyData={companyData} />
-        <InvestMain investData={investData} companyData={companyData} />
+        <InvestHeader
+          investData={investData}
+          companyData={companyData}
+          refetchCompanyInvest={refetchCompanyInvest}
+        />
+        <InvestMain
+          investData={investData}
+          companyData={companyData}
+          refetchCompanyInvest={refetchCompanyInvest}
+        />
 
         <div className={styles.PaseNationDiv}>
           <PaseNationButton value={"<"} />
