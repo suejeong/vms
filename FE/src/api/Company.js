@@ -40,4 +40,3 @@ export const getCompanyRankingList = async (companyName, orderBy) => {
     return res.data;
   });
 };
-
