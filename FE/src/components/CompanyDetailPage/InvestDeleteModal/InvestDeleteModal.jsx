@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./InvestDeleteModal.module.scss";
 import { deleteInvest, getInvest } from "../../../api/Invest";
 
@@ -7,7 +7,15 @@ export function InvestDeleteModal({
   investId,
   refetchCompanyInvest,
 }) {
-  const investData = getInvest(investId);
+  const [investData, setInvestData] = useState(null);
+  useEffect(() => {
+    async function fetchData() {
+      const data = await getInvest(investId);
+      setInvestData(data);
+    }
+    fetchData();
+  }, [investId]);
+  console.log(investData);
   const [form, setForm] = useState({});
   const [success, setSuccess] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
@@ -26,7 +34,6 @@ export function InvestDeleteModal({
     e.preventDefault();
     if (form.password === investData.password) {
       setPasswordCoreect(true);
-      refetchCompanyInvest;
       deleteInvest(investId);
     } else {
       setPasswordCoreect(false);
@@ -60,9 +67,9 @@ export function InvestDeleteModal({
               <div className={styles.passwordContainer}>
                 <input
                   type={showPassword ? "text" : "password"}
-                  name="Password"
+                  name="password"
                   id="Password"
-                  value={form.Password || ""}
+                  value={form.password || ""}
                   onChange={InvestmentChange}
                   placeholder="비밀번호를 입력해주세요"
                   required
@@ -84,6 +91,10 @@ export function InvestDeleteModal({
               <button
                 type="submit"
                 className={`${styles.button} ${styles.submitButton}`}
+                onClick={() => {
+                  console.log(form.password);
+                  console.log(investData.password);
+                }}
               >
                 삭제하기
               </button>
@@ -94,7 +105,11 @@ export function InvestDeleteModal({
         <div className={styles.successPanelContainer}>
           <div className={styles.successPanelHeader}>
             <button
-              onClick={modalDeleteState}
+              onClick={() => {
+                console.log(form.password);
+                console.log(investData.password);
+                modalDeleteState;
+              }}
               className={`${styles.successCloseButton} ${styles.closeButton}`}
             >
               <img
@@ -116,7 +131,7 @@ export function InvestDeleteModal({
         <div className={styles.successPanelContainer}>
           <div className={styles.successPanelHeader}>
             <button
-              onClick={investState}
+              onClick={modalDeleteState}
               className={`${styles.successCloseButton} ${styles.closeButton}`}
             >
               <img
@@ -128,7 +143,7 @@ export function InvestDeleteModal({
           </div>
           <h2 className={styles.successTitle}>비밀번호가 일치하지 않아요!</h2>
           <button
-            onClick={investState}
+            onClick={modalDeleteState}
             className={`${styles.successCancleButton} ${styles.button} ${styles.cancelButton}`}
           >
             확인

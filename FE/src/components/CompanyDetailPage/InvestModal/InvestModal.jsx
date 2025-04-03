@@ -11,10 +11,9 @@ export default function Investmentmoal({
   const companyName = companyData.name;
   const companyId = companyData.id;
   const investLength = investData.length;
-  const newInvestId = `invest-${companyId.slice(-1)}-00${investLength + 1}`;
   const imgsrc = `/images/companies/${companyName}.png`;
 
-  const [form, setForm] = useState({ companyId: companyId, id: newInvestId });
+  const [form, setForm] = useState({ companyId: companyId });
   const [success, setSuccess] = useState(false);
   const [passwordCoreect, setPasswordCoreect] = useState(false);
   const [showPassword, setShowPassword] = useState({
@@ -38,9 +37,11 @@ export default function Investmentmoal({
     e.preventDefault();
     if (form.password === form.secondPassword) {
       setPasswordCoreect(true);
+      console.log("newdata: 보낼데이터 ", newdata);
+
       const { secondPassword, ...newdata } = form;
+
       createInvest(newdata);
-      refetchCompanyInvest;
     } else {
       setPasswordCoreect(false);
     }
@@ -188,7 +189,7 @@ export default function Investmentmoal({
               <button
                 type="submit"
                 className={`${styles.button} ${styles.submitButton}`}
-                onClick={console.log("폼 데이터 : ", form)}
+                onClick={refetchCompanyInvest}
               >
                 투자하기
               </button>

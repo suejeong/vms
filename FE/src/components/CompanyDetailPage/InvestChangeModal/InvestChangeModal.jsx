@@ -1,13 +1,25 @@
 import { getInvest } from "../../../api/Invest";
 import styles from "./InvestChangeModal.module.scss";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 export function InvestChangeModal({
-  investId,
   modalChangeState,
+  investId,
+  refetchCompanyInvest,
   modalChangeCompleteStates,
 }) {
-  const investData = getInvest(investId);
+  const [investData, setInvestData] = useState(null);
+
+  useEffect(() => {
+    async function fetchData() {
+      const data = await getInvest(investId);
+      setInvestData(data);
+    }
+    fetchData();
+  }, [investId]);
+
+  console.log(investData);
+
   const [form, setForm] = useState({});
   const [showPassword, setShowPassword] = useState(false);
   const [passwordCoreect, setPasswordCoreect] = useState(true);
@@ -19,6 +31,7 @@ export function InvestChangeModal({
   const InvestmentChange = (e) => {
     const { name, value } = e.target;
     setForm({ ...form, [name]: value });
+    console.log(form);
   };
 
   const handleSubmit = (e) => {
@@ -28,9 +41,9 @@ export function InvestChangeModal({
       modalChangeCompleteStates();
     } else {
       setPasswordCoreect(false);
-      console.log(1);
     }
   };
+
   return passwordCoreect ? (
     <div className={styles.panelContainer}>
       <div className={styles.panelHeader}>
@@ -54,9 +67,9 @@ export function InvestChangeModal({
           <div className={styles.passwordContainer}>
             <input
               type={showPassword ? "text" : "password"}
-              name="Password"
+              name="password"
               id="Password"
-              value={form.Password || ""}
+              value={form.password || ""}
               onChange={InvestmentChange}
               placeholder="비밀번호를 입력해주세요"
               required
@@ -78,6 +91,10 @@ export function InvestChangeModal({
           <button
             type="submit"
             className={`${styles.button} ${styles.submitButton}`}
+            onClick={() => {
+              console.log(form.password);
+              console.log(investData.password);
+            }}
           >
             수정하기
           </button>
@@ -88,7 +105,7 @@ export function InvestChangeModal({
     <div className={styles.successPanelContainer}>
       <div className={styles.successPanelHeader}>
         <button
-          onClick={investState}
+          onClick={modalChangeState}
           className={`${styles.successCloseButton} ${styles.closeButton}`}
         >
           <img
@@ -100,7 +117,7 @@ export function InvestChangeModal({
       </div>
       <h2 className={styles.successTitle}>비밀번호가 일치하지 않아요!</h2>
       <button
-        onClick={investState}
+        onClick={modalChangeState}
         className={`${styles.successCancleButton} ${styles.button} ${styles.cancelButton}`}
       >
         확인
