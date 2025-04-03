@@ -1,6 +1,7 @@
 import React from "react";
 import style from "./FilteredCompanies.module.scss";
 import CompanyInfo from "../CompanyInfo/CompanyInfo";
+import Button from "../Button/Button";
 
 function FilteredCompanies({
   inputValue,
@@ -27,26 +28,31 @@ function FilteredCompanies({
                 {selectedCompanies.find((c) => c.id === company.id) ? (
                   <>
                     {myCompany ? (
-                      <button className={style.selectButton} disabled>
-                        <img src="/images/icons/ic_check.png" alt="check" />
-                        선택 완료
-                      </button>
+                      <Button
+                        shape="square"
+                        color="borderGray100"
+                        text="선택완료"
+                        image={
+                          <img src="/images/icons/ic_check.png" alt="check" />
+                        }
+                        disabled={true}
+                      />
                     ) : (
-                      <button
-                        className={style.deselectButton}
+                      <Button
+                        shape="square"
+                        color="borderGray200"
                         onClick={() => handleDeselect(company.id)}
-                      >
-                        선택 해제
-                      </button>
+                        text="선택 해제"
+                      />
                     )}
                   </>
                 ) : (
-                  <button
-                    className={style.selectButton}
+                  <Button
+                    shape="square"
+                    color="borderOrange"
                     onClick={() => handleSelect(company)}
-                  >
-                    선택하기
-                  </button>
+                    text="선택하기"
+                  />
                 )}
               </div>
             ))

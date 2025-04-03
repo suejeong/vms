@@ -1,27 +1,3 @@
-.selectButton {
-  width: 6.5rem;
-  height: 3rem;
-  border-radius: 0.625rem;
-  border: 1px solid var(--brand-orange);
-  color: var(--brand-orange);
-}
-
-.deselectButton {
-  width: 6.5rem;
-  height: 3rem;
-  border-radius: 0.625rem;
-  border: 1px solid var(--gray-200);
-  color: var(--gray-200);
-}
-
-.selectButton:disabled {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--gray-100);
-  border-color: var(--gray-100);
-}
-
 .companyInfo {
   display: flex;
   align-items: center;
@@ -80,25 +56,8 @@ span {
     font-size: 0.75rem;
   }
 
-  .selectButton {
-    width: 4.5625rem;
-    height: 2rem;
-    border-radius: 0.5rem;
-  }
-
-  .selectButton img {
-    width: 1rem;
-    height: 1rem;
-  }
-
   .companyInfo img {
     width: 2.5rem;
     height: 2.5rem;
-  }
-
-  .deselectButton {
-    width: 4.5625rem;
-    height: 2rem;
-    border-radius: 0.5rem;
   }
 }

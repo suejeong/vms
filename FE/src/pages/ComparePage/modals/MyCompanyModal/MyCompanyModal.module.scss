@@ -23,14 +23,6 @@
   margin: 0.5rem 0;
 }
 
-.selectButton {
-  width: 6.5rem;
-  height: 3rem;
-  border-radius: 0.625rem;
-  border: 1px solid var(--brand-orange);
-  color: var(--brand-orange);
-}
-
 .companyName {
   font-weight: 500;
   font-size: 1rem;
@@ -58,12 +50,6 @@
 
   .companyCategory {
     font-size: 0.75rem;
-  }
-
-  .selectButton {
-    width: 4.5625rem;
-    height: 2rem;
-    border-radius: 0.5rem;
   }
 
   .companyInfo img {

@@ -1,5 +1,5 @@
 import React from "react";
-import style from "./MyCompany.module.scss";
+import style from "./MyCompanyContainer.module.scss";
 import CompanyInfo from "../CompanyInfo/CompanyInfo";
 
 function MyCompany({ setMyCompany, myCompany }) {

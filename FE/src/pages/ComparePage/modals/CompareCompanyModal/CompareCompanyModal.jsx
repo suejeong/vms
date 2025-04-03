@@ -2,6 +2,7 @@ import React from "react";
 import style from "./CompareCompanyModal.module.scss";
 import FilteredCompanies from "../../components/FilteredCompanies/FilteredCompanies";
 import CompanyInfo from "../../components/CompanyInfo/CompanyInfo";
+import Button from "../../components/Button/Button";
 
 export default function CompareCompanyModal({
   filteredCompanies,
@@ -30,12 +31,12 @@ export default function CompareCompanyModal({
             <div className={style.companyInfo}>
               <CompanyInfo company={company} />
             </div>
-            <button
-              className={style.deselectButton}
+            <Button
+              shape="square"
+              color="borderGray200"
               onClick={() => handleDeselect(company.id)}
-            >
-              선택 해제
-            </button>
+              text="선택 해제"
+            />
           </div>
         ))}
       </div>

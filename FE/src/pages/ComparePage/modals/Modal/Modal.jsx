@@ -25,73 +25,20 @@ function Modal({
 
   if (!isOpen) return null;
 
-  const filterCompanies = (value) => {
-    if (value.trim() === "") {
-      setFilteredCompanies([]);
-      return;
-    }
-
-    const inputChoseong = getChoseong(value);
-    const isValidChoseong = /^[ㄱ-ㅎ]+$/.test(inputChoseong);
-
-    if (!isValidChoseong) {
-      setFilteredCompanies([]);
-      return;
-    }
-
-    const filteredCompanies = companies.filter(
-      (company) => !myCompany || company.id !== myCompany.id
-    );
-
-    const filtered = filteredCompanies.filter((company) => {
-      const companyName = company.name;
-      const companyChoseong = getChoseong(companyName);
-
-      return (
-        companyName.includes(value) || companyChoseong.includes(inputChoseong)
-      );
-    });
-
-    setFilteredCompanies(filtered);
-    setCurrentPage(1);
-  };
-
-  const handleInputChange = (e) => {
-    const value = e.target.value;
-    setInputValue(value);
-    filterCompanies(value);
-  };
-
   const handleSelect = (company) => {
     onSelect(company);
     setInputValue("");
     setFilteredCompanies([]);
   };
 
-  const handleSubmit = () => {
-    const filteredCompanies = companies.filter(
-      (company) => !myCompany || company.id !== myCompany.id
-    );
-
-    const filtered = filteredCompanies.filter((company) =>
-      company.name.toLowerCase().includes(inputValue.toLowerCase())
-    );
-    setFilteredCompanies(filtered);
-  };
-
-  const handleDelete = () => {
-    setInputValue("");
-    setFilteredCompanies([]);
-  };
-
-  const handlePageChange = (pageNumber) => {
-    setCurrentPage(pageNumber);
-  };
-
   const handleDeselect = (companyId) => {
     setSelectedCompanies((prev) =>
       prev.filter((company) => company.id !== companyId)
     );
+  };
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
   };
 
   const indexOfLastCompany = currentPage * companiesPerPage;
@@ -125,9 +72,12 @@ function Modal({
         </div>
         <SearchBar
           inputValue={inputValue}
-          handleInputChange={handleInputChange}
-          handleDelete={handleDelete}
-          handleSubmit={handleSubmit}
+          setInputValue={setInputValue}
+          setFilteredCompanies={setFilteredCompanies}
+          myCompany={myCompany}
+          companies={companies}
+          setCurrentPage={setCurrentPage}
+          isOpen={isOpen}
         />
         {!myCompany ? (
           <MyCompanyModal
