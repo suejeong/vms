@@ -4,7 +4,6 @@ import MyCompanyModal from "../MyCompanyModal/MyCompanyModal";
 import CompareCompanyModal from "../CompareCompanyModal/CompareCompanyModal";
 import { Pagination } from "../Pasination/Pasination";
 import SearchBar from "../SearchBar/SearchBar";
-import { getChoseong } from "es-hangul";
 import Title from "../../Title/Title";
 
 function Modal({
