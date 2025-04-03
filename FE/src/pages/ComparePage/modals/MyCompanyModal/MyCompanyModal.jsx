@@ -10,6 +10,8 @@ export default function MyCompanyModal({
   currentCompanies,
   inputValue,
   selectedCompanies,
+  myCompany,
+  handleDeselect,
 }) {
   return (
     <>
@@ -20,7 +22,6 @@ export default function MyCompanyModal({
             <div className={style.companyInfo}>
               <CompanyInfo company={company} />
             </div>
-
             <button
               className={style.selectButton}
               onClick={() => handleSelect(company)}
@@ -36,6 +37,8 @@ export default function MyCompanyModal({
         currentCompanies={currentCompanies}
         selectedCompanies={selectedCompanies}
         handleSelect={handleSelect}
+        myCompany={myCompany}
+        handleDeselect={handleDeselect}
       />
     </>
   );
