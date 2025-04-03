@@ -22,7 +22,7 @@ export const getInvestedCompanies = async () => {
 //회사 1개의 정보만 가져오기
 export const getCompany = async (companyId) => {
   return safeExecute(async () => {
-    const res = await instance.get(`/company/${companyId}`);
+    const res = await instance.get(`/company/detail/${companyId}`);
 
     return res.data;
   });
