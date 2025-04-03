@@ -2,13 +2,15 @@ import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import styles from "./InvestModal.module.scss";
 
-export default function InvestmentPanel({ investState }) {
+export default function InvestmentPanel({ investState, companyData }) {
   const [form, setForm] = useState({});
   const [success, setSuccess] = useState(false);
   const [showPassword, setShowPassword] = useState({
     first: false,
     second: false,
   });
+  const companyName = companyData.name;
+  const imgsrc = `../../../public/images/companies/${companyName}.png`;
 
   const handlePreviewPassword = (type) => {
     setShowPassword((prev) => ({
@@ -49,12 +51,14 @@ export default function InvestmentPanel({ investState }) {
               <h3 className={styles.infoTitle}>투자 기업 정보</h3>
               <div className={styles.companyDetails}>
                 <img
-                  src="/images/companies/codeit.png"
+                  src={imgsrc}
                   alt="기업이미지"
                   className={styles.companyImage}
                 />
-                <p className={styles.companyName}>코드잇</p>
-                <span className={styles.companyCategory}>에듀테크</span>
+                <p className={styles.companyName}>{companyData.name}</p>
+                <span className={styles.companyCategory}>
+                  {companyData.category}
+                </span>
               </div>
             </div>
           </div>
