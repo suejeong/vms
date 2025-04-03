@@ -47,3 +47,20 @@
   font-size: 1.1rem;
   color: var(--gray-200);
 }
+
+/* Tablet (744px ~ 1199px) */
+@media only screen and (min-width: 46.5rem) and (max-width: 74.9375rem) {
+  .myCompanySection {
+    height: 15rem;
+  }
+}
+
+/* Mobile (375px ~ 743px) */
+@media only screen and (min-width: 23.4375rem) and (max-width: 46.4375rem) {
+  .titleText {
+    padding: 0.5rem 0;
+  }
+  .myCompanySection {
+    height: 12rem;
+  }
+}
