@@ -5,9 +5,6 @@ import LogoAndName from "../../components/CompanyDetailPage/LogoAndName/LogoAndN
 import InvestHeader from "../../components/CompanyDetailPage/InvestHeader/InvestHeader";
 import InvestMain from "../../components/CompanyDetailPage/InvestMain/InvestMain";
 import PaseNationButton from "../../components/CompanyDetailPage/PaseNationButton/PaseNationButton";
-import companydetail from "./data/companydetail.json";
-import invest from "./data/invest.json";
-import logo from "../../../public/images/companies/네이버.png";
 import { getCompany } from "../../api/Company";
 import { getCompanyInvest } from "../../api/Invest";
 import { useState, useEffect } from "react";
@@ -15,74 +12,65 @@ import { useParams } from "react-router-dom";
 
 export function CompanyDetailPage() {
   // 기업 상세 페이지에 필요한 하나의 기업 정보 state
-  const [companyD, setCompanyD] = useState(null);
+  const [companyData, setCompanyData] = useState(null);
   // 기업 상세 페이지에 필요한 기업 하나의 투자 정보 state
-  const [investD, setInvestD] = useState([]);
+  const [investData, setInvestData] = useState([]);
+  //로딩 상태 데이터를 다 가져오면 화면을 그리기 위한 state
+  const [loading, setLoading] = useState(true);
   // 가져올 회사 ID (예제, 실제로는 props나 params에서 가져올 수도 있음)
-  const companyId = useParams();
+  const { companyId } = useParams();
   // 컴포넌트가 처음 마운트될 때 API 호출
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        //기업아이디 확인
-        console.log("Company ID:", companyId); //
-        // 기업 데이터 가져오기
-        const companyData11 = await getCompany(companyId);
-        setCompanyD(companyData11);
-        //✅ 데이터 확인
-        console.log("Company Data:", companyD); //
-        // 투자 데이터 가져오기
-        const investData11 = await getCompanyInvest(companyId);
-        setInvestD(investData11);
-
-        // ✅ 데이터 확인
-        console.log("Investment Data:", investDatas);
+        const companyD = await getCompany(companyId);
+        const investD = await getCompanyInvest(companyId);
+        setCompanyData(companyD);
+        setInvestData(investD);
       } catch (error) {
         console.error("데이터를 불러오는 중 오류 발생:", error);
+      } finally {
+        setLoading(false); // ✅ 모든 데이터가 받아지면 로딩 종료
       }
     };
 
-    fetchData(); // 비동기 함수 실행
-  }, [companyId]); // ✅ 빈 배열([]) → 컴포넌트 마운트 시 한 번만 실행
+    fetchData();
+  }, [companyId]);
 
-  // ✅ 데이터가 아직 없으면 로딩 표시
-  if (!companyD) {
+  // ✅ 로딩 중이면 "로딩 중..." 표시
+  if (loading) {
     return <div>로딩 중...</div>;
   }
-
-  const companydetaildata = companydetail;
-  const investdatas = invest;
-
+  const companyName = companyData.name;
+  const imgsrc = `../../../public/images/companies/${companyName}.png`;
   return (
     <div className={styles.CompanyDetailPage}>
       <div className={styles.CompanyDetailDiv}>
         <LogoAndName
-          imgSrc={logo}
-          companyName={companydetaildata.name}
-          companyCategory={companydetaildata.category}
+          imgSrc={imgsrc}
+          companyName={companyData.name}
+          companyCategory={companyData.category}
         />
 
         <div className={styles.companyDetailThreePart}>
           <Patition
             colum={"누적 투자 금액"}
-            value={companydetaildata.totalInvestment}
+            value={companyData.totalInvestment}
           />
-          <Patition colum={"매출액"} value={companydetaildata.totalProfit} />
+          <Patition colum={"매출액"} value={companyData.totalProfit} />
           <Patition
             colum={"고용 인원"}
-            value={companydetaildata.employeeCount + " 명"}
+            value={companyData.employeeCount + " 명"}
           />
         </div>
 
-        <Description text={companydetaildata.description} />
+        <Description text={companyData.description} />
       </div>
 
       <div className={styles.ViewMyStartUpDiv}>
         <InvestHeader />
-        <InvestMain
-          investAmount={companydetaildata.view_invest_amount}
-          investData={investdatas}
-        />
+        <InvestMain investData={investData} companyData={companyData} />
 
         <div className={styles.PaseNationDiv}>
           <PaseNationButton value={"<"} />

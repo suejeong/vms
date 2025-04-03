@@ -34,7 +34,11 @@ function SearchBar({
             isFocused ? style.right : style.left
           }`}
         >
-          <button className={style.submitButton} onClick={handleSubmit}>
+          <button
+            className={style.submitButton}
+            onMouseDown={(e) => e.preventDefault()}
+            onClick={handleSubmit}
+          >
             <img src="/images/icons/ic_search.png" alt="search" />
           </button>
         </div>
