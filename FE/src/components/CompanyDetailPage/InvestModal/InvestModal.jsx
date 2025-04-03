@@ -5,12 +5,10 @@ import { createInvest } from "../../../api/Invest";
 export default function Investmentmoal({
   investState,
   companyData,
-  investData,
   refetchCompanyInvest,
 }) {
   const companyName = companyData.name;
   const companyId = companyData.id;
-  const investLength = investData.length;
   const imgsrc = `/images/companies/${companyName}.png`;
 
   const [form, setForm] = useState({ companyId: companyId });
@@ -37,10 +35,12 @@ export default function Investmentmoal({
     e.preventDefault();
     if (form.password === form.secondPassword) {
       setPasswordCoreect(true);
-      console.log("newdata: 보낼데이터 ", newdata);
-
       const { secondPassword, ...newdata } = form;
 
+      console.log(newdata);
+      newdata.investAmount = Number(newdata.investAmount);
+      refetchCompanyInvest;
+      console.log(newdata);
       createInvest(newdata);
     } else {
       setPasswordCoreect(false);
@@ -86,9 +86,9 @@ export default function Investmentmoal({
               </label>
               <input
                 type="text"
-                name="name"
+                name="username"
                 id="investorName"
-                value={form.name || ""}
+                value={form.username || ""}
                 onChange={InvestmentChange}
                 placeholder="투자자 이름을 입력해 주세요"
                 required

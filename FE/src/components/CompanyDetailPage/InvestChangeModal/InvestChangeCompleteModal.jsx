@@ -193,7 +193,6 @@ export default function InvestChangeCompleteModal({
               <button
                 type="submit"
                 className={`${styles.button} ${styles.submitButton}`}
-                // onClick={console.log("폼 데이터 : ", form)}
               >
                 수정하기
               </button>

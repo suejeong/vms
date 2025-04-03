@@ -5,16 +5,7 @@ import { instance, safeExecute } from "./Common.js";
 export const getCompanyList = async () => {
   return safeExecute(async () => {
     const res = await instance.get(`/company`);
-    console.log(res)
-    return res.data;
-  });
-};
 
-//투자 현황이 있는 전체 회사 리스트 가져오기
-export const getInvestedCompanies = async () => {
-  return safeExecute(async () => {
-    const res = await instance.get(`/company/view`);
-    console.log(res)
     return res.data;
   });
 };
@@ -50,3 +41,5 @@ export const getCompanyRankingList = async (companyName, orderBy) => {
     return res.data;
   });
 };
+
+
