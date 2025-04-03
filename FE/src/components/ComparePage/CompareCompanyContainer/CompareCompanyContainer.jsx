@@ -1,5 +1,5 @@
 import React from "react";
-import style from "./CompareCompany.module.scss";
+import style from "./CompareCompanyContainer.module.scss";
 import CompanyInfo from "../CompanyInfo/CompanyInfo";
 
 function CompareCompany({ compareCompanies, removeCompareCompany }) {

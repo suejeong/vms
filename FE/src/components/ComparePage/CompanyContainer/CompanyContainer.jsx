@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./CompanyContainer.module.scss";
-import MyCompany from "../MyCompany/MyCompany";
-import CompareCompany from "../CompareCompany/CompareCompany";
+import MyCompany from "../MyCompanyContainer/MyCompanyContainer";
+import CompareCompany from "../CompareCompanyContainer/CompareCompanyContainer";
 
 function CompanyContainer({
   setMyCompany,
