@@ -15,7 +15,7 @@ export default function ComparePage() {
   // 비교할 기업 선택 모달 오픈 유무 스테이트
   const [isCompareModalOpen, setIsCompareModalOpen] = useState(false);
   // 내 기업 스테이트
-  const [myCompany, setMyCompany] = useState("");
+  const [myCompany, setMyCompany] = useState(null);
   // 선택한 기업 리스트 스테이트
   const [compareCompanies, setCompareCompanies] = useState([]);
   // 최근 선택 리스트 스테이트
@@ -66,19 +66,12 @@ export default function ComparePage() {
   const handleClickCompareButton = async () => {
     const companyNames = compareCompanies.map((company) => company.name);
     companyNames.push(myCompany.name);
-    // const compareData = [myCompany, ...compareCompanies];
-    // console.log("myCompany", myCompany);
-    // console.log("compareCompanies", compareCompanies);
 
     const compareResultListData = await getComparedcompany(companyNames);
     setCompareResultListState(compareResultListData);
 
     handleChangeCompareResultState();
   };
-
-  useEffect(() => {
-    console.log("setCompareResultListState", compareResultListState);
-  }, [compareResultListState]);
 
   return (
     <>

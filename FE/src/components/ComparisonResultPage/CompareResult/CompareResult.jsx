@@ -3,6 +3,7 @@ import { OrderByCompareResultList } from "../OrderByCompareResultList/OrderByCom
 import styles from "./CompareResult.module.scss";
 
 export const CompareResult = ({
+  myCompanyState,
   compareResultListState,
   setCompareResultListState,
 }) => {
@@ -38,7 +39,12 @@ export const CompareResult = ({
           </thead>
           <tbody>
             {compareResultListState.map((company) => (
-              <tr key={company.id}>
+              <tr
+                key={company.id}
+                className={
+                  company.name === myCompanyState.name ? styles.highlight : ""
+                }
+              >
                 <td>
                   <img
                     src={`/images/companies/${company.name}.png`}
@@ -46,7 +52,9 @@ export const CompareResult = ({
                   />
                   {company.name}
                 </td>
-                <td>{company.description}</td>
+                <td>
+                  <p>{company.description}</p>
+                </td>
                 <td>{company.category}</td>
                 <td>{company.totalInvestment}</td>
                 <td>{company.totalProfit}</td>
