@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import styles from "./InvestChangeCompleteModal.module.scss";
 import { updateInvest, getInvest } from "../../../api/Invest";
@@ -9,11 +9,17 @@ export default function InvestChangeCompleteModal({
   investId,
   refetchCompanyInvest,
 }) {
-  const investData = getInvest(investId);
-  console.log(investData);
+  const [investData, setInvestData] = useState(null);
+  useEffect(() => {
+    async function fetchData() {
+      const data = await getInvest(investId);
+      setInvestData(data);
+    }
+    fetchData();
+  }, [investId]);
+
   const companyName = companyData.name;
   const companyId = companyData.id;
-  const investLength = investData.length;
   const imgsrc = `/images/companies/${companyName}.png`;
 
   const [form, setForm] = useState({ companyId: companyId, id: investId });
@@ -39,8 +45,11 @@ export default function InvestChangeCompleteModal({
     e.preventDefault();
 
     const { secondPassword, ...newdata } = form;
-    updateInvest(newdata);
+
+    console.log(newdata);
+    newdata.investAmount = Number(newdata.investAmount);
     refetchCompanyInvest;
+    updateInvest(investId, newdata);
     setSuccess(true);
   };
 
@@ -81,9 +90,9 @@ export default function InvestChangeCompleteModal({
               </label>
               <input
                 type="text"
-                name="name"
+                name="username"
                 id="investorName"
-                value={form.name || ""}
+                value={form.username || ""}
                 onChange={InvestmentChange}
                 placeholder="투자자 이름을 입력해 주세요"
                 required
@@ -184,7 +193,7 @@ export default function InvestChangeCompleteModal({
               <button
                 type="submit"
                 className={`${styles.button} ${styles.submitButton}`}
-                onClick={console.log("폼 데이터 : ", form)}
+                // onClick={console.log("폼 데이터 : ", form)}
               >
                 수정하기
               </button>
