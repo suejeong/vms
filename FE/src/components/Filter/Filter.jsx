@@ -15,7 +15,7 @@ export default function Filter({
     >
       <div className="px-4 h-12 flex items-center gap-4 justify-between border border-gray200 rounded-[10px] hover:bg-black300">
         <div>{selectedFilter.label}</div>
-        <img src="/src/assets/arrow_bottom.png" alt="버튼" />
+        <img src="/images/icons/ic_toggle.png" alt="버튼" />
       </div>
 
       {showFilterOptions && (
