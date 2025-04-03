@@ -1,7 +1,8 @@
 import React from "react";
 import style from "./MyCompanyModal.module.scss";
-import FilteredCompanies from "../../components/FilteredCompanies/FilteredCompanies";
-import CompanyInfo from "../../components/CompanyInfo/CompanyInfo";
+import FilteredCompanies from "../FilteredCompanies/FilteredCompanies";
+import CompanyInfo from "../CompanyInfo/CompanyInfo";
+import Button from "../Button/Button";
 
 export default function MyCompanyModal({
   filteredCompanies,
@@ -22,12 +23,12 @@ export default function MyCompanyModal({
             <div className={style.companyInfo}>
               <CompanyInfo company={company} />
             </div>
-            <button
-              className={style.selectButton}
+            <Button
+              shape="square"
+              color="borderOrange"
               onClick={() => handleSelect(company)}
-            >
-              선택하기
-            </button>
+              text="선택하기"
+            />
           </div>
         ))}
       </div>
