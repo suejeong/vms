@@ -100,7 +100,6 @@ async function main() {
         totalInvestment: getRandomInt(5, 50) * 100,
         totalProfit: getRandomInt(1, 80) * 100,
         employeeCount: getRandomInt(10, 500),
-        viewInvestAmount: getRandomInt(1, 10) * 100,
         countMyPicked: getRandomInt(0, 100),
         countYourPicked: getRandomInt(0, 100),
         changedAt: getRandomDateWithin30Days(),

@@ -8,18 +8,17 @@ datasource db {
 }
 
 model Company {
-  id               String   @id @default(uuid())
-  name             String   @db.VarChar
-  description      String   @db.VarChar
-  category         Category
-  totalInvestment  Int
-  totalProfit      Int
-  employeeCount    Int
-  viewInvestAmount Int      @default(0)
-  countMyPicked    Int      @default(0)
-  countYourPicked  Int      @default(0)
-  changedAt        DateTime @default(now())
-  invests          Invest[]
+  id              String   @id @default(uuid())
+  name            String   @db.VarChar
+  description     String   @db.VarChar
+  category        Category
+  totalInvestment Int
+  totalProfit     Int
+  employeeCount   Int
+  countMyPicked   Int      @default(0)
+  countYourPicked Int      @default(0)
+  changedAt       DateTime @default(now())
+  invests         Invest[]
 }
 
 model Invest {
