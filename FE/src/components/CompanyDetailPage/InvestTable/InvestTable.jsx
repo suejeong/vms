@@ -8,15 +8,18 @@ import MakeTableRow from "../MakeTableRow/MakeTableRow";
 import MakeTableHeader from "../MakeTableRow/MakeTableHeader";
 import { useState, useRef } from "react";
 
-export function InvestTable({ investData, companyData }) {
+export function InvestTable({ investData, companyData, refetchCompanyInvest }) {
   const [modalState, setModalState] = useState(false);
   const [investDeleteModalState, setInvestDeleteModalState] = useState(false);
   const [investChangeModalState, setInvestChangeModalState] = useState(false);
   const [investChangeCompleteModalState, setInvestChangeCompleteModalState] =
     useState(false);
+  const [selectedInvest, setSelectedInvest] = useState(null);
   const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
   const modalBackground = useRef();
-
+  const selectedInvestState = (now) => {
+    setSelectedInvest(now);
+  };
   const modalDeleteState = () => {
     setInvestDeleteModalState(false);
   };
@@ -52,12 +55,15 @@ export function InvestTable({ investData, companyData }) {
   const sortedInvestData = [...investData].sort(
     (a, b) => b.investAmount - a.investAmount
   );
-  // const sortedInvestData = [];
 
   const Button = (
     <button
       className={styles.investDeleteButton}
-      onClick={(e) => handleButtonClick(e)}
+      onClick={(e) => {
+        handleButtonClick(e);
+        const tmp = e.target.parentNode.parentNode;
+        setSelectedInvest(tmp.id);
+      }}
     />
   );
 
@@ -65,6 +71,7 @@ export function InvestTable({ investData, companyData }) {
     return sortedInvestData.map((data, index) => (
       <MakeTableRow
         key={data.id}
+        id={data.id}
         Name={data.username}
         Rank={index + 1}
         InvestAmount={data.investAmount}
@@ -135,6 +142,7 @@ export function InvestTable({ investData, companyData }) {
             }}
           >
             <InvestDeleteModal
+              investId={selectedInvest}
               modalDeleteState={() => {
                 modalDeleteState();
               }}
@@ -156,6 +164,7 @@ export function InvestTable({ investData, companyData }) {
             }}
           >
             <InvestChangeModal
+              investId={selectedInvest}
               modalChangeState={() => {
                 modalChangeState();
               }}
@@ -180,7 +189,8 @@ export function InvestTable({ investData, companyData }) {
             }}
           >
             <InvestChangeCompleteModal
-              investData={investData}
+              refetchCompanyInvest={refetchCompanyInvest}
+              investId={selectedInvest}
               companyData={companyData}
               modalChangeState={() => {
                 modalChangeCompleteState();

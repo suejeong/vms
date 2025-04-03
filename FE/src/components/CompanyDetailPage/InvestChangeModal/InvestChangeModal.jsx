@@ -1,12 +1,16 @@
+import { getInvest } from "../../../api/Invest";
 import styles from "./InvestChangeModal.module.scss";
 import React, { useState } from "react";
 
 export function InvestChangeModal({
+  investId,
   modalChangeState,
   modalChangeCompleteStates,
 }) {
+  const investData = getInvest(investId);
   const [form, setForm] = useState({});
   const [showPassword, setShowPassword] = useState(false);
+  const [passwordCoreect, setPasswordCoreect] = useState(true);
 
   const handlePreviewPassword = () => {
     setShowPassword(!showPassword);
@@ -20,11 +24,14 @@ export function InvestChangeModal({
   const handleSubmit = (e) => {
     e.preventDefault();
     // 유효성 검사 후 서버 전송 🔥
-    // 검사 후 form에 UUID 추가
-    console.log(form); // 내용확인
-    modalChangeCompleteStates();
+    if (form.password == investData.password) {
+      modalChangeCompleteStates();
+    } else {
+      setPasswordCoreect(false);
+      console.log(1);
+    }
   };
-  return (
+  return passwordCoreect ? (
     <div className={styles.panelContainer}>
       <div className={styles.panelHeader}>
         <div className={styles.headerContent}>
@@ -76,6 +83,28 @@ export function InvestChangeModal({
           </button>
         </div>
       </form>
+    </div>
+  ) : (
+    <div className={styles.successPanelContainer}>
+      <div className={styles.successPanelHeader}>
+        <button
+          onClick={investState}
+          className={`${styles.successCloseButton} ${styles.closeButton}`}
+        >
+          <img
+            src="/images/icons/ic_delete.png"
+            alt="close"
+            className={styles.closeButton}
+          />
+        </button>
+      </div>
+      <h2 className={styles.successTitle}>비밀번호가 일치하지 않아요!</h2>
+      <button
+        onClick={investState}
+        className={`${styles.successCancleButton} ${styles.button} ${styles.cancelButton}`}
+      >
+        확인
+      </button>
     </div>
   );
 }
