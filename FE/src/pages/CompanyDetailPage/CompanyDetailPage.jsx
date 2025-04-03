@@ -4,7 +4,7 @@ import Description from "../../components/CompanyDetailPage/Description/Descript
 import LogoAndName from "../../components/CompanyDetailPage/LogoAndName/LogoAndName";
 import InvestHeader from "../../components/CompanyDetailPage/InvestHeader/InvestHeader";
 import InvestMain from "../../components/CompanyDetailPage/InvestMain/InvestMain";
-import PaseNationButton from "../../components/CompanyDetailPage/PaseNationButton/PaseNationButton";
+import PageNationButton from "../../components/CompanyDetailPage/PaseNationButton/PaseNationButton";
 import { getCompany } from "../../api/Company";
 import { getCompanyInvest } from "../../api/Invest";
 import { useState, useEffect } from "react";
@@ -39,12 +39,12 @@ export function CompanyDetailPage() {
           if (error.response?.status === 404) {
             console.warn("투자 정보가 없음. 빈 배열로 처리.");
           } else {
-            throw error; // 다른 오류는 그대로 던지기
+            throw error;
           }
         }
 
         setCompanyData(companyD);
-        setInvestData(investD);
+        setInvestData(investD || []);
       } catch (error) {
         console.error("데이터를 불러오는 중 오류 발생:", error);
       } finally {
@@ -61,6 +61,46 @@ export function CompanyDetailPage() {
   }
   const companyName = companyData.name;
   const imgsrc = `/images/companies/${companyName}.png`;
+
+  const handlePageChange = () => {
+    console.log(만드는중);
+  };
+  console.log(investData);
+  console.log(investData.length);
+
+  // const MakePageNationButton = ({ investData, handlePageChange }) => {
+  //   const count = Math.ceil(investData.length / 5); // 5개씩 나눈 총 페이지 수
+  //   const buttons = [];
+
+  //   // 이전 페이지 버튼 추가
+  //   buttons.push(
+  //     <PageNationButton
+  //       key="prev"
+  //       value="<"
+  //       onClick={() => handlePageChange("prev")}
+  //     />
+  //   );
+
+  //   // 페이지 번호 버튼 추가
+  //   for (let i = 1; i <= count; i++) {
+  //     buttons.push(
+  //       <PageNationButton key={i} onClick={() => handlePageChange(i)}>
+  //         {i}
+  //       </PageNationButton>
+  //     );
+  //   }
+
+  //   // 다음 페이지 버튼 추가
+  //   buttons.push(
+  //     <PageNationButton
+  //       key="next"
+  //       value=">"
+  //       onClick={() => handlePageChange("next")}
+  //     />
+  //   );
+
+  //   return <div>{buttons}</div>;
+  // };
 
   return (
     <div className={styles.CompanyDetailPage}>
@@ -99,13 +139,13 @@ export function CompanyDetailPage() {
         />
 
         <div className={styles.PaseNationDiv}>
-          <PaseNationButton value={"<"} />
-          <PaseNationButton value={"1"} />
-          <PaseNationButton value={"2"} />
-          <PaseNationButton value={"3"} />
-          <PaseNationButton value={"4"} />
-          <PaseNationButton value={"5"} />
-          <PaseNationButton value={">"} />
+          <PageNationButton value={"<"} />
+          <PageNationButton value={"1"} />
+          <PageNationButton value={"2"} />
+          <PageNationButton value={"3"} />
+          <PageNationButton value={"4"} />
+          <PageNationButton value={"5"} />
+          <PageNationButton value={">"} />
         </div>
       </div>
     </div>
