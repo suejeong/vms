@@ -10,13 +10,13 @@ export default function InvestChangeCompleteModal({
   refetchCompanyInvest,
 }) {
   const investData = getInvest(investId);
+  console.log(investData);
   const companyName = companyData.name;
   const companyId = companyData.id;
   const investLength = investData.length;
-  const newInvestId = `invest-${companyId.slice(-1)}-00${investLength + 1}`;
   const imgsrc = `/images/companies/${companyName}.png`;
 
-  const [form, setForm] = useState({ companyId: companyId, id: newInvestId });
+  const [form, setForm] = useState({ companyId: companyId, id: investId });
   const [success, setSuccess] = useState(false);
   const [showPassword, setShowPassword] = useState({
     first: false,
@@ -40,7 +40,7 @@ export default function InvestChangeCompleteModal({
 
     const { secondPassword, ...newdata } = form;
     updateInvest(newdata);
-    refetchCompanyInvest();
+    refetchCompanyInvest;
     setSuccess(true);
   };
 

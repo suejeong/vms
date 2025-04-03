@@ -40,7 +40,7 @@ export default function Investmentmoal({
       setPasswordCoreect(true);
       const { secondPassword, ...newdata } = form;
       createInvest(newdata);
-      refetchCompanyInvest();
+      refetchCompanyInvest;
     } else {
       setPasswordCoreect(false);
     }

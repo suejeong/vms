@@ -26,7 +26,7 @@ export function InvestDeleteModal({
     e.preventDefault();
     if (form.password === investData.password) {
       setPasswordCoreect(true);
-      refetchCompanyInvest();
+      refetchCompanyInvest;
       deleteInvest(investId);
     } else {
       setPasswordCoreect(false);
