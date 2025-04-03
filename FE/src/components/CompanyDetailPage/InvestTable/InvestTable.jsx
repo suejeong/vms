@@ -180,6 +180,8 @@ export function InvestTable({ investData, companyData }) {
             }}
           >
             <InvestChangeCompleteModal
+              investData={investData}
+              companyData={companyData}
               modalChangeState={() => {
                 modalChangeCompleteState();
               }}
