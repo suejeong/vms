@@ -25,7 +25,7 @@ export const CompareResult = ({
         />
       </section>
 
-      <section>
+      <section className={styles.CompareResultTableWrapper}>
         <table className={styles.CompareResultTable}>
           <thead>
             <tr>

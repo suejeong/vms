@@ -33,7 +33,7 @@ export const CompanyRanking = ({ myCompanyState }) => {
         />
       </section>
 
-      <section>
+      <section className={styles.CompanyRankingTableWrapper}>
         <table className={styles.CompanyRankingTable}>
           <thead>
             <tr>
