@@ -1,20 +1,33 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import styles from "./InvestChangeCompleteModal.module.scss";
+import { updateInvest, getInvest } from "../../../api/Invest";
 
 export default function InvestChangeCompleteModal({
   modalChangeState,
   companyData,
-  investData,
+  investId,
+  refetchCompanyInvest,
 }) {
-  const [form, setForm] = useState({});
+  const [investData, setInvestData] = useState(null);
+  useEffect(() => {
+    async function fetchData() {
+      const data = await getInvest(investId);
+      setInvestData(data);
+    }
+    fetchData();
+  }, [investId]);
+
+  const companyName = companyData.name;
+  const companyId = companyData.id;
+  const imgsrc = `/images/companies/${companyName}.png`;
+
+  const [form, setForm] = useState({ companyId: companyId, id: investId });
   const [success, setSuccess] = useState(false);
   const [showPassword, setShowPassword] = useState({
     first: false,
     second: false,
   });
-  const companyName = companyData.name;
-  const imgsrc = `/images/companies/${companyName}.png`;
 
   const handlePreviewPassword = (type) => {
     setShowPassword((prev) => ({
@@ -26,13 +39,17 @@ export default function InvestChangeCompleteModal({
   const InvestmentChange = (e) => {
     const { name, value } = e.target;
     setForm({ ...form, [name]: value });
-    console.log(form); // 내용확인
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // 유효성 검사 후 서버 전송 🔥
-    // 검사 후 form에 UUID 추가
+
+    const { secondPassword, ...newdata } = form;
+
+    console.log(newdata);
+    newdata.investAmount = Number(newdata.investAmount);
+    refetchCompanyInvest;
+    updateInvest(investId, newdata);
     setSuccess(true);
   };
 
@@ -73,9 +90,9 @@ export default function InvestChangeCompleteModal({
               </label>
               <input
                 type="text"
-                name="name"
+                name="username"
                 id="investorName"
-                value={form.name || ""}
+                value={form.username || ""}
                 onChange={InvestmentChange}
                 placeholder="투자자 이름을 입력해 주세요"
                 required
@@ -88,9 +105,9 @@ export default function InvestChangeCompleteModal({
               </label>
               <input
                 type="text"
-                name="price"
+                name="investAmount"
                 id="investmentAmount"
-                value={form.price || ""}
+                value={form.investAmount || ""}
                 onChange={InvestmentChange}
                 placeholder="투자 금액을 입력해 주세요"
                 required
@@ -103,9 +120,9 @@ export default function InvestChangeCompleteModal({
               </label>
               <input
                 type="text"
-                name="desc"
+                name="comment"
                 id="investmentComment"
-                value={form.desc || ""}
+                value={form.comment || ""}
                 onChange={InvestmentChange}
                 placeholder="투자에 대한 코멘트를 입력해 주세요"
                 required
@@ -114,16 +131,16 @@ export default function InvestChangeCompleteModal({
             </div>
             <div className={styles.formGroup}>
               <label htmlFor="firstPassword" className={styles.label}>
-                비밀번호
+                새로운 비밀번호
               </label>
               <div className={styles.passwordContainer}>
                 <input
                   type={showPassword.first ? "text" : "password"}
-                  name="firstPassword"
+                  name="password"
                   id="firstPassword"
-                  value={form.firstPassword || ""}
+                  value={form.password || ""}
                   onChange={InvestmentChange}
-                  placeholder="비밀번호를 입력해주세요"
+                  placeholder="새로운 비밀번호를 입력해 주세요"
                   required
                   className={styles.input}
                 />
@@ -141,7 +158,7 @@ export default function InvestChangeCompleteModal({
             </div>
             <div className={styles.formGroup}>
               <label htmlFor="secondPassword" className={styles.label}>
-                비밀번호 확인
+                새로운 비밀번호 확인
               </label>
               <div className={styles.passwordContainer}>
                 <input
@@ -150,7 +167,7 @@ export default function InvestChangeCompleteModal({
                   id="secondPassword"
                   value={form.secondPassword || ""}
                   onChange={InvestmentChange}
-                  placeholder="비밀번호를 다시 한 번 입력해주세요"
+                  placeholder="새로운 비밀번호를 다시 한 번 입력해 주세요"
                   required
                   className={styles.input}
                 />
@@ -176,6 +193,7 @@ export default function InvestChangeCompleteModal({
               <button
                 type="submit"
                 className={`${styles.button} ${styles.submitButton}`}
+                // onClick={console.log("폼 데이터 : ", form)}
               >
                 수정하기
               </button>

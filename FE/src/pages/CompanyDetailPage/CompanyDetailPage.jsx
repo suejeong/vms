@@ -21,17 +21,34 @@ export function CompanyDetailPage() {
   const { companyId } = useParams();
   // 컴포넌트가 처음 마운트될 때 API 호출
 
+  //리페치 컴페니인베스트 함수 만들어서 이걸 프롭스로 테이블에...
+  const refetchCompanyInvest = async () => {
+    const investD = await getCompanyInvest(companyId);
+    setInvestData(investD);
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         const companyD = await getCompany(companyId);
-        const investD = await getCompanyInvest(companyId);
+
+        let investD = [];
+        try {
+          investD = await getCompanyInvest(companyId);
+        } catch (error) {
+          if (error.response?.status === 404) {
+            console.warn("투자 정보가 없음. 빈 배열로 처리.");
+          } else {
+            throw error; // 다른 오류는 그대로 던지기
+          }
+        }
+
         setCompanyData(companyD);
         setInvestData(investD);
       } catch (error) {
         console.error("데이터를 불러오는 중 오류 발생:", error);
       } finally {
-        setLoading(false); // ✅ 모든 데이터가 받아지면 로딩 종료
+        setLoading(false);
       }
     };
 
@@ -44,6 +61,7 @@ export function CompanyDetailPage() {
   }
   const companyName = companyData.name;
   const imgsrc = `/images/companies/${companyName}.png`;
+
   return (
     <div className={styles.CompanyDetailPage}>
       <div className={styles.CompanyDetailDiv}>
@@ -69,8 +87,16 @@ export function CompanyDetailPage() {
       </div>
 
       <div className={styles.ViewMyStartUpDiv}>
-        <InvestHeader investData={investData} companyData={companyData} />
-        <InvestMain investData={investData} companyData={companyData} />
+        <InvestHeader
+          investData={investData}
+          companyData={companyData}
+          refetchCompanyInvest={refetchCompanyInvest}
+        />
+        <InvestMain
+          investData={investData}
+          companyData={companyData}
+          refetchCompanyInvest={refetchCompanyInvest}
+        />
 
         <div className={styles.PaseNationDiv}>
           <PaseNationButton value={"<"} />

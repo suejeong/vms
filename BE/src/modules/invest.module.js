@@ -85,9 +85,7 @@ investRouter.post("/", async (req, res, next) => {
 investRouter.put("/:investId", async (req, res, next) => {
   try {
     const { investId } = req.params;
-
     const Investdata = req.body;
-
     const findInvest = await prisma.invest.findUnique({
       where: { id: investId },
     });

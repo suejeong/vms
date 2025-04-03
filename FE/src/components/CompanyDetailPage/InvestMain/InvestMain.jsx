@@ -3,7 +3,7 @@ import styles from "./InvestMain.module.scss";
 import ChangeToNumber from "../ChangeToNumber/ChangeToNumber";
 import InvestTable from "../InvestTable/InvestTable";
 
-export function InvestMain({ companyData, investData }) {
+export function InvestMain({ companyData, investData, refetchCompanyInvest }) {
   const totalInvestAmount = investData.reduce(
     (sum, data) => sum + data.investAmount,
     0
@@ -14,6 +14,7 @@ export function InvestMain({ companyData, investData }) {
         총 {ChangeToNumber(totalInvestAmount)}
       </p>
       <InvestTable
+        refetchCompanyInvest={refetchCompanyInvest}
         investData={investData}
         companyData={companyData}
       ></InvestTable>
