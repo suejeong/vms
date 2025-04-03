@@ -18,7 +18,7 @@ const Search = ({
 
 
   return (
-    <div>
+    <div className={styles.searchContainer}>
         <input
         type="text"
         placeholder="검색어를 입력해주세요"            // 안내 텍스트
