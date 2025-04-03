@@ -3,7 +3,7 @@ const prisma = require("../db/client.prisma");
 
 const companyRouter = express.Router();
 
-// 전체 회사 리스트 가져오기
+// 전체 회사 리스트 가져오기 API
 companyRouter.get("/", async (req, res, next) => {
   try {
     const company = await prisma.company.findMany();
@@ -13,7 +13,7 @@ companyRouter.get("/", async (req, res, next) => {
   }
 });
 
-// 회사 하나 정보로 가져오기
+// 회사 하나 정보로 가져오기 API
 companyRouter.get("/detail/:companyId", async (req, res, next) => {
   const { companyId } = req.params;
   try {
@@ -26,7 +26,7 @@ companyRouter.get("/detail/:companyId", async (req, res, next) => {
   }
 });
 
-// 회사 비교하기
+// 회사 비교하기 API
 companyRouter.get("/compare", async (req, res, next) => {
   try {
     const companyNameArray = req.query.name?.split(",");
@@ -47,7 +47,7 @@ companyRouter.get("/compare", async (req, res, next) => {
   }
 });
 
-// 회사 순위로 리스트 가져오기
+// 회사 순위로 리스트 가져오기 API
 companyRouter.get("/ranking/:companyName", async (req, res, next) => {
   try {
     const companyName = req.params.companyName;
@@ -112,51 +112,31 @@ companyRouter.get("/ranking/:companyName", async (req, res, next) => {
   }
 });
 
-//전체기업에 대한 viewInvestAmount업데이트
-//강사님께서 투자 투자수정 투자삭제마다 뷰마이스타트업에서 받은 투자금을 건들지말고
-//뷰마이스타트업에서 받은 투자금 불러오는 페이지에서 처리하라고 하셔서
-//투자현황 페이지 만드시는 분이 이거 호출하시거나 변형하셔서 쓰시면 될거같습니다.
+// 투자 기업 리스트 가져오기 API
 companyRouter.get("/view", async (req, res, next) => {
-  //경로는 나중에 수정하세요
   try {
-    //전체 회사 목록 가져오기
+    const companies = await prisma.$queryRaw`
+        SELECT 
+            c.*, 
+            COALESCE(SUM(i."investAmount"), 0) AS "viewTotalInvestAmount"
+        FROM "Company" c
+        LEFT JOIN "Invest" i ON c.id = i."companyId"
+        GROUP BY c.id
+        HAVING SUM(i."investAmount") > 0
+    `;
 
-    const companies = await prisma.$queryRaw;
-    //여기 뒤에 sql 넣기 챗지피티 도움받기기
+    // BigInt를 Number로 변환
+    const formattedCompanies = companies.map(company => ({
+      ...company,
+      viewTotalInvestAmount: Number(company.viewTotalInvestAmount) // BigInt -> Number 변환
+    }));
 
-    //각 회사의 투자 총액을 계산하여 업데이트
-    for (const company of companies) {
-      // 투자 총액 조회
-      const companyViewInvests = await prisma.invest.findMany({
-        where: {
-          companyId: company.id,
-        },
-        select: {
-          investAmount: true,
-        },
-      });
-
-      // 투자 금액 합산
-      const companyViewInvestTotal = companyViewInvests.reduce(
-        (total, invest) => total + invest.investAmount,
-        0
-      );
-
-      // 회사 테이블의 viewInvestAmount 업데이트
-      await prisma.company.update({
-        where: { id: company.id },
-        data: {
-          viewInvestAmount: companyViewInvestTotal,
-        },
-      });
-    }
-
-    const updatedCompany = await prisma.company.findMany();
-
-    res.json(updatedCompany);
+    res.json(formattedCompanies);
   } catch (error) {
     next(error);
   }
 });
+
+
 
 module.exports = companyRouter;

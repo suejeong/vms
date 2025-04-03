@@ -2,10 +2,10 @@ import React, { useRef, useState } from "react";
 import style from "./Modal.module.scss";
 import MyCompanyModal from "../MyCompanyModal/MyCompanyModal";
 import CompareCompanyModal from "../CompareCompanyModal/CompareCompanyModal";
-import { Pagination } from "../../components/Pasination/Pasination";
-import SearchBar from "../../components/SearchBar/SearchBar";
+import { Pagination } from "../Pasination/Pasination";
+import SearchBar from "../SearchBar/SearchBar";
 import { getChoseong } from "es-hangul";
-import Title from "../../../../components/Title/Title";
+import Title from "../../Title/Title";
 
 function Modal({
   isOpen,

@@ -2,7 +2,7 @@ import styles from "./InvestHeader.module.scss";
 import { useState, useRef, useEffect } from "react";
 import InvestModal from "../InvestModal/InvestModal";
 
-export function InvestHeader() {
+export function InvestHeader({ investData, companyData }) {
   const modalBackground = useRef();
 
   const investState = () => {
@@ -39,6 +39,8 @@ export function InvestHeader() {
           }}
         >
           <InvestModal
+            investData={investData}
+            companyData={companyData}
             investState={() => {
               investState();
             }}

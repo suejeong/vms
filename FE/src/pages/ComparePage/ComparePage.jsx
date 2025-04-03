@@ -1,14 +1,14 @@
 import { useState } from "react";
 import style from "./ComparePage.module.scss";
 import { getCompanyList, getComparedcompany } from "../../api/Company.js";
-import CompanyContainer from "./components/CompanyContainer/CompanyContainer.jsx";
-import DashContainer from "./components/DashContainer/DashContainer.jsx";
 import { MyCompany } from "../../components/ComparisonResultPage/MyCompany/MyCompany.jsx";
 import { CompareResult } from "../../components/ComparisonResultPage/CompareResult/CompareResult.jsx";
 import { CompanyRanking } from "../../components/ComparisonResultPage/CompanyRanking/CompanyRanking.jsx";
-import Modal from "./modals/Modal/Modal.jsx";
+import Modal from "../../components/ComparePage/Modal/Modal.jsx";
 import Title from "../../components/Title/Title.jsx";
-import Button from "./components/Button/Button.jsx";
+import CompanyContainer from "../../components/ComparePage/CompanyContainer/CompanyContainer.jsx";
+import DashContainer from "../../components/ComparePage/DashContainer/DashContainer.jsx";
+import Button from "../../components/ComparePage/Button/Button.jsx";
 
 export default function ComparePage() {
   // 모달 오픈 유무 스테이트

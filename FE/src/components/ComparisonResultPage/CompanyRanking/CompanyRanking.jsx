@@ -13,7 +13,7 @@ export const CompanyRanking = ({ myCompanyState }) => {
 
   const fetchData = async () => {
     const rankingListData = await getCompanyRankingList(
-      myCompanyState,
+      myCompanyState.name,
       orderByState
     );
     setCompanyRankingListState(rankingListData);
@@ -48,7 +48,12 @@ export const CompanyRanking = ({ myCompanyState }) => {
           </thead>
           <tbody>
             {companyRankingListState.map((company) => (
-              <tr key={company.id}>
+              <tr
+                key={company.id}
+                className={
+                  company.name === myCompanyState.name ? styles.highlight : ""
+                }
+              >
                 <td>{company.ranking}</td>
                 <td>
                   <img
@@ -57,7 +62,9 @@ export const CompanyRanking = ({ myCompanyState }) => {
                   />
                   {company.name}
                 </td>
-                <td>{company.description}</td>
+                <td>
+                  <p>{company.description}</p>
+                </td>
                 <td>{company.category}</td>
                 <td>{company.totalInvestment}</td>
                 <td>{company.totalProfit}</td>

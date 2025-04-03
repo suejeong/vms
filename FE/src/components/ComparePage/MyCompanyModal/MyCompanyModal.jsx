@@ -1,8 +1,8 @@
 import React from "react";
 import style from "./MyCompanyModal.module.scss";
-import FilteredCompanies from "../../components/FilteredCompanies/FilteredCompanies";
-import CompanyInfo from "../../components/CompanyInfo/CompanyInfo";
-import Button from "../../components/Button/Button";
+import FilteredCompanies from "../FilteredCompanies/FilteredCompanies";
+import CompanyInfo from "../CompanyInfo/CompanyInfo";
+import Button from "../Button/Button";
 
 export default function MyCompanyModal({
   filteredCompanies,
