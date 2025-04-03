@@ -1,13 +1,3 @@
-h1 {
-  font-weight: 700;
-  font-size: 1.25rem;
-}
-
-p {
-  font-weight: 500;
-  font-size: 1.125rem;
-}
-
 .section {
   display: flex;
   align-items: center;
@@ -68,16 +58,10 @@ p {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-}
-
-.noAddCompany {
-  font-weight: 400;
-  font-size: 14px;
-  color: var(--gray-200);
-}
-
-a {
-  color: var(--white-color);
+  p {
+    font-weight: 500;
+    font-size: 1.125rem;
+  }
 }
 
 .buttonDiv {
@@ -106,14 +90,11 @@ a {
 
 /* Mobile (375px ~ 743px) */
 @media only screen and (min-width: 23.4375rem) and (max-width: 46.4375rem) {
-  h1 {
-    font-size: 1rem;
+  .compareCompanyLetter {
+    p {
+      font-size: 0.875rem;
+    }
   }
-
-  p {
-    font-size: 0.875rem;
-  }
-
   .section {
     padding: 0 1rem;
   }

@@ -9,18 +9,21 @@
   background-color: var(--gray-400);
   border-radius: 0.5rem;
   position: relative;
+  img {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 100%;
+  }
 }
 
 .minusButton {
   position: absolute;
   top: 0.5rem;
   right: 0.5rem;
-}
-
-.companyImg {
-  width: 5rem;
-  height: 5rem;
-  border-radius: 100%;
+  img {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
 }
 
 .companyName {
@@ -31,6 +34,12 @@
 .companyCategory {
   font-weight: 500;
   font-size: 0.875rem;
+  color: var(--gray-200);
+}
+
+.noAddCompany {
+  font-weight: 400;
+  font-size: 14px;
   color: var(--gray-200);
 }
 

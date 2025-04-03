@@ -1,78 +1,3 @@
-h1 {
-  font-weight: 700;
-  font-size: 1.25;
-}
-
-h2 {
-  font-weight: 700;
-  font-size: 1rem;
-}
-
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
-
-.content {
-  background-color: var(--black-300);
-  color: var(--white-color);
-  padding: 1.5rem;
-  border-radius: 1rem;
-  max-width: 31rem;
-  width: 100%;
-  height: auto;
-}
-
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 0.5rem 0;
-}
-
-.input {
-  max-width: 28rem;
-  width: 100%;
-  height: 3rem;
-  border-radius: 0.625rem;
-  padding: 0.75rem 0.75rem 0.75rem 3rem;
-  gap: 0.75rem;
-  border-width: 0.0625rem;
-  background: var(--black-300);
-  border: 0.0625rem solid var(--gray-200);
-  color: var(--gray-100);
-  margin: 0.5rem 0;
-}
-
-.search {
-  position: relative;
-}
-
-.searchCompany {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.inputButton {
-  width: 3.25rem;
-  height: 1.5rem;
-  position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  top: 1.25rem;
-  left: 0.75rem;
-}
-
 .companyInfo {
   display: flex;
   align-items: center;
@@ -84,22 +9,6 @@ h2 {
   align-items: center;
   justify-content: space-between;
   margin: 0.5rem 0;
-}
-
-.selectButton {
-  width: 6.5rem;
-  height: 3rem;
-  border-radius: 0.625rem;
-  border: 1px solid var(--brand-orange);
-  color: var(--brand-orange);
-}
-
-.selectButton:disabled {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--gray-100);
-  border-color: var(--gray-100);
 }
 
 .deselectButton {
@@ -121,20 +30,10 @@ h2 {
   color: var(--gray-200);
 }
 
-.recentCompanies {
-  margin: 0.5rem 0;
-}
-
 .companyInfo img {
   width: 3rem;
   height: 3rem;
   border-radius: 100%;
-}
-
-.filteredCompanies {
-  max-width: 28rem;
-  width: 100%;
-  margin: 0.5rem 0;
 }
 
 /* Tablet (744px ~ 1199px) */
@@ -143,24 +42,12 @@ h2 {
 
 /* Mobile (375px ~ 743px) */
 @media only screen and (min-width: 23.4375rem) and (max-width: 46.4375rem) {
-  h1 {
-    font-size: 1rem;
-  }
-
-  p {
-    font-size: 0.875rem;
-  }
-
   .companyName {
     font-size: 0.875rem;
   }
 
   .companyCategory {
     font-size: 0.75rem;
-  }
-
-  .overlay {
-    padding: 1rem;
   }
 
   .selectButton {

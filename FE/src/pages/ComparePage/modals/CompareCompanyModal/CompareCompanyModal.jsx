@@ -1,59 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 import style from "./CompareCompanyModal.module.scss";
-import { Pagination } from "./Pasination";
+import FilteredCompanies from "../../components/FilteredCompanies/FilteredCompanies";
+import CompanyInfo from "../../components/CompanyInfo/CompanyInfo";
 
 export default function CompareCompanyModal({
-  isOpen,
-  onClose,
-  companies,
+  filteredCompanies,
   selectedCompanies,
   setSelectedCompanies,
+  currentCompanies,
+  inputValue,
+  handleDeselect,
+  myCompany,
 }) {
-  const [inputValue, setInputValue] = useState("");
-  const [filteredCompanies, setFilteredCompanies] = useState(companies);
-  const [currentPage, setCurrentPage] = useState(1);
-  const companiesPerPage = 5;
-
-  if (!isOpen) return null;
-
-  const filterCompanies = (value) => {
-    if (value.trim() === "") {
-      setFilteredCompanies(companies);
-    } else {
-      const filtered = companies.filter((company) =>
-        company.name.toLowerCase().includes(value.toLowerCase())
-      );
-      setFilteredCompanies(filtered);
-    }
-    setCurrentPage(1);
-  };
-
-  const handleInputChange = (e) => {
-    const value = e.target.value;
-    setInputValue(value);
-    filterCompanies(value);
-  };
-
-  const handlePageChange = (pageNumber) => {
-    setCurrentPage(pageNumber);
-  };
-
-  const indexOfLastCompany = currentPage * companiesPerPage;
-  const indexOfFirstCompany = indexOfLastCompany - companiesPerPage;
-  const currentCompanies = filteredCompanies.slice(
-    indexOfFirstCompany,
-    indexOfLastCompany
-  );
-  const totalPages = Math.ceil(filteredCompanies.length / companiesPerPage);
-
-  const handleSubmit = () => {
-    const filtered = companies.filter((company) =>
-      company.name.toLowerCase().includes(inputValue.toLowerCase())
-    );
-    setFilteredCompanies(filtered);
-  };
-
-  const handleSelect = (company) => {
+  const handleCompareCompanySelect = (company) => {
     if (
       selectedCompanies.length < 5 &&
       !selectedCompanies.find((c) => c.id === company.id)
@@ -62,98 +21,33 @@ export default function CompareCompanyModal({
     }
   };
 
-  const handleDeselect = (companyId) => {
-    setSelectedCompanies((prev) =>
-      prev.filter((company) => company.id !== companyId)
-    );
-  };
-
   return (
-    <div className={style.overlay}>
-      <div className={style.content}>
-        <div className={style.header}>
-          <h1>비교할 기업 선택하기</h1>
-          <button className={style.closeButton} onClick={onClose}>
-            <img src="/images/icons/ic_delete.png" alt="delete" />
-          </button>
-        </div>
-        <div className={style.search}>
-          <input
-            type="text"
-            value={inputValue}
-            onChange={handleInputChange}
-            placeholder="기업 이름을 입력하세요"
-            className={style.input}
-          />
-          <div className={style.inputButton}>
-            <button className={style.submitButton} onClick={handleSubmit}>
-              <img src="/images/icons/ic_search.png" alt="search" />
+    <>
+      <div className={style.selectedCompanies}>
+        <p>선택한 기업 ({selectedCompanies.length})</p>
+        {selectedCompanies.map((company) => (
+          <div key={company.id} className={style.companyItem}>
+            <div className={style.companyInfo}>
+              <CompanyInfo company={company} />
+            </div>
+            <button
+              className={style.deselectButton}
+              onClick={() => handleDeselect(company.id)}
+            >
+              선택 해제
             </button>
           </div>
-          <div className={style.selectedCompanies}>
-            <p>선택한 기업 ({selectedCompanies.length})</p>
-            {selectedCompanies.map((company) => (
-              <div key={company.id} className={style.companyItem}>
-                <div className={style.companyInfo}>
-                  <img
-                    src={`/images/companies/${company.name}.png`}
-                    alt="company"
-                  />
-                  <p className={style.companyName}>{company.name}</p>
-                  <p className={style.companyCategory}>{company.category}</p>
-                </div>
-                <button
-                  className={style.deselectButton}
-                  onClick={() => handleDeselect(company.id)}
-                >
-                  선택 해제
-                </button>
-              </div>
-            ))}
-          </div>
-          <div className={style.searchCompany}>
-            <div className={style.filteredCompanies}>
-              <p>검색 결과 ({filteredCompanies.length})</p>
-              {currentCompanies.length > 0 ? (
-                currentCompanies.map((company) => (
-                  <div key={company.id} className={style.companyItem}>
-                    <div className={style.companyInfo}>
-                      <img
-                        src={`/images/companies/${company.name}.png`}
-                        alt="company"
-                      />
-                      <p className={style.companyName}>{company.name}</p>
-                      <p className={style.companyCategory}>
-                        {company.category}
-                      </p>
-                    </div>
-                    {selectedCompanies.find((c) => c.id === company.id) ? (
-                      <button className={style.selectButton} disabled>
-                        <img src="/images/icons/ic_check.png" alt="check" />
-                        선택 완료
-                      </button>
-                    ) : (
-                      <button
-                        className={style.selectButton}
-                        onClick={() => handleSelect(company)}
-                      >
-                        선택하기
-                      </button>
-                    )}
-                  </div>
-                ))
-              ) : (
-                <p>검색 결과가 없습니다.</p>
-              )}
-            </div>
-            <Pagination
-              currentPage={currentPage}
-              totalPages={totalPages}
-              onPageChange={handlePageChange}
-            />
-          </div>
-        </div>
+        ))}
       </div>
-    </div>
+      <FilteredCompanies
+        inputValue={inputValue}
+        filteredCompanies={filteredCompanies}
+        currentCompanies={currentCompanies}
+        selectedCompanies={selectedCompanies}
+        handleSelect={handleCompareCompanySelect}
+        handleDeselect={handleDeselect}
+        myCompany={myCompany}
+      />
+    </>
   );
 }
