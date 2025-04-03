@@ -3,7 +3,7 @@ const prisma = require("../db/client.prisma");
 
 const companyRouter = express.Router();
 
-// 전체 회사 리스트 가져오기
+// 전체 회사 리스트 가져오기 API
 companyRouter.get("/", async (req, res, next) => {
   try {
     const company = await prisma.company.findMany();
@@ -12,9 +12,8 @@ companyRouter.get("/", async (req, res, next) => {
     next(error);
   }
 });
-//sss
 
-// 회사 하나 정보로 가져오기
+// 회사 하나 정보로 가져오기 API
 companyRouter.get("/detail/:companyId", async (req, res, next) => {
   const { companyId } = req.params;
   try {
@@ -27,7 +26,7 @@ companyRouter.get("/detail/:companyId", async (req, res, next) => {
   }
 });
 
-// 회사 비교하기
+// 회사 비교하기 API
 companyRouter.get("/compare", async (req, res, next) => {
   try {
     const companyNameArray = req.query.name?.split(",");
@@ -48,7 +47,7 @@ companyRouter.get("/compare", async (req, res, next) => {
   }
 });
 
-// 회사 순위로 리스트 가져오기
+// 회사 순위로 리스트 가져오기 API
 companyRouter.get("/ranking/:companyName", async (req, res, next) => {
   try {
     const companyName = req.params.companyName;
@@ -112,5 +111,32 @@ companyRouter.get("/ranking/:companyName", async (req, res, next) => {
     next(error);
   }
 });
+
+// 투자 기업 리스트 가져오기 API
+companyRouter.get("/view", async (req, res, next) => {
+  try {
+    const companies = await prisma.$queryRaw`
+        SELECT 
+            c.*, 
+            COALESCE(SUM(i."investAmount"), 0) AS "viewTotalInvestAmount"
+        FROM "Company" c
+        LEFT JOIN "Invest" i ON c.id = i."companyId"
+        GROUP BY c.id
+        HAVING SUM(i."investAmount") > 0
+    `;
+
+    // BigInt를 Number로 변환
+    const formattedCompanies = companies.map(company => ({
+      ...company,
+      viewTotalInvestAmount: Number(company.viewTotalInvestAmount) // BigInt -> Number 변환
+    }));
+
+    res.json(formattedCompanies);
+  } catch (error) {
+    next(error);
+  }
+});
+
+
 
 module.exports = companyRouter;

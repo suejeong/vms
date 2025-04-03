@@ -106,7 +106,7 @@ async function main() {
       },
     });
 
-    const investCount = getRandomInt(1, 3);
+    const investCount = getRandomInt(0, 3);
 
     for (let j = 0; j < investCount; j++) {
       const investId = makeId(`invest-${i + 1}`, j + 1);
