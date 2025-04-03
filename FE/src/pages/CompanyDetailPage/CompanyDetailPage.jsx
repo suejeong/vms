@@ -43,7 +43,7 @@ export function CompanyDetailPage() {
     return <div>로딩 중...</div>;
   }
   const companyName = companyData.name;
-  const imgsrc = `../../../public/images/companies/${companyName}.png`;
+  const imgsrc = `/images/companies/${companyName}.png`;
   return (
     <div className={styles.CompanyDetailPage}>
       <div className={styles.CompanyDetailDiv}>
@@ -69,7 +69,7 @@ export function CompanyDetailPage() {
       </div>
 
       <div className={styles.ViewMyStartUpDiv}>
-        <InvestHeader />
+        <InvestHeader investData={investData} companyData={companyData} />
         <InvestMain investData={investData} companyData={companyData} />
 
         <div className={styles.PaseNationDiv}>
