@@ -1,3 +1,4 @@
+
 import React from "react";
 import { GrFormPrevious, GrFormNext } from "react-icons/gr";
 import styles from "./Pagination.module.scss";

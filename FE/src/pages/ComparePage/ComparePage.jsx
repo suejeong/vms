@@ -1,13 +1,14 @@
 import { useState } from "react";
 import style from "./ComparePage.module.scss";
 import { getCompanyList, getComparedcompany } from "../../api/Company.js";
-import CompanyContainer from "./components/CompanyContainer/CompanyContainer.jsx";
-import DashContainer from "./components/DashContainer/DashContainer.jsx";
 import { MyCompany } from "../../components/ComparisonResultPage/MyCompany/MyCompany.jsx";
 import { CompareResult } from "../../components/ComparisonResultPage/CompareResult/CompareResult.jsx";
 import { CompanyRanking } from "../../components/ComparisonResultPage/CompanyRanking/CompanyRanking.jsx";
-import Modal from "./modals/Modal/Modal.jsx";
+import Modal from "../../components/ComparePage/Modal/Modal.jsx";
 import Title from "../../components/Title/Title.jsx";
+import CompanyContainer from "../../components/ComparePage/CompanyContainer/CompanyContainer.jsx";
+import DashContainer from "../../components/ComparePage/DashContainer/DashContainer.jsx";
+import Button from "../../components/ComparePage/Button/Button.jsx";
 
 export default function ComparePage() {
   // 모달 오픈 유무 스테이트
@@ -76,16 +77,17 @@ export default function ComparePage() {
           <div className={style.resetMyCompany}>
             <Title text="나의 기업을 선택해 주세요!" />
             {myCompany && compareCompanies.length > 0 && (
-              <button
-                className={style.resetMyCompanyButton}
+              <Button
+                shape="oval"
+                size="medium"
+                color="orange"
                 onClick={() => {
                   setMyCompany(null);
                   setCompareCompanies([]);
                 }}
-              >
-                <img src="/images/icons/ic_restart.png" alt="Restart" />
-                전체 초기화
-              </button>
+                text="전체 초기화"
+                image={<img src="/images/icons/ic_restart.png" alt="Restart" />}
+              />
             )}
           </div>
           {myCompany ? (
@@ -103,13 +105,14 @@ export default function ComparePage() {
                   <Title text="어떤 기업이 궁금하세요?" />
                   {compareCompanies.length > 0 && <p>(최대 5개)</p>}
                 </div>
-                <button
-                  className={style.addCompareCompanyButton}
+                <Button
+                  shape="oval"
+                  size="medium"
+                  color="orange"
                   onClick={openModal}
+                  text="기업 추가하기"
                   disabled={compareCompanies.length === 5}
-                >
-                  기업 추가하기
-                </button>
+                />
               </div>
               <CompanyContainer
                 compareCompanies={compareCompanies}
@@ -129,13 +132,14 @@ export default function ComparePage() {
             myCompany={myCompany}
           />
 
-          <button
-            className={style.compareButton}
-            disabled={compareCompanies.length === 0}
+          <Button
+            shape="oval"
+            size="big"
+            color="orange"
             onClick={() => handleClickCompareButton()}
-          >
-            기업 비교하기
-          </button>
+            text="기업 비교하기"
+            disabled={compareCompanies.length === 0}
+          />
         </section>
       ) : (
         <>
