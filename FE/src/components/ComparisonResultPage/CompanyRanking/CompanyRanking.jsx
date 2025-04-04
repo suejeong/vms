@@ -3,7 +3,10 @@ import { OrderByRanking } from "../OrderByRanking/OrderByRanking";
 import styles from "./CompanyRanking.module.scss";
 import { getCompanyRankingList } from "../../../api/Company.js";
 
-export const CompanyRanking = ({ myCompanyState }) => {
+export const CompanyRanking = ({
+  myCompanyState,
+  handleNavigateDetailPage,
+}) => {
   const [companyRankingListState, setCompanyRankingListState] = useState([]);
   const [orderByState, setOrderByState] = useState("누적 투자금액 높은순");
 
@@ -53,6 +56,7 @@ export const CompanyRanking = ({ myCompanyState }) => {
                 className={
                   company.name === myCompanyState.name ? styles.highlight : ""
                 }
+                onClick={handleNavigateDetailPage(company.id)}
               >
                 <td>{company.ranking}</td>
                 <td>
