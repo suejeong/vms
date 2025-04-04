@@ -10,4 +10,9 @@ export default defineConfig({
   build: {
     outDir: "dist", 
   },
+  server: {
+    watch: {
+      usePolling: true, // 파일 변경 감지 강화
+    },
+  },
 });
