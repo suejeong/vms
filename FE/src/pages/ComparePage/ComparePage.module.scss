@@ -25,12 +25,13 @@
   font-weight: 600;
   gap: 0.25rem;
   border-radius: 3.125rem;
-  padding: 0.5rem 1.5rem;
+  padding: 0 1.5rem;
   background-color: var(--brand-orange);
   color: var(--wihte-color);
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 2.5rem;
 }
 
 .resetMyCompanyButton {
@@ -76,10 +77,11 @@
 .investButton {
   background-color: var(--brand-orange);
   border: none;
-  border-radius: 1rem;
   color: white;
-  padding: 0.5rem 1rem;
-  width: 11rem;
+  padding: 0 1.5rem;
+  height: 3rem;
+  font-size: 1rem;
+  border-radius: 1.5rem;
 }
 
 /* Tablet (744px ~ 1199px) */
