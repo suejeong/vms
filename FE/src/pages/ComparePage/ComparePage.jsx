@@ -9,6 +9,7 @@ import Title from "../../components/Title/Title.jsx";
 import CompanyContainer from "../../components/ComparePage/CompanyContainer/CompanyContainer.jsx";
 import DashContainer from "../../components/ComparePage/DashContainer/DashContainer.jsx";
 import Button from "../../components/ComparePage/Button/Button.jsx";
+import { useNavigate } from "react-router-dom";
 
 export default function ComparePage() {
   // 모달 오픈 유무 스테이트
@@ -25,6 +26,12 @@ export default function ComparePage() {
   const [compareResultListState, setCompareResultListState] = useState([]);
   // 비교 유무 스테이트
   const [compareResultState, setCompareResultState] = useState(false);
+  // 디테일 페이지 이동 네비게이트
+  const navigate = useNavigate();
+
+  const handleNavigateDetailPage = (companyId) => {
+    navigate(`/detail/${companyId}`);
+  };
 
   const getAllCompanies = async () => {
     try {
@@ -56,10 +63,12 @@ export default function ComparePage() {
     closeModal();
   };
 
+  // 비교 유무 스테이트 changer
   const handleChangeCompareResultState = () => {
     setCompareResultState((pre) => !pre);
   };
 
+  // 비교하기 함수.
   const handleClickCompareButton = async () => {
     const companyNames = compareCompanies.map((company) => company.name);
     companyNames.push(myCompany.name);
@@ -68,6 +77,12 @@ export default function ComparePage() {
     setCompareResultListState(compareResultListData);
 
     handleChangeCompareResultState();
+  };
+
+  // 투자하기 버튼 클릭 핸들러. 모달 on, 비교하기 on.
+  const handleOnClickInvestment = () => {
+    setIsModalOpen(true); //모달 on
+    setCompareResultState(true); // 비교하기 on
   };
 
   return (
@@ -122,7 +137,7 @@ export default function ComparePage() {
           )}
 
           <Modal
-            isOpen={isModalOpen}
+            isOpen={!compareResultState && isModalOpen}
             onClose={closeModal}
             onSelect={handleSelectCompany}
             companies={companies}
@@ -151,11 +166,28 @@ export default function ComparePage() {
             myCompanyState={myCompany}
             compareResultListState={compareResultListState}
             setCompareResultListState={setCompareResultListState}
+            handleNavigateDetailPage={handleNavigateDetailPage}
           />
-          <CompanyRanking myCompanyState={myCompany} />
+          <CompanyRanking
+            myCompanyState={myCompany}
+            handleNavigateDetailPage={handleNavigateDetailPage}
+          />
           <div className={style.buttonDiv}>
-            <button className={style.investButton}>나의 기업에 투자하기</button>
+            <button
+              className={style.investButton}
+              onClick={handleOnClickInvestment}
+            >
+              나의 기업에 투자하기
+            </button>
           </div>
+
+          <>
+            {/**
+             * isModalOpen&&compareResultListState &&<모달컴포넌트  myCompany ={myCompany}/>
+             * 투자하기 모달 자리.
+             *
+             *  */}
+          </>
         </>
       )}
     </>
