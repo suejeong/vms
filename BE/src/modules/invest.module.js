@@ -3,7 +3,7 @@ const prisma = require("../db/client.prisma");
 
 const investRouter = express.Router();
 
-//투정정보 전체 가져요기
+//투자 정보 전체 가져요기
 investRouter.get("/", async (req, res, next) => {
   try {
     const invests = await prisma.invest.findMany();
@@ -19,7 +19,7 @@ investRouter.get("/", async (req, res, next) => {
   }
 });
 
-//투정정보 하나 가져오기
+//투자 정보 하나 가져오기
 investRouter.get("/:investId", async (req, res, next) => {
   try {
     const { investId } = req.params;
@@ -48,10 +48,32 @@ investRouter.get("/company/:companyId", async (req, res, next) => {
       where: { companyId: companyId },
     });
 
+    res.json(invests);
+  } catch (error) {
+    next(error);
+  }
+});
+
+//특정 기업 투자정보 5개 가져오기
+investRouter.get("/company/:companyId/:page", async (req, res, next) => {
+  try {
+    const { companyId, page } = req.params;
+    const pageNumber = parseInt(page, 10);
+    const pageSize = 5;
+    const skip = (pageNumber - 1) * pazeSize;
+
+    const invests = await prisma.invest.findMany({
+      where: { companyId: companyId },
+      skip: skip,
+      take: pageSize,
+      orderBy: {
+        investmentAmount: "desc", // 투자금액을 기준으로 내림차순 정렬
+      },
+    });
+
+    // 해당 회사의 투자 정보가 없으면 404 반환 //이거 빈배열 반환으로 바꾸기
     if (invests.length === 0) {
-      return res
-        .status(404)
-        .json({ message: "해당 회사의 투자 정보를 찾을 수 없습니다." });
+      return [];
     }
 
     res.json(invests);
@@ -85,9 +107,7 @@ investRouter.post("/", async (req, res, next) => {
 investRouter.put("/:investId", async (req, res, next) => {
   try {
     const { investId } = req.params;
-
     const Investdata = req.body;
-
     const findInvest = await prisma.invest.findUnique({
       where: { id: investId },
     });

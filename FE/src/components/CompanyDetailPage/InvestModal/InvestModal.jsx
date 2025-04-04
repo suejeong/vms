@@ -1,16 +1,23 @@
 import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import styles from "./InvestModal.module.scss";
+import { createInvest } from "../../../api/Invest";
+export default function Investmentmoal({
+  investState,
+  companyData,
+  refetchCompanyInvest,
+}) {
+  const companyName = companyData.name;
+  const companyId = companyData.id;
+  const imgsrc = `/images/companies/${companyName}.png`;
 
-export default function InvestmentPanel({ investState, companyData }) {
-  const [form, setForm] = useState({});
+  const [form, setForm] = useState({ companyId: companyId });
   const [success, setSuccess] = useState(false);
+  const [passwordCoreect, setPasswordCoreect] = useState(false);
   const [showPassword, setShowPassword] = useState({
     first: false,
     second: false,
   });
-  const companyName = companyData.name;
-  const imgsrc = `../../../public/images/companies/${companyName}.png`;
 
   const handlePreviewPassword = (type) => {
     setShowPassword((prev) => ({
@@ -22,13 +29,23 @@ export default function InvestmentPanel({ investState, companyData }) {
   const InvestmentChange = (e) => {
     const { name, value } = e.target;
     setForm({ ...form, [name]: value });
-    console.log(form); // 내용확인
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // 유효성 검사 후 서버 전송 🔥
-    // 검사 후 form에 UUID 추가
+    if (form.password === form.secondPassword) {
+      setPasswordCoreect(true);
+      const { secondPassword, ...newdata } = form;
+
+      console.log(newdata);
+      newdata.investAmount = Number(newdata.investAmount);
+      console.log(newdata);
+      await createInvest(newdata);
+      refetchCompanyInvest();
+    } else {
+      setPasswordCoreect(false);
+    }
+
     setSuccess(true);
   };
 
@@ -69,9 +86,9 @@ export default function InvestmentPanel({ investState, companyData }) {
               </label>
               <input
                 type="text"
-                name="name"
+                name="username"
                 id="investorName"
-                value={form.name || ""}
+                value={form.username || ""}
                 onChange={InvestmentChange}
                 placeholder="투자자 이름을 입력해 주세요"
                 required
@@ -84,9 +101,9 @@ export default function InvestmentPanel({ investState, companyData }) {
               </label>
               <input
                 type="text"
-                name="price"
+                name="investAmount"
                 id="investmentAmount"
-                value={form.price || ""}
+                value={form.investAmount || ""}
                 onChange={InvestmentChange}
                 placeholder="투자 금액을 입력해 주세요"
                 required
@@ -99,9 +116,9 @@ export default function InvestmentPanel({ investState, companyData }) {
               </label>
               <input
                 type="text"
-                name="desc"
+                name="comment"
                 id="investmentComment"
-                value={form.desc || ""}
+                value={form.comment || ""}
                 onChange={InvestmentChange}
                 placeholder="투자에 대한 코멘트를 입력해 주세요"
                 required
@@ -115,9 +132,9 @@ export default function InvestmentPanel({ investState, companyData }) {
               <div className={styles.passwordContainer}>
                 <input
                   type={showPassword.first ? "text" : "password"}
-                  name="firstPassword"
+                  name="password"
                   id="firstPassword"
-                  value={form.firstPassword || ""}
+                  value={form.password || ""}
                   onChange={InvestmentChange}
                   placeholder="비밀번호를 입력해주세요"
                   required
@@ -172,13 +189,14 @@ export default function InvestmentPanel({ investState, companyData }) {
               <button
                 type="submit"
                 className={`${styles.button} ${styles.submitButton}`}
+                onClick={refetchCompanyInvest}
               >
                 투자하기
               </button>
             </div>
           </form>
         </>
-      ) : (
+      ) : passwordCoreect ? (
         <div className={styles.successPanelContainer}>
           <div className={styles.successPanelHeader}>
             <button
@@ -193,6 +211,28 @@ export default function InvestmentPanel({ investState, companyData }) {
             </button>
           </div>
           <h2 className={styles.successTitle}>투자가 완료되었어요!</h2>
+          <button
+            onClick={investState}
+            className={`${styles.successCancleButton} ${styles.button} ${styles.cancelButton}`}
+          >
+            확인
+          </button>
+        </div>
+      ) : (
+        <div className={styles.successPanelContainer}>
+          <div className={styles.successPanelHeader}>
+            <button
+              onClick={investState}
+              className={`${styles.successCloseButton} ${styles.closeButton}`}
+            >
+              <img
+                src="/images/icons/ic_delete.png"
+                alt="close"
+                className={styles.closeButton}
+              />
+            </button>
+          </div>
+          <h2 className={styles.successTitle}>비밀번호가 일치하지 않아요!</h2>
           <button
             onClick={investState}
             className={`${styles.successCancleButton} ${styles.button} ${styles.cancelButton}`}

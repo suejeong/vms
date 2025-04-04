@@ -13,10 +13,11 @@
 .compareButton {
   background-color: var(--brand-orange);
   border: none;
-  border-radius: 1rem;
   color: white;
-  padding: 0.5rem 1rem;
-  width: 11rem;
+  padding: 0 1.5rem;
+  height: 2.5rem;
+  font-size: 1rem;
+  border-radius: 1.25rem;
 }
 
 .myCompanySection {
@@ -29,23 +30,28 @@
   background-color: var(--black-300);
   margin-top: 0.5rem;
   border-radius: 0.3rem;
-}
 
-.myCompanyImage {
-  width: 5rem;
-  height: 5rem;
-  object-fit: cover;
-  border-radius: 100%;
-}
+  .myCompanyImage {
+    width: 5rem;
+    height: 5rem;
+    object-fit: cover;
+    border-radius: 100%;
+  }
 
-.myCompanyName {
-  font-size: 1.2rem;
-  margin-top: 1rem;
-}
+  .myCompanyName {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-top: 0.625rem;
+    margin-bottom: 0.25rem;
+    line-height: 1;
+  }
 
-.myCompanyCategory {
-  font-size: 1.1rem;
-  color: var(--gray-200);
+  .myCompanyCategory {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--gray-200);
+    line-height: 1;
+  }
 }
 
 /* Tablet (744px ~ 1199px) */
@@ -56,11 +62,20 @@
 }
 
 /* Mobile (375px ~ 743px) */
-@media only screen and (min-width: 23.4375rem) and (max-width: 46.4375rem) {
+@media only screen and (max-width: 46.4375rem) {
   .titleText {
+    font-size: 1rem;
     padding: 0.5rem 0;
   }
+
   .myCompanySection {
     height: 12rem;
+  }
+
+  .compareButton {
+    padding: 0 1.5rem;
+    height: 2rem;
+    font-size: 0.85rem;
+    border-radius: 1rem;
   }
 }

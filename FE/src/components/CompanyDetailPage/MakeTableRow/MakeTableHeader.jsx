@@ -1,8 +1,15 @@
 import styles from "./MakeTableHeader.module.scss";
 
-export function MakeTableHeader({ Name, Rank, InvestAmount, Coment, button }) {
+export function MakeTableHeader({
+  Name,
+  Rank,
+  InvestAmount,
+  Coment,
+  button,
+  investId,
+}) {
   return (
-    <div className={styles.tableHeader}>
+    <div className={styles.tableHeader} data-key={investId}>
       <div className={styles.sizeMd}>{Name}</div>
       <div className={styles.sizeMd}>{Rank}</div>
       <div className={styles.sizeMd}>{InvestAmount}</div>

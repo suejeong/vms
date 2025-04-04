@@ -4,83 +4,147 @@ import Description from "../../components/CompanyDetailPage/Description/Descript
 import LogoAndName from "../../components/CompanyDetailPage/LogoAndName/LogoAndName";
 import InvestHeader from "../../components/CompanyDetailPage/InvestHeader/InvestHeader";
 import InvestMain from "../../components/CompanyDetailPage/InvestMain/InvestMain";
-import PaseNationButton from "../../components/CompanyDetailPage/PaseNationButton/PaseNationButton";
+import PageNationButton from "../../components/CompanyDetailPage/PaseNationButton/PaseNationButton";
+
 import { getCompany } from "../../api/Company";
-import { getCompanyInvest } from "../../api/Invest";
+import { getCompanyInvest, getCompanyPageInvest } from "../../api/Invest";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 export function CompanyDetailPage() {
-  // 기업 상세 페이지에 필요한 하나의 기업 정보 state
-  const [companyData, setCompanyData] = useState(null);
-  // 기업 상세 페이지에 필요한 기업 하나의 투자 정보 state
-  const [investData, setInvestData] = useState([]);
-  //로딩 상태 데이터를 다 가져오면 화면을 그리기 위한 state
-  const [loading, setLoading] = useState(true);
   // 가져올 회사 ID (예제, 실제로는 props나 params에서 가져올 수도 있음)
   const { companyId } = useParams();
-  // 컴포넌트가 처음 마운트될 때 API 호출
+  // 기업 상세 페이지에 필요한 하나의 기업 정보 state
+  const [companyDataState, setCompanyData] = useState(null);
+  // 기업 상세 페이지에 필요한 기업 하나의 투자 정보 state
+  const [investDataState, setInvestData] = useState([]);
+  //로딩 상태 데이터를 다 가져오면 화면을 그리기 위한 state
+  const [loading, setLoading] = useState(true);
+  //페이지네이션을 위한 데이터 state
+  const [nowPageState, setNowPageState] = useState(1);
 
-  useEffect(() => {
-    const fetchData = async () => {
+  //리페치 컴페니인베스트 함수 만들어서 이걸 투자 행위마다 연결
+  const refetchCompanyInvest = async () => {
+    const investData = await getCompanyInvest(companyId);
+    setInvestData(investData);
+  };
+
+  const fetchData = async () => {
+    try {
+      const companyData = await getCompany(companyId);
+
+      let investData = [];
       try {
-        const companyD = await getCompany(companyId);
-        const investD = await getCompanyInvest(companyId);
-        setCompanyData(companyD);
-        setInvestData(investD);
+        investData = await getCompanyInvest(companyId);
       } catch (error) {
-        console.error("데이터를 불러오는 중 오류 발생:", error);
-      } finally {
-        setLoading(false); // ✅ 모든 데이터가 받아지면 로딩 종료
+        if (error.response?.status === 404) {
+          console.warn("투자 정보가 없음. 빈 배열로 처리.");
+        } else {
+          throw error;
+        }
       }
-    };
 
+      setCompanyData(companyData);
+      setInvestData(investData || []);
+    } catch (error) {
+      console.error("데이터를 불러오는 중 오류 발생:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // 컴포넌트가 처음 마운트될 때 API 호출
+  useEffect(() => {
     fetchData();
-  }, [companyId]);
+  }, []);
 
-  // ✅ 로딩 중이면 "로딩 중..." 표시
+  // 로딩 중이면 "로딩 중..." 표시
   if (loading) {
     return <div>로딩 중...</div>;
   }
-  const companyName = companyData.name;
-  const imgsrc = `/images/companies/${companyName}.png`;
+  // 투자내역 개수에 맞게 페이지네이션 버튼 생성
+  const makePageNationButton = (investDataState) => {
+    const count = Math.ceil((investDataState?.length || 0) / 5); // 5개씩 나눈 총 페이지 수
+    const buttons = [];
+
+    // 이전 페이지 버튼 추가
+    buttons.push(
+      <PageNationButton
+        key="prev"
+        value="<"
+        onClick={() => {
+          if (nowPageState > 1) {
+            setNowPageState(nowPageState - 1);
+          }
+        }}
+      />
+    );
+
+    // 페이지 번호 버튼 추가
+    for (let i = 1; i <= count; i++) {
+      buttons.push(
+        <PageNationButton
+          key={i}
+          value={i}
+          onClick={() => setNowPageState(i)}
+        />
+      );
+    }
+
+    // 다음 페이지 버튼 추가
+    buttons.push(
+      <PageNationButton
+        key="next"
+        value=">"
+        onClick={() => {
+          if (nowPageState < count) {
+            setNowPageState(nowPageState + 1);
+          }
+        }}
+      />
+    );
+
+    return <div className={styles.PaseNationDiv}>{buttons}</div>;
+  };
+
   return (
     <div className={styles.CompanyDetailPage}>
       <div className={styles.CompanyDetailDiv}>
         <LogoAndName
-          imgSrc={imgsrc}
-          companyName={companyData.name}
-          companyCategory={companyData.category}
+          imgSrc={`/images/companies/${companyDataState.name}.png`}
+          companyName={companyDataState.name}
+          companyCategory={companyDataState.category}
         />
 
         <div className={styles.companyDetailThreePart}>
           <Patition
             colum={"누적 투자 금액"}
-            value={companyData.totalInvestment}
+            value={companyDataState.totalInvestment}
           />
-          <Patition colum={"매출액"} value={companyData.totalProfit} />
+          <Patition colum={"매출액"} value={companyDataState.totalProfit} />
           <Patition
             colum={"고용 인원"}
-            value={companyData.employeeCount + " 명"}
+            value={companyDataState.employeeCount + " 명"}
           />
         </div>
 
-        <Description text={companyData.description} />
+        <Description text={companyDataState.description} />
       </div>
 
       <div className={styles.ViewMyStartUpDiv}>
-        <InvestHeader investData={investData} companyData={companyData} />
-        <InvestMain investData={investData} companyData={companyData} />
+        <InvestHeader
+          investDataState={investDataState}
+          companyDataState={companyDataState}
+          refetchCompanyInvest={refetchCompanyInvest}
+        />
+        <InvestMain
+          nowPageState={nowPageState}
+          investDataState={investDataState}
+          companyDataState={companyDataState}
+          refetchCompanyInvest={refetchCompanyInvest}
+        />
 
-        <div className={styles.PaseNationDiv}>
-          <PaseNationButton value={"<"} />
-          <PaseNationButton value={"1"} />
-          <PaseNationButton value={"2"} />
-          <PaseNationButton value={"3"} />
-          <PaseNationButton value={"4"} />
-          <PaseNationButton value={"5"} />
-          <PaseNationButton value={">"} />
-        </div>
+        {makePageNationButton(investDataState)}
       </div>
     </div>
   );

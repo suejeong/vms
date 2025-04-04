@@ -18,14 +18,22 @@ export const getInvest = async (InvestId) => {
   });
 };
 
-// 특정 기업 투자 받아오기
+// 특정 기업 투자 5개 받아오기
 export const getCompanyInvest = async (companyId) => {
   return safeExecute(async () => {
     const res = await instance.get(`/invest/company/${companyId}`);
-
     return res.data;
   });
 };
+
+// 특정 기업 투자 받아오기
+export const getCompanyPageInvest = async (companyId, page) => {
+  return safeExecute(async () => {
+    const res = await instance.get(`/invest/company/${companyId}/${page}`);
+    return res.data;
+  });
+};
+
 // 투자 정보 추가하기 (새 투자)
 export const createInvest = async (investData) => {
   return safeExecute(async () => {

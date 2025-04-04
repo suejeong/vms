@@ -6,6 +6,7 @@ export const CompareResult = ({
   myCompanyState,
   compareResultListState,
   setCompareResultListState,
+  handleNavigateDetailPage,
 }) => {
   const [orderByState, setOrderByState] = useState("누적 투자금액 높은순");
 
@@ -44,6 +45,7 @@ export const CompareResult = ({
                 className={
                   company.name === myCompanyState.name ? styles.highlight : ""
                 }
+                onClick={() => handleNavigateDetailPage(company.id)} 
               >
                 <td>
                   <img

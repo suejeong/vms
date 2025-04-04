@@ -2,10 +2,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 3.5rem 0 1rem 0;
+  height: 3rem;
 }
 
 .titleText {
-  font-weight: bold;
+  font-weight: 700;
   font-size: 1.3rem;
   padding: 1rem 0;
 }
@@ -36,7 +38,6 @@
 .CompanyRankingTable {
   width: 100%;
   border-collapse: collapse;
-  font-size: 1.2rem;
 }
 
 .CompanyRankingTable thead {
@@ -50,6 +51,12 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+
+  tr th {
+    font-size: 0.875rem;
+    font-weight: 400;
+    padding: 0.75rem;
+  }
 }
 
 .CompanyRankingTable tbody {
@@ -60,7 +67,7 @@
 }
 
 .CompanyRankingTable tbody tr {
-  border-bottom: 0.1rem solid var(--gray-300);
+  border-bottom: 0.065rem solid var(--gray-300);
 }
 
 /* 마지막 행에는 테두리가 안 생기도록 */
@@ -74,32 +81,35 @@
   justify-content: space-between;
 }
 
-.CompanyRankingTable th,
-td {
+.CompanyRankingTable th, td {
   text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
+  padding: 0.75rem;
 
   img {
     width: 2rem;
     height: 2rem;
     border-radius: 50%;
-    margin: 1rem;
+    margin: 0.5rem;
   }
 }
 
+.CompanyRankingTable tbody td {
+  padding: 0.5rem;
+  font-weight: 400;
+}
 .CompanyRankingTable th:nth-child(1),
 .CompanyRankingTable td:nth-child(1) {
-  width: 8%;
+  width: 6%;
 }
 
 .CompanyRankingTable th:nth-child(2) {
-  width: 20%;
+  width: 16%;
 }
 .CompanyRankingTable td:nth-child(2) {
-  width: 20%;
+  width: 16%;
   text-align: left;
   justify-content: flex-start;
 
@@ -110,11 +120,11 @@ td {
 }
 
 .CompanyRankingTable th:nth-child(3) {
-  width: 24%;
+  width: 30%;
 }
 
 .CompanyRankingTable td:nth-child(3) {
-  width: 24%;
+  width: 30%;
 
   /* 글자수가 2줄 이상 넘어가면 ... 처리 */
   p {
@@ -138,11 +148,11 @@ td {
 }
 
 .highlight {
-  background-color: var(--gray-300);
+  background-color: var(--black-100);
 }
 
 /* Mobile (375px ~ 743px) */
-@media only screen and (min-width: 23.4375rem) and (max-width: 46.4375rem) {
+@media only screen and (max-width: 46.4375rem) {
   .titleText {
     padding: 0.5rem 0;
   }
@@ -154,5 +164,9 @@ td {
   .CompanyRankingTable {
     width: 50rem;
     overflow-x: auto;
+  }
+
+  .titleText {
+    font-size: 1rem;
   }
 }

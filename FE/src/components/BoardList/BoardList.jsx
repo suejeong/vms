@@ -14,7 +14,7 @@ export default function BoardList({ flex, companies, fields, itemsPerPage = 10, 
           return (
             <li
               key={index}
-              className="flex items-center min-h-16 border-b last:border-b-0 hover:cursor-pointer hover:bg-[#2a2a2a]"
+              className="flex items-center  min-h-16 border-b last:border-b-0  hover:cursor-pointer hover:bg-[#2a2a2a] "
               style={{ borderBottomColor: '#4B4B4B' }}
               onClick={() => handleDetail(company.id)}
             >
@@ -31,7 +31,7 @@ export default function BoardList({ flex, companies, fields, itemsPerPage = 10, 
                     className={`
                       ${isSecondOrThirdColumn ? "text-left" : "text-center"}
                       ${flex[idx + 1]}
-                      ${idx === 0 ? "flex items-center gap-x-3" : ""}
+                      ${idx === 0 ? "flex items-center gap-x-3 " : ""}
                       font-normal
                       line-clamp-2
                       overflow-hidden
@@ -42,7 +42,7 @@ export default function BoardList({ flex, companies, fields, itemsPerPage = 10, 
                       <img
                         src={`/images/companies/${company[field]}.png`}
                         alt="기업이미지"
-                        className="ml-4 size-8 rounded-full object-cover"
+                        className="size-8 rounded-full object-cover ml-4"
                       />
                     )}
                     {company[field]}
