@@ -3,8 +3,8 @@ import { useState, useRef, useEffect } from "react";
 import InvestModal from "../InvestModal/InvestModal";
 
 export function InvestHeader({
-  investData,
-  companyData,
+  investDataState,
+  companyDataState,
   refetchCompanyInvest,
 }) {
   const modalBackground = useRef();
@@ -44,8 +44,8 @@ export function InvestHeader({
         >
           <InvestModal
             refetchCompanyInvest={refetchCompanyInvest}
-            investData={investData}
-            companyData={companyData}
+            investData={investDataState}
+            companyData={companyDataState}
             investState={() => {
               investState();
             }}

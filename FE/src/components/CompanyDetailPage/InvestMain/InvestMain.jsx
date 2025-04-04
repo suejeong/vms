@@ -3,11 +3,17 @@ import styles from "./InvestMain.module.scss";
 import ChangeToNumber from "../ChangeToNumber/ChangeToNumber";
 import InvestTable from "../InvestTable/InvestTable";
 
-export function InvestMain({ companyData, investData, refetchCompanyInvest }) {
-  const totalInvestAmount = investData.reduce(
+export function InvestMain({
+  companyDataState,
+  nowPageState,
+  investDataState,
+  refetchCompanyInvest,
+}) {
+  const totalInvestAmount = investDataState.reduce(
     (sum, data) => sum + data.investAmount,
     0
   );
+
   return (
     <div className={styles.ViewMyStartUpMain}>
       <p className={styles.detialPageWeight700}>
@@ -15,8 +21,9 @@ export function InvestMain({ companyData, investData, refetchCompanyInvest }) {
       </p>
       <InvestTable
         refetchCompanyInvest={refetchCompanyInvest}
-        investData={investData}
-        companyData={companyData}
+        investDataState={investDataState}
+        companyDataState={companyDataState}
+        nowPageState={nowPageState}
       ></InvestTable>
     </div>
   );

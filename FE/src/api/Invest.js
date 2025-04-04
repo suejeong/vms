@@ -18,11 +18,10 @@ export const getInvest = async (InvestId) => {
   });
 };
 
-// 특정 기업 투자 5개 받아오기(정렬된걸로)
+// 특정 기업 투자 5개 받아오기
 export const getCompanyInvest = async (companyId) => {
   return safeExecute(async () => {
     const res = await instance.get(`/invest/company/${companyId}`);
-
     return res.data;
   });
 };
@@ -31,7 +30,6 @@ export const getCompanyInvest = async (companyId) => {
 export const getCompanyPageInvest = async (companyId, page) => {
   return safeExecute(async () => {
     const res = await instance.get(`/invest/company/${companyId}/${page}`);
-
     return res.data;
   });
 };
