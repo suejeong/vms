@@ -4,7 +4,6 @@ import { instance, safeExecute } from "./Common.js";
 export const getCompanyList = async () => {
   return safeExecute(async () => {
     const res = await instance.get(`/company`);
-
     return res.data;
   });
 };
@@ -13,7 +12,7 @@ export const getCompanyList = async () => {
 export const getInvestedCompanies = async () => {
   return safeExecute(async () => {
     const res = await instance.get(`/company/view`);
-    console.log(res)
+    console.log(res);
     return res.data;
   });
 };
@@ -50,4 +49,18 @@ export const getCompanyRankingList = async (companyName, orderBy) => {
   });
 };
 
+// 검색 및 페이지네이션 API 호출
+export const searchCompanies = async (searchQuery, page = 1, limit = 10) => {
+  return safeExecute(async () => {
+    const res = await instance.get(`/company/search`, {
+      params: {
+        search: searchQuery,
+        page,
+        limit,
+      },
+    });
 
+    console.log(res.data); // 응답 데이터 확인
+    return res.data; // 결과 반환
+  });
+};

@@ -4,14 +4,12 @@ import MyCompanyModal from "../MyCompanyModal/MyCompanyModal";
 import CompareCompanyModal from "../CompareCompanyModal/CompareCompanyModal";
 import { Pagination } from "../Pasination/Pasination";
 import SearchBar from "../SearchBar/SearchBar";
-import { getChoseong } from "es-hangul";
 import Title from "../../Title/Title";
 
 function Modal({
   isOpen,
   onClose,
   onSelect,
-  companies,
   recentCompanies,
   selectedCompanies,
   setSelectedCompanies,
@@ -20,7 +18,7 @@ function Modal({
   const [inputValue, setInputValue] = useState("");
   const [filteredCompanies, setFilteredCompanies] = useState([]);
   const modalBackground = useRef();
-  const [currentPage, setCurrentPage] = useState(1);
+  const [pagination, setPagination] = useState({});
   const companiesPerPage = 5;
 
   if (!isOpen) return null;
@@ -38,16 +36,15 @@ function Modal({
   };
 
   const handlePageChange = (pageNumber) => {
-    setCurrentPage(pageNumber);
+    setPagination(pageNumber);
   };
 
-  const indexOfLastCompany = currentPage * companiesPerPage;
+  const indexOfLastCompany = pagination.currentPage * companiesPerPage;
   const indexOfFirstCompany = indexOfLastCompany - companiesPerPage;
   const currentCompanies = filteredCompanies.slice(
     indexOfFirstCompany,
     indexOfLastCompany
   );
-  const totalPages = Math.ceil(filteredCompanies.length / companiesPerPage);
 
   return (
     <div
@@ -74,10 +71,9 @@ function Modal({
           inputValue={inputValue}
           setInputValue={setInputValue}
           setFilteredCompanies={setFilteredCompanies}
+          setPagination={setPagination}
+          companiesPerPage={companiesPerPage}
           myCompany={myCompany}
-          companies={companies}
-          setCurrentPage={setCurrentPage}
-          isOpen={isOpen}
         />
         {!myCompany ? (
           <MyCompanyModal
@@ -102,10 +98,10 @@ function Modal({
           />
         )}
         <div className={style.searchCompany}>
-          {totalPages > 1 && inputValue && (
+          {pagination.totalPages > 1 && inputValue && (
             <Pagination
-              currentPage={currentPage}
-              totalPages={totalPages}
+              currentPage={pagination.currentPage || 1}
+              totalPages={pagination.totalPages || 1}
               onPageChange={handlePageChange}
             />
           )}
