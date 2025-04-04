@@ -26,8 +26,8 @@
   }
 }
 
-/* Mobile (375px ~ 743px) */
-@media only screen and (min-width: 23.4375rem) and (max-width: 46.4375rem) {
+/* Mobile (0 ~ 743px) */
+@media only screen and (min-width: 0) and (max-width: 46.4375rem) {
   .myCompanyContainer {
     height: 11.25rem;
   }

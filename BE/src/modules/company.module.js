@@ -126,9 +126,9 @@ companyRouter.get("/view", async (req, res, next) => {
     `;
 
     // BigInt를 Number로 변환
-    const formattedCompanies = companies.map(company => ({
+    const formattedCompanies = companies.map((company) => ({
       ...company,
-      viewTotalInvestAmount: Number(company.viewTotalInvestAmount) // BigInt -> Number 변환
+      viewTotalInvestAmount: Number(company.viewTotalInvestAmount), // BigInt -> Number 변환
     }));
 
     res.json(formattedCompanies);
@@ -137,6 +137,49 @@ companyRouter.get("/view", async (req, res, next) => {
   }
 });
 
+// 검색창 API 가져오기
+companyRouter.get("/search", async (req, res, next) => {
+  try {
+    const searchQuery = req.query.search || "";
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 10;
 
+    const offset = (page - 1) * limit;
+
+    const companies = await prisma.company.findMany({
+      where: {
+        name: {
+          contains: searchQuery,
+          mode: "insensitive",
+        },
+      },
+      skip: offset,
+      take: limit,
+    });
+
+    const totalCompanies = await prisma.company.count({
+      where: {
+        name: {
+          contains: searchQuery,
+          mode: "insensitive",
+        },
+      },
+    });
+
+    const totalPages = Math.ceil(totalCompanies / limit);
+
+    res.json({
+      data: companies,
+      pagination: {
+        currentPage: page,
+        totalPages,
+        totalCompanies,
+        limit,
+      },
+    });
+  } catch (error) {
+    next(error);
+  }
+});
 
 module.exports = companyRouter;
