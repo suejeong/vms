@@ -1,5 +1,4 @@
-import React from 'react'
-import styles from './Search.module.scss'
+import React, { useEffect, useRef, useState } from 'react'
 
 // 검색 컴포넌트: 검색어 입력을 받아 엔터 키로 검색 실행
 const Search = ({
@@ -16,17 +15,38 @@ const Search = ({
       }
     };
 
+    const searchRef = useRef(null)
+    
+    const [ searchActive , setSearchActive ] = useState(false);
+
+    useEffect(() => {
+      document.addEventListener('click', (e) => {
+          e.target.className.trim().includes('input-selected') ? setSearchActive(true) : setSearchActive(false)
+      })
+    }, [])
 
   return (
-    <div className={styles.searchContainer}>
+    <div
+      className={`h-10 flex items-center px-3 mr-2 md:mr-4 md:min-w-[448px] md:h-12 border border-gray200 rounded-[10px]  ${ searchActive && "bg-black300"}`} ref={searchRef}>
+        { !searchActive && <img src="/images/icons/ic_search.png" alt="Search" className='mr-1' /> }
         <input
         type="text"
-        placeholder="검색어를 입력해주세요"            // 안내 텍스트
+        placeholder="검색어를 입력해 주세요"            // 안내 텍스트
           value={searchInput}                           // 현재 입력값 표시
           onChange={(e) => setSearchInput(e.target.value)} // 입력값이 바뀔 때마다 상태 업데이트
           onKeyDown={handleKeyDown}                     // 엔터 키 눌렀을 때 실행
-          className={styles.searchKeyword}              // 스타일 적용
+          className={`
+            text-xs
+            w-full
+            bg-transparent
+            text-gray100
+            placeholder:text-gray100
+            md:text-sm
+            input-selected
+          `}
         />
+        { searchActive && <img src="/images/icons/ic_search.png" alt="Search" className='ml-1 ' /> }
+
     </div>
   )
 }
