@@ -72,7 +72,11 @@ export function CompanyDetailPage() {
       <PageNationButton
         key="prev"
         value="<"
-        onClick={() => setNowPageState(nowPageState - 1)}
+        onClick={() => {
+          if (nowPageState > 1) {
+            setNowPageState(nowPageState - 1);
+          }
+        }}
       />
     );
 
@@ -92,7 +96,11 @@ export function CompanyDetailPage() {
       <PageNationButton
         key="next"
         value=">"
-        onClick={() => setNowPageState(nowPageState + 1)}
+        onClick={() => {
+          if (nowPageState < count) {
+            setNowPageState(nowPageState + 1);
+          }
+        }}
       />
     );
 
