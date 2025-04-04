@@ -30,11 +30,12 @@ export function InvestDeleteModal({
     setForm({ ...form, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (form.password === investData.password) {
       setPasswordCoreect(true);
-      deleteInvest(investId);
+      await deleteInvest(investId);
+      refetchCompanyInvest();
     } else {
       setPasswordCoreect(false);
     }
