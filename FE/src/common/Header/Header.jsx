@@ -11,12 +11,20 @@ export default function Header() {
   const location = useLocation();
 
   useEffect(() => {
+    const currentUrl = window.location.href;
+    for(let i = 0; i < pagesURL.length; i++) {
+      if(currentUrl.includes(pagesURL[i])){
+        setSelected(i + 1)
+        return;
+      }
+    }
+
     const idx = location.state && location.state.idx;
 
     if (idx === undefined || idx === null) return;
 
     if (idx === 0) {
-      setSelected(null);
+      setSelected(null);whitespace-nowrap
     } else {
       setSelected(idx);
       navigate(`/${pagesURL[idx - 1]}`);
