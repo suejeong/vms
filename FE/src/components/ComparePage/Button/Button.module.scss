@@ -1,3 +1,7 @@
+button {
+  font-size: 1rem;
+}
+
 .square {
   width: 6.5rem;
   height: 3rem;
@@ -61,8 +65,12 @@
 @media only screen and (min-width: 46.5rem) and (max-width: 74.9375rem) {
 }
 
-/* Mobile (375px ~ 743px) */
-@media only screen and (min-width: 23.4375rem) and (max-width: 46.4375rem) {
+/* Mobile (0 ~ 743px) */
+@media only screen and (min-width: 0) and (max-width: 46.4375rem) {
+  button {
+    font-size: 0.875rem;
+  }
+
   .square {
     width: 4.5625rem;
     height: 2rem;

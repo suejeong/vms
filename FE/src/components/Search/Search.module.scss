@@ -1,5 +1,5 @@
 .searchContainer {
-  margin-right : 1rem;
+  margin-right: 1rem;
 }
 
 .searchKeyword {
@@ -12,7 +12,7 @@
   color: #d8d8d8;
   font-size: 0.875rem;
   padding: 1rem 1rem 1rem 2.75rem;
-  background: url('../../../public/images/icons/ic_search.png');
+  background: url("../../../public/images/icons/ic_search.png");
   background-repeat: no-repeat;
   background-position: 1rem;
   min-width: 10rem;
@@ -20,18 +20,17 @@
   width: 28rem;
   flex: 1 1 100%;
 
-  @media only screen and (min-width: 24.01rem) and  (max-width: 46.4375rem) { 
-      font-size: 0.75rem;
-      width: 16.81rem;
+  @media only screen and (min-width: 24.01rem) and (max-width: 46.4375rem) {
+    font-size: 0.75rem;
+    width: 16.81rem;
   }
 
   @media only screen and (max-width: 24rem) {
-      font-size: 0.75rem;
-      width: 11.81rem;
-      padding: 1rem 1rem 1rem 2.75rem;
-      box-sizing: border-box;
+    font-size: 0.75rem;
+    width: 11.81rem;
+    padding: 1rem 1rem 1rem 2.75rem;
+    box-sizing: border-box;
   }
-
 }
 
 .searchKeyword::placeholder {
