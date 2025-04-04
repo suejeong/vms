@@ -45,7 +45,7 @@ export const CompareResult = ({
                 className={
                   company.name === myCompanyState.name ? styles.highlight : ""
                 }
-                onClick={handleNavigateDetailPage(company.id)}
+                onClick={() => handleNavigateDetailPage(company.id)} 
               >
                 <td>
                   <img
