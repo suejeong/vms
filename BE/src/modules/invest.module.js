@@ -3,7 +3,7 @@ const prisma = require("../db/client.prisma");
 
 const investRouter = express.Router();
 
-//투정정보 전체 가져요기
+//투자 정보 전체 가져요기
 investRouter.get("/", async (req, res, next) => {
   try {
     const invests = await prisma.invest.findMany();
@@ -19,7 +19,7 @@ investRouter.get("/", async (req, res, next) => {
   }
 });
 
-//투정정보 하나 가져오기
+//투자 정보 하나 가져오기
 investRouter.get("/:investId", async (req, res, next) => {
   try {
     const { investId } = req.params;
@@ -46,15 +46,7 @@ investRouter.get("/company/:companyId", async (req, res, next) => {
     const { companyId } = req.params;
     const invests = await prisma.invest.findMany({
       where: { companyId: companyId },
-      orderBy: {
-        investmentAmount: "desc", // 투자금액을 기준으로 내림차순 정렬
-      },
     });
-
-    if (invests.length === 0) {
-      //이거 빈배열 반환으로 바꾸기
-      return [];
-    }
 
     res.json(invests);
   } catch (error) {
