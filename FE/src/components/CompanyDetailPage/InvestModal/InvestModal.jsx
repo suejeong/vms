@@ -31,7 +31,7 @@ export default function Investmentmoal({
     setForm({ ...form, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (form.password === form.secondPassword) {
       setPasswordCoreect(true);
@@ -39,9 +39,9 @@ export default function Investmentmoal({
 
       console.log(newdata);
       newdata.investAmount = Number(newdata.investAmount);
-      refetchCompanyInvest;
       console.log(newdata);
-      createInvest(newdata);
+      await createInvest(newdata);
+      refetchCompanyInvest();
     } else {
       setPasswordCoreect(false);
     }

@@ -8,7 +8,12 @@ import MakeTableRow from "../MakeTableRow/MakeTableRow";
 import MakeTableHeader from "../MakeTableRow/MakeTableHeader";
 import { useState, useRef } from "react";
 
-export function InvestTable({ investData, companyData, refetchCompanyInvest }) {
+export function InvestTable({
+  investDataState,
+  companyDataState,
+  nowPageState,
+  refetchCompanyInvest,
+}) {
   const [modalState, setModalState] = useState(false);
   const [investDeleteModalState, setInvestDeleteModalState] = useState(false);
   const [investChangeModalState, setInvestChangeModalState] = useState(false);
@@ -52,7 +57,7 @@ export function InvestTable({ investData, companyData, refetchCompanyInvest }) {
     setModalState(true);
   };
 
-  const sortedInvestData = [...investData].sort(
+  const sortedInvestData = [...investDataState].sort(
     (a, b) => b.investAmount - a.investAmount
   );
 
@@ -67,18 +72,22 @@ export function InvestTable({ investData, companyData, refetchCompanyInvest }) {
     />
   );
 
-  const makeRow = (sortedInvestData) => {
-    return sortedInvestData.map((data, index) => (
-      <MakeTableRow
-        key={data.id}
-        id={data.id}
-        Name={data.username}
-        Rank={index + 1}
-        InvestAmount={data.investAmount}
-        Coment={data.comment}
-        button={Button}
-      />
-    ));
+  const makeRow = (sortedInvestData, nowPageState) => {
+    const start = (nowPageState - 1) * 5;
+    const end = start + 5;
+    return sortedInvestData
+      .slice(start, end)
+      .map((data, index) => (
+        <MakeTableRow
+          key={data.id}
+          id={data.id}
+          Name={data.username}
+          Rank={index + 1}
+          InvestAmount={ChangeToNumber(data.investAmount)}
+          Coment={data.comment}
+          button={Button}
+        />
+      ));
   };
 
   return (
@@ -94,7 +103,7 @@ export function InvestTable({ investData, companyData, refetchCompanyInvest }) {
       </div>
       {sortedInvestData.length != 0 ? (
         <div className={styles.investTableBody}>
-          {makeRow(sortedInvestData)}
+          {makeRow(sortedInvestData, nowPageState)}
         </div>
       ) : (
         <div className={styles.investNoData}>
@@ -143,6 +152,7 @@ export function InvestTable({ investData, companyData, refetchCompanyInvest }) {
           >
             <InvestDeleteModal
               investId={selectedInvest}
+              refetchCompanyInvest={refetchCompanyInvest}
               modalDeleteState={() => {
                 modalDeleteState();
               }}
@@ -191,7 +201,7 @@ export function InvestTable({ investData, companyData, refetchCompanyInvest }) {
             <InvestChangeCompleteModal
               refetchCompanyInvest={refetchCompanyInvest}
               investId={selectedInvest}
-              companyData={companyData}
+              companyDataState={companyDataState}
               modalChangeState={() => {
                 modalChangeCompleteState();
               }}

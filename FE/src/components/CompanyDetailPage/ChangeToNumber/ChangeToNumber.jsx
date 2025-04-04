@@ -1,5 +1,5 @@
 export function ChangeToNumber(stringData) {
-  const num = Number(stringData);
+  const num = Number(stringData) * 100000000;
 
   if (isNaN(num)) return stringData;
   else {

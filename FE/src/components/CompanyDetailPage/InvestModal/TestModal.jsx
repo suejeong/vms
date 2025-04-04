@@ -1,31 +1,31 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import styles from "./InvestChangeCompleteModal.module.scss";
+import styles from "./InvestModal.module.scss";
+import { createInvest } from "../../../api/Invest";
 import { updateInvest, getInvest } from "../../../api/Invest";
 
-export default function InvestChangeCompleteModal({
-  modalChangeState,
-  companyDataState,
+export default function Investmentmoal({
+  type,
+  modalState,
+  companyData,
   investId,
   refetchCompanyInvest,
 }) {
   const [investData, setInvestData] = useState(null);
-
-  async function fetchData() {
-    const data = await getInvest(investId);
-    setInvestData(data);
-  }
-
   useEffect(() => {
+    async function fetchData() {
+      const data = await getInvest(investId);
+      setInvestData(data);
+    }
     fetchData();
   }, []);
-  console.log(companyDataState);
+  const companyName = companyData.name;
+  const companyId = companyData.id;
+  const imgsrc = `/images/companies/${companyName}.png`;
 
-  const [form, setForm] = useState({
-    companyId: companyDataState.id,
-    id: investId,
-  });
+  const [form, setForm] = useState({ companyId: companyId });
   const [success, setSuccess] = useState(false);
+  const [passwordCoreect, setPasswordCoreect] = useState(false);
   const [showPassword, setShowPassword] = useState({
     first: false,
     second: false,
@@ -43,15 +43,21 @@ export default function InvestChangeCompleteModal({
     setForm({ ...form, [name]: value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
+    if (form.password === form.secondPassword) {
+      setPasswordCoreect(true);
+      const { secondPassword, ...newdata } = form;
 
-    const { secondPassword, ...newdata } = form;
+      console.log(newdata);
+      newdata.investAmount = Number(newdata.investAmount);
+      console.log(newdata);
+      createInvest(newdata);
+      refetchCompanyInvest;
+    } else {
+      setPasswordCoreect(false);
+    }
 
-    console.log(newdata);
-    newdata.investAmount = Number(newdata.investAmount);
-    await updateInvest(investId, newdata);
-    refetchCompanyInvest();
     setSuccess(true);
   };
 
@@ -61,8 +67,8 @@ export default function InvestChangeCompleteModal({
         <>
           <div className={styles.panelHeader}>
             <div className={styles.headerContent}>
-              <h2 className={styles.title}>기업에 투자 수정하기</h2>
-              <button onClick={modalChangeState} className={styles.closeButton}>
+              <h2 className={styles.title}>기업에 투자하기</h2>
+              <button onClick={modalState} className={styles.closeButton}>
                 <img
                   src="/images/icons/ic_delete.png"
                   alt="close"
@@ -74,13 +80,13 @@ export default function InvestChangeCompleteModal({
               <h3 className={styles.infoTitle}>투자 기업 정보</h3>
               <div className={styles.companyDetails}>
                 <img
-                  src={`/images/companies/${companyDataState.name}.png`}
+                  src={imgsrc}
                   alt="기업이미지"
                   className={styles.companyImage}
                 />
-                <p className={styles.companyName}>{companyDataState.name}</p>
+                <p className={styles.companyName}>{companyData.name}</p>
                 <span className={styles.companyCategory}>
-                  {companyDataState.category}
+                  {companyData.category}
                 </span>
               </div>
             </div>
@@ -133,7 +139,7 @@ export default function InvestChangeCompleteModal({
             </div>
             <div className={styles.formGroup}>
               <label htmlFor="firstPassword" className={styles.label}>
-                새로운 비밀번호
+                비밀번호
               </label>
               <div className={styles.passwordContainer}>
                 <input
@@ -142,7 +148,7 @@ export default function InvestChangeCompleteModal({
                   id="firstPassword"
                   value={form.password || ""}
                   onChange={InvestmentChange}
-                  placeholder="새로운 비밀번호를 입력해 주세요"
+                  placeholder="비밀번호를 입력해주세요"
                   required
                   className={styles.input}
                 />
@@ -160,7 +166,7 @@ export default function InvestChangeCompleteModal({
             </div>
             <div className={styles.formGroup}>
               <label htmlFor="secondPassword" className={styles.label}>
-                새로운 비밀번호 확인
+                비밀번호 확인
               </label>
               <div className={styles.passwordContainer}>
                 <input
@@ -169,7 +175,7 @@ export default function InvestChangeCompleteModal({
                   id="secondPassword"
                   value={form.secondPassword || ""}
                   onChange={InvestmentChange}
-                  placeholder="새로운 비밀번호를 다시 한 번 입력해 주세요"
+                  placeholder="비밀번호를 다시 한 번 입력해주세요"
                   required
                   className={styles.input}
                 />
@@ -187,7 +193,7 @@ export default function InvestChangeCompleteModal({
             </div>
             <div className={styles.buttonGroup}>
               <button
-                onClick={modalChangeState}
+                onClick={modalState}
                 className={`${styles.button} ${styles.cancelButton}`}
               >
                 취소
@@ -195,17 +201,18 @@ export default function InvestChangeCompleteModal({
               <button
                 type="submit"
                 className={`${styles.button} ${styles.submitButton}`}
+                onClick={refetchCompanyInvest}
               >
-                수정하기
+                투자하기
               </button>
             </div>
           </form>
         </>
-      ) : (
+      ) : passwordCoreect ? (
         <div className={styles.successPanelContainer}>
           <div className={styles.successPanelHeader}>
             <button
-              onClick={modalChangeState}
+              onClick={modalState}
               className={`${styles.successCloseButton} ${styles.closeButton}`}
             >
               <img
@@ -215,9 +222,31 @@ export default function InvestChangeCompleteModal({
               />
             </button>
           </div>
-          <h2 className={styles.successTitle}>수정이 완료되었어요!</h2>
+          <h2 className={styles.successTitle}>투자가 완료되었어요!</h2>
           <button
-            onClick={modalChangeState}
+            onClick={modalState}
+            className={`${styles.successCancleButton} ${styles.button} ${styles.cancelButton}`}
+          >
+            확인
+          </button>
+        </div>
+      ) : (
+        <div className={styles.successPanelContainer}>
+          <div className={styles.successPanelHeader}>
+            <button
+              onClick={modalState}
+              className={`${styles.successCloseButton} ${styles.closeButton}`}
+            >
+              <img
+                src="/images/icons/ic_delete.png"
+                alt="close"
+                className={styles.closeButton}
+              />
+            </button>
+          </div>
+          <h2 className={styles.successTitle}>비밀번호가 일치하지 않아요!</h2>
+          <button
+            onClick={modalState}
             className={`${styles.successCancleButton} ${styles.button} ${styles.cancelButton}`}
           >
             확인
