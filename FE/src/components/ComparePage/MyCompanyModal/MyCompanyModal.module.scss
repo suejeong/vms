@@ -1,3 +1,5 @@
+
+
 .header {
   display: flex;
   align-items: center;
@@ -36,6 +38,9 @@
 
 .recentCompanies {
   margin: 0.5rem 0;
+  .title {
+    font-size: 1.15rem;
+  }
 }
 
 /* Tablet (744px ~ 1199px) */

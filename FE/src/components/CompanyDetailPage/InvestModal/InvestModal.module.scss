@@ -63,27 +63,29 @@
 .form {
   display: flex;
   flex-direction: column;
-  gap: 24px;
 }
 
 .formGroup {
   display: flex;
   flex-direction: column;
-  gap: 16px;
 }
 
 .label {
   font-size: 18px;
   font-weight: bold;
+  margin-bottom: 1rem;
 }
 
 .input {
   width: 100%;
   padding: 16px 20px;
   border-radius: 10px;
-  border: 1px solid var(--gray-200);
+  border: 0.065rem solid var(--gray-200);
   background-color: transparent;
   color: inherit;
+  font-size: 0.875rem;
+  font-weight: 400;
+  margin-bottom: 1.5rem;
 }
 
 .passwordContainer {
