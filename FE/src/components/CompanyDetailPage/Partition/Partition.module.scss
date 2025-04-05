@@ -3,9 +3,11 @@
   height: 5.75rem; /* 92px */
   border-radius: 0.625rem; /* 10px */
   display: flex;
-  justify-content: space-between;
-  padding: 2.25rem 1.5rem; /* 36px 24px */
-  background-color: #282828;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--black-200);
+  padding: 0 2rem;
+  flex-direction: row;
 }
 
 .detialPageWeight400 {
@@ -13,7 +15,9 @@
   font-size: 1rem; /* 16px */
   line-height: 1.25rem; /* 20px */
   letter-spacing: 0;
-  color: #d8d8d8;
+  color: var(--gray-100);
+  flex: 1;
+  text-align: left;
 }
 
 .detialPageWeight600 {
@@ -30,7 +34,6 @@
   .detailPart {
     width: 24rem;
     height: 5.75rem;
-    padding: 2.25rem 1.5rem;
   }
 
   .detialPageWeight400,
@@ -42,10 +45,10 @@
 /* 태블릿 화면 (744px ~ 1199px) */
 @media (min-width: 46.5rem) and (max-width: 74.9375rem) {
   .detailPart {
-    width: 100%;
-    height: auto;
-    flex-direction: column;
-    padding: 1.5rem; /* 24px */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
   }
 
   .detialPageWeight400,
@@ -61,13 +64,19 @@
   }
 
   .detailPart {
-    width: 100%;
-    padding: 1rem; /* 16px */
+    text-align: center;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
   }
 
   .detialPageWeight400,
   .detialPageWeight600 {
     font-size: 0.75rem; /* 12px */
+    text-align: center;
+    flex: 0;
   }
 }
 
@@ -85,5 +94,6 @@
   .detialPageWeight400,
   .detialPageWeight600 {
     font-size: 0.75rem; /* 12px */
+    text-align: center;
   }
 }

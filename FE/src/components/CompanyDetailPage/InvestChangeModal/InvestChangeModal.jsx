@@ -90,7 +90,7 @@ export function InvestChangeModal({
         <div className={styles.buttonGroup}>
           <button
             type="submit"
-            className={`${styles.button} ${styles.submitButton}`}
+            className={`${styles.button} ${styles.submitButton} ${styles.marginR0}`}
             onClick={() => {
               console.log(form.password);
               console.log(investData.password);
