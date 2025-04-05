@@ -24,7 +24,7 @@ export function InvestHeader({
         onClick={() => setInvestModalState(true)}
       >
         {" "}
-        투자하기{" "}
+        기업투자하기{" "}
       </button>
 
       {investModalState && (

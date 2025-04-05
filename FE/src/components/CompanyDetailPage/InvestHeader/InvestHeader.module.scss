@@ -12,35 +12,36 @@
 .ViewMyStartUpHeader {
   width: 100%;
   height: auto;
-  margin-top: 0.5rem; /* 8px */
-  font-family: Pretendard, sans-serif;
+  padding-bottom: 1.5rem;
+  margin-top: 2rem;
   font-weight: 700;
-  font-size: 1.25rem; /* 20px */
-  line-height: 100%;
-  letter-spacing: 0;
+  font-size: 1.25rem;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  display: flex;
+  border-bottom: 0.065rem solid var(--black-100);
 }
 
 /* 글자 크기와 스타일 */
 .detialPageWeight700 {
   font-family: Pretendard, sans-serif;
   font-weight: 700;
-  font-size: 1.5rem; /* 24px */
+  font-size: 1.25rem; /* 24px */
   line-height: 100%;
   letter-spacing: 0;
+  flex: 1;
 }
 
 .investButton {
   width: 8.1875rem; /* 131px */
   height: 2.5rem; /* 40px */
-  border-radius: 50px;
+  border-radius: 1.25rem;
+  font-size: 1rem;
+  font-weight: 600;
   gap: 0.625rem; /* 10px */
-  padding-top: 0.5rem; /* 8px */
-  padding-right: 1.5rem; /* 24px */
-  padding-bottom: 0.5rem; /* 8px */
-  padding-left: 1.5rem; /* 24px */
-  background-color: #eb5230;
+  text-align: center;
+  background-color: var(--brand-orange);
 }
 
 .modalOverlay {

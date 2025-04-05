@@ -1,11 +1,10 @@
 .companyDetailHeader {
   width: 100%;
-  height: 7rem; /* 112px */
-  gap: 2rem; /* 32px */
   display: flex;
-  justify-content: flex-start;
+  border-bottom: 0.065rem solid var(--black-100);
   align-items: center;
-  border-bottom: solid 0.1875rem #d8d8d8; /* 3px */
+  padding-bottom: 1.5rem;
+  margin-top: 2.5rem;
 }
 
 .companyLogo {
@@ -18,9 +17,11 @@
   width: 18.75rem; /* 300px */
   height: 3.8125rem; /* 61px */
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   flex-direction: column;
-  gap: 0.5rem; /* 8px */
+  gap: 0.5rem;
+  flex: 1;
+  margin-left: 1.125rem;
 }
 
 .detialPageWeight700 {
@@ -71,11 +72,6 @@
 @media (min-width: 46.5rem) and (max-width: 74.9375rem) {
   .companyDetailHeader {
     height: auto;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 1.5rem;
-    padding: 1rem 0;
   }
 
   .companyLogo {
@@ -86,7 +82,6 @@
   .companyNameAndCategory {
     width: auto;
     height: auto;
-    align-items: center;
   }
 
   .detialPageWeight700 {
@@ -132,6 +127,7 @@
   .companyDetailHeader {
     gap: 0.5rem;
     padding: 0.25rem 0;
+    border: 1px solid blue;
   }
 
   .companyLogo {
@@ -139,6 +135,10 @@
     height: 3rem; /* 48px */
   }
 
+  .companyNameAndCategory {
+    margin-left: 1rem;
+    flex: 1;
+  }
   .detialPageWeight700 {
     font-size: 1rem; /* 16px */
   }
