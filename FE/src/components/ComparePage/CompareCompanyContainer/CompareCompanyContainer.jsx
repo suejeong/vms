@@ -14,7 +14,7 @@ function CompareCompany({ compareCompanies, removeCompareCompany }) {
             >
               <img src="/images/icons/ic_minus.png" alt="minus" />
             </button>
-            <CompanyInfo company={company} />
+            <CompanyInfo company={company} direction="column"/>
           </div>
         ))
       ) : (
