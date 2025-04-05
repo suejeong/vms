@@ -29,7 +29,7 @@ export default function CompareCompanyModal({
         {selectedCompanies.map((company) => (
           <div key={company.id} className={style.companyItem}>
             <div className={style.companyInfo}>
-              <CompanyInfo company={company} />
+              <CompanyInfo company={company} direction="row"/>
             </div>
             <Button
               shape="square"

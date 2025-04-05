@@ -9,7 +9,7 @@ function MyCompany({ setMyCompany, myCompany }) {
         선택 취소
       </a>
       <div className={style.selectedCompany}>
-        <CompanyInfo company={myCompany} />
+        <CompanyInfo company={myCompany} direction="column" />
       </div>
     </>
   );
