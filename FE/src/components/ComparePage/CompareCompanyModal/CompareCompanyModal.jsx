@@ -8,7 +8,7 @@ export default function CompareCompanyModal({
   filteredCompanies,
   selectedCompanies,
   setSelectedCompanies,
-  currentCompanies,
+  totalCompanies,
   inputValue,
   handleDeselect,
   myCompany,
@@ -29,7 +29,7 @@ export default function CompareCompanyModal({
         {selectedCompanies.map((company) => (
           <div key={company.id} className={style.companyItem}>
             <div className={style.companyInfo}>
-              <CompanyInfo company={company} direction="row"/>
+              <CompanyInfo company={company} direction="row" />
             </div>
             <Button
               shape="square"
@@ -43,7 +43,7 @@ export default function CompareCompanyModal({
       <FilteredCompanies
         inputValue={inputValue}
         filteredCompanies={filteredCompanies}
-        currentCompanies={currentCompanies}
+        totalCompanies={totalCompanies}
         selectedCompanies={selectedCompanies}
         handleSelect={handleCompareCompanySelect}
         handleDeselect={handleDeselect}

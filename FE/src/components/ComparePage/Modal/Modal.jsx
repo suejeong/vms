@@ -5,6 +5,7 @@ import CompareCompanyModal from "../CompareCompanyModal/CompareCompanyModal";
 import { Pagination } from "../Pasination/Pasination";
 import SearchBar from "../SearchBar/SearchBar";
 import Title from "../../Title/Title";
+import { searchCompanies } from "../../../api/Company";
 
 function Modal({
   isOpen,
@@ -23,6 +24,24 @@ function Modal({
 
   if (!isOpen) return null;
 
+  const handleSearch = async () => {
+    try {
+      const data = await searchCompanies(
+        inputValue,
+        pagination.currentPage,
+        companiesPerPage
+      );
+      const filteredData = myCompany
+        ? data.data.filter((company) => company.name !== myCompany.name)
+        : data.data;
+
+      setFilteredCompanies(filteredData);
+      setPagination(data.pagination);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   const handleSelect = (company) => {
     onSelect(company);
     setInputValue("");
@@ -36,15 +55,11 @@ function Modal({
   };
 
   const handlePageChange = (pageNumber) => {
-    setPagination(pageNumber);
+    setPagination((prev) => ({
+      ...prev,
+      currentPage: pageNumber,
+    }));
   };
-
-  const indexOfLastCompany = pagination.currentPage * companiesPerPage;
-  const indexOfFirstCompany = indexOfLastCompany - companiesPerPage;
-  const currentCompanies = filteredCompanies.slice(
-    indexOfFirstCompany,
-    indexOfLastCompany
-  );
 
   return (
     <div
@@ -71,16 +86,15 @@ function Modal({
           inputValue={inputValue}
           setInputValue={setInputValue}
           setFilteredCompanies={setFilteredCompanies}
+          handleSearch={handleSearch}
           setPagination={setPagination}
-          companiesPerPage={companiesPerPage}
-          myCompany={myCompany}
         />
         {!myCompany ? (
           <MyCompanyModal
             filteredCompanies={filteredCompanies}
             recentCompanies={recentCompanies}
             handleSelect={handleSelect}
-            currentCompanies={currentCompanies}
+            totalCompanies={pagination.totalCompanies}
             inputValue={inputValue}
             selectedCompanies={selectedCompanies}
             myCompany={myCompany}
@@ -91,7 +105,7 @@ function Modal({
             filteredCompanies={filteredCompanies}
             selectedCompanies={selectedCompanies}
             setSelectedCompanies={setSelectedCompanies}
-            currentCompanies={currentCompanies}
+            totalCompanies={pagination.totalCompanies}
             inputValue={inputValue}
             handleDeselect={handleDeselect}
             myCompany={myCompany}
@@ -102,7 +116,7 @@ function Modal({
             <Pagination
               currentPage={pagination.currentPage || 1}
               totalPages={pagination.totalPages || 1}
-              onPageChange={handlePageChange}
+              handlePageChange={handlePageChange}
             />
           )}
         </div>

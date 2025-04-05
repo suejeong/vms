@@ -1,33 +1,17 @@
 import React, { useState } from "react";
 import style from "./SearchBar.module.scss";
-import { searchCompanies } from "../../../api/Company";
 
 function SearchBar({
   inputValue, // 인풋값
   setInputValue, // 인풋값 설정
   setFilteredCompanies, //검색된 기업들
+  handleSearch, //api 호출함수
   setPagination, // {currentPage: page, totalPages, totalCompanies, limit}
-  companiesPerPage, //페이지당 기업 수
-  myCompany, //내 기업 (다른곳에서 사용할 필요 X)
 }) {
   const [isFocused, setIsFocused] = useState(false);
 
   const handleFocus = () => setIsFocused(true);
   const handleBlur = () => setIsFocused(false);
-
-  const handleSearch = async (pase = 1) => {
-    try {
-      const data = await searchCompanies(inputValue, pase, companiesPerPage);
-      const filteredData = myCompany
-        ? data.data.filter((company) => company.name !== myCompany.name)
-        : data.data;
-
-      setFilteredCompanies(filteredData);
-      setPagination(data.pagination);
-    } catch (e) {
-      console.log(e);
-    }
-  };
 
   const handleInputChange = (e) => {
     const value = e.target.value;
@@ -35,16 +19,22 @@ function SearchBar({
 
     if (value === "") {
       setFilteredCompanies([]);
+      setPagination({});
     }
   };
 
   const handleSubmit = () => {
-    handleSearch(1);
+    handleSearch();
+    setPagination((prev) => ({
+      ...prev,
+      currentPage: 1,
+    }));
   };
 
   const handleDelete = () => {
     setInputValue("");
     setFilteredCompanies([]);
+    setPagination({});
   };
 
   const handleKeyDown = (e) => {
