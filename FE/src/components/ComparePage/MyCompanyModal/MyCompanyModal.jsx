@@ -17,7 +17,7 @@ export default function MyCompanyModal({
   return (
     <>
       <div className={style.recentCompanies}>
-        <p>최근 선택된 기업 ({recentCompanies.length})</p>
+        <p className={style.title}>최근 선택된 기업 ({recentCompanies.length})</p>
         {recentCompanies.map((company) => (
           <div key={company.id} className={style.companyItem}>
             <div className={style.companyInfo}>
