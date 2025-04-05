@@ -25,7 +25,7 @@ export default function CompareCompanyModal({
   return (
     <>
       <div className={style.selectedCompanies}>
-        <p>선택한 기업 ({selectedCompanies.length})</p>
+        <p className={style.title}>선택한 기업 ({selectedCompanies.length})</p>
         {selectedCompanies.map((company) => (
           <div key={company.id} className={style.companyItem}>
             <div className={style.companyInfo}>
