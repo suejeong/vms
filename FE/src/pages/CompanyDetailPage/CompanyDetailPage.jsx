@@ -1,11 +1,8 @@
 import styles from "./CompanyDetailPage.module.scss";
-import Patition from "../../components/CompanyDetailPage/Partition/Partition";
-import Description from "../../components/CompanyDetailPage/Description/Description";
-import LogoAndName from "../../components/CompanyDetailPage/LogoAndName/LogoAndName";
-import InvestHeader from "../../components/CompanyDetailPage/InvestHeader/InvestHeader";
+import CompanyMain from "../../components/CompanyDetailPage/CompanyMain/CompanyMain";
 import InvestMain from "../../components/CompanyDetailPage/InvestMain/InvestMain";
 import PageNationButton from "../../components/CompanyDetailPage/PaseNationButton/PaseNationButton";
-
+import { ModalProvider } from "../../components/CompanyDetailPage/Modals/ModalContext/ModalContext";
 import { getCompany } from "../../api/Company";
 import { getCompanyInvest, getCompanyPageInvest } from "../../api/Invest";
 import { useState, useEffect } from "react";
@@ -15,9 +12,9 @@ export function CompanyDetailPage() {
   // 가져올 회사 ID (예제, 실제로는 props나 params에서 가져올 수도 있음)
   const { companyId } = useParams();
   // 기업 상세 페이지에 필요한 하나의 기업 정보 state
-  const [companyDataState, setCompanyData] = useState(null);
+  const [companyDataState, setCompanyDataState] = useState(null);
   // 기업 상세 페이지에 필요한 기업 하나의 투자 정보 state
-  const [investDataState, setInvestData] = useState([]);
+  const [investDataState, setInvestDataState] = useState([]);
   //로딩 상태 데이터를 다 가져오면 화면을 그리기 위한 state
   const [loading, setLoading] = useState(true);
   //페이지네이션을 위한 데이터 state
@@ -26,7 +23,7 @@ export function CompanyDetailPage() {
   //리페치 컴페니인베스트 함수 만들어서 이걸 투자 행위마다 연결
   const refetchCompanyInvest = async () => {
     const investData = await getCompanyInvest(companyId);
-    setInvestData(investData);
+    setInvestDataState(investData);
   };
 
   const fetchData = async () => {
@@ -44,8 +41,8 @@ export function CompanyDetailPage() {
         }
       }
 
-      setCompanyData(companyData);
-      setInvestData(investData || []);
+      setCompanyDataState(companyData);
+      setInvestDataState(investData || []);
     } catch (error) {
       console.error("데이터를 불러오는 중 오류 발생:", error);
     } finally {
@@ -108,35 +105,10 @@ export function CompanyDetailPage() {
   };
 
   return (
-    <div className={styles.CompanyDetailPage}>
-      <div className={styles.CompanyDetailDiv}>
-        <LogoAndName
-          imgSrc={`/images/companies/${companyDataState.name}.png`}
-          companyName={companyDataState.name}
-          companyCategory={companyDataState.category}
-        />
+    <ModalProvider>
+      <div className={styles.CompanyDetailPage}>
+        <CompanyMain companyDataState={companyDataState} />
 
-        <div className={styles.companyDetailThreePart}>
-          <Patition
-            colum={"누적 투자 금액"}
-            value={companyDataState.totalInvestment}
-          />
-          <Patition colum={"매출액"} value={companyDataState.totalProfit} />
-          <Patition
-            colum={"고용 인원"}
-            value={companyDataState.employeeCount + " 명"}
-          />
-        </div>
-
-        <Description text={companyDataState.description} />
-      </div>
-
-      <div className={styles.ViewMyStartUpDiv}>
-        <InvestHeader
-          investDataState={investDataState}
-          companyDataState={companyDataState}
-          refetchCompanyInvest={refetchCompanyInvest}
-        />
         <InvestMain
           nowPageState={nowPageState}
           investDataState={investDataState}
@@ -146,7 +118,7 @@ export function CompanyDetailPage() {
 
         {makePageNationButton(investDataState)}
       </div>
-    </div>
+    </ModalProvider>
   );
 }
 
