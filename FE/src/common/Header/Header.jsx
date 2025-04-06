@@ -24,7 +24,7 @@ export default function Header() {
     if (idx === undefined || idx === null) return;
 
     if (idx === 0) {
-      setSelected(null);whitespace-nowrap
+      setSelected(null);
     } else {
       setSelected(idx);
       navigate(`/${pagesURL[idx - 1]}`);
