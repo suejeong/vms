@@ -119,7 +119,11 @@ export default function ComparePage() {
               myCompany={myCompany}
             />
           ) : (
-            <DashContainer openModal={setIsModalOpen(true)} />
+            <DashContainer
+              openModal={() => {
+                setIsModalOpen(true);
+              }}
+            />
           )}
           {myCompany && (
             <>
@@ -132,7 +136,9 @@ export default function ComparePage() {
                   shape="oval"
                   size="medium"
                   color="orange"
-                  onClick={setIsModalOpen(true)}
+                  onClick={() => {
+                    setIsModalOpen(true);
+                  }}
                   text="기업 추가하기"
                   disabled={compareCompanies.length === 5}
                 />
@@ -146,7 +152,9 @@ export default function ComparePage() {
 
           <Modal
             isOpen={!compareResultState && isModalOpen}
-            onClose={setIsModalOpen(false)}
+            onClose={() => {
+              setIsModalOpen(false);
+            }}
             onSelect={handleSelectCompany}
             recentCompanies={recentCompanies}
             selectedCompanies={compareCompanies}
