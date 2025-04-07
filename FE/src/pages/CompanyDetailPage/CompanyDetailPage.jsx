@@ -12,9 +12,9 @@ export function CompanyDetailPage() {
   // 가져올 회사 ID (예제, 실제로는 props나 params에서 가져올 수도 있음)
   const { companyId } = useParams();
   // 기업 상세 페이지에 필요한 하나의 기업 정보 state
-  const [companyDataState, setCompanyDataState] = useState(null);
+  const [companyDataState, setCompanyDataState] = useState("");
   // 기업 상세 페이지에 필요한 기업 하나의 투자 정보 state
-  const [investDataState, setInvestDataState] = useState([]);
+  const [investDataState, setInvestDataState] = useState("");
   //로딩 상태 데이터를 다 가져오면 화면을 그리기 위한 state
   const [loading, setLoading] = useState(true);
   //페이지네이션을 위한 데이터 state
@@ -105,20 +105,18 @@ export function CompanyDetailPage() {
   };
 
   return (
-    <ModalProvider>
-      <div className={styles.CompanyDetailPage}>
-        <CompanyMain companyDataState={companyDataState} />
+    <div className={styles.CompanyDetailPage}>
+      <CompanyMain companyDataState={companyDataState} />
 
-        <InvestMain
-          nowPageState={nowPageState}
-          investDataState={investDataState}
-          companyDataState={companyDataState}
-          refetchCompanyInvest={refetchCompanyInvest}
-        />
+      <InvestMain
+        nowPageState={nowPageState}
+        investDataState={investDataState}
+        companyDataState={companyDataState}
+        refetchCompanyInvest={refetchCompanyInvest}
+      />
 
-        {makePageNationButton(investDataState)}
-      </div>
-    </ModalProvider>
+      {makePageNationButton(investDataState)}
+    </div>
   );
 }
 
