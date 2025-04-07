@@ -13,9 +13,7 @@ export function MakeTableRow({
 }) {
   const [buttonModalState, setButtonModalState] = useState(false);
   const [selectedInvest, setSelectedInvest] = useState(null);
-  const selectedInvestState = (now) => {
-    setSelectedInvest(now);
-  };
+
   return (
     <div id={id} className={styles.tableRow}>
       <div className={styles.sizeMd}>{Name}</div>
