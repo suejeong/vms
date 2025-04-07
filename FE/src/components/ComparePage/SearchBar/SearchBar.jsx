@@ -20,7 +20,11 @@ function SearchBar({
 
     if (value === "") {
       setFilteredCompanies([]);
-      setPagination({});
+      setPagination({
+        currentPage: 1,
+        totalPages: 0,
+        totalCompanies: 0,
+      });
       setIsSearchSubmitted(false);
     }
   };
@@ -37,7 +41,11 @@ function SearchBar({
   const handleDelete = () => {
     setInputValue("");
     setFilteredCompanies([]);
-    setPagination({});
+    setPagination({
+      currentPage: 1,
+      totalPages: 0,
+      totalCompanies: 0,
+    });
     setIsSearchSubmitted(false);
   };
 

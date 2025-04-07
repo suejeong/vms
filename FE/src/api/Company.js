@@ -66,7 +66,7 @@ export const searchCompanies = async (
       },
     });
 
-    console.log(res.data); // 응답 데이터 확인
-    return res.data; // 결과 반환
+    console.log(res.data);
+    return res.data;
   });
 };

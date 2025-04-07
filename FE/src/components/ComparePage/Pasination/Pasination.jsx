@@ -2,6 +2,8 @@ import React from "react";
 import style from "./Pasination.module.scss";
 
 export const Pagination = ({ currentPage, totalPages, handlePageChange }) => {
+  if (totalPages === 0) return null;
+
   const getPageNumbers = () => {
     const pageNumbers = [];
     let startPage, endPage;

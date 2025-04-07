@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import style from "./Modal.module.scss";
 import MyCompanyModal from "../MyCompanyModal/MyCompanyModal";
 import CompareCompanyModal from "../CompareCompanyModal/CompareCompanyModal";
@@ -20,10 +20,12 @@ function Modal({
   const [filteredCompanies, setFilteredCompanies] = useState([]);
   const [isSearchSubmitted, setIsSearchSubmitted] = useState(false);
   const modalBackground = useRef();
-  const [pagination, setPagination] = useState({});
+  const [pagination, setPagination] = useState({
+    currentPage: 1,
+    totalPages: 0,
+    totalCompanies: 0,
+  });
   const companiesPerPage = 5;
-
-  if (!isOpen) return null;
 
   const handleSearch = async () => {
     try {
@@ -43,9 +45,22 @@ function Modal({
     }
   };
 
+  useEffect(() => {
+    handleSearch();
+  }, [pagination.currentPage]);
+
+  if (!isOpen) return null;
+
   const handleSelect = (company) => {
     onSelect(company);
     setInputValue("");
+    setFilteredCompanies([]);
+    setIsSearchSubmitted(false);
+    setPagination({
+      currentPage: 1,
+      totalPages: 0,
+      totalCompanies: 0,
+    });
   };
 
   const handleDeselect = (companyId) => {
@@ -117,8 +132,8 @@ function Modal({
         <div className={style.searchCompany}>
           {pagination.totalPages > 1 && inputValue && (
             <Pagination
-              currentPage={pagination.currentPage || 1}
-              totalPages={pagination.totalPages || 1}
+              currentPage={pagination.currentPage}
+              totalPages={pagination.totalPages}
               handlePageChange={handlePageChange}
             />
           )}
