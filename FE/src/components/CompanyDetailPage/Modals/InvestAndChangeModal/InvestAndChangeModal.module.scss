@@ -1,0 +1,243 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5); //배경 좀 어둡게
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.panelContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 496px;
+  width: 100%;
+  padding: 24px;
+  border-radius: 1rem;
+  background-color: var(--black-300);
+}
+
+.panelHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.headerContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.closeButton {
+  width: 32px;
+}
+
+.companyInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.infoTitle {
+  font-weight: bold;
+}
+
+.companyDetails {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.companyImage {
+  width: 40px;
+  border-radius: 999px;
+}
+
+.companyName {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.companyCategory {
+  color: var(--gray-200);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.label {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.input {
+  width: 100%;
+  padding: 16px 20px;
+  border-radius: 10px;
+  border: 1px solid var(--gray-200);
+  background-color: transparent;
+  color: inherit;
+}
+
+.passwordContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.previewIcon {
+  position: absolute;
+  right: 20px;
+  cursor: pointer;
+}
+
+.buttonGroup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.button {
+  flex: 1 1 0;
+  padding: 13px 48px;
+  border-radius: 50px;
+  font-weight: 600;
+}
+
+.cancelButton {
+  border: 1px solid var(--brand-orange);
+  color: var(--brand-orange);
+  margin-left: 2rem;
+}
+
+.submitButton {
+  background-color: var(--brand-orange);
+  color: inherit;
+  margin-right: 2rem;
+}
+
+/* 투자가 완료된 경우 */
+.successPanelContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 32px;
+}
+
+.successPanelHeader {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.successTitle {
+  font-size: 15px;
+  text-align: center;
+}
+
+.successCancleButton {
+  margin: 0px;
+  color: inherit;
+  font-size: 16px;
+  border: none;
+  background-color: var(--brand-orange);
+}
+
+/* Mobile (375px ~ 743px) */
+@media only screen and (min-width: 23.4375rem) and (max-width: 46.4375rem) {
+  .panelContainer {
+    margin: 0 1rem;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .panelHeader {
+    gap: 1rem;
+  }
+
+  .title {
+    font-size: 1rem;
+  }
+
+  .closeButton {
+    width: 24px;
+  }
+
+  .infoTitle {
+    font-size: 1rem;
+  }
+
+  .companyName {
+    font-size: 1rem;
+  }
+
+  .companyCategory {
+    font-size: 12px;
+  }
+
+  .form {
+    gap: 1rem;
+  }
+
+  .formGroup {
+    gap: 12px;
+  }
+
+  .label {
+    font-size: 14px;
+  }
+
+  .input {
+    padding: 12px 1rem;
+  }
+
+  .previewIcon {
+    right: 1rem;
+  }
+
+  .button {
+    padding: 13px 24px;
+    font-size: 14px;
+  }
+
+  .cancelButton {
+    margin-left: 1rem;
+  }
+
+  .submitButton {
+    margin-right: 1rem;
+  }
+
+  /* 투자가 완료된 경우 */
+  .successPanelContainer {
+    gap: 1rem;
+  }
+
+  .successTitle {
+    font-size: 14px;
+  }
+
+  .successCancleButton {
+    margin: 0px;
+    font-size: 14px;
+  }
+}

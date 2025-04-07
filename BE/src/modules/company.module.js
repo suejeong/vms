@@ -100,11 +100,21 @@ companyRouter.get("/ranking/:companyName", async (req, res, next) => {
       return res.status(404).json({ message: "회사를 찾을 수 없습니다." });
     }
 
-    // 위아래 2개씩 가져오기
-    const surroundingcompany = rankedcompany.slice(
-      Math.max(0, targetIndex - 2),
-      Math.min(rankedcompany.length, targetIndex + 3)
-    );
+    const totalLength = rankedcompany.length;
+    let startIndex = targetIndex - 2;
+    let endIndex = targetIndex + 3;
+
+    if (targetIndex < 2) {
+      // 상위권 (3보다 작을 경우. 1등,2등)
+      startIndex = 0;
+      endIndex = Math.min(5, totalLength);
+    } else if (targetIndex > totalLength - 3) {
+      // 하위권 (뒤에서 1,2등)
+      endIndex = totalLength;
+      startIndex = Math.max(0, totalLength - 5);
+    }
+
+    const surroundingcompany = rankedcompany.slice(startIndex, endIndex);
 
     res.json(surroundingcompany);
   } catch (error) {

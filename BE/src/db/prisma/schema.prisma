@@ -11,7 +11,7 @@ model Company {
   id              String   @id @default(uuid())
   name            String   @db.VarChar
   description     String   @db.VarChar
-  category        Category
+  category        String   @db.VarChar
   totalInvestment Int
   totalProfit     Int
   employeeCount   Int
@@ -29,10 +29,4 @@ model Invest {
   investAmount Int
   comment      String  @default("") @db.VarChar
   company      Company @relation(fields: [companyId], references: [id], onDelete: Cascade)
-}
-
-enum Category {
-  EDU
-  SHOPPING
-  ETC
 }
