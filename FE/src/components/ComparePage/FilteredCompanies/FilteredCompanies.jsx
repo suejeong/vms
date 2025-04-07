@@ -4,7 +4,6 @@ import CompanyInfo from "../CompanyInfo/CompanyInfo";
 import Button from "../Button/Button";
 
 function FilteredCompanies({
-  inputValue,
   filteredCompanies,
   totalCompanies,
   selectedCompanies,
@@ -15,7 +14,7 @@ function FilteredCompanies({
 }) {
   return (
     <>
-      {inputValue && isSearchSubmitted && (
+      {isSearchSubmitted && (
         <div className={style.filteredCompanies}>
           {filteredCompanies.length > 0 ? (
             <>

@@ -1,16 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Title from "../../components/Title/Title";
 import BoardTitleBar from "../../components/BoardTitleBar/BoardTitleBar";
 import BoardList from "../../components/BoardList/BoardList";
 import MiddleGroupLayout from "../../components/MiddleGroupLayout/MiddleGroupLayout";
-import Error from "../../common/Error/Error";
-import IsLoading from "../../common/IsLoading/IsLoading";
 import Filter from "../../components/Filter/Filter";
 import BottomGroupLayout from "../../components/BottomGroupLayout/BottomGroupLayout";
 import Pagination from "../../components/Pagination/Pagination";
-import { useCompanies } from "../../api/useCompanies";
 import TopGroupLayout from "../../components/TopGroupLayout/TopGroupLayout";
-import Search from "../../components/Search/Search";
+import { searchCompanies } from "../../api/Company";
+import SearchBar from "../../components/ComparePage/SearchBar/SearchBar";
 
 // 테이블 타이틀 (flex 비율 포함)
 const titleList = [
@@ -27,84 +25,118 @@ const titleList = [
 const filters = [
   {
     label: "누적 투자 금액 높은 순",
-    sortFn: (a, b) => b.totalInvestment - a.totalInvestment,
+    sort: "totalInvestment_desc",
   },
   {
     label: "누적 투자 금액 낮은 순",
-    sortFn: (a, b) => a.totalInvestment - b.totalInvestment,
+    sort: "totalInvestment_asc",
   },
   {
     label: "매출액 높은 순",
-    sortFn: (a, b) => b.totalProfit - a.totalProfit,
+    sort: "totalProfit_desc",
   },
   {
     label: "매출액 낮은 순",
-    sortFn: (a, b) => a.totalProfit - b.totalProfit,
+    sort: "totalProfit_asc",
   },
   {
     label: "고용 인원 많은 순",
-    sortFn: (a, b) => b.employeeCount - a.employeeCount,
+    sort: "employeeCount_desc",
   },
   {
     label: "고용 인원 낮은 순",
-    sortFn: (a, b) => a.employeeCount - b.employeeCount,
+    sort: "employeeCount_asc",
   },
 ];
 
 export const HomePage = () => {
-  const { data: companies = [], error, isLoading } = useCompanies();
-
   const [selectedFilter, setSelectedFilter] = useState(filters[0]);
   const [showFilterOptions, setShowFilterOptions] = useState(false);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [filteredCompanies, setFilteredCompanies] = useState([]);
+  const [isSearchSubmitted, setIsSearchSubmitted] = useState(false);
+  const [pagination, setPagination] = useState({
+    currentPage: 1,
+    totalPages: 0,
+    totalCompanies: 0,
+  });
   const [searchInput, setSearchInput] = useState("");
   const [searchKeyword, setSearchKeyword] = useState("");
 
-  // 필터 변경 시 페이지 1로 초기화
-  useEffect(() => {
-    setCurrentPage(1);
-  }, [selectedFilter]);
+  const handleSearch = useCallback(async () => {
+    try {
+      const data = await searchCompanies(
+        searchInput,
+        pagination.currentPage,
+        itemsPerPage,
+        selectedFilter.sort
+      );
 
-  if (isLoading) return <IsLoading />;
-  if (error) return <Error />;
+      setFilteredCompanies(data.data);
+      setPagination(data.pagination);
+    } catch (e) {
+      console.log(e);
+    }
+  }, [searchInput, pagination.currentPage, selectedFilter.sort]);
 
-  // 필터 + 검색 적용
-  const filteredCompanies = [...companies]
-    .sort(selectedFilter.sortFn)
-    .filter((company) =>
-      company.name.toLowerCase().includes(searchKeyword.toLowerCase())
-    );
+  const handlePageChange = (pageNumber) => {
+    setPagination((prev) => ({
+      ...prev,
+      currentPage: pageNumber,
+    }));
+  };
+
+  // 필터 변경 시 페이지 번호 초기화
+  const handleFilterChange = (filter) => {
+    setSelectedFilter(filter);
+    setPagination((prev) => ({
+      ...prev,
+      currentPage: 1,
+    }));
+  };
+
+  const handleDelete = () => {
+    setSearchInput("");
+    setSearchKeyword("");
+    setPagination({
+      currentPage: 1,
+      totalPages: 0,
+      totalCompanies: 0,
+    });
+    setIsSearchSubmitted(false);
+  };
 
   const itemsPerPage = 10;
-  const currentOffset = (currentPage - 1) * itemsPerPage;
+  const currentOffset = (pagination.currentPage - 1) * itemsPerPage;
 
   // 페이지에 해당하는 기업만 자르고 순위 부여했어용!
-  const pagedCompanies = filteredCompanies
-    .slice(currentOffset, currentOffset + itemsPerPage)
-    .map((company, index) => ({
-      ...company,
-      rank: currentOffset + index + 1,
-    }));
+  const pagedCompanies = filteredCompanies.map((company, index) => ({
+    ...company,
+    rank: currentOffset + index + 1,
+  }));
 
-  const totalPages = Math.ceil(filteredCompanies.length / itemsPerPage);
+  useEffect(() => {
+    handleSearch();
+  }, [searchKeyword, pagination.currentPage, selectedFilter]);
 
   return (
     <section>
       <TopGroupLayout>
         <Title text={"전체 스타트업 목록"} />
         <div>
-          <Search
-            searchInput={searchInput}
-            setSearchInput={setSearchInput}
-            setSearchKeyword={setSearchKeyword}
-            setCurrentPage={setCurrentPage}
+          <SearchBar
+            inputValue={searchInput}
+            setInputValue={setSearchInput}
+            setInputKeyword={setSearchKeyword}
+            handleDelete={handleDelete}
+            setPagination={setPagination}
+            setIsSearchSubmitted={setIsSearchSubmitted}
           />
           <Filter
             filterOptions={filters}
             showFilterOptions={showFilterOptions}
             setShowFilterOptions={setShowFilterOptions}
             selectedFilter={selectedFilter}
-            onSelectFilter={setSelectedFilter}
+            onSelectFilter={handleFilterChange}
           />
         </div>
       </TopGroupLayout>
@@ -122,16 +154,15 @@ export const HomePage = () => {
             "totalProfit",
             "employeeCount",
           ]}
-          itemsPerPage={itemsPerPage}
           unitSuffixes={["", "", "", "억 원", "억 원", "명"]}
         />
       </MiddleGroupLayout>
 
       <BottomGroupLayout>
         <Pagination
-          currentPage={currentPage}
-          totalPages={totalPages}
-          onPageChange={setCurrentPage}
+          currentPage={pagination.currentPage}
+          totalPages={pagination.totalPages}
+          onPageChange={handlePageChange}
         />
       </BottomGroupLayout>
     </section>

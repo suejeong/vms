@@ -9,7 +9,6 @@ export default function CompareCompanyModal({
   selectedCompanies,
   setSelectedCompanies,
   totalCompanies,
-  inputValue,
   handleDeselect,
   myCompany,
   isSearchSubmitted,
@@ -42,7 +41,6 @@ export default function CompareCompanyModal({
         ))}
       </div>
       <FilteredCompanies
-        inputValue={inputValue}
         filteredCompanies={filteredCompanies}
         totalCompanies={totalCompanies}
         selectedCompanies={selectedCompanies}
