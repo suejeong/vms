@@ -1,7 +1,9 @@
 import React from "react";
 import style from "./Pasination.module.scss";
 
-export const Pagination = ({ currentPage, totalPages, onPageChange }) => {
+export const Pagination = ({ currentPage, totalPages, handlePageChange }) => {
+  if (totalPages === 0) return null;
+
   const getPageNumbers = () => {
     const pageNumbers = [];
     let startPage, endPage;
@@ -31,7 +33,7 @@ export const Pagination = ({ currentPage, totalPages, onPageChange }) => {
     <div className={style.pagination}>
       <button
         className={style.arrow}
-        onClick={() => onPageChange(currentPage - 1)}
+        onClick={() => handlePageChange(currentPage - 1)}
         disabled={currentPage === 1}
       >
         <img src="/images/icons/ic_arrow_left.png" alt="previous" />
@@ -41,7 +43,7 @@ export const Pagination = ({ currentPage, totalPages, onPageChange }) => {
           <button
             key={number}
             className={style.paginationButton}
-            onClick={() => onPageChange(number)}
+            onClick={() => handlePageChange(number)}
             disabled={currentPage === number}
           >
             {number}
@@ -50,7 +52,7 @@ export const Pagination = ({ currentPage, totalPages, onPageChange }) => {
       </div>
       <button
         className={style.arrow}
-        onClick={() => onPageChange(currentPage + 1)}
+        onClick={() => handlePageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
       >
         <img src="/images/icons/ic_arrow_right.png" alt="next" />

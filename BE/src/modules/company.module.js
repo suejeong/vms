@@ -29,7 +29,7 @@ companyRouter.get("/detail/:companyId", async (req, res, next) => {
 // 회사 비교하기 API
 companyRouter.get("/compare/:myCompanyId", async (req, res, next) => {
   try {
-    const {myCompanyId} = req.params;
+    const { myCompanyId } = req.params;
     const compareCompanyIdsArray = req.query.compareCompanyIds?.split(",");
 
     const updateTasks = [];
@@ -166,27 +166,42 @@ companyRouter.get("/search", async (req, res, next) => {
     const searchQuery = req.query.search || "";
     const page = parseInt(req.query.page) || 1;
     const limit = parseInt(req.query.limit) || 10;
+    const orderBy = req.query.orderBy || "orderByName_asc";
+    const excludeId = req.query.excludeId || null; // 제외할 회사 아이디
 
     const offset = (page - 1) * limit;
 
+    const whereCondition = {
+      OR: [
+        { name: { contains: searchQuery, mode: "insensitive" } },
+        { category: { contains: searchQuery, mode: "insensitive" } },
+      ],
+    };
+
+    // 제외할 회사 이름이 있는 경우 조건 추가
+    if (excludeId) {
+      whereCondition.NOT = { id: excludeId };
+    }
+
+    const sortMapping = {
+      orderByName_asc: { name: "asc" },
+      totalProfit_desc: { totalProfit: "desc" },
+      totalProfit_asc: { totalProfit: "asc" },
+      totalInvestment_desc: { totalInvestment: "desc" },
+      totalInvestment_asc: { totalInvestment: "asc" },
+      employeeCount_desc: { employeeCount: "desc" },
+      employeeCount_asc: { employeeCount: "asc" },
+    };
+
     const companies = await prisma.company.findMany({
-      where: {
-        name: {
-          contains: searchQuery,
-          mode: "insensitive",
-        },
-      },
+      where: whereCondition,
       skip: offset,
       take: limit,
+      orderBy: sortMapping[orderBy],
     });
 
     const totalCompanies = await prisma.company.count({
-      where: {
-        name: {
-          contains: searchQuery,
-          mode: "insensitive",
-        },
-      },
+      where: whereCondition,
     });
 
     const totalPages = Math.ceil(totalCompanies / limit);
@@ -198,6 +213,7 @@ companyRouter.get("/search", async (req, res, next) => {
         totalPages,
         totalCompanies,
         limit,
+        orderBy,
       },
     });
   } catch (error) {
