@@ -32,13 +32,12 @@ function Modal({
       const data = await searchCompanies(
         inputValue,
         pagination.currentPage,
-        companiesPerPage
+        companiesPerPage,
+        "orderByName_asc",
+        myCompany?.id
       );
-      const filteredData = myCompany
-        ? data.data.filter((company) => company.name !== myCompany.name)
-        : data.data;
 
-      setFilteredCompanies(filteredData);
+      setFilteredCompanies(data.data);
       setPagination(data.pagination);
     } catch (e) {
       console.log(e);
