@@ -12,6 +12,7 @@ export default function CompareCompanyModal({
   inputValue,
   handleDeselect,
   myCompany,
+  isSearchSubmitted,
 }) {
   const handleCompareCompanySelect = (company) => {
     if (
@@ -48,6 +49,7 @@ export default function CompareCompanyModal({
         handleSelect={handleCompareCompanySelect}
         handleDeselect={handleDeselect}
         myCompany={myCompany}
+        isSearchSubmitted={isSearchSubmitted}
       />
     </>
   );

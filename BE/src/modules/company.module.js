@@ -146,15 +146,35 @@ companyRouter.get("/search", async (req, res, next) => {
 
     const offset = (page - 1) * limit;
 
+    const sortCriteria = [
+      { totalProfit: "desc" },
+      { totalProfit: "asc" },
+      { totalInvestment: "desc" },
+      { totalInvestment: "asc" },
+      { employeeCount: "desc" },
+      { employeeCount: "asc" },
+    ];
+
     const companies = await prisma.company.findMany({
       where: {
-        name: {
-          contains: searchQuery,
-          mode: "insensitive",
-        },
+        OR: [
+          {
+            name: {
+              contains: searchQuery,
+              mode: "insensitive", // 대소문자 구분 없이 검색
+            },
+          },
+          {
+            category: {
+              contains: searchQuery,
+              mode: "insensitive", // 대소문자 구분 없이 검색
+            },
+          },
+        ],
       },
       skip: offset,
       take: limit,
+      orderBy: sortCriteria,
     });
 
     const totalCompanies = await prisma.company.count({

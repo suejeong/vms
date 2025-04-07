@@ -7,6 +7,7 @@ function SearchBar({
   setFilteredCompanies, //검색된 기업들
   handleSearch, //api 호출함수
   setPagination, // {currentPage: page, totalPages, totalCompanies, limit}
+  setIsSearchSubmitted,
 }) {
   const [isFocused, setIsFocused] = useState(false);
 
@@ -20,6 +21,7 @@ function SearchBar({
     if (value === "") {
       setFilteredCompanies([]);
       setPagination({});
+      setIsSearchSubmitted(false);
     }
   };
 
@@ -29,18 +31,21 @@ function SearchBar({
       ...prev,
       currentPage: 1,
     }));
+    setIsSearchSubmitted(true);
   };
 
   const handleDelete = () => {
     setInputValue("");
     setFilteredCompanies([]);
     setPagination({});
+    setIsSearchSubmitted(false);
   };
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
       console.log("엔터 감지");
       handleSubmit();
+      setIsSearchSubmitted(true);
     }
   };
 

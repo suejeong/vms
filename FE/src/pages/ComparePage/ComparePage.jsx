@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import style from "./ComparePage.module.scss";
 import { getComparedcompany } from "../../api/Company.js";
 import { MyCompany } from "../../components/ComparisonResultPage/MyCompany/MyCompany.jsx";
@@ -26,6 +26,53 @@ export default function ComparePage() {
   const [compareResultState, setCompareResultState] = useState(false);
   // 디테일 페이지 이동 네비게이트
   const navigate = useNavigate();
+
+  // 로컬 스토리지에서 데이터 불러오기
+  useEffect(() => {
+    const storedMyCompany = localStorage.getItem("myCompany");
+    const storedCompareCompanies = localStorage.getItem("compareCompanies");
+    const storedRecentCompanies = localStorage.getItem("recentCompanies");
+
+    if (storedMyCompany) {
+      setMyCompany(JSON.parse(storedMyCompany));
+    }
+    if (storedCompareCompanies) {
+      setCompareCompanies(JSON.parse(storedCompareCompanies));
+    }
+    if (storedRecentCompanies) {
+      setRecentCompanies(JSON.parse(storedRecentCompanies));
+    }
+  }, []);
+
+  // myCompany 변경 시 로컬 스토리지에 저장
+  useEffect(() => {
+    if (myCompany) {
+      localStorage.setItem("myCompany", JSON.stringify(myCompany));
+    } else {
+      localStorage.removeItem("myCompany");
+    }
+  }, [myCompany]);
+
+  // compareCompanies 변경 시 로컬 스토리지에 저장
+  useEffect(() => {
+    if (compareCompanies.length > 0) {
+      localStorage.setItem(
+        "compareCompanies",
+        JSON.stringify(compareCompanies)
+      );
+    } else {
+      localStorage.removeItem("compareCompanies");
+    }
+  }, [compareCompanies]);
+
+  // recentCompanies 변경 시 로컬 스토리지에 저장
+  useEffect(() => {
+    if (recentCompanies.length > 0) {
+      localStorage.setItem("recentCompanies", JSON.stringify(recentCompanies));
+    } else {
+      localStorage.removeItem("recentCompanies");
+    }
+  }, [recentCompanies]);
 
   const handleNavigateDetailPage = (companyId) => {
     navigate(`/detail/${companyId}`);
@@ -138,7 +185,7 @@ export default function ComparePage() {
             color="orange"
             onClick={() => handleClickCompareButton()}
             text="기업 비교하기"
-            disabled={compareCompanies.length === 0}
+            disabled={compareCompanies.length === 0 || !myCompany}
           />
         </section>
       ) : (

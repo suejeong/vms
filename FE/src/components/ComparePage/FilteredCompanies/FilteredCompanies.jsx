@@ -11,10 +11,11 @@ function FilteredCompanies({
   handleSelect,
   myCompany,
   handleDeselect,
+  isSearchSubmitted,
 }) {
   return (
     <>
-      {inputValue && (
+      {inputValue && isSearchSubmitted && (
         <div className={style.filteredCompanies}>
           {filteredCompanies.length > 0 ? (
             <>

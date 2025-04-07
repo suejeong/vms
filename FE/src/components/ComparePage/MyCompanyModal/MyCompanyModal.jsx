@@ -13,6 +13,7 @@ export default function MyCompanyModal({
   selectedCompanies,
   myCompany,
   handleDeselect,
+  isSearchSubmitted,
 }) {
   return (
     <>
@@ -42,6 +43,7 @@ export default function MyCompanyModal({
         handleSelect={handleSelect}
         myCompany={myCompany}
         handleDeselect={handleDeselect}
+        isSearchSubmitted={isSearchSubmitted}
       />
     </>
   );

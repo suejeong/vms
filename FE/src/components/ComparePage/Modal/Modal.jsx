@@ -18,6 +18,7 @@ function Modal({
 }) {
   const [inputValue, setInputValue] = useState("");
   const [filteredCompanies, setFilteredCompanies] = useState([]);
+  const [isSearchSubmitted, setIsSearchSubmitted] = useState(false);
   const modalBackground = useRef();
   const [pagination, setPagination] = useState({});
   const companiesPerPage = 5;
@@ -45,7 +46,6 @@ function Modal({
   const handleSelect = (company) => {
     onSelect(company);
     setInputValue("");
-    setFilteredCompanies([]);
   };
 
   const handleDeselect = (companyId) => {
@@ -88,6 +88,7 @@ function Modal({
           setFilteredCompanies={setFilteredCompanies}
           handleSearch={handleSearch}
           setPagination={setPagination}
+          setIsSearchSubmitted={setIsSearchSubmitted}
         />
         {!myCompany ? (
           <MyCompanyModal
@@ -99,6 +100,7 @@ function Modal({
             selectedCompanies={selectedCompanies}
             myCompany={myCompany}
             handleDeselect={handleDeselect}
+            isSearchSubmitted={isSearchSubmitted}
           />
         ) : (
           <CompareCompanyModal
@@ -109,6 +111,7 @@ function Modal({
             inputValue={inputValue}
             handleDeselect={handleDeselect}
             myCompany={myCompany}
+            isSearchSubmitted={isSearchSubmitted}
           />
         )}
         <div className={style.searchCompany}>
