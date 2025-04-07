@@ -27,21 +27,34 @@ companyRouter.get("/detail/:companyId", async (req, res, next) => {
 });
 
 // 회사 비교하기 API
-companyRouter.get("/compare", async (req, res, next) => {
+companyRouter.get("/compare/:myCompanyId", async (req, res, next) => {
   try {
-    const companyNameArray = req.query.name?.split(",");
+    const {myCompanyId} = req.params;
+    const compareCompanyIdsArray = req.query.compareCompanyIds?.split(",");
 
-    const company = await prisma.company.findMany({
-      where: {
-        name: { in: companyNameArray },
-      },
-    });
+    const updateTasks = [];
 
-    if (company.length === 0) {
-      return res.status(404).json({ error: "company not found" });
+    // 내 기업
+    updateTasks.push(
+      prisma.company.update({
+        where: { id: myCompanyId },
+        data: { countMyPicked: { increment: 1 } },
+      })
+    );
+
+    // 비교 기업
+    for (const companyId of compareCompanyIdsArray) {
+      updateTasks.push(
+        prisma.company.update({
+          where: { id: companyId },
+          data: { countYourPicked: { increment: 1 } },
+        })
+      );
     }
 
-    res.json(company);
+    const updatedCompanies = await Promise.all(updateTasks);
+
+    res.json(updatedCompanies);
   } catch (error) {
     next(error);
   }
