@@ -3,37 +3,33 @@
   width: 100%;
   display: flex;
   flex-direction: column;
+  gap: 2rem;
 }
 
 .PaseNationDiv {
   width: 100%;
   height: 3rem; /* 48px */
   gap: 0.5rem;
-  margin-top: 2.5rem;
+  margin-top: 0.5rem;
+  margin-bottom: 5rem;
   display: flex;
   justify-content: center;
-}
-
-/* PC (고정 120rem, 1920px) */
-@media screen and (min-width: 120rem) {
-  .companyDetailDescription {
-    max-width: 120rem;
-    margin: 0 auto;
-  }
 }
 
 /* Tablet (46.5rem ~ 74.9375rem, 744px ~ 1199px) */
 @media only screen and (min-width: 46.5rem) and (max-width: 74.9375rem) {
   .companyDetailDescription {
-    max-width: 46.5rem;
+    width: 100%;
     margin: 0 auto;
+    gap: 1.5rem;
   }
 }
 
 /* Mobile (375px ~ 743px) */
 @media only screen and (min-width: 0) and (max-width: 46.4375rem) {
   .companyDetailDescription {
-    max-width: 23.4375rem;
+    width: 100%;
     margin: 0 auto;
+    gap: 1rem;
   }
 }
