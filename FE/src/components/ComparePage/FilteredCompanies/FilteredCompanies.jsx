@@ -6,60 +6,62 @@ import Button from "../Button/Button";
 function FilteredCompanies({
   inputValue,
   filteredCompanies,
-  currentCompanies,
+  totalCompanies,
   selectedCompanies,
   handleSelect,
   myCompany,
   handleDeselect,
+  isSearchSubmitted,
 }) {
   return (
     <>
-      {inputValue && (
+      {inputValue && isSearchSubmitted && (
         <div className={style.filteredCompanies}>
-          {filteredCompanies.length > 0 && (
-            <p className={style.title}>검색 결과 ({filteredCompanies.length})</p>
-          )}
-          {currentCompanies.length > 0 ? (
-            currentCompanies.map((company) => (
-              <div key={company.id} className={style.companyItem}>
-                <div className={style.companyInfo}>
-                  <CompanyInfo company={company} />
+          {filteredCompanies.length > 0 ? (
+            <>
+              <p className={style.title}>검색 결과 ({totalCompanies})</p>
+              {filteredCompanies.map((company) => (
+                <div key={company.id} className={style.companyItem}>
+                  <div className={style.companyInfo}>
+                    <CompanyInfo company={company} />
+                  </div>
+                  {selectedCompanies.find((c) => c.id === company.id) ? (
+                    <>
+                      {myCompany ? (
+                        <Button
+                          shape="square"
+                          color="borderGray100"
+                          text="선택완료"
+                          image={
+                            <img src="/images/icons/ic_check.png" alt="check" />
+                          }
+                          disabled={true}
+                        />
+                      ) : (
+                        <Button
+                          shape="square"
+                          color="borderGray200"
+                          onClick={() => handleDeselect(company.id)}
+                          text="비교 해제"
+                          fontSize="fontSmall"
+                        />
+                      )}
+                    </>
+                  ) : (
+                    <Button
+                      shape="square"
+                      color="borderOrange"
+                      onClick={() => handleSelect(company)}
+                      text="선택하기"
+                    />
+                  )}
                 </div>
-                {selectedCompanies.find((c) => c.id === company.id) ? (
-                  <>
-                    {myCompany ? (
-                      <Button
-                        shape="square"
-                        color="borderGray100"
-                        text="선택완료"
-                        image={
-                          <img src="/images/icons/ic_check.png" alt="check" />
-                        }
-                        disabled={true}
-                      />
-                    ) : (
-                      <Button
-                        shape="square"
-                        color="borderGray200"
-                        onClick={() => handleDeselect(company.id)}
-                        text="선택 해제"
-                      />
-                    )}
-                  </>
-                ) : (
-                  <Button
-                    shape="square"
-                    color="borderOrange"
-                    onClick={() => handleSelect(company)}
-                    text="선택하기"
-                  />
-                )}
-              </div>
-            ))
+              ))}
+            </>
           ) : (
             <div>
-              <p className={style.title}>검색 결과 ({filteredCompanies.length})</p>
-              <p class={style.noSearchResult}>검색 결과가 없습니다</p>
+              <p className={style.title}>검색 결과 (0)</p>
+              <p>검색 결과가 없습니다.</p>
             </div>
           )}
           {selectedCompanies.length === 5 && (

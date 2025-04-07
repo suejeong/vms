@@ -8,16 +8,19 @@ export default function MyCompanyModal({
   filteredCompanies,
   recentCompanies,
   handleSelect,
-  currentCompanies,
+  totalCompanies,
   inputValue,
   selectedCompanies,
   myCompany,
   handleDeselect,
+  isSearchSubmitted,
 }) {
   return (
     <>
       <div className={style.recentCompanies}>
-        <p className={style.title}>최근 선택된 기업 ({recentCompanies.length})</p>
+        <p className={style.title}>
+          최근 선택된 기업 ({recentCompanies.length})
+        </p>
         {recentCompanies.map((company) => (
           <div key={company.id} className={style.companyItem}>
             <div className={style.companyInfo}>
@@ -35,11 +38,12 @@ export default function MyCompanyModal({
       <FilteredCompanies
         inputValue={inputValue}
         filteredCompanies={filteredCompanies}
-        currentCompanies={currentCompanies}
+        totalCompanies={totalCompanies}
         selectedCompanies={selectedCompanies}
         handleSelect={handleSelect}
         myCompany={myCompany}
         handleDeselect={handleDeselect}
+        isSearchSubmitted={isSearchSubmitted}
       />
     </>
   );

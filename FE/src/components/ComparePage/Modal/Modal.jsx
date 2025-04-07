@@ -1,10 +1,11 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import style from "./Modal.module.scss";
 import MyCompanyModal from "../MyCompanyModal/MyCompanyModal";
 import CompareCompanyModal from "../CompareCompanyModal/CompareCompanyModal";
 import { Pagination } from "../Pasination/Pasination";
 import SearchBar from "../SearchBar/SearchBar";
 import Title from "../../Title/Title";
+import { searchCompanies } from "../../../api/Company";
 
 function Modal({
   isOpen,
@@ -17,9 +18,35 @@ function Modal({
 }) {
   const [inputValue, setInputValue] = useState("");
   const [filteredCompanies, setFilteredCompanies] = useState([]);
+  const [isSearchSubmitted, setIsSearchSubmitted] = useState(false);
   const modalBackground = useRef();
-  const [pagination, setPagination] = useState({});
+  const [pagination, setPagination] = useState({
+    currentPage: 1,
+    totalPages: 0,
+    totalCompanies: 0,
+  });
   const companiesPerPage = 5;
+
+  const handleSearch = async () => {
+    try {
+      const data = await searchCompanies(
+        inputValue,
+        pagination.currentPage,
+        companiesPerPage,
+        "orderByName_asc",
+        myCompany?.id
+      );
+
+      setFilteredCompanies(data.data);
+      setPagination(data.pagination);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  useEffect(() => {
+    handleSearch();
+  }, [pagination.currentPage]);
 
   if (!isOpen) return null;
 
@@ -27,6 +54,12 @@ function Modal({
     onSelect(company);
     setInputValue("");
     setFilteredCompanies([]);
+    setIsSearchSubmitted(false);
+    setPagination({
+      currentPage: 1,
+      totalPages: 0,
+      totalCompanies: 0,
+    });
   };
 
   const handleDeselect = (companyId) => {
@@ -36,15 +69,11 @@ function Modal({
   };
 
   const handlePageChange = (pageNumber) => {
-    setPagination(pageNumber);
+    setPagination((prev) => ({
+      ...prev,
+      currentPage: pageNumber,
+    }));
   };
-
-  const indexOfLastCompany = pagination.currentPage * companiesPerPage;
-  const indexOfFirstCompany = indexOfLastCompany - companiesPerPage;
-  const currentCompanies = filteredCompanies.slice(
-    indexOfFirstCompany,
-    indexOfLastCompany
-  );
 
   return (
     <div
@@ -71,38 +100,40 @@ function Modal({
           inputValue={inputValue}
           setInputValue={setInputValue}
           setFilteredCompanies={setFilteredCompanies}
+          handleSearch={handleSearch}
           setPagination={setPagination}
-          companiesPerPage={companiesPerPage}
-          myCompany={myCompany}
+          setIsSearchSubmitted={setIsSearchSubmitted}
         />
         {!myCompany ? (
           <MyCompanyModal
             filteredCompanies={filteredCompanies}
             recentCompanies={recentCompanies}
             handleSelect={handleSelect}
-            currentCompanies={currentCompanies}
+            totalCompanies={pagination.totalCompanies}
             inputValue={inputValue}
             selectedCompanies={selectedCompanies}
             myCompany={myCompany}
             handleDeselect={handleDeselect}
+            isSearchSubmitted={isSearchSubmitted}
           />
         ) : (
           <CompareCompanyModal
             filteredCompanies={filteredCompanies}
             selectedCompanies={selectedCompanies}
             setSelectedCompanies={setSelectedCompanies}
-            currentCompanies={currentCompanies}
+            totalCompanies={pagination.totalCompanies}
             inputValue={inputValue}
             handleDeselect={handleDeselect}
             myCompany={myCompany}
+            isSearchSubmitted={isSearchSubmitted}
           />
         )}
         <div className={style.searchCompany}>
           {pagination.totalPages > 1 && inputValue && (
             <Pagination
-              currentPage={pagination.currentPage || 1}
-              totalPages={pagination.totalPages || 1}
-              onPageChange={handlePageChange}
+              currentPage={pagination.currentPage}
+              totalPages={pagination.totalPages}
+              handlePageChange={handlePageChange}
             />
           )}
         </div>

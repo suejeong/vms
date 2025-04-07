@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import style from "./ComparePage.module.scss";
 import { getComparedcompany } from "../../api/Company.js";
 import { MyCompany } from "../../components/ComparisonResultPage/MyCompany/MyCompany.jsx";
@@ -13,7 +13,6 @@ import { useNavigate } from "react-router-dom";
 
 //투자하기 모달  임포트.
 import InvestAndChangeModal from "../../components/CompanyDetailPage/Modals/InvestAndChangeModal/InvestAndChangeModal.jsx";
-import { getCompany } from "../../api/Company.js";
 import { getCompanyInvest } from "../../api/Invest.js";
 import { useModal } from "../../components/CompanyDetailPage/Modals/ModalContext/ModalContext.jsx";
 export default function ComparePage() {
@@ -31,12 +30,68 @@ export default function ComparePage() {
   const [compareResultState, setCompareResultState] = useState(false);
   // 디테일 페이지 이동 네비게이트
   const navigate = useNavigate();
-  //투자모달에 필요한 하나의 기업 정보 state
-  const [companyDataState, setCompanyDataState] = useState(null);
   // 리패치함수에 필요한 기업 하나의 투자 정보 state
   const [investDataState, setInvestDataState] = useState([]);
   //컨텍스트 api 모달 호출
   const { openModal, closeModal } = useModal();
+
+  // 로컬 스토리지에서 데이터 불러오기
+  useEffect(() => {
+    try {
+      const storedMyCompany = localStorage.getItem("myCompany");
+      const storedCompareCompanies = localStorage.getItem("compareCompanies");
+      const storedRecentCompanies = localStorage.getItem("recentCompanies");
+      const storedCompareResultState =
+        localStorage.getItem("compareResultState");
+
+      if (storedMyCompany) {
+        setMyCompany(JSON.parse(storedMyCompany));
+      }
+
+      if (storedCompareCompanies) {
+        setCompareCompanies(JSON.parse(storedCompareCompanies));
+      }
+
+      if (storedRecentCompanies) {
+        setRecentCompanies(JSON.parse(storedRecentCompanies));
+      }
+
+      if (storedCompareResultState) {
+        setCompareResultState(JSON.parse(storedCompareResultState));
+      }
+    } catch (error) {
+      console.error("Error loading data from localStorage:", error);
+    }
+  }, []);
+
+  // 로컬 스토리지에 데이터 저장 함수
+  const saveToLocalStorage = (key, value) => {
+    if (value && value.length !== 0) {
+      localStorage.setItem(key, JSON.stringify(value));
+    } else {
+      localStorage.removeItem(key);
+    }
+  };
+
+  // myCompany 변경 시 로컬 스토리지에 저장
+  useEffect(() => {
+    saveToLocalStorage("myCompany", myCompany);
+  }, [myCompany]);
+
+  // compareCompanies 변경 시 로컬 스토리지에 저장
+  useEffect(() => {
+    saveToLocalStorage("compareCompanies", compareCompanies);
+  }, [compareCompanies]);
+
+  // recentCompanies 변경 시 로컬 스토리지에 저장
+  useEffect(() => {
+    saveToLocalStorage("recentCompanies", recentCompanies);
+  }, [recentCompanies]);
+
+  // compareResultState 변경 시 로컬 스토리지에 저장
+  useEffect(() => {
+    saveToLocalStorage("compareResultState", compareResultState);
+  }, [compareResultState]);
 
   const handleNavigateDetailPage = (companyId) => {
     navigate(`/detail/${companyId}`);
@@ -63,13 +118,19 @@ export default function ComparePage() {
   };
 
   // 비교하기 함수.
-  const handleClickCompareButton = async () => {
-    const companyNames = compareCompanies.map((company) => company.name);
-    companyNames.push(myCompany.name);
+  const fetchCompareResultList = async () => {
+    const compareCompanyIds = compareCompanies.map((company) => company.id);
 
-    const compareResultListData = await getComparedcompany(companyNames);
+    const compareResultListData = await getComparedcompany(
+      myCompany.id,
+      compareCompanyIds
+    );
     setCompareResultListState(compareResultListData);
+  };
 
+  // 비교하기 버튼 클릭 함수.
+  const handleClickCompareButton = () => {
+    fetchCompareResultList();
     handleChangeCompareResultState();
   };
 
@@ -92,6 +153,10 @@ export default function ComparePage() {
     const investData = await getCompanyInvest(myCompany.id);
     setInvestDataState(investData);
   };
+
+  useEffect(() => {
+    fetchCompareResultList();
+  }, [myCompany, compareCompanies]);
 
   return (
     <>
@@ -168,7 +233,7 @@ export default function ComparePage() {
             color="orange"
             onClick={() => handleClickCompareButton()}
             text="기업 비교하기"
-            disabled={compareCompanies.length === 0}
+            disabled={compareCompanies.length === 0 || !myCompany}
           />
         </section>
       ) : (

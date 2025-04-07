@@ -27,21 +27,34 @@ companyRouter.get("/detail/:companyId", async (req, res, next) => {
 });
 
 // 회사 비교하기 API
-companyRouter.get("/compare", async (req, res, next) => {
+companyRouter.get("/compare/:myCompanyId", async (req, res, next) => {
   try {
-    const companyNameArray = req.query.name?.split(",");
+    const { myCompanyId } = req.params;
+    const compareCompanyIdsArray = req.query.compareCompanyIds?.split(",");
 
-    const company = await prisma.company.findMany({
-      where: {
-        name: { in: companyNameArray },
-      },
-    });
+    const updateTasks = [];
 
-    if (company.length === 0) {
-      return res.status(404).json({ error: "company not found" });
+    // 내 기업
+    updateTasks.push(
+      prisma.company.update({
+        where: { id: myCompanyId },
+        data: { countMyPicked: { increment: 1 } },
+      })
+    );
+
+    // 비교 기업
+    for (const companyId of compareCompanyIdsArray) {
+      updateTasks.push(
+        prisma.company.update({
+          where: { id: companyId },
+          data: { countYourPicked: { increment: 1 } },
+        })
+      );
     }
 
-    res.json(company);
+    const updatedCompanies = await Promise.all(updateTasks);
+
+    res.json(updatedCompanies);
   } catch (error) {
     next(error);
   }
@@ -100,11 +113,21 @@ companyRouter.get("/ranking/:companyName", async (req, res, next) => {
       return res.status(404).json({ message: "회사를 찾을 수 없습니다." });
     }
 
-    // 위아래 2개씩 가져오기
-    const surroundingcompany = rankedcompany.slice(
-      Math.max(0, targetIndex - 2),
-      Math.min(rankedcompany.length, targetIndex + 3)
-    );
+    const totalLength = rankedcompany.length;
+    let startIndex = targetIndex - 2;
+    let endIndex = targetIndex + 3;
+
+    if (targetIndex < 2) {
+      // 상위권 (3보다 작을 경우. 1등,2등)
+      startIndex = 0;
+      endIndex = Math.min(5, totalLength);
+    } else if (targetIndex > totalLength - 3) {
+      // 하위권 (뒤에서 1,2등)
+      endIndex = totalLength;
+      startIndex = Math.max(0, totalLength - 5);
+    }
+
+    const surroundingcompany = rankedcompany.slice(startIndex, endIndex);
 
     res.json(surroundingcompany);
   } catch (error) {
@@ -143,27 +166,42 @@ companyRouter.get("/search", async (req, res, next) => {
     const searchQuery = req.query.search || "";
     const page = parseInt(req.query.page) || 1;
     const limit = parseInt(req.query.limit) || 10;
+    const orderBy = req.query.orderBy || "orderByName_asc";
+    const excludeId = req.query.excludeId || null; // 제외할 회사 아이디
 
     const offset = (page - 1) * limit;
 
+    const whereCondition = {
+      OR: [
+        { name: { contains: searchQuery, mode: "insensitive" } },
+        { category: { contains: searchQuery, mode: "insensitive" } },
+      ],
+    };
+
+    // 제외할 회사 이름이 있는 경우 조건 추가
+    if (excludeId) {
+      whereCondition.NOT = { id: excludeId };
+    }
+
+    const sortMapping = {
+      orderByName_asc: { name: "asc" },
+      totalProfit_desc: { totalProfit: "desc" },
+      totalProfit_asc: { totalProfit: "asc" },
+      totalInvestment_desc: { totalInvestment: "desc" },
+      totalInvestment_asc: { totalInvestment: "asc" },
+      employeeCount_desc: { employeeCount: "desc" },
+      employeeCount_asc: { employeeCount: "asc" },
+    };
+
     const companies = await prisma.company.findMany({
-      where: {
-        name: {
-          contains: searchQuery,
-          mode: "insensitive",
-        },
-      },
+      where: whereCondition,
       skip: offset,
       take: limit,
+      orderBy: sortMapping[orderBy],
     });
 
     const totalCompanies = await prisma.company.count({
-      where: {
-        name: {
-          contains: searchQuery,
-          mode: "insensitive",
-        },
-      },
+      where: whereCondition,
     });
 
     const totalPages = Math.ceil(totalCompanies / limit);
@@ -175,6 +213,7 @@ companyRouter.get("/search", async (req, res, next) => {
         totalPages,
         totalCompanies,
         limit,
+        orderBy,
       },
     });
   } catch (error) {
