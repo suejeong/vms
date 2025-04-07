@@ -143,17 +143,19 @@ companyRouter.get("/search", async (req, res, next) => {
     const searchQuery = req.query.search || "";
     const page = parseInt(req.query.page) || 1;
     const limit = parseInt(req.query.limit) || 10;
+    const orderBy = req.query.orderBy || "orderByName_asc";
 
     const offset = (page - 1) * limit;
 
-    const sortCriteria = [
-      { totalProfit: "desc" },
-      { totalProfit: "asc" },
-      { totalInvestment: "desc" },
-      { totalInvestment: "asc" },
-      { employeeCount: "desc" },
-      { employeeCount: "asc" },
-    ];
+    const sortMapping = {
+      orderByName_asc: { name: "asc" },
+      totalProfit_desc: { totalProfit: "desc" },
+      totalProfit_asc: { totalProfit: "asc" },
+      totalInvestment_desc: { totalInvestment: "desc" },
+      totalInvestment_asc: { totalInvestment: "asc" },
+      employeeCount_desc: { employeeCount: "desc" },
+      employeeCount_asc: { employeeCount: "asc" },
+    };
 
     const companies = await prisma.company.findMany({
       where: {
@@ -167,22 +169,32 @@ companyRouter.get("/search", async (req, res, next) => {
           {
             category: {
               contains: searchQuery,
-              mode: "insensitive", // 대소문자 구분 없이 검색
+              mode: "insensitive",
             },
           },
         ],
       },
       skip: offset,
       take: limit,
-      orderBy: sortCriteria,
+      orderBy: sortMapping[orderBy],
     });
 
     const totalCompanies = await prisma.company.count({
       where: {
-        name: {
-          contains: searchQuery,
-          mode: "insensitive",
-        },
+        OR: [
+          {
+            name: {
+              contains: searchQuery,
+              mode: "insensitive",
+            },
+          },
+          {
+            category: {
+              contains: searchQuery,
+              mode: "insensitive",
+            },
+          },
+        ],
       },
     });
 
@@ -195,6 +207,7 @@ companyRouter.get("/search", async (req, res, next) => {
         totalPages,
         totalCompanies,
         limit,
+        orderBy,
       },
     });
   } catch (error) {

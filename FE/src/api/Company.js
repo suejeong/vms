@@ -50,13 +50,19 @@ export const getCompanyRankingList = async (companyName, orderBy) => {
 };
 
 // 검색 및 페이지네이션 API 호출
-export const searchCompanies = async (searchQuery, page = 1, limit = 10) => {
+export const searchCompanies = async (
+  searchQuery,
+  page = 1,
+  limit = 10,
+  orderBy = "orderByName_asc"
+) => {
   return safeExecute(async () => {
     const res = await instance.get(`/company/search`, {
       params: {
         search: searchQuery,
         page,
         limit,
+        orderBy,
       },
     });
 
