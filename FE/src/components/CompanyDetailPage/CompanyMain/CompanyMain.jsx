@@ -1,4 +1,4 @@
-import styles from "./companyMain.module.scss";
+import styles from "./CompanyMain.module.scss";
 import LogoAndName from "./LogoAndName/LogoAndName";
 import Patition from "./Partition/Partition";
 import Description from "./Description/Description";

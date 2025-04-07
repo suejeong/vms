@@ -11,6 +11,11 @@ import DashContainer from "../../components/ComparePage/DashContainer/DashContai
 import Button from "../../components/ComparePage/Button/Button.jsx";
 import { useNavigate } from "react-router-dom";
 
+//투자하기 모달  임포트.
+import InvestAndChangeModal from "../../components/CompanyDetailPage/Modals/InvestAndChangeModal/InvestAndChangeModal.jsx";
+import { getCompany } from "../../api/Company.js";
+import { getCompanyInvest } from "../../api/Invest.js";
+import { useModal } from "../../components/CompanyDetailPage/Modals/ModalContext/ModalContext.jsx";
 export default function ComparePage() {
   // 모달 오픈 유무 스테이트
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -26,13 +31,19 @@ export default function ComparePage() {
   const [compareResultState, setCompareResultState] = useState(false);
   // 디테일 페이지 이동 네비게이트
   const navigate = useNavigate();
+  //투자모달에 필요한 하나의 기업 정보 state
+  const [companyDataState, setCompanyDataState] = useState(null);
+  // 리패치함수에 필요한 기업 하나의 투자 정보 state
+  const [investDataState, setInvestDataState] = useState([]);
+  //컨텍스트 api 모달 호출
+  const { openModal, closeModal } = useModal();
 
   const handleNavigateDetailPage = (companyId) => {
     navigate(`/detail/${companyId}`);
   };
 
-  const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
+  const openCompareModal = () => setIsModalOpen(true);
+  const closeCompareModal = () => setIsModalOpen(false);
 
   const removeCompareCompany = (companyId) => {
     setCompareCompanies((prev) =>
@@ -46,7 +57,7 @@ export default function ComparePage() {
     if (!recentCompanies.find((c) => c.id === company.id)) {
       setRecentCompanies((prev) => [...prev, company]);
     }
-    closeModal();
+    closeCompareModal();
   };
 
   // 비교 유무 스테이트 changer
@@ -69,6 +80,20 @@ export default function ComparePage() {
   const handleOnClickInvestment = () => {
     setIsModalOpen(true); //모달 on
     setCompareResultState(true); // 비교하기 on
+    openModal(
+      <InvestAndChangeModal
+        type={"투자"}
+        companyDataState={myCompany}
+        investId={investDataState}
+        refetchCompanyInvest={refetchCompanyInvest}
+      />
+    );
+  };
+
+  //투자 최신화를 위한 리패치함수
+  const refetchCompanyInvest = async () => {
+    const investData = await getCompanyInvest(myCompany.id);
+    setInvestDataState(investData);
   };
 
   return (
@@ -97,7 +122,7 @@ export default function ComparePage() {
               myCompany={myCompany}
             />
           ) : (
-            <DashContainer openModal={openModal} />
+            <DashContainer openModal={openCompareModal} />
           )}
           {myCompany && (
             <>
@@ -110,7 +135,7 @@ export default function ComparePage() {
                   shape="oval"
                   size="medium"
                   color="orange"
-                  onClick={openModal}
+                  onClick={openCompareModal}
                   text="기업 추가하기"
                   disabled={compareCompanies.length === 5}
                 />
@@ -124,7 +149,7 @@ export default function ComparePage() {
 
           <Modal
             isOpen={!compareResultState && isModalOpen}
-            onClose={closeModal}
+            onClose={closeCompareModal}
             onSelect={handleSelectCompany}
             recentCompanies={recentCompanies}
             selectedCompanies={compareCompanies}
@@ -166,13 +191,7 @@ export default function ComparePage() {
             </button>
           </div>
 
-          <>
-            {/**
-             * isModalOpen&&compareResultListState &&<모달컴포넌트  myCompany ={myCompany}/>
-             * 투자하기 모달 자리.
-             *
-             *  */}
-          </>
+          <></>
         </>
       )}
     </>
