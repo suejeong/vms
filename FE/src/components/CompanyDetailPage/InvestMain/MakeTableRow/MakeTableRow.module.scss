@@ -11,21 +11,93 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #4b4b4b;
-
   flex-direction: row;
+
+  border-bottom: 1px solid #4b4b4b;
   div {
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 100%;
+    letter-spacing: 0%;
+    padding: 0.65rem 0.65rem;
     text-align: center;
-    padding: 0.65rem 0;
-    font-size: 0.88rem;
+    color: var(--gray-100);
   }
   .sizeSm {
-    flex: 64;
+    font-size: 0.875rem;
+    width: 4rem;
   }
   .sizeMd {
-    flex: 84;
+    font-size: 0.875rem;
+    width: 5.25rem;
   }
   .sizeLg {
-    flex: 884;
+    font-size: 0.875rem;
+    max-width: 55.25rem;
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 46.5rem) and (max-width: 74.9375rem) {
+  .tableRow {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #4b4b4b;
+    flex-direction: row;
+    div {
+      font-weight: 400;
+      line-height: 100%;
+      letter-spacing: 0%;
+      text-align: center;
+      padding: 0.65rem 0;
+      font-size: 0.875rem;
+      color: var(--gray-100);
+    }
+
+    .sizeSm {
+      width: 4rem;
+    }
+    .sizeMd {
+      width: 5.25rem;
+    }
+    .sizeLg {
+      max-width: 55.25rem;
+      width: 100%;
+    }
+  }
+}
+
+/* Very Small Mobile (최대 374px) */
+@media screen and (max-width: 23.375rem) {
+  .tableRow {
+    width: 100%;
+    height: 4rem; /* 64px */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+
+    border-bottom: 1px solid #4b4b4b;
+    div {
+      font-weight: 400;
+      line-height: 100%;
+      letter-spacing: 0%;
+      text-align: center;
+      padding: 0.65rem 0;
+      font-size: 0.875rem;
+      color: var(--gray-100);
+    }
+    .sizeSm {
+      width: 4rem;
+    }
+    .sizeMd {
+      width: 5.25rem;
+    }
+    .sizeLg {
+      max-width: 55.25rem;
+      width: 100%;
+    }
   }
 }

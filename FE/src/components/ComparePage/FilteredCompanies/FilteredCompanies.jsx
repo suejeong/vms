@@ -41,7 +41,8 @@ function FilteredCompanies({
                           shape="square"
                           color="borderGray200"
                           onClick={() => handleDeselect(company.id)}
-                          text="선택 해제"
+                          text="비교 해제"
+                          fontSize="fontSmall"
                         />
                       )}
                     </>

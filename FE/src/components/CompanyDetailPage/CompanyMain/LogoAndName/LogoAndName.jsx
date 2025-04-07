@@ -3,15 +3,10 @@ import styles from "./LogoAndName.module.scss";
 export function LogoAndName({ imgSrc, companyName, companyCategory }) {
   return (
     <div className={styles.companyDetailHeader}>
-      <img src={imgSrc} alt="사진없음" className={styles.companyLogo} />
+      <img src={imgSrc} alt={companyName} className={styles.companyLogo} />
       <div className={styles.companyNameAndCategory}>
-        <p className={styles.detialPageWeight700}> {companyName}</p>
-        <p
-          className={styles.detialPageWeight500}
-          className={{ color: "#747474" }}
-        >
-          {companyCategory}
-        </p>
+        <p className={styles.companyName}> {companyName}</p>
+        <p className={styles.companyCategory}>{companyCategory}</p>
       </div>
     </div>
   );
