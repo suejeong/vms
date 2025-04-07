@@ -5,15 +5,13 @@
 }
 
 .tableRow {
-  max-width: 75rem;
   width: 100%;
   height: 4rem; /* 64px */
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-direction: row;
-
-  border-bottom: 1px solid #4b4b4b;
+  border-bottom: 1px solid var(--gray-300);
   div {
     font-size: 0.875rem;
     font-weight: 400;
@@ -24,17 +22,13 @@
     color: var(--gray-100);
   }
   .sizeSm {
-    font-size: 0.875rem;
-    width: 4rem;
+    width: 5.5%;
   }
   .sizeMd {
-    font-size: 0.875rem;
-    width: 5.25rem;
+    width: 7rem;
   }
   .sizeLg {
-    font-size: 0.875rem;
-    max-width: 55.25rem;
-    width: 100%;
+    width: 73.5%;
   }
 }
 
@@ -44,7 +38,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #4b4b4b;
+    border-bottom: 1px solid var(--gray-300);
     flex-direction: row;
     div {
       font-weight: 400;
@@ -55,16 +49,14 @@
       font-size: 0.875rem;
       color: var(--gray-100);
     }
-
     .sizeSm {
-      width: 4rem;
+      width: 5.5%;
     }
     .sizeMd {
-      width: 5.25rem;
+      width: 7rem;
     }
     .sizeLg {
-      max-width: 55.25rem;
-      width: 100%;
+      width: 73.5%;
     }
   }
 }
@@ -78,8 +70,7 @@
     justify-content: space-between;
     align-items: center;
     flex-direction: row;
-
-    border-bottom: 1px solid #4b4b4b;
+    border-bottom: 1px solid var(--gray-300);
     div {
       font-weight: 400;
       line-height: 100%;
@@ -90,14 +81,13 @@
       color: var(--gray-100);
     }
     .sizeSm {
-      width: 4rem;
+      width: 5.5%;
     }
     .sizeMd {
-      width: 5.25rem;
+      width: 7rem;
     }
     .sizeLg {
-      max-width: 55.25rem;
-      width: 100%;
+      width: 73.5%;
     }
   }
 }
