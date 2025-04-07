@@ -119,10 +119,12 @@ export default function ComparePage() {
 
   // 비교하기 함수.
   const handleClickCompareButton = async () => {
-    const companyNames = compareCompanies.map((company) => company.name);
-    companyNames.push(myCompany.name);
+    const compareCompanyIds = compareCompanies.map((company) => company.id);
 
-    const compareResultListData = await getComparedcompany(companyNames);
+    const compareResultListData = await getComparedcompany(
+      myCompany.id,
+      compareCompanyIds
+    );
     setCompareResultListState(compareResultListData);
 
     handleChangeCompareResultState();

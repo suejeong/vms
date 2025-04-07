@@ -27,11 +27,11 @@ export const getCompany = async (companyId) => {
 };
 
 // 회사 비교하기
-export const getComparedcompany = async (companyNames) => {
+export const getComparedcompany = async (myCompanyId,compareCompanyIds) => {
   return safeExecute(async () => {
-    const queryParam = companyNames.join(",");
+    const compareCompanyIdsArray = compareCompanyIds.join(",");
     const res = await instance.get(
-      `/company/compare?name=${encodeURIComponent(queryParam)}`
+      `/company/compare/${myCompanyId}?compareCompanyIds=${encodeURIComponent(compareCompanyIdsArray)}`
     );
 
     return res.data;
