@@ -70,34 +70,33 @@ export function CompanyDetailPage() {
         key="prev"
         value="<"
         onClick={() => {
-          if (nowPageState > 1) {
-            setNowPageState(nowPageState - 1);
-          }
+          if (nowPageState > 1) setNowPageState(nowPageState - 1);
         }}
+        isActive={false}
       />
     );
 
-    // 페이지 번호 버튼 추가
+    // 페이지 번호 버튼
     for (let i = 1; i <= count; i++) {
       buttons.push(
         <PageNationButton
           key={i}
           value={i}
           onClick={() => setNowPageState(i)}
+          isActive={nowPageState === i}
         />
       );
     }
 
-    // 다음 페이지 버튼 추가
+    // 다음 버튼
     buttons.push(
       <PageNationButton
         key="next"
         value=">"
         onClick={() => {
-          if (nowPageState < count) {
-            setNowPageState(nowPageState + 1);
-          }
+          if (nowPageState < count) setNowPageState(nowPageState + 1);
         }}
+        isActive={false}
       />
     );
 
