@@ -118,7 +118,7 @@ export default function ComparePage() {
   };
 
   // 비교하기 함수.
-  const handleClickCompareButton = async () => {
+  const fetchCompareResultList = async () => {
     const compareCompanyIds = compareCompanies.map((company) => company.id);
 
     const compareResultListData = await getComparedcompany(
@@ -126,7 +126,11 @@ export default function ComparePage() {
       compareCompanyIds
     );
     setCompareResultListState(compareResultListData);
+  };
 
+  // 비교하기 버튼 클릭 함수.
+  const handleClickCompareButton = () => {
+    fetchCompareResultList();
     handleChangeCompareResultState();
   };
 
@@ -149,6 +153,10 @@ export default function ComparePage() {
     const investData = await getCompanyInvest(myCompany.id);
     setInvestDataState(investData);
   };
+
+  useEffect(() => {
+    fetchCompareResultList();
+  }, [myCompany, compareCompanies]);
 
   return (
     <>
