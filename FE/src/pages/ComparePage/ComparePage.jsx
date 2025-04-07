@@ -42,9 +42,6 @@ export default function ComparePage() {
     navigate(`/detail/${companyId}`);
   };
 
-  const openCompareModal = () => setIsModalOpen(true);
-  const closeCompareModal = () => setIsModalOpen(false);
-
   const removeCompareCompany = (companyId) => {
     setCompareCompanies((prev) =>
       prev.filter((company) => company.id !== companyId)
@@ -57,7 +54,7 @@ export default function ComparePage() {
     if (!recentCompanies.find((c) => c.id === company.id)) {
       setRecentCompanies((prev) => [...prev, company]);
     }
-    closeCompareModal();
+    setIsModalOpen(false);
   };
 
   // 비교 유무 스테이트 changer
@@ -122,7 +119,7 @@ export default function ComparePage() {
               myCompany={myCompany}
             />
           ) : (
-            <DashContainer openModal={openCompareModal} />
+            <DashContainer openModal={setIsModalOpen(true)} />
           )}
           {myCompany && (
             <>
@@ -135,7 +132,7 @@ export default function ComparePage() {
                   shape="oval"
                   size="medium"
                   color="orange"
-                  onClick={openCompareModal}
+                  onClick={setIsModalOpen(true)}
                   text="기업 추가하기"
                   disabled={compareCompanies.length === 5}
                 />
@@ -149,7 +146,7 @@ export default function ComparePage() {
 
           <Modal
             isOpen={!compareResultState && isModalOpen}
-            onClose={closeCompareModal}
+            onClose={setIsModalOpen(false)}
             onSelect={handleSelectCompany}
             recentCompanies={recentCompanies}
             selectedCompanies={compareCompanies}
