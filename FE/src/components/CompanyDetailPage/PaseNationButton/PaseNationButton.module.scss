@@ -1,14 +1,21 @@
 .PaseNationButton {
-  width: 3rem; /* 48px */
+  width: 3rem;
   height: 3rem;
-  border-radius: 0.625rem; /* 10px */
+  border-radius: 0.625rem;
   font-family: Pretendard, sans-serif;
   font-weight: 400;
-  font-size: 1.125rem; /* 18px */
+  font-size: 1.125rem;
   line-height: 100%;
   letter-spacing: 0;
   text-align: center;
   background-color: #2e2e2e;
+  color: white;
+  transition: background-color 0.3s;
+}
+
+.active {
+  background-color: var(--brand-orange); // 주황색 변수
+  color: white;
 }
 
 /* PC 1920px 고정 */

@@ -4,8 +4,8 @@ export function Description({ text }) {
   return (
     <>
       <div className={styles.companyDetailDescription}>
-        <p className={styles.detialPageWeight600}>기업 소개</p>
-        <p className={styles.detialPageWeight400}>{text}</p>
+        <p className={styles.detialIntroduce}>기업 소개</p>
+        <p className={styles.detialPagetext}>{text}</p>
       </div>
     </>
   );

@@ -2,72 +2,51 @@
   max-width: 75rem;
   width: 100%;
   min-height: 10rem;
-  border-radius: 10px;
+  border-radius: 0.625rem;
   gap: 1rem;
-  padding: 2rem;
-  background-color: #212121;
+  padding: 1.5rem;
+  background-color: var(--black-300);
   display: flex;
   flex-direction: column;
 }
 
-.detialPageWeight400 {
-  font-family: Pretendard, sans-serif;
+.detialIntroduce {
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 100%;
+  letter-spacing: 0;
+}
+.detialPagetext {
   font-weight: 400;
   font-size: 0.815rem;
   line-height: 20px;
   letter-spacing: 0;
-  color: #d8d8d8;
+  color: var(--gray-100);
 }
 
-.detialPageWeight600 {
-  font-family: Pretendard, sans-serif;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 100%;
-  letter-spacing: 0;
-}
-
-/* PC (고정 120rem, 1920px) */
-@media screen and (min-width: 120rem) {
+/* 태블릿 화면 (744px ~ 1199px) */
+@media (min-width: 46.5rem) and (max-width: 74.9375rem) {
   .companyDetailDescription {
-    max-width: 120rem;
-    margin: 0 auto;
+    width: 100%;
+    min-height: 10rem;
+    border-radius: 0.625rem;
+    gap: 1rem;
+    padding: 1.5rem;
+    background-color: var(--black-300);
+    display: flex;
+    flex-direction: column;
   }
 }
-
-/* Tablet (46.5rem ~ 74.9375rem, 744px ~ 1199px) */
-@media screen and (min-width: 46.5rem) and (max-width: 74.9375rem) {
+/* 모바일 화면 (375px ~ 743px) */
+@media (min-width: 23.4375rem) and (max-width: 46.5rem) {
   .companyDetailDescription {
-    height: auto;
-    padding: 1.25rem;
-  }
-  .detialPageWeight400, .detialPageWeight600 {
-    font-size: 0.875rem;
-    line-height: 1.125rem;
-  }
-}
-
-/* Mobile (23.4375rem ~ 46.4375rem, 375px ~ 743px) */
-@media screen and (min-width: 23.4375rem) and (max-width: 46.4375rem) {
-  .companyDetailDescription {
-    padding: 1rem;
-    overflow-x: auto;
-    white-space: nowrap;
-  }
-  .detialPageWeight400, .detialPageWeight600 {
-    font-size: 0.8125rem;
-    line-height: 1.0625rem;
-  }
-}
-
-/* Very Small Mobile (최대 23.375rem, 최대 374px) */
-@media screen and (max-width: 23.375rem) {
-  .companyDetailDescription {
-    padding: 0.75rem;
-    overflow-x: auto;
-  }
-  .detialPageWeight400, .detialPageWeight600 {
-    font-size: 0.75rem;
-    line-height: 1rem;
+    width: 100%;
+    min-height: 10rem;
+    border-radius: 0.625rem;
+    gap: 1rem;
+    padding: 1.5rem;
+    background-color: var(--black-300);
+    display: flex;
+    flex-direction: column;
   }
 }

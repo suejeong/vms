@@ -4,8 +4,8 @@ export function Patition({ colum, value }) {
   return (
     <>
       <div className={styles.detailPart}>
-        <p className={styles.detialPageWeight400}>{colum}</p>
-        <p className={styles.detialPageWeight600}> {ChangeToNumber(value)}</p>
+        <p className={styles.detailPageColumn}>{colum}</p>
+        <p className={styles.detailPageValue}> {ChangeToNumber(value)}</p>
       </div>
     </>
   );
