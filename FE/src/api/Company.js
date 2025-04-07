@@ -27,11 +27,13 @@ export const getCompany = async (companyId) => {
 };
 
 // 회사 비교하기
-export const getComparedcompany = async (myCompanyId,compareCompanyIds) => {
+export const getComparedcompany = async (myCompanyId, compareCompanyIds) => {
   return safeExecute(async () => {
     const compareCompanyIdsArray = compareCompanyIds.join(",");
     const res = await instance.get(
-      `/company/compare/${myCompanyId}?compareCompanyIds=${encodeURIComponent(compareCompanyIdsArray)}`
+      `/company/compare/${myCompanyId}?compareCompanyIds=${encodeURIComponent(
+        compareCompanyIdsArray
+      )}`
     );
 
     return res.data;
@@ -50,17 +52,25 @@ export const getCompanyRankingList = async (companyName, orderBy) => {
 };
 
 // 검색 및 페이지네이션 API 호출
-export const searchCompanies = async (searchQuery, page = 1, limit = 10) => {
+export const searchCompanies = async (
+  searchQuery,
+  page = 1,
+  limit = 10,
+  orderBy = "orderByName_asc",
+  excludeId
+) => {
   return safeExecute(async () => {
     const res = await instance.get(`/company/search`, {
       params: {
         search: searchQuery,
         page,
         limit,
+        orderBy,
+        excludeId,
       },
     });
 
-    console.log(res.data); // 응답 데이터 확인
-    return res.data; // 결과 반환
+    console.log(res.data);
+    return res.data;
   });
 };
