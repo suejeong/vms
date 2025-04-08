@@ -38,7 +38,7 @@ export function InvestTable({
   };
 
   return (
-    <div>
+    <section className={styles.TableWrapper}>
       <div className={styles.investTableHeader}>
         <MakeTableHeader
           Name={"투자자 이름"}
@@ -58,7 +58,7 @@ export function InvestTable({
           버튼을 눌러 기업에 투자해보세요!
         </div>
       )}
-    </div>
+    </section>
   );
 }
 
