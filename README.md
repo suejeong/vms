@@ -38,10 +38,6 @@
 | 데이터베이스 | Prisma ORM (PostgreSQL)|
 | 배포        | Netlify (프론트), Render (백엔드)   |
 
-<div align="center">
-  <img src="https://pplx-res.cloudinary.com/image/upload/v1744104891/user_uploads/HKBlYxFIrgHYJyC/img_thumbnail_view-my-startup.jpg" alt="ViewMyStartup Logo" width="400">
-</div>
-
 <div align="center"><h1>📚 STACKS</h1></div>
 
 <div align="center"> 
