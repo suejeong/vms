@@ -3,6 +3,7 @@ import { OrderByRanking } from "../OrderByRanking/OrderByRanking";
 import styles from "./CompanyRanking.module.scss";
 import { getCompanyRankingList } from "../../../api/Company.js";
 import ChangeToNumber from "../../CompanyDetailPage/ChangeToNumber/ChangeToNumber.jsx";
+import getCompanyImage from "../../GetCompanyImage/GetCompanyImage";
 
 export const CompanyRanking = ({
   myCompanyState,
@@ -61,10 +62,7 @@ export const CompanyRanking = ({
               >
                 <td>{company.ranking}</td>
                 <td>
-                  <img
-                    src={`/images/companies/${company.name}.png`}
-                    alt={company.name}
-                  />
+                  <img src={getCompanyImage(company.name)} alt={company.name} />
                   {company.name}
                 </td>
                 <td>

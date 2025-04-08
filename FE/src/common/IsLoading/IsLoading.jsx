@@ -7,7 +7,7 @@ export default function IsLoading() {
       <div className={styles.loadingWrapper}>
         <img
           className={styles.loadingImage}
-          src="/images/icons/loading.gif"
+          src="../../assets/images/icons/loading.gif"
           alt="Loading..."
         />
         <p className={styles.loadingText}>Loading...</p>

@@ -10,6 +10,7 @@ import CompanyContainer from "../../components/ComparePage/CompanyContainer/Comp
 import DashContainer from "../../components/ComparePage/DashContainer/DashContainer.jsx";
 import Button from "../../components/ComparePage/Button/Button.jsx";
 import { useNavigate } from "react-router-dom";
+import ic_restart from "../../assets/images/icons/ic_restart.png";
 
 //투자하기 모달  임포트.
 import InvestAndChangeModal from "../../components/CompanyDetailPage/Modals/InvestAndChangeModal/InvestAndChangeModal.jsx";
@@ -180,7 +181,7 @@ export default function ComparePage() {
                   setCompareCompanies([]);
                 }}
                 text="전체 초기화"
-                image={<img src="/images/icons/ic_restart.png" alt="Restart" />}
+                image={<img src={ic_restart} alt="Restart" />}
               />
             )}
           </div>

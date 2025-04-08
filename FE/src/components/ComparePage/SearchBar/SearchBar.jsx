@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import style from "./SearchBar.module.scss";
+import ic_search from "../../../assets/images/icons/ic_search.png";
+import ic_delete_circle_small from "../../../assets/images/icons/ic_delete_circle_small.png";
 
 function SearchBar({
   inputValue, // 인풋값
@@ -45,7 +47,7 @@ function SearchBar({
             onMouseDown={(e) => e.preventDefault()}
             onClick={handleSubmit}
           >
-            <img src="/images/icons/ic_search.png" alt="search" />
+            <img src={ic_search} alt="search" />
           </button>
         )}
 
@@ -64,7 +66,7 @@ function SearchBar({
             onMouseDown={(e) => e.preventDefault()}
             onClick={handleDelete}
           >
-            <img src="/images/icons/ic_delete_circle_small.png" alt="delete" />
+            <img src={ic_delete_circle_small} alt="delete" />
           </button>
         )}
 
@@ -74,7 +76,7 @@ function SearchBar({
             onMouseDown={(e) => e.preventDefault()}
             onClick={handleSubmit}
           >
-            <img src="/images/icons/ic_search.png" alt="search" />
+            <img src={ic_search} alt="search" />
           </button>
         )}
       </div>
