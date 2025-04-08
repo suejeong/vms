@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { OrderByCompareResultList } from "../OrderByCompareResultList/OrderByCompareResultList";
 import styles from "./CompareResult.module.scss";
+import ChangeToNumber from "../../CompanyDetailPage/ChangeToNumber/ChangeToNumber";
+import getCompanyImage from "../../GetCompanyImage/GetCompanyImage";
 
 export const CompareResult = ({
   myCompanyState,
@@ -45,22 +47,19 @@ export const CompareResult = ({
                 className={
                   company.name === myCompanyState.name ? styles.highlight : ""
                 }
-                onClick={() => handleNavigateDetailPage(company.id)} 
+                onClick={() => handleNavigateDetailPage(company.id)}
               >
                 <td>
-                  <img
-                    src={`/images/companies/${company.name}.png`}
-                    alt={company.name}
-                  />
+                  <img src={getCompanyImage(company.name)} alt={company.name} />
                   {company.name}
                 </td>
                 <td>
                   <p>{company.description}</p>
                 </td>
                 <td>{company.category}</td>
-                <td>{company.totalInvestment}</td>
-                <td>{company.totalProfit}</td>
-                <td>{company.employeeCount}</td>
+                <td>{ChangeToNumber(company.totalInvestment)}</td>
+                <td>{ChangeToNumber(company.totalProfit)}</td>
+                <td>{company.employeeCount}명</td>
               </tr>
             ))}
           </tbody>

@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./MyCompany.module.scss";
+import getCompanyImage from "../../GetCompanyImage/GetCompanyImage";
 
 export const MyCompany = ({
   myCompanyState,
@@ -19,7 +20,7 @@ export const MyCompany = ({
       <section className={styles.myCompanySection}>
         <img
           className={styles.myCompanyImage}
-          src={`/images/companies/${myCompanyState.name}.png`}
+          src={getCompanyImage(myCompanyState.name)}
           alt={myCompanyState.name}
         />
         <p className={styles.myCompanyName}>{myCompanyState.name}</p>

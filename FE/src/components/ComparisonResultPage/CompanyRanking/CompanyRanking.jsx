@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { OrderByRanking } from "../OrderByRanking/OrderByRanking";
 import styles from "./CompanyRanking.module.scss";
 import { getCompanyRankingList } from "../../../api/Company.js";
+import ChangeToNumber from "../../CompanyDetailPage/ChangeToNumber/ChangeToNumber.jsx";
+import getCompanyImage from "../../GetCompanyImage/GetCompanyImage";
 
 export const CompanyRanking = ({
   myCompanyState,
@@ -56,23 +58,20 @@ export const CompanyRanking = ({
                 className={
                   company.name === myCompanyState.name ? styles.highlight : ""
                 }
-                onClick={() => handleNavigateDetailPage(company.id)} 
+                onClick={() => handleNavigateDetailPage(company.id)}
               >
                 <td>{company.ranking}</td>
                 <td>
-                  <img
-                    src={`/images/companies/${company.name}.png`}
-                    alt={company.name}
-                  />
+                  <img src={getCompanyImage(company.name)} alt={company.name} />
                   {company.name}
                 </td>
                 <td>
                   <p>{company.description}</p>
                 </td>
                 <td>{company.category}</td>
-                <td>{company.totalInvestment}</td>
-                <td>{company.totalProfit}</td>
-                <td>{company.employeeCount}</td>
+                <td>{ChangeToNumber(company.totalInvestment)}</td>
+                <td>{ChangeToNumber(company.totalProfit)}</td>
+                <td>{company.employeeCount}명</td>
               </tr>
             ))}
           </tbody>

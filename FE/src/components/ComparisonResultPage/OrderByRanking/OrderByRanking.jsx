@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styles from "./OrderByRanking.module.scss";
-import ic_arrow_top from "../../../assets/arrow_top.png";
-import ic_arrow_arrow_bottom from "../../../assets/arrow_bottom.png";
+import ic_arrow_top from "../../../assets/images/icons/arrow_top.png";
+import ic_arrow_arrow_bottom from "../../../assets/images/icons/arrow_bottom.png";
 
 export const OrderByRanking = ({ currentState, handleOrderChange }) => {
   const [isOpen, setIsOpen] = useState(false);

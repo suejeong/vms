@@ -1,6 +1,7 @@
 import React from "react";
 import style from "./CompareCompanyContainer.module.scss";
 import CompanyInfo from "../CompanyInfo/CompanyInfo";
+import ic_minus from "../../../assets/images/icons/ic_minus.png";
 
 function CompareCompany({ compareCompanies, removeCompareCompany }) {
   return (
@@ -12,9 +13,9 @@ function CompareCompany({ compareCompanies, removeCompareCompany }) {
               onClick={() => removeCompareCompany(company.id)}
               className={style.minusButton}
             >
-              <img src="/images/icons/ic_minus.png" alt="minus" />
+              <img src={ic_minus} alt="minus" />
             </button>
-            <CompanyInfo company={company} direction="column"/>
+            <CompanyInfo company={company} direction="column" />
           </div>
         ))
       ) : (

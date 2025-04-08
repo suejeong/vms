@@ -1,4 +1,6 @@
 import { useNavigate } from "react-router-dom";
+import ChangeToNumber from "../../components/CompanyDetailPage/ChangeToNumber/ChangeToNumber";
+import getCompanyImage from "../GetCompanyImage/GetCompanyImage";
 
 export default function BoardList({
   flex,
@@ -31,27 +33,39 @@ export default function BoardList({
 
               {fields.map((field, idx) => {
                 const isSecondOrThirdColumn = idx === 0 || idx === 1;
+                let value = company[field];
+
+                if (
+                  [
+                    "viewTotalInvestAmount",
+                    "totalInvestment",
+                    "totalProfit",
+                  ].includes(field)
+                ) {
+                  value = ChangeToNumber(value);
+                }
+
                 return (
                   <p
                     key={idx}
                     className={`
-                      ${isSecondOrThirdColumn ? "text-left" : "text-center"}
-                      ${flex[idx + 1]}
-                      ${idx === 0 ? "flex items-center gap-x-3 " : ""}
-                      font-normal
-                      line-clamp-2
-                      overflow-hidden
-                      text-ellipsis
-                    `}
+        ${isSecondOrThirdColumn ? "text-left" : "text-center"}
+        ${flex[idx + 1]}
+        ${idx === 0 ? "flex items-center gap-x-3 " : ""}
+        font-normal
+        line-clamp-2
+        overflow-hidden
+        text-ellipsis
+      `}
                   >
                     {idx === 0 && (
                       <img
-                        src={`/images/companies/${company[field]}.png`}
+                        src={getCompanyImage(company[field])}
                         alt="기업이미지"
                         className="size-8 rounded-full object-cover ml-4"
                       />
                     )}
-                    {company[field]}
+                    {value}
                     {unitSuffixes[idx]}
                   </p>
                 );

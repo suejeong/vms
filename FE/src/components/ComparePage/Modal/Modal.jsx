@@ -6,6 +6,7 @@ import { Pagination } from "../Pagination/Pagination";
 import SearchBar from "../SearchBar/SearchBar";
 import Title from "../../Title/Title";
 import { searchCompanies } from "../../../api/Company";
+import ic_delete from "../../../assets/images/icons/ic_delete.png";
 
 function Modal({
   isOpen,
@@ -107,7 +108,7 @@ function Modal({
               handleDelete();
             }}
           >
-            <img src="/images/icons/ic_delete.png" alt="delete" />
+            <img src={ic_delete} alt="delete" />
           </button>
         </div>
         <SearchBar
