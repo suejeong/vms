@@ -18,7 +18,7 @@ function Modal({
   myCompany,
 }) {
   const [inputValue, setInputValue] = useState("");
-  const [inputKeywored, setInputKeyword] = useState("");
+  const [inputKeyword, setInputKeyword] = useState("");
   const [filteredCompanies, setFilteredCompanies] = useState([]);
   const [isSearchSubmitted, setIsSearchSubmitted] = useState(false);
   const modalBackground = useRef();
@@ -33,7 +33,7 @@ function Modal({
     if (!isSearchSubmitted) return;
     try {
       const data = await searchCompanies(
-        inputValue,
+        inputKeyword,
         pagination.currentPage,
         companiesPerPage,
         "orderByName_asc",
@@ -49,13 +49,14 @@ function Modal({
 
   useEffect(() => {
     handleSearch();
-  }, [inputKeywored, pagination.currentPage]);
+  }, [inputKeyword, pagination.currentPage]);
 
   if (!isOpen) return null;
 
   const handleDelete = () => {
     setInputValue("");
     setInputKeyword("");
+    setFilteredCompanies([]);
     setPagination({
       currentPage: 1,
       totalPages: 0,
