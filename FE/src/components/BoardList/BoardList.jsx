@@ -39,7 +39,9 @@ export default function BoardList({
                 let value = company[field];
 
                 if (
-                  ["viewTotalInvestAmount", "totalInvestment"].includes(field)
+                  ["viewTotalInvestAmount",
+                    "totalInvestment",
+                    "totalProfit",].includes(field)
                 ) {
                   value = ChangeToNumber(value);
                 }
