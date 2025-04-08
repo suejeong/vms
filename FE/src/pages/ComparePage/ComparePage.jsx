@@ -119,13 +119,20 @@ export default function ComparePage() {
 
   // 비교하기 함수.
   const fetchCompareResultList = async () => {
-    const compareCompanyIds = compareCompanies.map((company) => company.id);
+    try {
+      const compareCompanyIds = compareCompanies.map((company) => company.id);
 
-    const compareResultListData = await getComparedcompany(
-      myCompany.id,
-      compareCompanyIds
-    );
-    setCompareResultListState(compareResultListData);
+      const compareResultListData = await getComparedcompany(
+        myCompany.id,
+        compareCompanyIds
+      );
+      compareResultListData.sort(
+        (a, b) => b.totalInvestment - a.totalInvestment
+      );
+      setCompareResultListState(compareResultListData);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   // 비교하기 버튼 클릭 함수.
