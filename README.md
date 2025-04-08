@@ -10,7 +10,7 @@
 
 ## 🖥️ 배포
 
-> 🖥️ [ViewMyStartup 접속하기 (FE)](https://viewmystartup4team.netlify.app/)
+🖥️ [ViewMyStartup 접속하기 (FE)](https://viewmystartup4team.netlify.app/)
 
 ## 🧩 주요 기능
 
