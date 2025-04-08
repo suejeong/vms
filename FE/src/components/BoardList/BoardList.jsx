@@ -6,9 +6,6 @@ export default function BoardList({
   flex,
   companies,
   fields,
-
-  itemsPerPage = 10,
-
   unitSuffixes = [],
 }) {
   const navigate = useNavigate();
@@ -39,9 +36,11 @@ export default function BoardList({
                 let value = company[field];
 
                 if (
-                  ["viewTotalInvestAmount",
+                  [
+                    "viewTotalInvestAmount",
                     "totalInvestment",
-                    "totalProfit",].includes(field)
+                    "totalProfit",
+                  ].includes(field)
                 ) {
                   value = ChangeToNumber(value);
                 }
