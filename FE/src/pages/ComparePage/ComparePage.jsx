@@ -41,8 +41,6 @@ export default function ComparePage() {
       const storedMyCompany = localStorage.getItem("myCompany");
       const storedCompareCompanies = localStorage.getItem("compareCompanies");
       const storedRecentCompanies = localStorage.getItem("recentCompanies");
-      const storedCompareResultState =
-        localStorage.getItem("compareResultState");
 
       if (storedMyCompany) {
         setMyCompany(JSON.parse(storedMyCompany));
@@ -54,10 +52,6 @@ export default function ComparePage() {
 
       if (storedRecentCompanies) {
         setRecentCompanies(JSON.parse(storedRecentCompanies));
-      }
-
-      if (storedCompareResultState) {
-        setCompareResultState(JSON.parse(storedCompareResultState));
       }
     } catch (error) {
       console.error("Error loading data from localStorage:", error);
@@ -87,11 +81,6 @@ export default function ComparePage() {
   useEffect(() => {
     saveToLocalStorage("recentCompanies", recentCompanies);
   }, [recentCompanies]);
-
-  // compareResultState 변경 시 로컬 스토리지에 저장
-  useEffect(() => {
-    saveToLocalStorage("compareResultState", compareResultState);
-  }, [compareResultState]);
 
   const handleNavigateDetailPage = (companyId) => {
     navigate(`/detail/${companyId}`);
@@ -248,7 +237,7 @@ export default function ComparePage() {
             shape="oval"
             size="big"
             color="orange"
-            onClick={() => handleClickCompareButton()}
+            onClick={handleClickCompareButton}
             text="기업 비교하기"
             disabled={compareCompanies.length === 0 || !myCompany}
           />
