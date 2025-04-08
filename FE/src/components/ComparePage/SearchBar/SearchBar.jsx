@@ -22,7 +22,6 @@ function SearchBar({
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
-      console.log("엔터 감지");
       handleSubmit();
     }
   };
