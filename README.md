@@ -1,6 +1,4 @@
-#TeamProject 초급 프로젝트 - Team4
-
-## 🚀 ViewMyStartup
+# 🚀 ViewMyStartup - Team4
 
 **ViewMyStartup**은 스타트업 기업 정보를 쉽게 검색하고, 비교하고, 투자 정보까지 관리할 수 있는 올인원 플랫폼입니다.
 
@@ -35,3 +33,17 @@
 | 배포        | Netlify (프론트), Render (백엔드)   |
 
 ## 📂 프로젝트 구조 예시
+```bash
+📦view-my-startup
+ ┣ 📂client
+ ┃ ┣ 📂src
+ ┃ ┃ ┣ 📂components
+ ┃ ┃ ┣ 📂pages
+ ┃ ┃ ┣ 📂styles
+ ┃ ┃ ┗ 📜main.jsx
+ ┣ 📂server
+ ┃ ┣ 📂controllers
+ ┃ ┣ 📂routes
+ ┃ ┗ 📜index.js
+ ┣ 📜README.md
+ ┗ 📜package.json
