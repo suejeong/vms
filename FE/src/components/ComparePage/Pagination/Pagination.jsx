@@ -1,5 +1,5 @@
 import React from "react";
-import style from "./Pasination.module.scss";
+import style from "./Pagination.module.scss";
 
 export const Pagination = ({ currentPage, totalPages, handlePageChange }) => {
   if (totalPages === 0) return null;

@@ -1,36 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import style from "./SearchBar.module.scss";
 
 function SearchBar({
   inputValue, // 인풋값
   setInputValue, // 인풋값 설정
-  setFilteredCompanies, //검색된 기업들
-  handleSearch, //api 호출함수
+  setInputKeyword,
+  handleDelete,
   setPagination, // {currentPage: page, totalPages, totalCompanies, limit}
   setIsSearchSubmitted,
 }) {
   const [isFocused, setIsFocused] = useState(false);
 
-  const handleFocus = () => setIsFocused(true);
-  const handleBlur = () => setIsFocused(false);
-
-  const handleInputChange = (e) => {
-    const value = e.target.value;
-    setInputValue(value);
-
-    if (value === "") {
-      setFilteredCompanies([]);
-      setPagination({
-        currentPage: 1,
-        totalPages: 0,
-        totalCompanies: 0,
-      });
-      setIsSearchSubmitted(false);
-    }
-  };
-
   const handleSubmit = () => {
-    handleSearch();
+    setInputKeyword(inputValue);
     setPagination((prev) => ({
       ...prev,
       currentPage: 1,
@@ -38,37 +20,44 @@ function SearchBar({
     setIsSearchSubmitted(true);
   };
 
-  const handleDelete = () => {
-    setInputValue("");
-    setFilteredCompanies([]);
-    setPagination({
-      currentPage: 1,
-      totalPages: 0,
-      totalCompanies: 0,
-    });
-    setIsSearchSubmitted(false);
-  };
-
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
       console.log("엔터 감지");
       handleSubmit();
-      setIsSearchSubmitted(true);
     }
   };
 
+  useEffect(() => {
+    document.addEventListener("click", (e) => {
+      e.target.className.trim().includes("input-selected")
+        ? setIsFocused(true)
+        : setIsFocused(false);
+    });
+  }, []);
+
   return (
     <>
-      <div className={style.search}>
+      <div
+        className={style.search}
+        style={{ backgroundColor: isFocused ? "#212121" : "" }}
+      >
+        {!isFocused && (
+          <button
+            onMouseDown={(e) => e.preventDefault()}
+            onClick={handleSubmit}
+          >
+            <img src="/images/icons/ic_search.png" alt="search" />
+          </button>
+        )}
+
         <input
           type="text"
           value={inputValue}
-          onChange={handleInputChange}
+          onChange={(e) => setInputValue(e.target.value)}
           placeholder="검색어를 입력해주세요"
-          className={style.input}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
+          className={`${style.input} input-selected`}
           onKeyDown={handleKeyDown}
+          onClick={(e) => setIsFocused(e.target.value)}
         ></input>
         {inputValue && (
           <button
@@ -79,11 +68,8 @@ function SearchBar({
             <img src="/images/icons/ic_delete_circle_small.png" alt="delete" />
           </button>
         )}
-        <div
-          className={`${style.inputButton} ${
-            isFocused ? style.right : style.left
-          }`}
-        >
+
+        {isFocused && (
           <button
             className={style.submitButton}
             onMouseDown={(e) => e.preventDefault()}
@@ -91,7 +77,7 @@ function SearchBar({
           >
             <img src="/images/icons/ic_search.png" alt="search" />
           </button>
-        </div>
+        )}
       </div>
     </>
   );

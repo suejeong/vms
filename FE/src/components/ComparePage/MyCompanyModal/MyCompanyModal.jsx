@@ -9,7 +9,6 @@ export default function MyCompanyModal({
   recentCompanies,
   handleSelect,
   totalCompanies,
-  inputValue,
   selectedCompanies,
   myCompany,
   handleDeselect,
@@ -36,7 +35,6 @@ export default function MyCompanyModal({
         ))}
       </div>
       <FilteredCompanies
-        inputValue={inputValue}
         filteredCompanies={filteredCompanies}
         totalCompanies={totalCompanies}
         selectedCompanies={selectedCompanies}
