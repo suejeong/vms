@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import style from "./SearchBar.module.scss";
 
 function SearchBar({
@@ -10,9 +10,6 @@ function SearchBar({
   setIsSearchSubmitted,
 }) {
   const [isFocused, setIsFocused] = useState(false);
-
-  const handleFocus = () => setIsFocused(true);
-  const handleBlur = () => setIsFocused(false);
 
   const handleSubmit = () => {
     setInputKeyword(inputValue);
@@ -30,18 +27,37 @@ function SearchBar({
     }
   };
 
+  useEffect(() => {
+    document.addEventListener("click", (e) => {
+      e.target.className.trim().includes("input-selected")
+        ? setIsFocused(true)
+        : setIsFocused(false);
+    });
+  }, []);
+
   return (
     <>
-      <div className={style.search}>
+      <div
+        className={style.search}
+        style={{ backgroundColor: isFocused ? "#212121" : "" }}
+      >
+        {!isFocused && (
+          <button
+            onMouseDown={(e) => e.preventDefault()}
+            onClick={handleSubmit}
+          >
+            <img src="/images/icons/ic_search.png" alt="search" />
+          </button>
+        )}
+
         <input
           type="text"
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
           placeholder="검색어를 입력해주세요"
-          className={style.input}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
+          className={`${style.input} input-selected`}
           onKeyDown={handleKeyDown}
+          onClick={(e) => setIsFocused(e.target.value)}
         ></input>
         {inputValue && (
           <button
@@ -52,11 +68,8 @@ function SearchBar({
             <img src="/images/icons/ic_delete_circle_small.png" alt="delete" />
           </button>
         )}
-        <div
-          className={`${style.inputButton} ${
-            isFocused ? style.right : style.left
-          }`}
-        >
+
+        {isFocused && (
           <button
             className={style.submitButton}
             onMouseDown={(e) => e.preventDefault()}
@@ -64,7 +77,7 @@ function SearchBar({
           >
             <img src="/images/icons/ic_search.png" alt="search" />
           </button>
-        </div>
+        )}
       </div>
     </>
   );

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import Title from "../../components/Title/Title";
 import BoardTitleBar from "../../components/BoardTitleBar/BoardTitleBar";
 import BoardList from "../../components/BoardList/BoardList";
@@ -9,6 +9,8 @@ import Pagination from "../../components/Pagination/Pagination";
 import TopGroupLayout from "../../components/TopGroupLayout/TopGroupLayout";
 import { searchCompanies } from "../../api/Company";
 import SearchBar from "../../components/ComparePage/SearchBar/SearchBar";
+import IsLoading from "../../common/IsLoading/IsLoading";
+import Error from "../../common/Error/Error";
 
 // 테이블 타이틀 (flex 비율 포함)
 const titleList = [
@@ -50,6 +52,9 @@ const filters = [
 ];
 
 export const HomePage = () => {
+  const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+
   const [selectedFilter, setSelectedFilter] = useState(filters[0]);
   const [showFilterOptions, setShowFilterOptions] = useState(false);
   const [filteredCompanies, setFilteredCompanies] = useState([]);
@@ -62,21 +67,31 @@ export const HomePage = () => {
   const [searchInput, setSearchInput] = useState("");
   const [searchKeyword, setSearchKeyword] = useState("");
 
-  const handleSearch = useCallback(async () => {
-    try {
-      const data = await searchCompanies(
-        searchInput,
-        pagination.currentPage,
-        itemsPerPage,
-        selectedFilter.sort
-      );
+  const itemsPerPage = 10;
+  const currentOffset = (pagination.currentPage - 1) * itemsPerPage;
 
-      setFilteredCompanies(data.data);
-      setPagination(data.pagination);
-    } catch (e) {
-      console.log(e);
-    }
-  }, [searchInput, pagination.currentPage, selectedFilter.sort]);
+  // 검색 및 필터 변경 시 API 호출
+  useEffect(() => {
+    const fetchCompanies = async () => {
+      setIsLoading(true);
+      try {
+        const data = await searchCompanies(
+          searchKeyword,
+          pagination.currentPage,
+          itemsPerPage,
+          selectedFilter.sort
+        );
+        setFilteredCompanies(data.data);
+        setPagination(data.pagination);
+      } catch (err) {
+        setError(err);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchCompanies();
+  }, [searchKeyword, pagination.currentPage, selectedFilter]);
 
   const handlePageChange = (pageNumber) => {
     setPagination((prev) => ({
@@ -105,18 +120,14 @@ export const HomePage = () => {
     setIsSearchSubmitted(false);
   };
 
-  const itemsPerPage = 10;
-  const currentOffset = (pagination.currentPage - 1) * itemsPerPage;
-
   // 페이지에 해당하는 기업만 자르고 순위 부여했어용!
   const pagedCompanies = filteredCompanies.map((company, index) => ({
     ...company,
     rank: currentOffset + index + 1,
   }));
 
-  useEffect(() => {
-    handleSearch();
-  }, [searchKeyword, pagination.currentPage, selectedFilter]);
+  if (isLoading) return <IsLoading />;
+  if (error) return <Error />;
 
   return (
     <section>

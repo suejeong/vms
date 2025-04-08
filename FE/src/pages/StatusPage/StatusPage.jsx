@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Title from "../../components/Title/Title";
 import BoardTitleBar from "../../components/BoardTitleBar/BoardTitleBar";
 import MiddleGroupLayout from "../../components/MiddleGroupLayout/MiddleGroupLayout";
@@ -8,6 +8,7 @@ import BottomGroupLayout from "../../components/BottomGroupLayout/BottomGroupLay
 import Pagination from "../../components/Pagination/Pagination";
 import TopGroupLayout from "../../components/TopGroupLayout/TopGroupLayout";
 import { searchCompanies } from "../../api/Company";
+import IsLoading from "../../common/IsLoading/IsLoading";
 
 // 테이블 타이틀 정의
 const titleList = [
@@ -40,6 +41,9 @@ const filters = [
 ];
 
 export default function StatusPage() {
+  const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+
   const [selectedFilter, setSelectedFilter] = useState(filters[0]);
   const [showFilterOptions, setShowFilterOptions] = useState(false);
   const [filteredCompanies, setFilteredCompanies] = useState([]);
@@ -50,21 +54,28 @@ export default function StatusPage() {
   });
   const itemsPerPage = 10;
 
-  const handleSearch = useCallback(async () => {
-    try {
-      const data = await searchCompanies(
-        "",
-        pagination.currentPage,
-        itemsPerPage,
-        selectedFilter.sort
-      );
+  // 검색 및 필터 변경 시 API 호출
+  useEffect(() => {
+    const fetchCompanies = async () => {
+      setIsLoading(true);
+      try {
+        const data = await searchCompanies(
+          "",
+          pagination.currentPage,
+          itemsPerPage,
+          selectedFilter.sort
+        );
+        setFilteredCompanies(data.data);
+        setPagination(data.pagination);
+      } catch (err) {
+        setError(err);
+      } finally {
+        setIsLoading(false);
+      }
+    };
 
-      setFilteredCompanies(data.data);
-      setPagination(data.pagination);
-    } catch (e) {
-      console.log(e);
-    }
-  }, [pagination.currentPage, selectedFilter.sort]);
+    fetchCompanies();
+  }, [pagination.currentPage, selectedFilter]);
 
   const handlePageChange = (pageNumber) => {
     setPagination((prev) => ({
@@ -82,9 +93,8 @@ export default function StatusPage() {
     }));
   };
 
-  useEffect(() => {
-    handleSearch();
-  }, [pagination.currentPage, selectedFilter]);
+  if (isLoading) return <IsLoading />;
+  if (error) return <Error />;
 
   const currentOffset = (pagination.currentPage - 1) * itemsPerPage;
 
