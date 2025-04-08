@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { v4 as uuidv4 } from "uuid";
 import styles from "./InvestAndChangeModal.module.scss";
 import { createInvest, updateInvest, getInvest } from "../../../../api/Invest";
 import { useModal } from "../ModalContext/ModalContext";
@@ -44,8 +43,6 @@ export default function InvestAndChangeModal({
       });
     }
   }, [type, companyDataState?.id]);
-
-  console.log(companyDataState);
 
   const [showPassword, setShowPassword] = useState({
     first: false,
