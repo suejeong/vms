@@ -107,7 +107,14 @@ export default function ComparePage() {
     setMyCompany(company);
 
     if (!recentCompanies.find((c) => c.id === company.id)) {
-      setRecentCompanies((prev) => [...prev, company]);
+      setRecentCompanies((prev) => {
+        const updatedCompanies = [...prev, company];
+        //최근 선택한 기업 5개만 기억
+        if (updatedCompanies.length > 5) {
+          return updatedCompanies.slice(-5);
+        }
+        return updatedCompanies;
+      });
     }
     setIsModalOpen(false);
   };
@@ -154,8 +161,11 @@ export default function ComparePage() {
     setInvestDataState(investData);
   };
 
+  //비교 스테이트가 true 일 경우에만
   useEffect(() => {
-    fetchCompareResultList();
+    if (compareResultState) {
+      fetchCompareResultList();
+    }
   }, [myCompany, compareCompanies]);
 
   return (

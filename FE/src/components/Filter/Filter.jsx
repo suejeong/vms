@@ -1,4 +1,3 @@
-
 import React from "react";
 
 export default function Filter({
@@ -18,7 +17,9 @@ export default function Filter({
         <img
           src="/images/icons/arrow_bottom.png"
           alt="버튼"
-          className={`transition-transform duration-200 ease-in-out ${showFilterOptions ? '-rotate-180' : 'rotate-0'}`}
+          className={`transition-transform duration-200 ease-in-out ${
+            showFilterOptions ? "-rotate-180" : "rotate-0"
+          }`}
         />
       </div>
       {showFilterOptions && (
@@ -51,6 +52,7 @@ export default function Filter({
               onClick={(e) => {
                 e.stopPropagation(); //제가 전체를 버튼으로 만들어서.. button이벤트 막기.
                 onSelectFilter(option);
+                console.log(option.sort);
                 setShowFilterOptions(false);
               }}
             >
