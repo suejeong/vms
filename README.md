@@ -30,7 +30,6 @@
 | 김재욱 | https://github.com/WooGie911 |
 | 황수정 |https://github.com/suejeong  |
 ## 📊 사용 언어 비율 (자동 분석)
-
 ![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=View-My-Startup-Team4&repo=FS&layout=compact&theme=default)
 
 ## 🛠️ 기술 스택
