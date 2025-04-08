@@ -70,7 +70,6 @@ export const searchCompanies = async (
       },
     });
 
-    console.log(res.data);
     return res.data;
   });
 };

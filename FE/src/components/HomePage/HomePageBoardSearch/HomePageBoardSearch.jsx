@@ -9,7 +9,6 @@ const HomePageBoardSearch = ({
 }) => {
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
-      console.log("엔터 감지");
       setSearchKeyword(searchInput);
       setCurrentPage(1);
     }

@@ -9,7 +9,6 @@ const Search = ({
 }) => {
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
-      console.log("엔터 감지");
       setSearchKeyword(searchInput); // 입력된 값으로 검색 키워드 설정
       setCurrentPage(1); // 페이지를 1로 초기화
     }
