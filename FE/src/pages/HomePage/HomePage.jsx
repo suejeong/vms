@@ -123,7 +123,7 @@ export const HomePage = () => {
             "employeeCount",
           ]}
           itemsPerPage={itemsPerPage}
-          unitSuffixes={["", "", "", "억 원", "억 원", "명"]}
+          unitSuffixes={["", "", "", "", "", "명"]}
         />
       </MiddleGroupLayout>
 
