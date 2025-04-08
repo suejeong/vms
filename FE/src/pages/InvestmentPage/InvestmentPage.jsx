@@ -13,12 +13,12 @@ import { useInvestedCompanies } from "../../api/useCompanies";
 
 // 테이블 타이틀 정의
 const titleList = [
-  { title: '순위', flex: 'flex-[2]' },
-  { title: '기업명', flex: 'flex-[6]' },
-  { title: '기업 소개', flex: 'flex-[9]' },
-  { title: '카테고리', flex: 'flex-[5]' },
-  { title: 'View My Startup 투자 금액', flex: 'flex-[5]' },
-  { title: '실제 누적 투자 금액', flex: 'flex-[5]' },
+  { title: "순위", flex: "flex-[2]" },
+  { title: "기업명", flex: "flex-[6]" },
+  { title: "기업 소개", flex: "flex-[9]" },
+  { title: "카테고리", flex: "flex-[5]" },
+  { title: "View My Startup 투자 금액", flex: "flex-[5]" },
+  { title: "실제 누적 투자 금액", flex: "flex-[5]" },
 ];
 
 // 필터 옵션
@@ -41,7 +41,7 @@ const filters = [
   },
 ];
 
-export default function InvestmentPage () {
+export default function InvestmentPage() {
   const { data: companies = [], error, isLoading } = useInvestedCompanies();
 
   const [selectedFilter, setSelectedFilter] = useState(filters[0]);
@@ -86,9 +86,15 @@ export default function InvestmentPage () {
         <BoardList
           flex={titleList.map((list) => list.flex)}
           companies={pagedCompanies}
-          fields={['name', 'description', 'category', 'viewTotalInvestAmount', 'totalInvestment']}
+          fields={[
+            "name",
+            "description",
+            "category",
+            "viewTotalInvestAmount",
+            "totalInvestment",
+          ]}
           itemsPerPage={itemsPerPage}
-          unitSuffixes = {['', '', '', '억 원', '억 원']}
+          unitSuffixes={["", "", "", "", ""]}
         />
       </MiddleGroupLayout>
 
@@ -100,5 +106,5 @@ export default function InvestmentPage () {
         />
       </BottomGroupLayout>
     </section>
-  )
+  );
 }
