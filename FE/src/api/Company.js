@@ -12,7 +12,6 @@ export const getCompanyList = async () => {
 export const getInvestedCompanies = async () => {
   return safeExecute(async () => {
     const res = await instance.get(`/company/view`);
-    console.log(res);
     return res.data;
   });
 };

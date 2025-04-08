@@ -4,7 +4,7 @@ import InvestMain from "../../components/CompanyDetailPage/InvestMain/InvestMain
 import PageNationButton from "../../components/CompanyDetailPage/PaseNationButton/PaseNationButton";
 import { ModalProvider } from "../../components/CompanyDetailPage/Modals/ModalContext/ModalContext";
 import { getCompany } from "../../api/Company";
-import { getCompanyInvest, getCompanyPageInvest } from "../../api/Invest";
+import { getCompanyInvest } from "../../api/Invest";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 

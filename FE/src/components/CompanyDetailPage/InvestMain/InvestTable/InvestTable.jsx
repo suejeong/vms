@@ -3,8 +3,6 @@ import ChangeToNumber from "../../ChangeToNumber/ChangeToNumber";
 import RowButtonModal from "../../Modals/RowButtonModal/RowButtonModal";
 import MakeTableRow from "../MakeTableRow/MakeTableRow";
 import MakeTableHeader from "../MakeTableRow/MakeTableHeader";
-import { useModal } from "../../Modals/ModalContext/ModalContext";
-import { useState } from "react";
 
 export function InvestTable({
   investDataState,
@@ -12,8 +10,6 @@ export function InvestTable({
   companyDataState,
   refetchCompanyInvest,
 }) {
-  const { openModal, closeModal } = useModal();
-
   const sortedInvestData = [...investDataState].sort(
     (a, b) => b.investAmount - a.investAmount
   );

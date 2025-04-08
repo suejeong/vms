@@ -1,5 +1,7 @@
 import React from "react";
 import style from "./Pagination.module.scss";
+import ic_arrow_left from "../../../assets/images/icons/ic_arrow_left.png";
+import ic_arrow_right from "../../../assets/images/icons/ic_arrow_right.png";
 
 export const Pagination = ({ currentPage, totalPages, handlePageChange }) => {
   if (totalPages === 0) return null;
@@ -36,7 +38,7 @@ export const Pagination = ({ currentPage, totalPages, handlePageChange }) => {
         onClick={() => handlePageChange(currentPage - 1)}
         disabled={currentPage === 1}
       >
-        <img src="/images/icons/ic_arrow_left.png" alt="previous" />
+        <img src={ic_arrow_left} alt="previous" />
       </button>
       <div className={style.navigationBar}>
         {getPageNumbers().map((number) => (
@@ -55,7 +57,7 @@ export const Pagination = ({ currentPage, totalPages, handlePageChange }) => {
         onClick={() => handlePageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
       >
-        <img src="/images/icons/ic_arrow_right.png" alt="next" />
+        <img src={ic_arrow_right} alt="next" />
       </button>
     </div>
   );
