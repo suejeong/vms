@@ -2,6 +2,7 @@
 
 ## 프로젝트 주제 
 **ViewMyStartup**
+![ViewMyStartup 로고](https://pplx-res.cloudinary.com/image/upload/v1744104891/user_uploads/HKBlYxFIrgHYJyC/img_thumbnail_view-my-startup 
 
 스타트업 기업 정보를 쉽게 검색하고, 비교하고, 투자 정보까지 관리할 수 있는 올인원 플랫폼.
 
