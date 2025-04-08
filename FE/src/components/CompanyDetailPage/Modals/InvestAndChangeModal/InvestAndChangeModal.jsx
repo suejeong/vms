@@ -3,6 +3,10 @@ import styles from "./InvestAndChangeModal.module.scss";
 import { createInvest, updateInvest, getInvest } from "../../../../api/Invest";
 import { useModal } from "../ModalContext/ModalContext";
 import CompleteAndFailModal from "../CompleteAndFailModal/CompleteAndFailModal.jsx";
+import getCompanyImage from "../../../GetCompanyImage/GetCompanyImage";
+import btn_visibility_on from "../../../../assets/images/icons/btn_visibility_on.png";
+import btn_visibility_off from "../../../../assets/images/icons/btn_visibility_off.png";
+import ic_delete from "../../../../assets/images/icons/ic_delete.png";
 
 export default function InvestAndChangeModal({
   type, //투자인지 투자수정인지
@@ -101,18 +105,14 @@ export default function InvestAndChangeModal({
               {type === "투자" ? "기업에 투자하기" : "기업 투자 수정하기"}
             </h2>
             <button onClick={closeModal} className={styles.closeButton}>
-              <img
-                src="/images/icons/ic_delete.png"
-                alt="close"
-                className={styles.closeButton}
-              />
+              <img src={ic_delete} alt="close" className={styles.closeButton} />
             </button>
           </div>
           <div className={styles.companyInfo}>
             <h3 className={styles.infoTitle}>투자 기업 정보</h3>
             <div className={styles.companyDetails}>
               <img
-                src={`/images/companies/${companyDataState.name}.png`}
+                src={getCompanyImage(companyDataState.name)}
                 alt="기업이미지"
                 className={styles.companyImage}
               />
@@ -190,9 +190,7 @@ export default function InvestAndChangeModal({
               />
               <img
                 src={
-                  showPassword.first
-                    ? "/images/icons/btn_visibility_on.png"
-                    : "/images/icons/btn_visibility_off.png"
+                  showPassword.first ? btn_visibility_on : btn_visibility_off
                 }
                 alt="엿보기"
                 onClick={() => handlePreviewPassword("first")}
@@ -221,9 +219,7 @@ export default function InvestAndChangeModal({
               />
               <img
                 src={
-                  showPassword.second
-                    ? "/images/icons/btn_visibility_on.png"
-                    : "/images/icons/btn_visibility_off.png"
+                  showPassword.second ? btn_visibility_on : btn_visibility_off
                 }
                 alt="엿보기"
                 onClick={() => handlePreviewPassword("second")}

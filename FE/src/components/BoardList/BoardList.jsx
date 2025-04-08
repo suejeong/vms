@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
-
 import ChangeToNumber from "../../components/CompanyDetailPage/ChangeToNumber/ChangeToNumber";
+import getCompanyImage from "../GetCompanyImage/GetCompanyImage";
 
 export default function BoardList({
   flex,
@@ -60,7 +60,7 @@ export default function BoardList({
                   >
                     {idx === 0 && (
                       <img
-                        src={`/images/companies/${company[field]}.png`}
+                        src={getCompanyImage(company[field])}
                         alt="기업이미지"
                         className="size-8 rounded-full object-cover ml-4"
                       />
