@@ -21,7 +21,7 @@
 - 📈 **투자 내역 기반 비교 페이지 제공**
 
 ## 👨‍👩‍👧‍👦 팀원
-
+[![](https://contrib.rocks/image?repo=View-My-Startup-Team4/FS)](https://github.com/View-My-Startup-Team4/FS/graphs/contributors)
 | 이름 | 깃허브 | 
 |------|------|
 | 김수빈 | https://github.com/subinkim9755 |
