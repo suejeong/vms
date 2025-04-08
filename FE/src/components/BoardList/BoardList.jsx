@@ -1,10 +1,14 @@
 import { useNavigate } from "react-router-dom";
+
 import ChangeToNumber from "../../components/CompanyDetailPage/ChangeToNumber/ChangeToNumber";
+
 export default function BoardList({
   flex,
   companies,
   fields,
+
   itemsPerPage = 10,
+
   unitSuffixes = [],
 }) {
   const navigate = useNavigate();
