@@ -55,8 +55,10 @@ export const CompanyRanking = ({
             {companyRankingListState.map((company) => (
               <tr
                 key={company.id}
-                className={
-                  company.name === myCompanyState.name ? styles.highlight : ""
+                className={`
+                  hover:cursor-pointer hover:bg-[#2a2a2a]
+                   ${company.name === myCompanyState.name ? styles.highlight : ""}
+                  `
                 }
                 onClick={() => handleNavigateDetailPage(company.id)}
               >

@@ -6,7 +6,7 @@ import SearchBar from "../SearchBar/SearchBar";
 import Title from "../../Title/Title";
 import { searchCompanies } from "../../../api/Company";
 import ic_delete from "../../../assets/images/icons/ic_delete.png";
-import Pagination from '/src/components/ComparePage/Pagination/Pagination.jsx';
+import { Pagination } from "../Pagination/Pagination";
 
 
 function Modal({
@@ -19,7 +19,7 @@ function Modal({
   myCompany,
 }) {
   const [inputValue, setInputValue] = useState("");
-  const [inputKeyword, setInputKeyword] = useState("");
+  const [inputKeyword, setInputKeyword] = useState("기업명");
   const [filteredCompanies, setFilteredCompanies] = useState([]);
   const [isSearchSubmitted, setIsSearchSubmitted] = useState(false);
   const modalBackground = useRef();

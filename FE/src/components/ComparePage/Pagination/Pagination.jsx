@@ -1,43 +1,63 @@
 import React from "react";
 import { GrFormPrevious, GrFormNext } from "react-icons/gr";
-import styles from "./Pagination.module.scss";
+import style from "./Pagination.module.scss";
 
-export default function Pagination({ currentPage, totalPages, onPageChange }) {
-  const pageNumbers = [];
-  for (let page = 1; page <= totalPages; page++) {
-    pageNumbers.push(page);
-  }
+export const Pagination = ({ currentPage, totalPages, handlePageChange }) => {
+  if (totalPages === 0) return null;
+
+  const getPageNumbers = () => {
+    const pageNumbers = [];
+    let startPage, endPage;
+
+    if (totalPages <= 5) {
+      startPage = 1;
+      endPage = totalPages;
+    } else if (currentPage <= 3) {
+      startPage = 1;
+      endPage = 5;
+    } else if (currentPage + 2 >= totalPages) {
+      startPage = totalPages - 4;
+      endPage = totalPages;
+    } else {
+      startPage = currentPage - 2;
+      endPage = currentPage + 2;
+    }
+
+    for (let i = startPage; i <= endPage; i++) {
+      pageNumbers.push(i);
+    }
+
+    return pageNumbers;
+  };
 
   return (
-    <div className={styles.pagination}>
+    <div className={style.pagination}>
       <button
-        className={styles.pageButton}
-        onClick={() => onPageChange(currentPage - 1)}
-        disabled={currentPage <= 1}
+        className={style.arrow}
+        onClick={() => handlePageChange(currentPage - 1)}
+        disabled={currentPage === 1}
       >
         <GrFormPrevious />
       </button>
-
-      {pageNumbers.map((page) => {
-        const isCurrent = page === currentPage;
-        return (
+      <div className={style.navigationBar}>
+        {getPageNumbers().map((number) => (
           <button
-            key={page}
-            onClick={() => onPageChange(page)}
-            className={`${styles.pageButton} ${isCurrent ? styles.active : ""}`}
+            key={number}
+            className={style.paginationButton}
+            onClick={() => handlePageChange(number)}
+            disabled={currentPage === number}
           >
-            {page}
+            {number}
           </button>
-        );
-      })}
-
+        ))}
+      </div>
       <button
-        className={styles.pageButton}
-        onClick={() => onPageChange(currentPage + 1)}
-        disabled={currentPage >= totalPages}
+        className={style.arrow}
+        onClick={() => handlePageChange(currentPage + 1)}
+        disabled={currentPage === totalPages}
       >
         <GrFormNext />
       </button>
     </div>
   );
-}
+};

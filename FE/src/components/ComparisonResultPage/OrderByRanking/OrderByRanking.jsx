@@ -1,8 +1,5 @@
 import { useState } from "react";
 import styles from "./OrderByRanking.module.scss";
-import ic_arrow_top from "../../../assets/images/icons/arrow_top.png";
-import ic_arrow_arrow_bottom from "../../../assets/images/icons/arrow_bottom.png";
-
 export const OrderByRanking = ({ currentState, handleOrderChange }) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -16,17 +13,17 @@ export const OrderByRanking = ({ currentState, handleOrderChange }) => {
   };
 
   return (
-    <div className={styles.dropdownContainer}>
+    <div className={`${styles.dropdownContainer} rounded-[10px] cursor-pointer`} onClick={toggleDropdown}>
       <div className={styles.dropdownButton}>
         <p>{currentState}</p>
         <img
-          src={isOpen ? ic_arrow_top : ic_arrow_arrow_bottom}
-          className={styles.dropdownArrowImg}
-          onClick={toggleDropdown}
+          src="/src/assets/images/icons/arrow_bottom.png"
+          className={`${styles.dropdownArrowImg} transition-transform duration-200 ease-in-out ${isOpen ? "-rotate-180" : "rotate-0"}`}
+          
         />
       </div>
       {isOpen && (
-        <ul className={styles.dropdownMenu}>
+        <ul className={`${styles.dropdownMenu} [&>li:hover]:bg-black300 overflow-hidden`}>
           <li onClick={() => handleSelect("누적 투자금액 높은순")}>
             누적 투자금액 높은순
           </li>
