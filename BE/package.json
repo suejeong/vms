@@ -12,7 +12,7 @@
     "build": "echo 'No build step required for this backend project'"
   },
   "dependencies": {
-    "@prisma/client": "^6.5.0",
+    "@prisma/client": "^6.6.0",
     "bcrypt": "^5.1.1",
     "cors": "^2.8.5",
     "express": "^4.21.2"
@@ -21,7 +21,7 @@
     "@types/express": "^5.0.1",
     "@types/node": "^22.13.17",
     "nodemon": "^2.0.22",
-    "prisma": "^6.5.0",
+    "prisma": "^6.6.0",
     "tsx": "^4.19.3",
     "typescript": "^5.8.2"
   },

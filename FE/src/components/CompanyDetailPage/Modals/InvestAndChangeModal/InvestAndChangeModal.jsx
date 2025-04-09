@@ -11,7 +11,7 @@ import visibilityOnIcon from "/src/assets/images/icons/btn_visibility_on.png";
 import visibilityOffIcon from "/src/assets/images/icons/btn_visibility_off.png";
 
 export default function InvestAndChangeModal({
-  prePassword, //이전 비밀번호호
+  prePassword, //이전 비밀번호
   type, //투자인지 투자수정인지
   companyDataState, //모두 사용
   investId, //투자수정에만 사용
@@ -25,6 +25,7 @@ export default function InvestAndChangeModal({
     const data = await getInvest(investId);
     setInvestData(data);
     setForm({
+      prePW: prePassword,
       companyId: companyDataState.id,
       id: data.id,
       username: data.username,
@@ -40,7 +41,7 @@ export default function InvestAndChangeModal({
       fetchData();
     } else {
       setForm({
-        prePassword: prePassword,
+        prePW: prePassword,
         companyId: companyDataState.id,
         id: "",
         username: "",
