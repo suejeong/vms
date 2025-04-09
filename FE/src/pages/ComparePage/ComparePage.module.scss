@@ -3,7 +3,6 @@
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  margin: 2rem auto 0.5rem auto;
   max-width: 75rem;
   width: 100%;
 }
@@ -14,7 +13,7 @@
   align-items: center;
   justify-content: space-between;
   max-width: 75rem;
-  margin: 2rem auto 0.5rem auto;
+  margin-bottom: 1rem;
   width: 100%;
 }
 
@@ -88,8 +87,8 @@
 @media only screen and (min-width: 46.5rem) and (max-width: 74.9375rem) {
 }
 
-/* Mobile (375px ~ 743px) */
-@media only screen and (min-width: 23.4375rem) and (max-width: 46.4375rem) {
+/* Mobile (0px ~ 743px) */
+@media only screen and (min-width: 0) and (max-width: 46.4375rem) {
   .compareCompanyLetter {
     p {
       font-size: 0.875rem;
