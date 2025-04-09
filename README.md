@@ -65,18 +65,18 @@
 
 ### 📁 companys 테이블                                                    📁 invests 테이블
 
-| 📁 companys              |                     | 📁 invests          |                     |
-|-------------------------------|---------------------|----------------------------|---------------------|
-| 컬럼명                        | 타입                | 컬럼명                     | 타입                |
-| `id`                          | varchar             | `id`                       | varchar             |
-| `name`                        | varchar             | `userName`                | varchar             |
-| `description`                 | varchar             | `password`                | varchar             |
-| `category`                    | varchar             | `companyId`               | varchar             |
-| `totalInvestmen`              | int                 | `investAmount`            | int                 |
-| `totalProfit`                 | int                 | `comment`                 | varchar             |
-| `employeeCount`               | int                 |                            |                     |
-| `countMyPicked`               | int                 |                            |                     |
-| `countYourPicked`             | int                 |                            |                     |
+| 📁 companys              |                     || 📁 invests          |                     |
+|-------------------------------|--------------------|-|----------------------------|---------------------|
+| 컬럼명                        | 타입             |   | 컬럼명                     | 타입                |
+| `id`                          | varchar          | ⇨  | `companyId`               | varchar             |
+| `name`                        | varchar           |  | `id`                       | varchar             |
+| `description`                 | varchar            | | `userName`                | varchar             |
+| `category`                    | varchar             ||`password`                | varchar             | 
+| `totalInvestmen`              | int                 || `investAmount`            | int                 |
+| `totalProfit`                 | int                 || `comment`                 | varchar             |
+| `employeeCount`               | int                 ||                            |                     |
+| `countMyPicked`               | int                 ||                            |                     |
+| `countYourPicked`             | int                 |     |                        |                     |
 
 
 
