@@ -9,7 +9,6 @@
 ## 목차
 - [프로젝트 기간](#프로젝트-기간)  
 - [배포](#배포)
-- [로컬 실행 방법](#로컬-실행-방법)  
 - [주요 기능](#주요-기능)  
 - [팀원](#팀원)  
 - [기술 스택](#기술-스택)  
@@ -21,33 +20,6 @@
 ## 배포 
 
 🖥️ [ViewMyStartup 접속하기 (FE)](https://viewmystartup4team.netlify.app/)
-
-## 로컬 실행 방법
-
-1. 레포지토리를 클론합니다:
-   ```bash
-   git clone https://github.com/your-repo/ViewMyStartup.git
-   ```
-
-2. 프로젝트 디렉토리로 이동합니다:
-   ```bash
-   cd FS
-   ```
-
-3. 프론트엔드와 백엔드 디렉토리에서 의존성 패키지를 설치합니다:
-   ```bash
-   cd FE
-   npm install
-   cd ../BE
-   npm install
-   ```
-   
-4. 프론트엔드와 백엔드 서버를 각각 실행합니다:
-   ```bash
-   cd FE
-   npm start
-   ```
-
 
 ## 주요 기능
 
