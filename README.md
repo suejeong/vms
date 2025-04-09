@@ -57,6 +57,12 @@
 | 배포        |<img src="https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=git&logoColor=white"> <img src="https://img.shields.io/badge/Render-000000?style=for-the-badge&logo=git&logoColor=white"> |
 
 
+## DataBase ERD diagram
+[ERD.pdf](https://github.com/user-attachments/files/19663889/ERD.pdf)
+
+
+
+
 ## 프로젝트 구조 예시
 
 ```bash
