@@ -124,7 +124,8 @@ investRouter.post("/", async (req, res, next) => {
       },
     });
 
-    res.status(201).json(newInvest);
+    const { password: _, ...safeData } = newInvest;
+    res.status(201).json(safeData);
   } catch (error) {
     next(error);
   }
@@ -156,7 +157,8 @@ investRouter.put("/:investId", async (req, res, next) => {
       },
     });
 
-    res.json(updatedInvest);
+    const { password: _, ...safeData } = updatedInvest;
+    res.status(201).json(safeData);
   } catch (error) {
     next(error);
   }
