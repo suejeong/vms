@@ -8,7 +8,7 @@
 
 ## 목차
 - [프로젝트 기간](#프로젝트-기간)  
-- [배포](#배포)
+- [배포](#관련-링크)
 - [주요 기능](#주요-기능)  
 - [팀원](#팀원)  
 - [기술 스택](#기술-스택)  
@@ -17,13 +17,16 @@
 ## 프로젝트 기간
 2025.03.21 ~ 2025.04.10
 
-## 배포 
-
-- [개발 문서 노션 페이지 보러가기](https://emphasized-horse-08d.notion.site/Team-4-Project-Note-1c4cdb781b8880cf8bdef899d075f0e2)
-
-- [ViewMyStartup 접속하기 (FE)](https://viewmystartup4team.netlify.app/)
-
-- [백엔드 서버 접속하기 (BE)](https://view-my-startup-fa0a.onrender.com/)
+## 관련 링크
+- 개발 문서 페이지
+  - [개발 문서 노션 페이지 보러가기](https://emphasized-horse-08d.notion.site/Team-4-Project-Note-1c4cdb781b8880cf8bdef899d075f0e2)
+    
+- FE 배포 사이트
+  - [ViewMyStartup 접속하기 (FE)](https://viewmystartup4team.netlify.app/)
+    
+- BE 배포 사이트
+  - [백엔드 서버 접속하기 (BE)](https://view-my-startup-fa0a.onrender.com/)
+    
 
 
 ## 주요 기능
