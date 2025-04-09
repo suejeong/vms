@@ -144,6 +144,7 @@ export default function ComparePage() {
     setCompareResultState(true); // 비교하기 on
     openModal(
       <InvestAndChangeModal
+        prePassword={""}
         type={"투자"}
         companyDataState={myCompany}
         investId={investDataState}
@@ -267,8 +268,6 @@ export default function ComparePage() {
               나의 기업에 투자하기
             </button>
           </div>
-
-          <></>
         </>
       )}
     </>

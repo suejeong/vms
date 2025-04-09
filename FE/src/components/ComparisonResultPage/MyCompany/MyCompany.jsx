@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./MyCompany.module.scss";
-import getCompanyImage from "../../GetCompanyImage/GetCompanyImage";
+import CompanyInfo from "../../ComparePage/CompanyInfo/CompanyInfo";
 
 export const MyCompany = ({
   myCompanyState,
@@ -18,13 +18,9 @@ export const MyCompany = ({
         </button>
       </section>
       <section className={styles.myCompanySection}>
-        <img
-          className={styles.myCompanyImage}
-          src={getCompanyImage(myCompanyState.name)}
-          alt={myCompanyState.name}
-        />
-        <p className={styles.myCompanyName}>{myCompanyState.name}</p>
-        <p className={styles.myCompanyCategory}>{myCompanyState.category}</p>
+        <div className={styles.selectedCompany}>
+          <CompanyInfo company={myCompanyState} direction="column" />
+        </div>
       </section>
     </>
   );
