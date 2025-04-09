@@ -4,6 +4,12 @@ import { deleteInvest, getInvest } from "../../../../api/Invest";
 import { useModal } from "../ModalContext/ModalContext";
 import InvestAndChangeModal from "../InvestAndChangeModal/InvestAndChangeModal";
 import CompleteAndFailModal from "../CompleteAndFailModal/CompleteAndFailModal.jsx";
+
+// 이미지 import 추가
+import deleteIcon from "/src/assets/images/icons/ic_delete.png";
+import visibilityOnIcon from "/src/assets/images/icons/btn_visibility_on.png";
+import visibilityOffIcon from "/src/assets/images/icons/btn_visibility_off.png";
+
 export function DeleteAndChangeModal({
   type,
   investId,
@@ -14,13 +20,16 @@ export function DeleteAndChangeModal({
   const [form, setForm] = useState({});
   const [showPassword, setShowPassword] = useState(false);
   const [investData, setInvestData] = useState(null);
+
   async function fetchData() {
     const data = await getInvest(investId);
     setInvestData(data);
   }
+
   useEffect(() => {
     fetchData();
   }, []);
+
   const handlePreviewPassword = () => {
     setShowPassword(!showPassword);
   };
@@ -71,7 +80,7 @@ export function DeleteAndChangeModal({
             </h2>
             <button onClick={closeModal} className={styles.closeButton}>
               <img
-                src="/src/assets/images/icons/ic_delete.png"
+                src={deleteIcon}
                 alt="close"
                 className={styles.closeButton}
               />
@@ -95,11 +104,7 @@ export function DeleteAndChangeModal({
                 className={styles.input}
               />
               <img
-                src={
-                  showPassword
-                    ? "/src/assets/images/icons/btn_visibility_on.png"
-                    : "/src/assets/images/icons/btn_visibility_off.png"
-                }
+                src={showPassword ? visibilityOnIcon : visibilityOffIcon}
                 alt="엿보기"
                 onClick={() => handlePreviewPassword()}
                 className={styles.previewIcon}

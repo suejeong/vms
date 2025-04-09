@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from "react";
 import style from "./SearchBar.module.scss";
 
+// 이미지 import 추가
+import searchIcon from "/src/assets/images/icons/ic_search.png";
+import deleteIcon from "/src/assets/images/icons/ic_delete_circle_small.png";
+
 function SearchBar({
-  inputValue, // 인풋값
-  setInputValue, // 인풋값 설정
+  inputValue,
+  setInputValue,
   setInputKeyword,
   handleDelete,
-  setPagination, // {currentPage: page, totalPages, totalCompanies, limit}
+  setPagination,
   setIsSearchSubmitted,
 }) {
   const [isFocused, setIsFocused] = useState(false);
@@ -45,7 +49,7 @@ function SearchBar({
             onMouseDown={(e) => e.preventDefault()}
             onClick={handleSubmit}
           >
-            <img src="/src/assets/images/icons/ic_search.png" alt="search" className="min-w-[22px]" />
+            <img src={searchIcon} alt="search" className="min-w-[22px]" />
           </button>
         )}
 
@@ -64,7 +68,7 @@ function SearchBar({
             onMouseDown={(e) => e.preventDefault()}
             onClick={handleDelete}
           >
-            <img src="/src/assets/images/icons/ic_delete_circle_small.png" alt="delete" className="min-w-4"/>
+            <img src={deleteIcon} alt="delete" className="min-w-4" />
           </button>
         )}
 
@@ -74,7 +78,7 @@ function SearchBar({
             onMouseDown={(e) => e.preventDefault()}
             onClick={handleSubmit}
           >
-            <img src="/src/assets/images/icons/ic_search.png" alt="search" className="min-w-[22px]" />
+            <img src={searchIcon} alt="search" className="min-w-[22px]" />
           </button>
         )}
       </div>
