@@ -2,11 +2,12 @@ import React, { useEffect, useRef, useState } from "react";
 import style from "./Modal.module.scss";
 import MyCompanyModal from "../MyCompanyModal/MyCompanyModal";
 import CompareCompanyModal from "../CompareCompanyModal/CompareCompanyModal";
-import { Pagination } from "../Pagination/Pagination";
 import SearchBar from "../SearchBar/SearchBar";
 import Title from "../../Title/Title";
 import { searchCompanies } from "../../../api/Company";
 import ic_delete from "../../../assets/images/icons/ic_delete.png";
+import Pagination from '/src/components/ComparePage/Pagination/Pagination.jsx';
+
 
 function Modal({
   isOpen,

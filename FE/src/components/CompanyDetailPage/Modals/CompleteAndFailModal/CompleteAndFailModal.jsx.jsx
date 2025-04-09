@@ -1,8 +1,6 @@
 import styles from "./CompleteAndFailModal.module.scss";
 import React from "react";
 import { useModal } from "../ModalContext/ModalContext";
-import ic_delete from "../../../../assets/images/icons/ic_delete.png";
-
 export function CompleteAndFailModal({ type, result }) {
   const { closeModal } = useModal();
   return (
@@ -19,7 +17,7 @@ export function CompleteAndFailModal({ type, result }) {
                 className={`${styles.successCloseButton} ${styles.closeButton}`}
               >
                 <img
-                  src={ic_delete}
+                  src="/images/icons/ic_delete.png"
                   alt="close"
                   className={styles.closeButton}
                 />
@@ -49,7 +47,7 @@ export function CompleteAndFailModal({ type, result }) {
                 className={`${styles.successCloseButton} ${styles.closeButton}`}
               >
                 <img
-                  src={ic_delete}
+                  src="/images/icons/ic_delete.png"
                   alt="close"
                   className={styles.closeButton}
                 />

@@ -1,20 +1,24 @@
-import styles from "./RowButtonModal.module.scss";
 import { useEffect, useRef } from "react";
 import DeleteAndChangeModal from "../DeleteAndChangeModal/DeleteAndChangeModal";
 import { useModal } from "../ModalContext/ModalContext";
+
 export function RowButtonModal({
   RowModalClose,
   investId,
   companyDataState,
   refetchCompanyInvest,
+  triggerRef,
 }) {
   const modalRef = useRef(null);
-  const { openModal, closeModal } = useModal();
+  const { openModal } = useModal();
 
   useEffect(() => {
     const handleClickOutside = (e) => {
-      if (modalRef.current && !modalRef.current.contains(e.target)) {
-        RowModalClose(); // 외부 클릭 시 닫기
+      const clickedInsideModal = modalRef.current?.contains(e.target);
+      const clickedTriggerButton = triggerRef?.current?.contains(e.target);
+
+      if (!clickedInsideModal && !clickedTriggerButton) {
+        RowModalClose();
       }
     };
 
@@ -22,14 +26,15 @@ export function RowButtonModal({
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [RowModalClose]);
-
-  // console.log(investId);
+  }, [RowModalClose, triggerRef]);
 
   return (
-    <div ref={modalRef} className={styles.RowbuttonModal}>
+    <div
+      ref={modalRef}
+      className="absolute right-[8px] top-[50px] z-50 flex flex-col border border-gray200 rounded-[10px] w-[127px] bg-black400 [&>button]:h-10"
+    >
       <button
-        className={styles.RowbuttonModalButton1}
+        style={{ borderBottom: "1px solid #747474" }}
         onClick={() => {
           RowModalClose();
           openModal(
@@ -45,7 +50,6 @@ export function RowButtonModal({
         수정하기
       </button>
       <button
-        className={styles.RowbuttonModalButton2}
         onClick={() => {
           RowModalClose();
           openModal(
