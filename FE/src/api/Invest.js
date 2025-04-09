@@ -17,6 +17,15 @@ export const getInvest = async (InvestId) => {
     return res.data;
   });
 };
+//특정 투자 비밀번호 유효성 검사
+export const getInvestPassword = async (investId, userPassword) => {
+  return safeExecute(async () => {
+    const res = await instance.post(`/invest/password/${investId}`, {
+      password: userPassword,
+    });
+    return res.data;
+  });
+};
 
 // 특정 기업 투자 5개 받아오기
 export const getCompanyInvest = async (companyId) => {
