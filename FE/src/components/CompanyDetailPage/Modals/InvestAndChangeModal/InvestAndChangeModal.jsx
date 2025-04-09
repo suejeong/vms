@@ -152,7 +152,7 @@ export default function InvestAndChangeModal({
               onChange={InvestmentChange}
               placeholder="투자 금액을 입력해 주세요"
               required
-              maxLength={10}
+              maxLength={9}
               className={styles.input}
             />
           </div>
