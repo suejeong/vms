@@ -1,10 +1,11 @@
-import styles from "./PaseNationButton.module.scss";
-
 export function PaseNationButton({ value, onClick, isActive }) {
   return (
     <button
-      className={`${styles.PaseNationButton} ${isActive ? styles.active : ""}`}
       onClick={onClick}
+      className={`
+          bg-black100 
+          ${isActive ? "!text-white bg-brand-orange" : " bg-black100"}
+      `}
     >
       {value}
     </button>

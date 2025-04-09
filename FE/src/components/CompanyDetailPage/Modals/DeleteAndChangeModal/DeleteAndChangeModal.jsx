@@ -4,10 +4,6 @@ import { deleteInvest, getInvest } from "../../../../api/Invest";
 import { useModal } from "../ModalContext/ModalContext";
 import InvestAndChangeModal from "../InvestAndChangeModal/InvestAndChangeModal";
 import CompleteAndFailModal from "../CompleteAndFailModal/CompleteAndFailModal.jsx";
-import btn_visibility_on from "../../../../assets/images/icons/btn_visibility_on.png";
-import btn_visibility_off from "../../../../assets/images/icons/btn_visibility_off.png";
-import ic_delete from "../../../../assets/images/icons/ic_delete.png";
-
 export function DeleteAndChangeModal({
   type,
   investId,
@@ -74,7 +70,11 @@ export function DeleteAndChangeModal({
               {type === "삭제" ? "삭제 권한 인증" : "수정 권한 인증"}
             </h2>
             <button onClick={closeModal} className={styles.closeButton}>
-              <img src={ic_delete} alt="close" className={styles.closeButton} />
+              <img
+                src="/images/icons/ic_delete.png"
+                alt="close"
+                className={styles.closeButton}
+              />
             </button>
           </div>
         </div>
@@ -95,7 +95,11 @@ export function DeleteAndChangeModal({
                 className={styles.input}
               />
               <img
-                src={showPassword ? btn_visibility_on : btn_visibility_off}
+                src={
+                  showPassword
+                    ? "/images/icons/btn_visibility_on.png"
+                    : "/images/icons/btn_visibility_off.png"
+                }
                 alt="엿보기"
                 onClick={() => handlePreviewPassword()}
                 className={styles.previewIcon}
