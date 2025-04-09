@@ -17,18 +17,18 @@
 ## 프로젝트 기간
 2025.03.21 ~ 2025.04.10
 
-## 🖥️ 배포 
+## 배포 
 
 🖥️ [ViewMyStartup 접속하기 (FE)](https://viewmystartup4team.netlify.app/)
 
-## 🧩 주요 기능
+## 주요 기능
 
 - 🔍 **스타트업 기업 정보 검색**  
 - 📊 **여러 스타트업 간 정보 비교 기능**
 - 💰 **투자 정보 등록/수정/삭제(CRUD)**  
 - 📈 **투자 내역 기반 비교 페이지 제공**
 
-## 👨‍👩‍👧‍👦 팀원
+## 팀원
 | 이름 | 깃허브 | 
 |------|------|
 | 김수빈 | [GitHub](https://github.com/subinkim9755) |
@@ -37,7 +37,7 @@
 | 김재욱 | [GitHub](https://github.com/WooGie911) |
 | 황수정 |[GitHub](https://github.com/suejeong) |
 
-## 🛠️ 기술 스택
+## 기술 스택
 
 | 영역        | 기술 스택                           |
 |-------------|-------------------------------------|
@@ -71,7 +71,7 @@
   <img src="https://img.shields.io/badge/React%20Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white">
 </div>
 
-## 📂 프로젝트 구조 예시
+## 프로젝트 구조 예시
 
 ```bash
 ├── BE
