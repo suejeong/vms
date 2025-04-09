@@ -5,6 +5,11 @@ import { useModal } from "../ModalContext/ModalContext";
 import CompleteAndFailModal from "../CompleteAndFailModal/CompleteAndFailModal.jsx";
 import getCompanyImage from "../../../GetCompanyImage/GetCompanyImage.jsx";
 
+// 이미지 import 추가
+import closeIcon from "/src/assets/images/icons/ic_delete.png";
+import visibilityOnIcon from "/src/assets/images/icons/btn_visibility_on.png";
+import visibilityOffIcon from "/src/assets/images/icons/btn_visibility_off.png";
+
 export default function InvestAndChangeModal({
   type, //투자인지 투자수정인지
   companyDataState, //모두 사용
@@ -103,7 +108,7 @@ export default function InvestAndChangeModal({
             </h2>
             <button onClick={closeModal} className={styles.closeButton}>
               <img
-                src="/src/assets/images/icons/ic_delete.png"
+                src={closeIcon}
                 alt="close"
                 className={styles.closeButton}
               />
@@ -191,9 +196,7 @@ export default function InvestAndChangeModal({
               />
               <img
                 src={
-                  showPassword.first
-                    ? "/src/assets/images/icons/btn_visibility_on.png"
-                    : "/src/assets/images/icons/btn_visibility_off.png"
+                  showPassword.first ? visibilityOnIcon : visibilityOffIcon
                 }
                 alt="엿보기"
                 onClick={() => handlePreviewPassword("first")}
@@ -222,9 +225,7 @@ export default function InvestAndChangeModal({
               />
               <img
                 src={
-                  showPassword.second
-                    ? "/src/assets/images/icons/btn_visibility_on.png"
-                    : "/src/assets/images/icons/btn_visibility_off.png"
+                  showPassword.second ? visibilityOnIcon : visibilityOffIcon
                 }
                 alt="엿보기"
                 onClick={() => handlePreviewPassword("second")}

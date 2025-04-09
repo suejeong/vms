@@ -1,5 +1,9 @@
 import { useState } from "react";
 import styles from "./OrderByRanking.module.scss";
+
+// 이미지 import 추가
+import arrowBottomIcon from "/src/assets/images/icons/arrow_bottom.png";
+
 export const OrderByRanking = ({ currentState, handleOrderChange }) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -13,13 +17,15 @@ export const OrderByRanking = ({ currentState, handleOrderChange }) => {
   };
 
   return (
-    <div className={`${styles.dropdownContainer} rounded-[10px] cursor-pointer`} onClick={toggleDropdown}>
+    <div
+      className={`${styles.dropdownContainer} rounded-[10px] cursor-pointer`}
+      onClick={toggleDropdown}
+    >
       <div className={styles.dropdownButton}>
         <p>{currentState}</p>
         <img
-          src="/src/assets/images/icons/arrow_bottom.png"
+          src={arrowBottomIcon}
           className={`${styles.dropdownArrowImg} transition-transform duration-200 ease-in-out ${isOpen ? "-rotate-180" : "rotate-0"}`}
-          
         />
       </div>
       {isOpen && (
@@ -30,8 +36,12 @@ export const OrderByRanking = ({ currentState, handleOrderChange }) => {
           <li onClick={() => handleSelect("누적 투자금액 낮은순")}>
             누적 투자금액 낮은순
           </li>
-          <li onClick={() => handleSelect("매출액 높은순")}>매출액 높은순</li>
-          <li onClick={() => handleSelect("매출액 낮은순")}>매출액 낮은순</li>
+          <li onClick={() => handleSelect("매출액 높은순")}>
+            매출액 높은순
+          </li>
+          <li onClick={() => handleSelect("매출액 낮은순")}>
+            매출액 낮은순
+          </li>
           <li onClick={() => handleSelect("고용 인원 많은순")}>
             고용 인원 많은순
           </li>
