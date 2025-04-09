@@ -6,8 +6,7 @@ import SearchBar from "../SearchBar/SearchBar";
 import Title from "../../Title/Title";
 import { searchCompanies } from "../../../api/Company";
 import ic_delete from "../../../assets/images/icons/ic_delete.png";
-import Pagination from '/src/components/ComparePage/Pagination/Pagination.jsx';
-
+import { Pagination } from "../Pagination/Pagination";
 
 function Modal({
   isOpen,
