@@ -45,7 +45,7 @@ function SearchBar({
             onMouseDown={(e) => e.preventDefault()}
             onClick={handleSubmit}
           >
-            <img src="src/assets/images/icons/ic_search.png" alt="search" className="min-w-[22px]" />
+            <img src="/src/assets/images/icons/ic_search.png" alt="search" className="min-w-[22px]" />
           </button>
         )}
 
@@ -64,7 +64,7 @@ function SearchBar({
             onMouseDown={(e) => e.preventDefault()}
             onClick={handleDelete}
           >
-            <img src="src/assets/images/icons/ic_delete_circle_small.png" alt="delete" className="min-w-4"/>
+            <img src="/src/assets/images/icons/ic_delete_circle_small.png" alt="delete" className="min-w-4"/>
           </button>
         )}
 
@@ -74,7 +74,7 @@ function SearchBar({
             onMouseDown={(e) => e.preventDefault()}
             onClick={handleSubmit}
           >
-            <img src="src/assets/images/icons/ic_search.png" alt="search" className="min-w-[22px]" />
+            <img src="/src/assets/images/icons/ic_search.png" alt="search" className="min-w-[22px]" />
           </button>
         )}
       </div>
