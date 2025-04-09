@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import styles from "./DeleteAndChangeModal.module.scss";
-import { deleteInvest, getInvest } from "../../../../api/Invest";
+import {
+  deleteInvest,
+  getInvest,
+  getInvestPassword,
+} from "../../../../api/Invest";
 import { useModal } from "../ModalContext/ModalContext";
 import InvestAndChangeModal from "../InvestAndChangeModal/InvestAndChangeModal";
 import CompleteAndFailModal from "../CompleteAndFailModal/CompleteAndFailModal.jsx";
@@ -41,17 +45,19 @@ export function DeleteAndChangeModal({
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const res = await getInvestPassword(investId, form.password);
     if (type === "삭제") {
-      if (form.password === investData.password) {
+      if (res?.message === "Yes") {
         await deleteInvest(investId);
         refetchCompanyInvest();
         closeModal();
         openModal(<CompleteAndFailModal type={type} result={"성공"} />);
       } else {
+        closeModal();
         openModal(<CompleteAndFailModal type={type} result={"실패"} />);
       }
     } else {
-      if (form.password === investData.password) {
+      if (res?.message === "Yes") {
         closeModal();
         openModal(
           <InvestAndChangeModal
@@ -59,9 +65,11 @@ export function DeleteAndChangeModal({
             companyDataState={companyDataState}
             investId={investId}
             refetchCompanyInvest={refetchCompanyInvest}
+            prePassword={form.password}
           />
         );
       } else {
+        closeModal();
         openModal(<CompleteAndFailModal type={type} result={"실패"} />);
       }
     }
