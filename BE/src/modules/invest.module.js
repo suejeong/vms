@@ -81,6 +81,30 @@ investRouter.get("/company/:companyId/:page", async (req, res, next) => {
     next(error);
   }
 });
+//투자에 수정 삭제를 위한한 비밀번호만 가져오기
+investRouter.post("/password/:investId", async (req, res, next) => {
+  try {
+    const { investId } = req.params;
+    const { password } = req.body;
+    const findInvest = await prisma.invest.findUnique({
+      where: { id: investId },
+    });
+    //없으면 에러
+    if (!findInvest) {
+      return res.status(404).json({ message: "투자 정보를 찾을 수 없습니다." });
+    }
+
+    // 🔐 비밀번호 유효성 검사 (기존 해시된 비밀번호와 비교)
+    const isPasswordValid = await bcrypt.compare(password, findInvest.password);
+    if (!isPasswordValid) {
+      return res.status(403).json({ message: "No" });
+    }
+
+    res.status(200).json({ message: "Yes" });
+  } catch (error) {
+    next(error);
+  }
+});
 
 // 투자 정보 추가하기
 investRouter.post("/", async (req, res, next) => {
@@ -119,11 +143,6 @@ investRouter.put("/:investId", async (req, res, next) => {
       return res.status(404).json({ message: "투자 정보를 찾을 수 없습니다." });
     }
 
-    // 🔐 비밀번호 유효성 검사 (기존 해시된 비밀번호와 비교)
-    const isPasswordValid = await bcrypt.compare(password, findInvest.password);
-    if (!isPasswordValid) {
-      return res.status(403).json({ message: "비밀번호가 일치하지 않습니다." });
-    }
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const updatedInvest = await prisma.invest.update({
