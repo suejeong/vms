@@ -7,6 +7,8 @@ import { getCompany } from "../../api/Company";
 import { getCompanyInvest, getCompanyPageInvest } from "../../api/Invest";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { GrFormPrevious, GrFormNext } from "react-icons/gr";
+import IsLoading from "../../common/IsLoading/IsLoading";
 
 export function CompanyDetailPage() {
   // 가져올 회사 ID (예제, 실제로는 props나 params에서 가져올 수도 있음)
@@ -57,7 +59,7 @@ export function CompanyDetailPage() {
 
   // 로딩 중이면 "로딩 중..." 표시
   if (loading) {
-    return <div>로딩 중...</div>;
+    return <IsLoading />
   }
   // 투자내역 개수에 맞게 페이지네이션 버튼 생성
   const makePageNationButton = (investDataState) => {
@@ -68,7 +70,7 @@ export function CompanyDetailPage() {
     buttons.push(
       <PageNationButton
         key="prev"
-        value="<"
+        value={<GrFormPrevious />}
         onClick={() => {
           if (nowPageState > 1) setNowPageState(nowPageState - 1);
         }}
@@ -92,7 +94,7 @@ export function CompanyDetailPage() {
     buttons.push(
       <PageNationButton
         key="next"
-        value=">"
+        value={<GrFormNext />}
         onClick={() => {
           if (nowPageState < count) setNowPageState(nowPageState + 1);
         }}
@@ -100,11 +102,20 @@ export function CompanyDetailPage() {
       />
     );
 
-    return <div className={styles.PaseNationDiv}>{buttons}</div>;
+    return <div className={`
+      flex items-center justify-center 
+      my-4 gap-[10px] 
+      [&>button]:w-8 [&>button]:h-8 [&>button]:rounded-lg
+      [&>button]:flex [&>button]:items-center [&>button]:justify-center 
+    [&>button]:text-gray200
+      md:my-8 md:gap-1
+      md:[&>button]:w-12 md:[&>button]:h-12
+      md:text-lg
+    `}>{buttons}</div>;
   };
 
   return (
-    <div className={styles.CompanyDetailPage}>
+    <div>
       <CompanyMain companyDataState={companyDataState} />
 
       <InvestMain

@@ -2,9 +2,9 @@ import React from "react";
 import style from "./FilteredCompanies.module.scss";
 import CompanyInfo from "../CompanyInfo/CompanyInfo";
 import Button from "../Button/Button";
+import ic_check from "../../../assets/images/icons/ic_check.png";
 
 function FilteredCompanies({
-  inputValue,
   filteredCompanies,
   totalCompanies,
   selectedCompanies,
@@ -15,7 +15,7 @@ function FilteredCompanies({
 }) {
   return (
     <>
-      {inputValue && isSearchSubmitted && (
+      {isSearchSubmitted && (
         <div className={style.filteredCompanies}>
           {filteredCompanies.length > 0 ? (
             <>
@@ -32,9 +32,7 @@ function FilteredCompanies({
                           shape="square"
                           color="borderGray100"
                           text="선택완료"
-                          image={
-                            <img src="/images/icons/ic_check.png" alt="check" />
-                          }
+                          image={<img src={ic_check} alt="check" />}
                           disabled={true}
                         />
                       ) : (

@@ -1,0 +1,35 @@
+.pagination {
+  width: 16rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0.5rem 0 0 0;
+}
+
+.arrow {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.5rem;
+  background-color: var(--black-100);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.paginationButton {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.5rem;
+  background-color: var(--black-100);
+  color: var(--gray-200);
+}
+
+.paginationButton:disabled {
+  background-color: var(--brand-orange);
+  color: var(--white-color);
+}
+
+.navigationBar {
+  display: flex;
+  gap: 0.25rem;
+}

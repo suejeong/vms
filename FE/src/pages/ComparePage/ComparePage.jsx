@@ -10,6 +10,7 @@ import CompanyContainer from "../../components/ComparePage/CompanyContainer/Comp
 import DashContainer from "../../components/ComparePage/DashContainer/DashContainer.jsx";
 import Button from "../../components/ComparePage/Button/Button.jsx";
 import { useNavigate } from "react-router-dom";
+import ic_restart from "../../assets/images/icons/ic_restart.png";
 
 //투자하기 모달  임포트.
 import InvestAndChangeModal from "../../components/CompanyDetailPage/Modals/InvestAndChangeModal/InvestAndChangeModal.jsx";
@@ -41,8 +42,6 @@ export default function ComparePage() {
       const storedMyCompany = localStorage.getItem("myCompany");
       const storedCompareCompanies = localStorage.getItem("compareCompanies");
       const storedRecentCompanies = localStorage.getItem("recentCompanies");
-      const storedCompareResultState =
-        localStorage.getItem("compareResultState");
 
       if (storedMyCompany) {
         setMyCompany(JSON.parse(storedMyCompany));
@@ -54,10 +53,6 @@ export default function ComparePage() {
 
       if (storedRecentCompanies) {
         setRecentCompanies(JSON.parse(storedRecentCompanies));
-      }
-
-      if (storedCompareResultState) {
-        setCompareResultState(JSON.parse(storedCompareResultState));
       }
     } catch (error) {
       console.error("Error loading data from localStorage:", error);
@@ -88,11 +83,6 @@ export default function ComparePage() {
     saveToLocalStorage("recentCompanies", recentCompanies);
   }, [recentCompanies]);
 
-  // compareResultState 변경 시 로컬 스토리지에 저장
-  useEffect(() => {
-    saveToLocalStorage("compareResultState", compareResultState);
-  }, [compareResultState]);
-
   const handleNavigateDetailPage = (companyId) => {
     navigate(`/detail/${companyId}`);
   };
@@ -107,7 +97,14 @@ export default function ComparePage() {
     setMyCompany(company);
 
     if (!recentCompanies.find((c) => c.id === company.id)) {
-      setRecentCompanies((prev) => [...prev, company]);
+      setRecentCompanies((prev) => {
+        const updatedCompanies = [...prev, company];
+        //최근 선택한 기업 5개만 기억
+        if (updatedCompanies.length > 5) {
+          return updatedCompanies.slice(-5);
+        }
+        return updatedCompanies;
+      });
     }
     setIsModalOpen(false);
   };
@@ -119,13 +116,20 @@ export default function ComparePage() {
 
   // 비교하기 함수.
   const fetchCompareResultList = async () => {
-    const compareCompanyIds = compareCompanies.map((company) => company.id);
+    try {
+      const compareCompanyIds = compareCompanies.map((company) => company.id);
 
-    const compareResultListData = await getComparedcompany(
-      myCompany.id,
-      compareCompanyIds
-    );
-    setCompareResultListState(compareResultListData);
+      const compareResultListData = await getComparedcompany(
+        myCompany.id,
+        compareCompanyIds
+      );
+      compareResultListData.sort(
+        (a, b) => b.totalInvestment - a.totalInvestment
+      );
+      setCompareResultListState(compareResultListData);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   // 비교하기 버튼 클릭 함수.
@@ -154,8 +158,11 @@ export default function ComparePage() {
     setInvestDataState(investData);
   };
 
+  //비교 스테이트가 true 일 경우에만
   useEffect(() => {
-    fetchCompareResultList();
+    if (compareResultState) {
+      fetchCompareResultList();
+    }
   }, [myCompany, compareCompanies]);
 
   return (
@@ -174,7 +181,7 @@ export default function ComparePage() {
                   setCompareCompanies([]);
                 }}
                 text="전체 초기화"
-                image={<img src="/images/icons/ic_restart.png" alt="Restart" />}
+                image={<img src={ic_restart} alt="Restart" />}
               />
             )}
           </div>
@@ -231,7 +238,7 @@ export default function ComparePage() {
             shape="oval"
             size="big"
             color="orange"
-            onClick={() => handleClickCompareButton()}
+            onClick={handleClickCompareButton}
             text="기업 비교하기"
             disabled={compareCompanies.length === 0 || !myCompany}
           />

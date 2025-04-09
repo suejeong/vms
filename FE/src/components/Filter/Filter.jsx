@@ -1,5 +1,5 @@
-
 import React from "react";
+import arrow_bottom from "../../assets/images/icons/arrow_bottom.png";
 
 export default function Filter({
   filterOptions,
@@ -16,9 +16,11 @@ export default function Filter({
       <div className="px-4 h-10 md:h-12 flex items-center justifybetween gap-2 md:gap-4 border border-gray200 rounded-[10px] hover:bg-black300">
         <div className="flex-1 flex justify-start">{selectedFilter.label}</div>
         <img
-          src="/images/icons/arrow_bottom.png"
+          src={arrow_bottom}
           alt="버튼"
-          className={`transition-transform duration-200 ease-in-out ${showFilterOptions ? '-rotate-180' : 'rotate-0'}`}
+          className={`transition-transform duration-200 ease-in-out ${
+            showFilterOptions ? "-rotate-180" : "rotate-0"
+          }`}
         />
       </div>
       {showFilterOptions && (
@@ -51,6 +53,7 @@ export default function Filter({
               onClick={(e) => {
                 e.stopPropagation(); //제가 전체를 버튼으로 만들어서.. button이벤트 막기.
                 onSelectFilter(option);
+                console.log(option.sort);
                 setShowFilterOptions(false);
               }}
             >

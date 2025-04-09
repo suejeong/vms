@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-
 import styles from "./Header.module.scss";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import mainPcLogo from "../../assets/images/logos/mainPcLogo.png";
 
 const pagesURL = ["compare", "status", "investment"];
 
@@ -12,9 +12,9 @@ export default function Header() {
 
   useEffect(() => {
     const currentUrl = window.location.href;
-    for(let i = 0; i < pagesURL.length; i++) {
-      if(currentUrl.includes(pagesURL[i])){
-        setSelected(i + 1)
+    for (let i = 0; i < pagesURL.length; i++) {
+      if (currentUrl.includes(pagesURL[i])) {
+        setSelected(i + 1);
         return;
       }
     }
@@ -46,11 +46,7 @@ export default function Header() {
       <div className={styles.content}>
         <h1 className={styles.logo}>
           <Link to="/" onClick={handleLogoClick}>
-            <img
-              src="/images/logos/mainPcLogo.png"
-              alt="main-logo"
-              className={styles.logoImg}
-            />
+            <img src={mainPcLogo} alt="main-logo" className={styles.logoImg} />
           </Link>
         </h1>
         <Link

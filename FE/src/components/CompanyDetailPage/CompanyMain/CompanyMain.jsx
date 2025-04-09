@@ -1,18 +1,18 @@
-import styles from "./CompanyMain.module.scss";
 import LogoAndName from "./LogoAndName/LogoAndName";
 import Patition from "./Partition/Partition";
 import Description from "./Description/Description";
+import getCompanyImage from "../../GetCompanyImage/GetCompanyImage";
 
 export function CompanyMain({ companyDataState }) {
   return (
-    <div className={styles.CompanyDetailDiv}>
+    <div >
       <LogoAndName
-        imgSrc={`/images/companies/${companyDataState.name}.png`}
+        imgSrc={getCompanyImage(companyDataState.name)}
         companyName={companyDataState.name}
         companyCategory={companyDataState.category}
       />
 
-      <div className={styles.companyDetailThreePart}>
+      <div className="flex items-center gap-4 mt-4 md:mt-8">
         <Patition
           colum={"누적 투자 금액"}
           value={companyDataState.totalInvestment}
