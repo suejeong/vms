@@ -59,8 +59,8 @@
 
 ## DataBase ERD diagram
 
-[ERD.pdf](https://github.com/user-attachments/files/19663889/ERD.pdf)
 
+![4팀ERD](https://github.com/user-attachments/assets/e434e768-60e4-4ca4-96a3-f8511e6874a4)
 
 
 
