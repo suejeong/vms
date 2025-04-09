@@ -267,8 +267,6 @@ export default function ComparePage() {
               나의 기업에 투자하기
             </button>
           </div>
-
-          <></>
         </>
       )}
     </>
