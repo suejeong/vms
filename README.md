@@ -53,34 +53,37 @@
 ```bash
 ├── BE
 │   └── src
-│      ├── modules #백엔드 API
-│   ├── db 
-│   │   ├── prisma 
-│   │   │   ├── migrations 
-│   │   │   ├── schema.prisma #DB 스키마.
-│   │   │   └── seed.js #DB seed 데이터.
-│   └── app.js
+│       ├── modules #백엔드 API
+│       ├── db 
+│       │   ├── prisma 
+│       │   │   ├── migrations 
+│       │   │   ├── schema.prisma #DB 스키마.
+│       │   │   └── seed.js #DB seed 데이터.
+│       └── app.js
 ├── FE
 │   └── src
-│      ├── common 
-│      │   ├── Error #API 통신 과정 에러처리.
-│      │   ├── Header 
-│      │   ├── IsLoading 
-│      │   └── Layout
-│      ├── assets/images
-│      │   ├── companies #기업 로고 이미지.
-│      │   ├── favicon 
-│      │   ├── icons
-│      │   └── logos
-│      ├── apis
-│      │   ├── Common.js 
-│      │   ├── Company.js #기업 관련 API
-│      │   └── Invest.js #투자 관련 API
-│      ├── components
-│      ├── pages
-│      ├── App.jsx
-│      ├── main.jsx #라우팅 처리.
-│      └── styles
+│       ├── assets/images
+│       │   ├── companies #기업 로고 이미지.
+│       │   ├── favicon 
+│       │   ├── icons
+│       │   └── logos
+│       ├── apis
+│       │   ├── Common.js 
+│       │   ├── Company.js #기업 관련 API
+│       │   └── Invest.js #투자 관련 API
+│       ├── components
+│       │   ├── common #공통으로 쓰이는 컴포넌트들.
+│       │   │   ├── Error #API 통신 과정 에러처리.
+│       │   │   ├── Header 
+│       │   │   ├── IsLoading 
+│       │   │   └── Layout
+│       │   ├── Filter
+│       │   ├── Pagination 
+│       │   └── ... #그 외의 컴포넌트들.
+│       ├── pages
+│       ├── App.jsx
+│       ├── main.jsx #라우팅 처리.
+│       └── styles
 └── public
 ```
 [목차로](#목차)
