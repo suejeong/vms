@@ -45,6 +45,7 @@ export function DeleteAndChangeModal({
         closeModal();
         openModal(<CompleteAndFailModal type={type} result={"성공"} />);
       } else {
+        closeModal();
         openModal(<CompleteAndFailModal type={type} result={"실패"} />);
       }
     } else {
@@ -59,6 +60,7 @@ export function DeleteAndChangeModal({
           />
         );
       } else {
+        closeModal();
         openModal(<CompleteAndFailModal type={type} result={"실패"} />);
       }
     }
