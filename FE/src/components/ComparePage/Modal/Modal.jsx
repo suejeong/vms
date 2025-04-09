@@ -8,6 +8,7 @@ import { searchCompanies } from "../../../api/Company";
 import ic_delete from "../../../assets/images/icons/ic_delete.png";
 import { Pagination } from "../Pagination/Pagination";
 
+
 function Modal({
   isOpen,
   onClose,
@@ -18,7 +19,7 @@ function Modal({
   myCompany,
 }) {
   const [inputValue, setInputValue] = useState("");
-  const [inputKeyword, setInputKeyword] = useState("");
+  const [inputKeyword, setInputKeyword] = useState("기업명");
   const [filteredCompanies, setFilteredCompanies] = useState([]);
   const [isSearchSubmitted, setIsSearchSubmitted] = useState(false);
   const modalBackground = useRef();
@@ -49,7 +50,7 @@ function Modal({
 
   useEffect(() => {
     handleSearch();
-  }, [inputKeyword, pagination.currentPage, isSearchSubmitted]);
+  }, [inputKeyword, pagination.currentPage]);
 
   if (!isOpen) return null;
 

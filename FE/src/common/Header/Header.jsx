@@ -1,81 +1,23 @@
 import React, { useEffect, useState } from "react";
-import styles from "./Header.module.scss";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import mainPcLogo from "../../assets/images/logos/mainPcLogo.png";
-
-const pagesURL = ["compare", "status", "investment"];
+import { Link, useLocation } from "react-router-dom";
 
 export default function Header() {
-  const [selected, setSelected] = useState(null);
-  const navigate = useNavigate();
   const location = useLocation();
-
-  useEffect(() => {
-    const currentUrl = window.location.href;
-    for (let i = 0; i < pagesURL.length; i++) {
-      if (currentUrl.includes(pagesURL[i])) {
-        setSelected(i + 1);
-        return;
-      }
-    }
-
-    const idx = location.state && location.state.idx;
-
-    if (idx === undefined || idx === null) return;
-
-    if (idx === 0) {
-      setSelected(null);
-    } else {
-      setSelected(idx);
-      navigate(`/${pagesURL[idx - 1]}`);
-    }
-  }, [location]);
-
-  // 메뉴 클릭 시 상태 업데이트
-  const handleClick = (index) => {
-    setSelected(index);
-  };
-
-  // Home 이동 모든 상태 초기화
-  const handleLogoClick = () => {
-    setSelected(null);
-  };
-
+  console.log(location)
+  
   return (
-    <header className={styles.header}>
-      <div className={styles.content}>
-        <h1 className={styles.logo}>
-          <Link to="/" onClick={handleLogoClick}>
-            <img src={mainPcLogo} alt="main-logo" className={styles.logoImg} />
-          </Link>
+    <header className="w-full fixed top-0 left-0 z-50 bg-black400 border-b border-black100">
+      <div className="mx-4 h-[60px] lg:mx-6  xl:max-w-[1200px] xl:mx-auto flex items-center gap-5 xl:gap-10">
+        <h1>
+          <Link to='/'><img src="/src/assets/images/logos/mainPcLogo.png" alt="main-logo" className="w-16 md:w-[112px]" /></Link>
         </h1>
-        <Link
-          to="/compare"
-          className={`${styles.menuItem} ${
-            selected === 1 ? styles.selected : ""
-          }`}
-          onClick={() => handleClick(1)}
-        >
-          나의 기업 비교
-        </Link>
-        <Link
-          to="/status"
-          className={`${styles.menuItem} ${
-            selected === 2 ? styles.selected : ""
-          }`}
-          onClick={() => handleClick(2)}
-        >
-          비교 현황
-        </Link>
-        <Link
-          to="/investment"
-          className={`${styles.menuItem} ${
-            selected === 3 ? styles.selected : ""
-          }`}
-          onClick={() => handleClick(3)}
-        >
-          투자 현황
-        </Link>
+        <nav>
+          <ul className="flex items-center gap-4 md:gap-8 text-[13px] font-semibold md:text-[15px]">
+            <li><Link to='/compare' className={`${location.pathname.includes("compare") ? "text-white" : "text-gray200"}`}>나의 기업 비교</Link></li>
+            <li><Link to='/status' className={`${location.pathname.includes("status") ? "text-white" : "text-gray200"}`}>비교 현황</Link></li>
+            <li><Link to='/investment' className={`${location.pathname.includes("investment") ? "text-white" : "text-gray200"}`}>투자 현황</Link></li>
+          </ul>
+        </nav>
       </div>
     </header>
   );

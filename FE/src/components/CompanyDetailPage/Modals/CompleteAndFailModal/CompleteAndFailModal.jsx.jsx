@@ -17,7 +17,7 @@ export function CompleteAndFailModal({ type, result }) {
                 className={`${styles.successCloseButton} ${styles.closeButton}`}
               >
                 <img
-                  src="/images/icons/ic_delete.png"
+                  src="/src/assets/images/icons/ic_delete.png"
                   alt="close"
                   className={styles.closeButton}
                 />
@@ -47,7 +47,7 @@ export function CompleteAndFailModal({ type, result }) {
                 className={`${styles.successCloseButton} ${styles.closeButton}`}
               >
                 <img
-                  src="/images/icons/ic_delete.png"
+                  src="/src/assets/images/icons/ic_delete.png"
                   alt="close"
                   className={styles.closeButton}
                 />

@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styles from "./DeleteAndChangeModal.module.scss";
-import {
-  deleteInvest,
-  getInvest,
-  getInvestPassword,
-} from "../../../../api/Invest";
+import { deleteInvest, getInvest } from "../../../../api/Invest";
 import { useModal } from "../ModalContext/ModalContext";
 import InvestAndChangeModal from "../InvestAndChangeModal/InvestAndChangeModal";
 import CompleteAndFailModal from "../CompleteAndFailModal/CompleteAndFailModal.jsx";
@@ -36,20 +32,17 @@ export function DeleteAndChangeModal({
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const res = await getInvestPassword(investId, form.password);
     if (type === "삭제") {
-      if (res?.message === "Yes") {
+      if (form.password === investData.password) {
         await deleteInvest(investId);
         refetchCompanyInvest();
         closeModal();
         openModal(<CompleteAndFailModal type={type} result={"성공"} />);
       } else {
-        closeModal();
         openModal(<CompleteAndFailModal type={type} result={"실패"} />);
       }
     } else {
-      if (res?.message === "Yes") {
+      if (form.password === investData.password) {
         closeModal();
         openModal(
           <InvestAndChangeModal
@@ -60,7 +53,6 @@ export function DeleteAndChangeModal({
           />
         );
       } else {
-        closeModal();
         openModal(<CompleteAndFailModal type={type} result={"실패"} />);
       }
     }
@@ -79,7 +71,7 @@ export function DeleteAndChangeModal({
             </h2>
             <button onClick={closeModal} className={styles.closeButton}>
               <img
-                src="/images/icons/ic_delete.png"
+                src="/src/assets/images/icons/ic_delete.png"
                 alt="close"
                 className={styles.closeButton}
               />
@@ -105,8 +97,8 @@ export function DeleteAndChangeModal({
               <img
                 src={
                   showPassword
-                    ? "/images/icons/btn_visibility_on.png"
-                    : "/images/icons/btn_visibility_off.png"
+                    ? "/src/assets/images/icons/btn_visibility_on.png"
+                    : "/src/assets/images/icons/btn_visibility_off.png"
                 }
                 alt="엿보기"
                 onClick={() => handlePreviewPassword()}

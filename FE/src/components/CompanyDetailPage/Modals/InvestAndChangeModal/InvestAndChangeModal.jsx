@@ -103,7 +103,7 @@ export default function InvestAndChangeModal({
             </h2>
             <button onClick={closeModal} className={styles.closeButton}>
               <img
-                src="/images/icons/ic_delete.png"
+                src="/src/assets/images/icons/ic_delete.png"
                 alt="close"
                 className={styles.closeButton}
               />
@@ -152,7 +152,6 @@ export default function InvestAndChangeModal({
               onChange={InvestmentChange}
               placeholder="투자 금액을 입력해 주세요"
               required
-              maxLength={9}
               className={styles.input}
             />
           </div>
@@ -193,8 +192,8 @@ export default function InvestAndChangeModal({
               <img
                 src={
                   showPassword.first
-                    ? "/images/icons/btn_visibility_on.png"
-                    : "/images/icons/btn_visibility_off.png"
+                    ? "/src/assets/images/icons/btn_visibility_on.png"
+                    : "/src/assets/images/icons/btn_visibility_off.png"
                 }
                 alt="엿보기"
                 onClick={() => handlePreviewPassword("first")}
@@ -224,8 +223,8 @@ export default function InvestAndChangeModal({
               <img
                 src={
                   showPassword.second
-                    ? "/images/icons/btn_visibility_on.png"
-                    : "/images/icons/btn_visibility_off.png"
+                    ? "/src/assets/images/icons/btn_visibility_on.png"
+                    : "/src/assets/images/icons/btn_visibility_off.png"
                 }
                 alt="엿보기"
                 onClick={() => handlePreviewPassword("second")}
