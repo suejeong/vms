@@ -59,8 +59,37 @@
 
 ## DataBase ERD diagram
 
+![4팀ERD](https://github.com/user-attachments/assets/490b4ab3-3f06-427b-804b-3f11379100bd)
 
-![4팀ERD](https://github.com/user-attachments/assets/e434e768-60e4-4ca4-96a3-f8511e6874a4)
+## 🗂️ 테이블 구조
+
+### 📁 companys 테이블
+
+| 컬럼명           | 타입     | 설명              |
+|------------------|----------|-------------------|
+| `id`             | varchar  | 기본 키            |
+| `name`           | varchar  | 회사 이름          |
+| `description`    | varchar  | 회사 설명          |
+| `category`       | varchar  | 회사 카테고리      |
+| `totalInvestmen` | int      | 총 투자금          |
+| `totalProfit`    | int      | 총 수익            |
+| `employeeCount`  | int      | 직원 수            |
+| `countMyPicked`  | int      | 내가 고른 횟수     |
+| `countYourPicked`| int      | 상대가 고른 횟수   |
+
+---
+
+### 📁 invests 테이블
+
+| 컬럼명         | 타입     | 설명                         |
+|----------------|----------|------------------------------|
+| `id`           | varchar  | 기본 키                      |
+| `userName`     | varchar  | 투자자 이름                  |
+| `password`     | varchar  | 비밀번호                     |
+| `companyId`    | varchar  | 외래 키 (연결: companys.id)  |
+| `investAmount` | int      | 투자 금액                    |
+| `comment`      | varchar  | 투자 코멘트                  |
+
 
 
 
