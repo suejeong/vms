@@ -1,0 +1,52 @@
+.header {
+  width: 100%;
+  margin-bottom: 1.25rem;
+}
+
+.headerList {
+  display: flex;
+  align-items: center;
+  border-radius: 0.25rem;
+  background-color: var(--black-100);
+}
+
+.headerItem {
+  padding: 0.625rem 0;
+  text-align: center;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.rank {
+  flex: 1;
+}
+
+.name {
+  flex: 3;
+}
+
+.description {
+  flex: 4;
+}
+
+.category {
+  flex: 2;
+}
+
+.mySelectCount {
+  flex: 2;
+}
+
+.compareSelectCount {
+  flex: 2;
+}
+
+@media only screen and (min-width: 46.5rem) and (max-width: 74.9375rem) {
+  
+}
+
+@media only screen and (min-width: 23.4375rem) and (max-width: 46.4375rem) {
+  .headerItem {
+      font-size: 0.8125rem;
+  }
+}

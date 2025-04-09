@@ -1,0 +1,104 @@
+.companyWrapper {
+  display: flex;
+  align-items: center;
+
+}
+
+.companyText {
+  display: flex;
+  justify-content: center;
+
+}
+
+.row {
+  flex-direction: row;
+  align-items: center;
+
+  .companyText {
+    justify-content: left;
+    .companyName {
+      margin-left: 1rem;
+    }
+    .companyCategory {
+      margin-left: 0.5rem;
+      margin-top: 0.08rem;
+    }
+  }
+}
+
+.column {
+  flex-direction: column;
+  align-items: center;
+
+  .companyLogo {
+    margin-top: 1.15rem;
+  }
+
+  .companyText {
+    flex-direction: column;
+    margin-top: 1rem;
+    .companyName, .companyCategory {
+      text-align: center;
+    }
+
+    .companyCategory {
+      margin-top: 0.25rem;
+    }
+  }
+}
+
+.companyLogo {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+.companyName {
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.companyCategory {
+  font-weight: 400;
+  font-size: 0.875rem;
+  line-height: 0.875rem;
+  color: var(--gray-200);
+}
+
+// p {
+//   font-weight: 500;
+//   font-size: 1.125rem;
+// }
+
+// .companyName {
+//   font-weight: 500;
+//   font-size: 1rem;
+//   line-height: 1;
+// }
+
+// .companyCategory {
+//   font-weight: 400;
+//   font-size: 0.875rem;
+//   line-height: 1;
+//   color: var(--gray-200);
+// }
+
+/* Tablet (744px ~ 1199px) */
+@media only screen and (min-width: 46.5rem) and (max-width: 74.9375rem) {
+}
+
+/* Mobile (0 ~ 743px) */
+@media only screen and (min-width: 0) and (max-width: 46.4375rem) {
+  p {
+    font-size: 0.875rem;
+  }
+
+  .companyName {
+    font-size: 0.875rem;
+  }
+
+  .companyCategory {
+    font-size: 0.75rem;
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "npm run generate && nodemon src/app.js",
+    "generate": "npx prisma generate --schema=./src/db/prisma/schema.prisma",
+    "migrate": "npx prisma migrate dev --name init --schema=./src/db/prisma/schema.prisma",
+    "reset": "npx prisma migrate reset --schema=./src/db/prisma/schema.prisma",
+    "seed": "node src/db/prisma/seed.js",
+    "build": "echo 'No build step required for this backend project'"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.6.0",
+    "bcrypt": "^5.1.1",
+    "cors": "^2.8.5",
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.1",
+    "@types/node": "^22.13.17",
+    "nodemon": "^2.0.22",
+    "prisma": "^6.6.0",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.2"
+  },
+  "prisma": {
+    "schema": "./src/db/prisma/schema.prisma"
+  },
+  "description": "",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
+}

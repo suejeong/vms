@@ -1,0 +1,87 @@
+button {
+  font-size: 1rem;
+}
+
+.square {
+  width: 6.5rem;
+  height: 3rem;
+  border-radius: 0.625rem;
+}
+
+.square:disabled {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.oval {
+  font-size: 1rem;
+  font-weight: 600;
+  gap: 0.25rem;
+  border-radius: 3.125rem;
+  padding: 0.5rem 1.5rem;
+  color: var(--wihte-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.oval:disabled {
+  background-color: var(--black-100);
+  color: var(--gray-200);
+}
+
+.medium {
+  width: auto;
+  height: 2.5rem;
+}
+
+.big {
+  width: 11.4375rem;
+  height: 3rem;
+}
+
+.borderGray100 {
+  color: var(--gray-100);
+  border: 1px solid var(--gray-100);
+}
+
+.borderGray200 {
+  color: var(--gray-200);
+  border: 1px solid var(--gray-200);
+}
+
+.borderOrange {
+  color: var(--brand-orange);
+  border: 1px solid var(--brand-orange);
+}
+
+.orange {
+  color: var(--wihte-color);
+  background-color: var(--brand-orange);
+}
+
+/* Tablet (744px ~ 1199px) */
+@media only screen and (min-width: 46.5rem) and (max-width: 74.9375rem) {
+}
+
+/* Mobile (0 ~ 743px) */
+@media only screen and (min-width: 0) and (max-width: 46.4375rem) {
+  button {
+    font-size: 0.875rem;
+  }
+
+  .square {
+    width: 4.5625rem;
+    height: 2rem;
+    border-radius: 0.5rem;
+    img {
+      width: 1rem;
+      height: 1rem;
+    }
+  }
+
+  .medium {
+    height: 2rem;
+  }
+}

@@ -1,0 +1,53 @@
+.headerContainer {
+    max-width: 75rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.tableContainer {
+    max-width: 75rem;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.title {
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.companyList {
+    overflow: hidden;
+    border-radius: 0.25rem;
+}
+
+@media only screen and (min-width: 46.5rem) and (max-width: 74.9375rem) {
+    .statusContainer {
+        padding: 0 1.5rem;
+    }
+
+    .tableContainer {
+        max-width: auto;
+        min-width: 74.9375rem;
+        padding-right: 1.5rem;
+        overflow-x: auto;
+    }
+}
+
+@media only screen and (min-width: 23.4375rem) and (max-width: 46.4375rem) {
+    .title {
+        font-size: 1rem;
+    }
+    
+    .statusContainer {
+        padding: 0 1rem;
+    }
+
+    .tableContainer {
+        max-width: auto;
+        min-width: 46.4375rem;
+        padding-right: 1rem;
+        overflow-x: auto;
+    }
+}

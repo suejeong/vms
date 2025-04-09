@@ -1,0 +1,76 @@
+.title {
+  font-size: 1.15rem;
+  margin-top: 1.15rem;
+}
+
+.companyInfo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  img {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 100%;
+  }
+}
+
+.companyItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0.5rem 0;
+}
+
+.companyName {
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.companyCategory {
+  font-weight: 400;
+  font-size: 0.875;
+  color: var(--gray-200);
+}
+
+.filteredCompanies {
+  max-width: 28rem;
+  width: 100%;
+  margin: 0.5rem 0;
+}
+
+span {
+  font-size: 0.875rem;
+  color: var(--error-red);
+}
+
+.noSearchResult {
+  text-align: center;
+  padding-top: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: var(--gray-100);
+}
+
+/* Tablet (744px ~ 1199px) */
+@media only screen and (min-width: 46.5rem) and (max-width: 74.9375rem) {
+}
+
+/* Mobile (0 ~ 743px) */
+@media only screen and (min-width: 0) and (max-width: 46.4375rem) {
+  p {
+    font-size: 0.875rem;
+  }
+
+  .companyName {
+    font-size: 0.875rem;
+  }
+
+  .companyCategory {
+    font-size: 0.75rem;
+  }
+
+  .companyInfo img {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+}

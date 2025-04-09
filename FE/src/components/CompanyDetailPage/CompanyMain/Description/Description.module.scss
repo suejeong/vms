@@ -1,0 +1,52 @@
+.companyDetailDescription {
+  max-width: 75rem;
+  width: 100%;
+  min-height: 10rem;
+  border-radius: 0.625rem;
+  gap: 1rem;
+  padding: 1.5rem;
+  background-color: var(--black-300);
+  display: flex;
+  flex-direction: column;
+}
+
+.detialIntroduce {
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 100%;
+  letter-spacing: 0;
+}
+.detialPagetext {
+  font-weight: 400;
+  font-size: 0.815rem;
+  line-height: 20px;
+  letter-spacing: 0;
+  color: var(--gray-100);
+}
+
+/* 태블릿 화면 (744px ~ 1199px) */
+@media (min-width: 46.5rem) and (max-width: 74.9375rem) {
+  .companyDetailDescription {
+    width: 100%;
+    min-height: 10rem;
+    border-radius: 0.625rem;
+    gap: 1rem;
+    padding: 1.5rem;
+    background-color: var(--black-300);
+    display: flex;
+    flex-direction: column;
+  }
+}
+/* 모바일 화면 (375px ~ 743px) */
+@media (min-width: 23.4375rem) and (max-width: 46.5rem) {
+  .companyDetailDescription {
+    width: 100%;
+    min-height: 10rem;
+    border-radius: 0.625rem;
+    gap: 1rem;
+    padding: 1.5rem;
+    background-color: var(--black-300);
+    display: flex;
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,172 @@
+.titleArea {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 3.5rem 0 1rem 0;
+  height: 3rem;
+}
+
+.titleText {
+  font-weight: 700;
+  font-size: 1.3rem;
+  padding: 1rem 0;
+}
+
+.CompanyRankingTableWrapper {
+  width: 100%;
+  overflow-x: auto; /* 가로 스크롤 생성 */
+  padding-bottom: 0.5rem; /* */
+}
+
+.CompanyRankingTableWrapper::-webkit-scrollbar {
+  height: 1rem; /* 스크롤바 내부 패딩 효과를 위한 전체 높이 */
+  margin-top: 0.1rem; /* 스크롤바 내부 패딩 효과 */
+}
+
+.CompanyRankingTableWrapper::-webkit-scrollbar-track {
+  background: var(--black-200);
+  border-radius: 1rem;
+}
+
+.CompanyRankingTableWrapper::-webkit-scrollbar-thumb {
+  background: var(--black-400);
+  border-radius: 1rem;
+  height: 0.6rem; /* 스크롤바 내부 패딩 효과 내부 높이 */
+  border: 0.2rem solid var(--black-200); /* 스크롤바 내부 패딩 효과 */
+}
+
+.CompanyRankingTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.CompanyRankingTable thead {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  background-color: var(--black-200);
+  border-radius: 0.3rem;
+
+  /* 글자수가 1줄 이상 넘어가면 ... 처리 */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  tr th {
+    font-size: 0.875rem;
+    font-weight: 400;
+    padding: 0.75rem;
+  }
+}
+
+.CompanyRankingTable tbody {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--black-300);
+  border-radius: 0.3rem;
+}
+
+.CompanyRankingTable tbody tr {
+  border-bottom: 0.065rem solid var(--gray-300);
+}
+
+/* 마지막 행에는 테두리가 안 생기도록 */
+.CompanyRankingTable tbody tr:last-child {
+  border-bottom: none;
+}
+
+.CompanyRankingTable tr {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.CompanyRankingTable th, td {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem;
+
+  img {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    margin: 0.5rem;
+  }
+}
+
+.CompanyRankingTable tbody td {
+  padding: 0.5rem;
+  font-weight: 400;
+}
+.CompanyRankingTable th:nth-child(1),
+.CompanyRankingTable td:nth-child(1) {
+  width: 6%;
+}
+
+.CompanyRankingTable th:nth-child(2) {
+  width: 16%;
+}
+.CompanyRankingTable td:nth-child(2) {
+  width: 16%;
+  text-align: left;
+  justify-content: flex-start;
+
+  /* 글자수가 1줄 이상 넘어가면 ... 처리 */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.CompanyRankingTable th:nth-child(3) {
+  width: 30%;
+}
+
+.CompanyRankingTable td:nth-child(3) {
+  width: 30%;
+
+  /* 글자수가 2줄 이상 넘어가면 ... 처리 */
+  p {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+.CompanyRankingTable th:nth-child(4),
+.CompanyRankingTable td:nth-child(4),
+.CompanyRankingTable th:nth-child(5),
+.CompanyRankingTable td:nth-child(5),
+.CompanyRankingTable th:nth-child(6),
+.CompanyRankingTable td:nth-child(6),
+.CompanyRankingTable th:nth-child(7),
+.CompanyRankingTable td:nth-child(7) {
+  width: 12%;
+}
+
+.highlight {
+  background-color: var(--black-100);
+}
+
+/* Mobile (375px ~ 743px) */
+@media only screen and (max-width: 46.4375rem) {
+  .titleText {
+    padding: 0.5rem 0;
+  }
+
+  .CompanyRankingTableWrapper {
+    overflow-x: auto;
+  }
+
+  .CompanyRankingTable {
+    width: 50rem;
+    overflow-x: auto;
+  }
+
+  .titleText {
+    font-size: 1rem;
+  }
+}

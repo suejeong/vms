@@ -1,0 +1,175 @@
+.investTableHeader {
+  width: 75rem;
+  height: 2.5rem; /* 40px */
+  background-color: var(--black-300);
+  border-spacing: 0;
+  border-radius: 0.25rem; /* 4px */
+  margin-bottom: 1rem;
+}
+
+.investTableBody {
+  width: 75rem;
+  max-height: 20rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+
+  border-radius: 0.25rem; /* 4px */
+  background-color: var(--black-300);
+}
+
+.investNoData {
+  font-weight: 400;
+
+  line-height: 100%;
+  letter-spacing: 0%;
+
+  max-width: 75rem; /* 1200px */
+  width: 100%;
+  height: 20rem;
+  font-size: 0.875rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: var(--black-400);
+}
+
+.TableWrapper {
+  width: 100%;
+  overflow-x: auto; /* 가로 스크롤 생성 */
+  padding-bottom: 0.5rem; /* */
+}
+
+.TableWrapper::-webkit-scrollbar {
+  height: 1rem; /* 스크롤바 내부 패딩 효과를 위한 전체 높이 */
+  margin-top: 0.1rem; /* 스크롤바 내부 패딩 효과 */
+}
+.TableWrapper::-webkit-scrollbar-track {
+  background: var(--black-200);
+  border-radius: 1rem;
+}
+.TableWrapper::-webkit-scrollbar-thumb {
+  background: var(--black-400);
+  border-radius: 1rem;
+  height: 0.6rem; /* 스크롤바 내부 패딩 효과 내부 높이 */
+  border: 0.2rem solid var(--black-200); /* 스크롤바 내부 패딩 효과 */
+}
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 반응형 스타일 */
+/* Tablet (744px ~ 1199px) */
+@media screen and (min-width: 46.5rem) and (max-width: 74.9375rem) {
+  .investTableHeader {
+    width: 75rem;
+    height: 2.5rem; /* 40px */
+    background-color: var(--black-100);
+    border-spacing: 0;
+    border-radius: 0.25rem; /* 4px */
+    margin-bottom: 1rem;
+  }
+
+  .investTableBody {
+    width: 75rem;
+    max-height: 20rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+
+    border-radius: 0.25rem; /* 4px */
+    background-color: var(--black-100);
+  }
+
+  .investNoData {
+    font-weight: 400;
+
+    line-height: 100%;
+    letter-spacing: 0%;
+
+    width: 100%;
+    height: 20rem;
+    font-size: 0.875rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: var(--gray-200);
+  }
+
+  .modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+/* Very Small Mobile (최대 374px) */
+@media screen and (max-width: 23.375rem) {
+  .investTableHeader {
+    width: 75rem;
+    height: 2.5rem; /* 40px */
+    background-color: var(--black-100);
+    border-spacing: 0;
+    border-radius: 0.25rem; /* 4px */
+    margin-bottom: 1rem;
+  }
+
+  .investTableBody {
+    width: 75rem;
+    max-height: 20rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+
+    border-radius: 0.25rem; /* 4px */
+    background-color: var(--black-100);
+    //  overflow-x: auto;
+  }
+
+  .investNoData {
+    font-weight: 400;
+
+    line-height: 100%;
+    letter-spacing: 0%;
+
+    width: 100%;
+    height: 20rem;
+    font-size: 0.875rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: var(--gray-200);
+  }
+
+  .modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

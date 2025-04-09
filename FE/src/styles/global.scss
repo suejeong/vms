@@ -1,0 +1,106 @@
+
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css");
+
+/* 문서내 모든 요소를 선택 */
+* {
+    box-sizing: border-box;
+}
+
+/* 최상위 요소인 <html>을 선택한다 */
+:root {
+    font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+    font-weight: normal;
+    font-size: 16px;
+    color : var(--white-color);
+}
+
+html, body {
+    margin: 0px;
+    padding: 0px;
+    line-height: 1.5; /* 가독성 향상 */
+}
+
+/* 제목과 문단 스타일 */
+h1, h2, h3, h4, h5, h6, p {
+    font-size: 1rem;
+    margin: 0;
+    font-weight: normal;
+}
+
+/* 링크 스타일 */
+a {
+    text-decoration: none;
+}
+
+/* 이미지 스타일 */
+img {
+    width: auto;
+    height: auto;
+    display: block; /* 이미지 아래 여백 제거 */
+}
+
+/* 버튼 스타일 */
+button {
+    background: transparent;
+    cursor: pointer;
+    padding: 0;
+    border: 0;
+}
+
+/* 리스트 스타일 */
+ul, ol, li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* 입력 요소 스타일 */
+input {
+    outline: none;
+}
+
+/* 폰트 상속 설정 */
+input, textarea, select, button, optgroup, option {
+    font-family: inherit;
+}
+
+/* select 기본 속성 제거 */
+select {
+    border : none;
+    outline :none;
+    appearance: none; /* 기본 화살표 제거 */ 
+    background-color: transparent; /* 기본 배경 제거 */ 
+}
+
+/* 테이블 요소 기본 스타일 */
+table {
+    border-collapse: collapse; /* 테이블 셀 간 간격 제거 */
+    width: 100%;
+}
+
+th, td {
+    padding: 0; /* 테이블 셀 여백 제거 */
+    text-align: left;
+}
+
+/* fieldset 및 legend 스타일 */
+fieldset {
+    border: none; /* fieldset 테두리 제거 */
+    padding: 0;
+    margin: 0;
+}
+
+legend {
+    padding: 0;
+    margin: 0;
+}
+
+/* 텍스트영역 스타일 */
+textarea {
+    resize: none; /* 크기 조절 방지 */
+}
+
+/* svg 스타일 */
+svg {
+    display: block; /* 불필요한 여백 제거 */
+}

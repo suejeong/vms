@@ -1,0 +1,107 @@
+.section {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 75rem;
+  width: 100%;
+}
+
+.resetMyCompany,
+.addCompareCompany {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 75rem;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+.resetMyCompanyButton,
+.addCompareCompanyButton,
+.compareButton {
+  font-size: 1rem;
+  font-weight: 600;
+  gap: 0.25rem;
+  border-radius: 3.125rem;
+  padding: 0 1.5rem;
+  background-color: var(--brand-orange);
+  color: var(--wihte-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.5rem;
+}
+
+.resetMyCompanyButton {
+  width: 9.3125rem;
+  height: 2.5rem;
+}
+
+.addCompareCompanyButton {
+  width: 8.4375rem;
+  height: 2.5rem;
+}
+
+.compareButton {
+  width: 11.4375rem;
+  height: 3rem;
+  margin-top: 0.5rem;
+}
+
+.addCompareCompanyButton:disabled,
+.compareButton:disabled {
+  background-color: var(--black-100);
+  color: var(--gray-200);
+}
+
+.compareCompanyLetter {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  p {
+    font-weight: 500;
+    font-size: 1.125rem;
+  }
+}
+
+.buttonDiv {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 2rem 0;
+  margin-bottom: 2rem;
+}
+
+.investButton {
+  background-color: var(--brand-orange);
+  border: none;
+  color: white;
+  padding: 0 1.5rem;
+  height: 3rem;
+  font-size: 1rem;
+  border-radius: 1.5rem;
+}
+
+/* Tablet (744px ~ 1199px) */
+@media only screen and (min-width: 46.5rem) and (max-width: 74.9375rem) {
+}
+
+/* Mobile (0px ~ 743px) */
+@media only screen and (min-width: 0) and (max-width: 46.4375rem) {
+  .compareCompanyLetter {
+    p {
+      font-size: 0.875rem;
+    }
+  }
+
+  .resetMyCompany,
+  .addCompareCompany {
+    height: 2rem;
+  }
+
+  .compareButton {
+    width: 8.4375rem;
+    height: 2.5rem;
+  }
+}

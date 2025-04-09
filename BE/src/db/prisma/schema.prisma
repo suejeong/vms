@@ -1,0 +1,32 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Company {
+  id              String   @id @default(uuid())
+  name            String   @db.VarChar
+  description     String   @db.VarChar
+  category        String   @db.VarChar
+  totalInvestment Int
+  totalProfit     Int
+  employeeCount   Int
+  countMyPicked   Int      @default(0)
+  countYourPicked Int      @default(0)
+  changedAt       DateTime @default(now())
+  invests         Invest[]
+}
+
+model Invest {
+  id           String  @id @default(uuid())
+  username     String  @db.VarChar
+  password     String  @db.VarChar
+  companyId    String
+  investAmount Int
+  comment      String  @default("") @db.VarChar
+  company      Company @relation(fields: [companyId], references: [id], onDelete: Cascade)
+}

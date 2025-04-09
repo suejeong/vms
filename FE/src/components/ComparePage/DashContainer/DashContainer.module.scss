@@ -1,0 +1,61 @@
+.dash {
+  max-width: 75rem;
+  height: 18.75rem;
+  width: 100%;
+  margin-bottom: 2.5rem;
+  border-radius: 0.25rem;
+  border-style: dashed;
+  border-color: var(--black-300);
+  border-width: 0.0625rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 0;
+}
+
+.NotMyCompanyContainer {
+  max-width: 73rem;
+  max-height: 16.75rem;
+  height: calc(100% - 2rem);
+  width: calc(100% - 2rem);
+  border-radius: 0.25rem;
+  background-color: var(--black-300);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.addMyCompany {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* Tablet (744px ~ 1199px) */
+@media only screen and (min-width: 46.5rem) and (max-width: 74.9375rem) {
+  .dash {
+    width: 100%;
+    height: 15rem;
+  }
+
+  .NotMyCompanyContainer {
+    width: calc(100% - 2rem);
+    height: calc(100% - 2rem);
+  }
+}
+
+/* Mobile (0 ~ 743px) */
+@media only screen and (min-width: 0) and (max-width: 46.4375rem) {
+  .dash {
+    height: 11.25rem;
+  }
+
+  .NotMyCompanyContainer {
+    width: calc(100% - 2rem);
+    height: calc(100% - 2rem);
+  }
+}
