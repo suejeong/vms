@@ -49,7 +49,7 @@ function Modal({
 
   useEffect(() => {
     handleSearch();
-  }, [inputKeyword, pagination.currentPage]);
+  }, [inputKeyword, pagination.currentPage, isSearchSubmitted]);
 
   if (!isOpen) return null;
 
