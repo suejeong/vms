@@ -1,7 +1,6 @@
 import React from "react";
+import { GrFormPrevious, GrFormNext } from "react-icons/gr";
 import style from "./Pagination.module.scss";
-import ic_arrow_left from "../../../assets/images/icons/ic_arrow_left.png";
-import ic_arrow_right from "../../../assets/images/icons/ic_arrow_right.png";
 
 export const Pagination = ({ currentPage, totalPages, handlePageChange }) => {
   if (totalPages === 0) return null;
@@ -38,7 +37,7 @@ export const Pagination = ({ currentPage, totalPages, handlePageChange }) => {
         onClick={() => handlePageChange(currentPage - 1)}
         disabled={currentPage === 1}
       >
-        <img src={ic_arrow_left} alt="previous" />
+        <GrFormPrevious />
       </button>
       <div className={style.navigationBar}>
         {getPageNumbers().map((number) => (
@@ -57,7 +56,7 @@ export const Pagination = ({ currentPage, totalPages, handlePageChange }) => {
         onClick={() => handlePageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
       >
-        <img src={ic_arrow_right} alt="next" />
+        <GrFormNext />
       </button>
     </div>
   );
