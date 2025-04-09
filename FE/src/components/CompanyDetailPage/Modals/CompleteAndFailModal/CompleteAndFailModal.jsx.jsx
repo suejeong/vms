@@ -1,6 +1,10 @@
 import styles from "./CompleteAndFailModal.module.scss";
 import React from "react";
 import { useModal } from "../ModalContext/ModalContext";
+
+// 이미지 import 추가
+import deleteIcon from "/src/assets/images/icons/ic_delete.png";
+
 export function CompleteAndFailModal({ type, result }) {
   const { closeModal } = useModal();
   return (
@@ -17,7 +21,7 @@ export function CompleteAndFailModal({ type, result }) {
                 className={`${styles.successCloseButton} ${styles.closeButton}`}
               >
                 <img
-                  src="/src/assets/images/icons/ic_delete.png"
+                  src={deleteIcon}
                   alt="close"
                   className={styles.closeButton}
                 />
@@ -47,7 +51,7 @@ export function CompleteAndFailModal({ type, result }) {
                 className={`${styles.successCloseButton} ${styles.closeButton}`}
               >
                 <img
-                  src="/src/assets/images/icons/ic_delete.png"
+                  src={deleteIcon}
                   alt="close"
                   className={styles.closeButton}
                 />
@@ -74,4 +78,5 @@ export function CompleteAndFailModal({ type, result }) {
     </div>
   );
 }
+
 export default CompleteAndFailModal;
