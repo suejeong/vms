@@ -1,6 +1,6 @@
 const express = require("express");
 const prisma = require("../db/client.prisma");
-
+const bcrypt = require("bcrypt");
 const investRouter = express.Router();
 
 //투자 정보 전체 가져요기
@@ -85,15 +85,18 @@ investRouter.get("/company/:companyId/:page", async (req, res, next) => {
 // 투자 정보 추가하기
 investRouter.post("/", async (req, res, next) => {
   try {
-    const Investdata = req.body;
+    const { username, password, investAmount, companyId, comment } = req.body;
+
+    // 🔐 비밀번호 암호화
+    const hashedPassword = await bcrypt.hash(password, 10);
 
     const newInvest = await prisma.invest.create({
       data: {
-        username: Investdata.username,
-        password: Investdata.password,
-        investAmount: Investdata.investAmount,
-        companyId: Investdata.companyId,
-        comment: Investdata.comment,
+        username: username,
+        password: hashedPassword,
+        investAmount: investAmount,
+        companyId: companyId,
+        comment: comment,
       },
     });
 
@@ -107,7 +110,7 @@ investRouter.post("/", async (req, res, next) => {
 investRouter.put("/:investId", async (req, res, next) => {
   try {
     const { investId } = req.params;
-    const Investdata = req.body;
+    const { username, password, investAmount, companyId, comment } = req.body;
     const findInvest = await prisma.invest.findUnique({
       where: { id: investId },
     });
@@ -116,14 +119,21 @@ investRouter.put("/:investId", async (req, res, next) => {
       return res.status(404).json({ message: "투자 정보를 찾을 수 없습니다." });
     }
 
+    // 🔐 비밀번호 유효성 검사 (기존 해시된 비밀번호와 비교)
+    const isPasswordValid = await bcrypt.compare(password, findInvest.password);
+    if (!isPasswordValid) {
+      return res.status(403).json({ message: "비밀번호가 일치하지 않습니다." });
+    }
+    const hashedPassword = await bcrypt.hash(password, 10);
+
     const updatedInvest = await prisma.invest.update({
       where: { id: investId },
       data: {
-        username: Investdata.username,
-        password: Investdata.password,
-        investAmount: Investdata.investAmount,
-        companyId: Investdata.companyId,
-        comment: Investdata.comment,
+        username: username,
+        password: hashedPassword,
+        investAmount: investAmount,
+        companyId: companyId,
+        comment: comment,
       },
     });
 
