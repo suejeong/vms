@@ -19,7 +19,13 @@
 
 ## 배포 
 
-🖥️ [ViewMyStartup 접속하기 (FE)](https://viewmystartup4team.netlify.app/)
+[ViewMyStartup 접속하기 (FE)](https://viewmystartup4team.netlify.app/)
+
+[ViewMyStartup 접속하기 (BE)](https://view-my-startup-fa0a.onrender.com/)
+
+[개발 문서 노션 페이지 보러가기](https://emphasized-horse-08d.notion.site/Team-4-Project-Note-1c4cdb781b8880cf8bdef899d075f0e2)
+
+
 
 ## 주요 기능
 
