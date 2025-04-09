@@ -63,32 +63,27 @@
 
 ## 🗂️ 테이블 구조
 
-### 📁 companys 테이블
+### 📁 companys 테이블                                                    📁 invests 테이블
+<div style="display: flex; gap: 32px; align-items: flex-start; flex-wrap: wrap;">
 
-| 컬럼명           | 타입     | 설명              |
-|------------------|----------|-------------------|
-| `id`             | varchar  | 기본 키            |
-| `name`           | varchar  | 회사 이름          |
-| `description`    | varchar  | 회사 설명          |
-| `category`       | varchar  | 회사 카테고리      |
-| `totalInvestmen` | int      | 총 투자금          |
-| `totalProfit`    | int      | 총 수익            |
-| `employeeCount`  | int      | 직원 수            |
-| `countMyPicked`  | int      | 내가 고른 횟수     |
-| `countYourPicked`| int      | 상대가 고른 횟수   |
+<table>
+  <caption><strong>📁 companys 테이블</strong></caption>
+  <thead>
+    <tr><th>컬럼명</th><th>타입</th><th>설명</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><code>id</code></td><td>varchar</td><td>기본 키</td></tr>
+    <tr><td><code>name</code></td><td>varchar</td><td>회사 이름</td></tr>
+    <tr><td><code>description</code></td><td>varchar</td><td>회사 설명</td></tr>
+    <tr><td><code>category</code></td><td>varchar</td><td>카테고리</td></tr>
+    <tr><td><code>totalInvestmen</code></td><td>int</td><td>총 투자금</td></tr>
+    <tr><td><code>totalProfit</code></td><td>int</td><td>총 수익</td></tr>
+    <tr><td><code>employeeCount</code></td><td>int</td><td>직원 수</td></tr>
+    <tr><td><code>countMyPicked</code></td><td>int</td><td>내가 고른 횟수</td></tr>
+    <tr><td><code>countYourPicked</code></td><td>int</td><td>상대가 고른 횟수</td></tr>
+  </tbody>
+</table>
 
----
-
-### 📁 invests 테이블
-
-| 컬럼명         | 타입     | 설명                         |
-|----------------|----------|------------------------------|
-| `id`           | varchar  | 기본 키                      |
-| `userName`     | varchar  | 투자자 이름                  |
-| `password`     | varchar  | 비밀번호                     |
-| `companyId`    | varchar  | 외래 키 (연결: companys.id)  |
-| `investAmount` | int      | 투자 금액                    |
-| `comment`      | varchar  | 투자 코멘트                  |
 
 
 
