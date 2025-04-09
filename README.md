@@ -12,7 +12,7 @@
 - [주요 기능](#주요-기능)  
 - [팀원](#팀원)  
 - [기술 스택](#기술-스택)
-- [DataBase ERD diagram](#-DataBase-ERD-diagram)  
+- [DataBase ERD diagram](#DataBase-ERD-diagram)  
 - [프로젝트 구조 예시](#프로젝트-구조-예시)
 - [회고록](#회고록)
 
