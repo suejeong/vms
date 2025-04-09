@@ -61,22 +61,6 @@
 
 ![4팀ERD](https://github.com/user-attachments/assets/490b4ab3-3f06-427b-804b-3f11379100bd)
 
-## 🗂️ 테이블 구조
-
-### 📁 companys 테이블                                                    📁 invests 테이블
-
-| 📁 companys              |                     || 📁 invests          |                     |
-|-------------------------------|--------------------|-|----------------------------|---------------------|
-| 컬럼명                        | 타입             |   | 컬럼명                     | 타입                |
-| `id`                          | varchar          | ⇨  | `companyId`               | varchar             |
-| `name`                        | varchar           |  | `id`                       | varchar             |
-| `description`                 | varchar            | | `userName`                | varchar             |
-| `category`                    | varchar             ||`password`                | varchar             | 
-| `totalInvestmen`              | int                 || `investAmount`            | int                 |
-| `totalProfit`                 | int                 || `comment`                 | varchar             |
-| `employeeCount`               | int                 ||                            |                     |
-| `countMyPicked`               | int                 ||                            |                     |
-| `countYourPicked`             | int                 |     |                        |                     |
 
 
 
