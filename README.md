@@ -29,13 +29,13 @@
 - 📈 **투자 내역 기반 비교 페이지 제공**
 
 ## 팀원
-| 이름 | 깃허브 | 
-|------|------|
-| 김수빈 | [GitHub](https://github.com/subinkim9755) |
-| 홍상훈 |[GitHub](https://github.com/az0319h) |
-| 심유빈 | [GitHub](https://github.com/shimyubin) |
-| 김재욱 | [GitHub](https://github.com/WooGie911) |
-| 황수정 |[GitHub](https://github.com/suejeong) |
+| 이름 | 깃허브 | 역할 | 
+|------|------|------|
+| 김수빈 | [GitHub](https://github.com/subinkim9755) |  |
+| 홍상훈 |[GitHub](https://github.com/az0319h) |  |
+| 심유빈 | [GitHub](https://github.com/shimyubin) |  |
+| 김재욱 | [GitHub](https://github.com/WooGie911) |  |
+| 황수정 |[GitHub](https://github.com/suejeong) |  |
 
 ## 기술 스택
 
