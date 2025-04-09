@@ -1,4 +1,3 @@
-import styles from "./InvestMain.module.scss";
 import ChangeToNumber from "../ChangeToNumber/ChangeToNumber";
 import InvestTable from "./InvestTable/InvestTable";
 import InvestHeader from "./InvestHeader/InvestHeader";
@@ -14,14 +13,14 @@ export function InvestMain({
   );
 
   return (
-    <div className={styles.ViewMyStartUpDiv}>
+    <div>
       <InvestHeader
         investDataState={investDataState}
         companyDataState={companyDataState}
         refetchCompanyInvest={refetchCompanyInvest}
       />
-      <div className={styles.ViewMyStartUpMain}>
-        <p className={styles.investAmountText}>
+      <div>
+        <p className="py-4 border-t border-black100 text-base font-bold md:text-xl">
           총 {ChangeToNumber(totalInvestAmount)}
         </p>
         <InvestTable

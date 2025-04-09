@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { v4 as uuidv4 } from "uuid";
 import styles from "./InvestAndChangeModal.module.scss";
 import { createInvest, updateInvest, getInvest } from "../../../../api/Invest";
 import { useModal } from "../ModalContext/ModalContext";
 import CompleteAndFailModal from "../CompleteAndFailModal/CompleteAndFailModal.jsx";
+import getCompanyImage from "../../../GetCompanyImage/GetCompanyImage.jsx";
 
 export default function InvestAndChangeModal({
   type, //투자인지 투자수정인지
@@ -44,8 +44,6 @@ export default function InvestAndChangeModal({
       });
     }
   }, [type, companyDataState?.id]);
-
-  console.log(companyDataState);
 
   const [showPassword, setShowPassword] = useState({
     first: false,
@@ -115,7 +113,7 @@ export default function InvestAndChangeModal({
             <h3 className={styles.infoTitle}>투자 기업 정보</h3>
             <div className={styles.companyDetails}>
               <img
-                src={`/images/companies/${companyDataState.name}.png`}
+                src={getCompanyImage(companyDataState.name)}
                 alt="기업이미지"
                 className={styles.companyImage}
               />

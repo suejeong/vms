@@ -191,6 +191,10 @@ companyRouter.get("/search", async (req, res, next) => {
       totalInvestment_asc: { totalInvestment: "asc" },
       employeeCount_desc: { employeeCount: "desc" },
       employeeCount_asc: { employeeCount: "asc" },
+      countMyPicked_desc: { countMyPicked: "desc" },
+      countMyPicked_asc: { countMyPicked: "asc" },
+      countYourPicked_desc: { countYourPicked: "desc" },
+      countYourPicked_asc: { countYourPicked: "asc" },
     };
 
     const companies = await prisma.company.findMany({

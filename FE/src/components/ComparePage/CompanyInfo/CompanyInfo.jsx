@@ -1,12 +1,13 @@
 import React from "react";
 import style from "./CompanyInfo.module.scss";
+import getCompanyImage from "../../GetCompanyImage/GetCompanyImage";
 
-function CompanyInfo({ company, direction = "row"  }) {
+function CompanyInfo({ company, direction = "row" }) {
   return (
-    <div  className={`${style.companyWrapper} ${style[direction]}`}>
-      <img 
-        src={`/images/companies/${company.name}.png`} 
-        alt="company" 
+    <div className={`${style.companyWrapper} ${style[direction]}`}>
+      <img
+        src={getCompanyImage(company.name)}
+        alt="company"
         className={style.companyLogo}
       />
       <div className={style.companyText}>

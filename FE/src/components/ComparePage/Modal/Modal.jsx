@@ -2,10 +2,12 @@ import React, { useEffect, useRef, useState } from "react";
 import style from "./Modal.module.scss";
 import MyCompanyModal from "../MyCompanyModal/MyCompanyModal";
 import CompareCompanyModal from "../CompareCompanyModal/CompareCompanyModal";
-import { Pagination } from "../Pasination/Pasination";
 import SearchBar from "../SearchBar/SearchBar";
 import Title from "../../Title/Title";
 import { searchCompanies } from "../../../api/Company";
+import ic_delete from "../../../assets/images/icons/ic_delete.png";
+import Pagination from '/src/components/ComparePage/Pagination/Pagination.jsx';
+
 
 function Modal({
   isOpen,
@@ -17,6 +19,7 @@ function Modal({
   myCompany,
 }) {
   const [inputValue, setInputValue] = useState("");
+  const [inputKeyword, setInputKeyword] = useState("");
   const [filteredCompanies, setFilteredCompanies] = useState([]);
   const [isSearchSubmitted, setIsSearchSubmitted] = useState(false);
   const modalBackground = useRef();
@@ -28,9 +31,10 @@ function Modal({
   const companiesPerPage = 5;
 
   const handleSearch = async () => {
+    if (!isSearchSubmitted) return;
     try {
       const data = await searchCompanies(
-        inputValue,
+        inputKeyword,
         pagination.currentPage,
         companiesPerPage,
         "orderByName_asc",
@@ -46,20 +50,25 @@ function Modal({
 
   useEffect(() => {
     handleSearch();
-  }, [pagination.currentPage]);
+  }, [inputKeyword, pagination.currentPage]);
 
   if (!isOpen) return null;
 
-  const handleSelect = (company) => {
-    onSelect(company);
+  const handleDelete = () => {
     setInputValue("");
+    setInputKeyword("");
     setFilteredCompanies([]);
-    setIsSearchSubmitted(false);
     setPagination({
       currentPage: 1,
       totalPages: 0,
       totalCompanies: 0,
     });
+    setIsSearchSubmitted(false);
+  };
+
+  const handleSelect = (company) => {
+    onSelect(company);
+    handleDelete();
   };
 
   const handleDeselect = (companyId) => {
@@ -82,6 +91,7 @@ function Modal({
       onClick={(e) => {
         if (modalBackground.current && e.target === modalBackground.current) {
           onClose();
+          handleDelete();
         }
       }}
     >
@@ -92,15 +102,21 @@ function Modal({
           ) : (
             <Title text="비교할 기업 선택하기" />
           )}
-          <button className={style.closeButton} onClick={onClose}>
-            <img src="/images/icons/ic_delete.png" alt="delete" />
+          <button
+            className={style.closeButton}
+            onClick={() => {
+              onClose();
+              handleDelete();
+            }}
+          >
+            <img src={ic_delete} alt="delete" />
           </button>
         </div>
         <SearchBar
           inputValue={inputValue}
           setInputValue={setInputValue}
-          setFilteredCompanies={setFilteredCompanies}
-          handleSearch={handleSearch}
+          setInputKeyword={setInputKeyword}
+          handleDelete={handleDelete}
           setPagination={setPagination}
           setIsSearchSubmitted={setIsSearchSubmitted}
         />
@@ -129,7 +145,7 @@ function Modal({
           />
         )}
         <div className={style.searchCompany}>
-          {pagination.totalPages > 1 && inputValue && (
+          {pagination.totalPages > 1 && isSearchSubmitted && (
             <Pagination
               currentPage={pagination.currentPage}
               totalPages={pagination.totalPages}

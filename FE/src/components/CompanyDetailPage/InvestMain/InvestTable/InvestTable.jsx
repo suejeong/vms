@@ -38,8 +38,8 @@ export function InvestTable({
   };
 
   return (
-    <section className={styles.TableWrapper}>
-      <div className={styles.investTableHeader}>
+    <section >
+      <div >
         <MakeTableHeader
           Name={"투자자 이름"}
           Rank={"순위"}
@@ -48,11 +48,13 @@ export function InvestTable({
         ></MakeTableHeader>
       </div>
       {sortedInvestData.length != 0 ? (
-        <div className={styles.investTableBody}>
-          {makeRow(sortedInvestData, nowPageState)}
+        <div>
+          <div className="mt-4 [&>div:last-child]:border-none">
+            {makeRow(sortedInvestData, nowPageState)}
+          </div>
         </div>
       ) : (
-        <div className={styles.investNoData}>
+        <div className="my-8 md:my-16 text-sm text-gray200 text-center">
           아직 투자한 기업이 없어요.
           <br />
           버튼을 눌러 기업에 투자해보세요!
