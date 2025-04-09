@@ -157,7 +157,7 @@ investRouter.put("/:investId", async (req, res, next) => {
       findInvest.password
     );
     if (!isPasswordValid) {
-      return res.status(200).json({ message: "비밀번호 오류" });
+      return res.status(403).json({ message: "비밀번호 오류" });
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
