@@ -31,7 +31,7 @@
 
 2. 프로젝트 디렉토리로 이동합니다:
    ```bash
-   cd ViewMyStartup
+   cd FS
    ```
 
 3. 프론트엔드와 백엔드 디렉토리에서 의존성 패키지를 설치합니다:
@@ -41,16 +41,11 @@
    cd ../BE
    npm install
    ```
-
+   
 4. 프론트엔드와 백엔드 서버를 각각 실행합니다:
    ```bash
-   # 프론트엔드
    cd FE
    npm start
-
-   # 백엔드
-   cd BE
-   npm run dev
    ```
 
 
