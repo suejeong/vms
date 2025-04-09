@@ -55,7 +55,7 @@
 │   └── src
 │      ├── modules #백엔드 API
 │   ├── db 
-│    │   ├── prisma 
+│   │   ├── prisma 
 │   │   │   ├── migrations 
 │   │   │   ├── schema.prisma #DB 스키마.
 │   │   │   └── seed.js #DB seed 데이터.
