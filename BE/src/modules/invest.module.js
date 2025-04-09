@@ -97,7 +97,7 @@ investRouter.post("/password/:investId", async (req, res, next) => {
     // 🔐 비밀번호 유효성 검사 (기존 해시된 비밀번호와 비교)
     const isPasswordValid = await bcrypt.compare(password, findInvest.password);
     if (!isPasswordValid) {
-      return res.status(403).json({ message: "No" });
+      return res.status(200).json({ message: "No" });
     }
 
     res.status(200).json({ message: "Yes" });
