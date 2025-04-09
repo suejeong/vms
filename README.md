@@ -44,8 +44,9 @@
 | 프론트엔드   |<img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white"> <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white"> <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"> <img src="https://img.shields.io/badge/React%20Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white">|
 | 백엔드      |<img src="https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white">  <img src="https://img.shields.io/badge/Prisma-2D3748?style=for-the-badge&logo=prisma&logoColor=white">|
 | 데이터베이스 |<img src="https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white">|
-| 배포        |<img src="https://img.shields.io/badge/Netlify?style=for-the-badge&logo=git&logoColor=white">, Render (백엔드)   |
 | 협업        |<img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white"> <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white">|
+| 배포        |<img src="https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=git&logoColor=white"> <img src="https://img.shields.io/badge/Render-000000?style=for-the-badge&logo=git&logoColor=white"> |
+
 
 ## 프로젝트 구조 예시
 
