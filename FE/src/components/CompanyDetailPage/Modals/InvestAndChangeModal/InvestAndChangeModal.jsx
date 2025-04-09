@@ -11,6 +11,7 @@ import visibilityOnIcon from "/src/assets/images/icons/btn_visibility_on.png";
 import visibilityOffIcon from "/src/assets/images/icons/btn_visibility_off.png";
 
 export default function InvestAndChangeModal({
+  prePassword, //이전 비밀번호호
   type, //투자인지 투자수정인지
   companyDataState, //모두 사용
   investId, //투자수정에만 사용
@@ -39,6 +40,7 @@ export default function InvestAndChangeModal({
       fetchData();
     } else {
       setForm({
+        prePassword: prePassword,
         companyId: companyDataState.id,
         id: "",
         username: "",
@@ -107,11 +109,7 @@ export default function InvestAndChangeModal({
               {type === "투자" ? "기업에 투자하기" : "기업 투자 수정하기"}
             </h2>
             <button onClick={closeModal} className={styles.closeButton}>
-              <img
-                src={closeIcon}
-                alt="close"
-                className={styles.closeButton}
-              />
+              <img src={closeIcon} alt="close" className={styles.closeButton} />
             </button>
           </div>
           <div className={styles.companyInfo}>
@@ -157,6 +155,7 @@ export default function InvestAndChangeModal({
               onChange={InvestmentChange}
               placeholder="투자 금액을 입력해 주세요"
               required
+              maxLength={9}
               className={styles.input}
             />
           </div>
@@ -195,9 +194,7 @@ export default function InvestAndChangeModal({
                 className={styles.input}
               />
               <img
-                src={
-                  showPassword.first ? visibilityOnIcon : visibilityOffIcon
-                }
+                src={showPassword.first ? visibilityOnIcon : visibilityOffIcon}
                 alt="엿보기"
                 onClick={() => handlePreviewPassword("first")}
                 className={styles.previewIcon}
@@ -224,9 +221,7 @@ export default function InvestAndChangeModal({
                 className={styles.input}
               />
               <img
-                src={
-                  showPassword.second ? visibilityOnIcon : visibilityOffIcon
-                }
+                src={showPassword.second ? visibilityOnIcon : visibilityOffIcon}
                 alt="엿보기"
                 onClick={() => handlePreviewPassword("second")}
                 className={styles.previewIcon}

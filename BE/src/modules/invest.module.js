@@ -135,13 +135,29 @@ investRouter.post("/", async (req, res, next) => {
 investRouter.put("/:investId", async (req, res, next) => {
   try {
     const { investId } = req.params;
-    const { username, password, investAmount, companyId, comment } = req.body;
+    const {
+      prePassword,
+      username,
+      password,
+      investAmount,
+      companyId,
+      comment,
+    } = req.body;
     const findInvest = await prisma.invest.findUnique({
       where: { id: investId },
     });
     //없으면 에러
     if (!findInvest) {
       return res.status(404).json({ message: "투자 정보를 찾을 수 없습니다." });
+    }
+
+    // 🔐 비밀번호 유효성 검사 (기존 해시된 비밀번호와 비교)
+    const isPasswordValid = await bcrypt.compare(
+      prePassword,
+      findInvest.password
+    );
+    if (!isPasswordValid) {
+      return res.status(200).json({ message: "비밀번호 오류" });
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
