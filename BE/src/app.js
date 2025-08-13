@@ -3,7 +3,16 @@ const cors = require("cors");
 const mainRouter = require("./modules/index.module");
 const app = express();
 
-app.use(cors());
+const cors = require("cors");
+app.use(
+  cors({
+    origin: [
+      "https://vms-lyart-chi.vercel.app",
+      "http://localhost:5173",
+      "https://vms-y50c.onrender.com",
+    ],
+  })
+);
 app.use(express.json());
 app.use("/", mainRouter);
 
