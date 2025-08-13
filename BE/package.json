@@ -8,8 +8,7 @@
     "generate": "npx prisma generate --schema=./src/db/prisma/schema.prisma",
     "migrate": "npx prisma migrate dev --name init --schema=./src/db/prisma/schema.prisma",
     "reset": "npx prisma migrate reset --schema=./src/db/prisma/schema.prisma",
-    "seed": "node src/db/prisma/seed.js",
-    "build": "vite build"
+    "seed": "node src/db/prisma/seed.js"
   },
   "dependencies": {
     "@prisma/client": "^6.6.0",
