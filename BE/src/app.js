@@ -3,7 +3,6 @@ const cors = require("cors");
 const mainRouter = require("./modules/index.module");
 const app = express();
 
-const cors = require("cors");
 app.use(
   cors({
     origin: [
